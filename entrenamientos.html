@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Todas las disciplinas de Bisonte CrossFit en San Miguel: CrossFit, Levantamiento Olímpico, Hybrid, Gymnastics, StrongMan, Full Body, Competidor y Adulto Mayor. Revisa horarios y niveles.">
+<meta property="og:site_name" content="Bisonte CrossFit">
+<meta property="og:title" content="Todos los entrenamientos · Bisonte CrossFit">
+<meta property="og:description" content="Todas las disciplinas de Bisonte CrossFit en San Miguel: CrossFit, Levantamiento Olímpico, Hybrid, Gymnastics, StrongMan, Full Body, Competidor y Adulto Mayor. Revisa horarios y niveles.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CL">
+<!-- TODO: cuando exista dominio, cambiar og:image a URL absoluta (https://...) para que funcione el preview en WhatsApp -->
+<meta property="og:image" content="assets/img/crossfit-hero.png">
+<meta name="theme-color" content="#131313">
+<title>Todos los entrenamientos · Bisonte CrossFit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,400&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#131313;
+    --bg-alt:#1c1c1c;
+    --card:#1f1f1f;
+    --magenta:#C109B4;
+    --teal:#33DBDB;
+    --text:#ffffff;
+    --text-muted:#a3a3a3;
+    --gold:#caa24a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{overflow-x:hidden;scrollbar-width:thin;scrollbar-color:#333 #0c0c0c;}
+  html::-webkit-scrollbar{width:10px;}
+  html::-webkit-scrollbar-track{background:#0c0c0c;}
+  html::-webkit-scrollbar-thumb{background:#333;border-radius:5px;}
+  html::-webkit-scrollbar-thumb:hover{background:#444;}
+  body{
+    background:#000;
+    color:var(--text);
+    font-family:'Poppins', 'Segoe UI', Arial, sans-serif;
+    line-height:1.4;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  .app{
+    max-width:480px;
+    margin:0 auto;
+    background:var(--bg);
+    overflow-x:hidden;
+    position:relative;
+  }
+  @media (min-width:481px){
+    .app{box-shadow:0 0 60px rgba(0,0,0,.6);min-height:100vh;}
+  }
+  .container{padding:0 20px;}
+  section{padding:40px 0;}
+
+  /* Header */
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 20px;
+  }
+  .menu-btn{background:none;border:none;padding:4px;cursor:pointer;display:flex;align-items:center;}
+  .logo-nav{display:flex;align-items:center;}
+  .logo-nav img{height:34px;width:auto;display:block;}
+
+  /* Section titles */
+  .section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:16px;
+  }
+  .section-title h2{
+    font-size:20px;
+    font-weight:800;
+    display:inline-block;
+    padding-bottom:8px;
+    background:url('assets/img/line-underline.svg') left bottom no-repeat;
+    background-size:70px 4px;
+  }
+  .section-title .see-all{
+    font-size:13px;
+    color:var(--text-muted);
+  }
+
+  /* Page title */
+  .page-title{padding-top:12px;}
+  .page-title h1{
+    font-size:22px;
+    font-weight:800;
+    display:inline-block;
+    padding-bottom:8px;
+    background:url('assets/img/line-underline.svg') left bottom no-repeat;
+    background-size:70px 4px;
+  }
+  .meta-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:22px;
+    font-size:13px;
+    color:var(--text-muted);
+  }
+  .meta-row .meta-item{
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .meta-row .meta-item img{width:14px;height:14px;}
+  .meta-row .dot-sep{color:var(--text-muted);}
+
+  /* Training list */
+  .training-list{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin-top:24px;
+  }
+  .training-card{
+    display:block;
+    background:var(--card);
+    border-radius:16px;
+    padding:20px;
+    position:relative;
+    overflow:hidden;
+  }
+  .training-card .card-icon{
+    position:absolute;
+    right:-10px;
+    bottom:-10px;
+    width:110px;
+    height:auto;
+    opacity:.5;
+    z-index:0;
+    pointer-events:none;
+  }
+  .training-card .card-body{position:relative;z-index:1;}
+  .training-card .card-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+  }
+  .training-card h3{color:var(--teal);font-size:17px;font-weight:800;}
+  .training-card .card-head img{width:20px;height:20px;flex-shrink:0;}
+  .training-card p{color:var(--text-muted);font-size:13px;margin-top:8px;}
+  .training-card .schedule{color:var(--teal);font-size:12px;font-weight:600;margin-top:10px;}
+
+  /* CTA banner */
+  .cta-banner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    background:var(--card);
+    border-radius:16px;
+    padding:14px 18px;
+    margin-top:28px;
+  }
+  .cta-banner .cta-label{font-size:14px;font-weight:700;}
+  .cta-banner .btn-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:linear-gradient(90deg,var(--magenta),#e63cc9);
+    color:#fff;
+    font-weight:700;
+    font-size:14px;
+    padding:12px 20px;
+    border-radius:30px;
+  }
+  .cta-banner .btn-cta img{width:16px;height:16px;}
+
+  /* Footer */
+  footer{
+    background:var(--bg-alt);
+    padding:40px 20px;
+    text-align:center;
+  }
+  .footer-logo{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin-bottom:24px;
+    font-weight:800;
+    font-size:15px;
+    flex-wrap:wrap;
+  }
+  .footer-logo .bull-badge{
+    display:flex;align-items:center;justify-content:center;
+  }
+  .footer-logo .bull-badge img{width:50px;height:auto;object-fit:contain;}
+  .footer-logo .wordmark{display:flex;flex-direction:column;gap:2px;}
+  .footer-logo .wordmark img{height:21px;width:auto;}
+  .footer-links{
+    text-align:left;
+    max-width:300px;
+    margin:0 auto 20px;
+  }
+  .footer-links details{
+    border-bottom:1px solid #2a2a2a;
+    padding:12px 0;
+  }
+  .footer-links summary{
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+    font-weight:600;
+    font-size:14px;
+  }
+  .footer-links summary::-webkit-details-marker{display:none;}
+  .footer-links summary::after{content:'▾';color:var(--teal);transition:transform .2s;}
+  .footer-links details[open] summary::after{transform:rotate(180deg);}
+  .footer-links a.plain{display:flex;justify-content:space-between;align-items:center;padding:10px 0;font-weight:600;font-size:14px;}
+  .footer-links a.plain::after{content:'›';color:var(--magenta);font-weight:700;font-size:16px;}
+  .footer-links details ul{list-style:none;padding:8px 0 4px 8px;}
+  .footer-links details ul li{padding:6px 0;}
+  .footer-links details ul a{color:var(--text-muted);font-size:13px;}
+  .footer-links details ul a:hover{color:var(--teal);}
+  .map-block{margin-bottom:24px;}
+  .map-block h3{font-size:18px;margin-bottom:8px;}
+  .map-block h3 span{display:block;width:172px;height:3px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:8px auto 0;}
+  .map-block p{color:#f8f8f8;font-size:14px;font-weight:600;}
+
+  /* Drawer menu */
+  .drawer-overlay{
+    position:fixed;inset:0;background:rgba(0,0,0,.6);
+    opacity:0;pointer-events:none;transition:opacity .25s;z-index:90;
+  }
+  .drawer-overlay.open{opacity:1;pointer-events:auto;}
+  .drawer{
+    position:fixed;top:0;left:0;height:100%;
+    width:min(330px,85vw);
+    background:var(--bg-alt);
+    padding:24px 20px;
+    transform:translateX(-100%);
+    transition:transform .3s ease;
+    z-index:91;
+    overflow-y:auto;
+  }
+  .drawer.open{transform:translateX(0);}
+  .drawer-close{
+    background:none;border:none;color:#fff;font-size:20px;
+    cursor:pointer;margin-bottom:16px;padding:4px;
+  }
+  .drawer-nav details{border-bottom:1px solid #2a2a2a;padding:10px 0;}
+  .drawer-nav summary{
+    cursor:pointer;list-style:none;display:flex;
+    justify-content:space-between;align-items:center;
+    font-weight:600;font-size:14px;color:#fff;
+  }
+  .drawer-nav summary::-webkit-details-marker{display:none;}
+  .drawer-nav summary::after{content:'▾';color:var(--teal);transition:transform .2s;}
+  .drawer-nav details[open] summary::after{transform:rotate(180deg);}
+  .drawer-nav details ul{list-style:none;padding:8px 0 4px 8px;}
+  .drawer-nav details ul li{padding:6px 0;}
+  .drawer-nav details ul a{color:var(--text-muted);font-size:13px;}
+  .drawer-nav details ul a:hover{color:var(--teal);}
+  .drawer-item-plain{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:10px 0;font-weight:600;font-size:14px;color:#fff;
+    border-bottom:1px solid #2a2a2a;
+  }
+  .drawer-item-plain::after{content:'›';color:var(--magenta);font-weight:700;font-size:16px;}
+  .drawer-map{
+    margin-top:24px;padding:10px 0;border-radius:20px;text-align:center;
+  }
+  .drawer-map h3{font-size:18px;margin-bottom:8px;color:#fff;}
+  .drawer-map h3 span{display:block;width:172px;height:3px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:8px auto 0;}
+  .drawer-map p{color:#f8f8f8;font-size:14px;font-weight:600;}
+  .contact-box{
+    background:var(--card);
+    border-radius:16px;
+    padding:24px;
+    margin-bottom:24px;
+  }
+  .contact-box h4{font-size:16px;margin-bottom:8px;}
+  .contact-box p{color:var(--text-muted);font-size:13px;margin-bottom:16px;}
+  .whatsapp-btn{
+    background:#25D366;
+    color:#0d0d0d;
+    font-weight:700;
+    padding:12px 24px;
+    border-radius:30px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:14px;
+  }
+  .socials{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    font-size:13px;
+    color:var(--text-muted);
+    margin-bottom:20px;
+  }
+
+  /* Desktop */
+  @media (min-width:900px){
+    .app{max-width:none;box-shadow:none;}
+    .container{max-width:1100px;margin:0 auto;}
+
+    .page-title h1{font-size:30px;}
+
+    .training-list{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:20px;
+    }
+
+    footer{padding:60px 40px;}
+    .footer-links{max-width:900px;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+<header>
+  <button class="menu-btn" id="menuIcon" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer"><img src="assets/icons/menu.svg" alt="" width="22" height="22"></button>
+  <a href="index.html" class="logo-nav"><img src="assets/img/logo-nav-full.svg" alt="Bisonte CrossFit"></a>
+  <span style="width:22px;"></span>
+</header>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú">✕</button>
+  <nav class="drawer-nav">
+    <details open>
+      <summary>Explora</summary>
+      <ul>
+        <li><a href="entrenamientos.html">Entrenamientos</a></li>
+        <li><a href="planes.html">Planes</a></li>
+        <li><a href="testimonios.html">Testimonios</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Ayuda y Contacto</summary>
+      <ul>
+        <li><a href="index.html#preguntas">Preguntas frecuentes</a></li>
+        <li><a href="https://wa.me/56967374096" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="como-llegar.html">Ubicación</a></li>
+      </ul>
+    </details>
+    <a class="drawer-item-plain" href="https://app.boxmagic.cl/" target="_blank" rel="noopener">Soy Alumno</a>
+  </nav>
+  <div class="drawer-map" id="drawerMap">
+    <h3>¿Cómo llegar?<span></span></h3>
+    <p>📍 Calle Uno 1050, San Miguel<br>A pasos de Metro Departamental</p>
+  </div>
+</aside>
+
+<section class="page-title">
+  <div class="container">
+    <h1>Todos los entrenamientos<span></span></h1>
+    <div class="meta-row">
+      <span class="meta-item"><img src="assets/icons/seal-check.svg" alt="">Todos los niveles</span>
+      <span class="dot-sep">·</span>
+      <span class="meta-item"><img src="assets/icons/graduation-cap.svg" alt="">Entrenadores certificados</span>
+    </div>
+
+    <div class="training-list">
+      <a class="training-card" href="crossfit.html">
+        <img loading="lazy" class="card-icon" src="assets/icons/discipline-crossfit.svg" alt="">
+        <div class="card-body">
+          <div class="card-head">
+            <h3>CrossFit</h3>
+            <img src="assets/icons/chevron-right.svg" alt="">
+          </div>
+          <p>Fuerza, resistencia y comunidad en cada clase</p>
+          <div class="schedule">Lunes a Viernes 06:00 · 07:00 · 08:00 · 17:15 · 18:15 · 19:15</div>
+        </div>
+      </a>
+      <div class="training-card">
+        <img loading="lazy" class="card-icon" src="assets/icons/discipline-hybrid.svg" alt="">
+        <div class="card-body">
+          <div class="card-head">
+            <h3>Hyrox / Hybrid</h3>
+            <img src="assets/icons/chevron-right.svg" alt="">
+          </div>
+          <p>Control y fuerza corporal</p>
+          <div class="schedule">Martes y Jueves 18:15 · 19:15</div>
+        </div>
+      </div>
+      <div class="training-card">
+        <img loading="lazy" class="card-icon" src="assets/icons/discipline-levantamiento.svg" alt="">
+        <div class="card-body">
+          <div class="card-head">
+            <h3>Levantamiento Olímpico</h3>
+            <img src="assets/icons/chevron-right.svg" alt="">
+          </div>
+          <p>Técnica, fuerza y potencia</p>
+          <div class="schedule">Lunes, Miércoles 20:15 y Viernes 19:15</div>
+        </div>
+      </div>
+      <div class="training-card">
+        <img loading="lazy" class="card-icon" src="assets/icons/discipline-gymnastics.svg" alt="">
+        <div class="card-body">
+          <div class="card-head">
+            <h3>Gymnastics</h3>
+            <img src="assets/icons/chevron-right.svg" alt="">
+          </div>
+          <p>Control y fuerza corporal</p>
+          <div class="schedule">Lunes, Miércoles 19:15 y Viernes 18:15</div>
+        </div>
+      </div>
+      <div class="training-card">
+        <img loading="lazy" class="card-icon" src="assets/icons/discipline-adultomayor.svg" alt="">
+        <div class="card-body">
+          <div class="card-head">
+            <h3>Adulto Mayor</h3>
+            <img src="assets/icons/chevron-right.svg" alt="">
+          </div>
+          <p>Control y fuerza corporal</p>
+          <div class="schedule">Martes y Jueves 17:00</div>
+        </div>
+      </div>
+      <div class="training-card">
+        <img loading="lazy" class="card-icon" src="assets/icons/discipline-strongman.svg" alt="">
+        <div class="card-body">
+          <div class="card-head">
+            <h3>StrongMan</h3>
+            <img src="assets/icons/chevron-right.svg" alt="">
+          </div>
+          <p>Fuerza, resistencia y comunidad en cada clase</p>
+          <div class="schedule">Martes y Jueves 20:15</div>
+        </div>
+      </div>
+      <div class="training-card">
+        <img loading="lazy" class="card-icon" src="assets/icons/discipline-fullbody.svg" alt="">
+        <div class="card-body">
+          <div class="card-head">
+            <h3>Full Body</h3>
+            <img src="assets/icons/chevron-right.svg" alt="">
+          </div>
+          <p>Técnica, fuerza y potencia</p>
+          <div class="schedule">Martes y Jueves 06:00 · 07:00</div>
+        </div>
+      </div>
+      <div class="training-card">
+        <img loading="lazy" class="card-icon" src="assets/icons/discipline-competidor.svg" alt="">
+        <div class="card-body">
+          <div class="card-head">
+            <h3>Competidor</h3>
+            <img src="assets/icons/chevron-right.svg" alt="">
+          </div>
+          <p>Control y fuerza corporal</p>
+          <div class="schedule">Sábados 10:30</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-banner">
+      <span class="cta-label">Reserva tu clase</span>
+      <a class="btn-cta" href="https://wa.me/56967374096?text=Quiero%20mi%20clase%20gratis" target="_blank" rel="noopener">
+        <img src="assets/icons/cursor-click.svg" alt="">
+        Clase gratis
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <img loading="lazy" src="assets/img/logo-footer.svg" alt="CrossFit Affiliates" style="width:88px;height:auto;">
+    <div class="bull-badge"><img loading="lazy" src="assets/icons/logo-bull.svg" alt=""></div>
+    <div class="wordmark">
+      <img loading="lazy" src="assets/img/logo-text-bisonte.svg" alt="Bisonte">
+      <img loading="lazy" src="assets/img/logo-text-crossfit.svg" alt="CrossFit">
+    </div>
+  </div>
+
+  <div class="footer-links">
+    <details>
+      <summary>Explora</summary>
+      <ul>
+        <li><a href="entrenamientos.html">Entrenamientos</a></li>
+        <li><a href="planes.html">Planes</a></li>
+        <li><a href="testimonios.html">Testimonios</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Ayuda y Contacto</summary>
+      <ul>
+        <li><a href="index.html#preguntas">Preguntas frecuentes</a></li>
+        <li><a href="https://wa.me/56967374096" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="como-llegar.html">Ubicación</a></li>
+      </ul>
+    </details>
+    <a class="plain" href="https://app.boxmagic.cl/" target="_blank" rel="noopener">Soy Alumno</a>
+  </div>
+
+  <div class="map-block">
+    <h3>¿Cómo llegar?<span></span></h3>
+    <p>📍 Calle Uno 1050, San Miguel<br>A pasos de Metro Departamental</p>
+  </div>
+
+  <div class="contact-box">
+    <h4>¿Tienes más dudas?</h4>
+    <p>Revisa todas nuestras preguntas o escríbenos directo a WhatsApp</p>
+    <a class="whatsapp-btn" href="https://wa.me/56967374096" target="_blank" rel="noopener"><img loading="lazy" src="assets/icons/whatsapp.svg" alt="" style="width:18px;height:18px;"> WhatsApp Bisonte</a>
+  </div>
+
+  <div class="socials">
+    <span><img loading="lazy" src="assets/icons/instagram.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</span>
+    <span><img loading="lazy" src="assets/icons/facebook.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</span>
+  </div>
+
+</footer>
+
+</div>
+<script>
+  (function(){
+    var menuIcon = document.getElementById('menuIcon');
+    var drawer = document.getElementById('drawer');
+    var overlay = document.getElementById('drawerOverlay');
+    var closeBtn = document.getElementById('drawerClose');
+
+    function openDrawer(){
+      drawer.classList.add('open');
+      overlay.classList.add('open');
+      drawer.setAttribute('aria-hidden', 'false');
+      menuIcon.setAttribute('aria-expanded', 'true');
+      closeBtn.focus();
+    }
+    function closeDrawer(){
+      if(!drawer.classList.contains('open')) return;
+      drawer.classList.remove('open');
+      overlay.classList.remove('open');
+      drawer.setAttribute('aria-hidden', 'true');
+      menuIcon.setAttribute('aria-expanded', 'false');
+      menuIcon.focus();
+    }
+
+    menuIcon.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') closeDrawer();
+    });
+    drawer.addEventListener('keydown', function(e){
+      if(e.key !== 'Tab') return;
+      var focusables = drawer.querySelectorAll('button, a[href], summary');
+      if(!focusables.length) return;
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    });
+    drawer.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', closeDrawer);
+    });
+  })();
+</script>
+</body>
+</html>

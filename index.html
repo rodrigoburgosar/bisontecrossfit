@@ -3,7 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bisonte CrossFit, box de CrossFit en San Miguel, Santiago. Clases para todos los niveles con coaches que te acompañan, a pasos del Metro Departamental. ¡Prueba tu primera clase gratis!">
+<meta property="og:site_name" content="Bisonte CrossFit">
+<meta property="og:title" content="Bisonte CrossFit">
+<meta property="og:description" content="Bisonte CrossFit, box de CrossFit en San Miguel, Santiago. Clases para todos los niveles con coaches que te acompañan, a pasos del Metro Departamental. ¡Prueba tu primera clase gratis!">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CL">
+<!-- TODO: cuando exista dominio, cambiar og:image a URL absoluta (https://...) para que funcione el preview en WhatsApp -->
+<meta property="og:image" content="assets/img/crossfit-hero.png">
+<meta name="theme-color" content="#131313">
 <title>Bisonte CrossFit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,400&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#131313;
@@ -16,20 +28,22 @@
     --gold:#caa24a;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  html{overflow-x:hidden;}
+  html{overflow-x:hidden;scrollbar-width:thin;scrollbar-color:#333 #0c0c0c;}
+  html::-webkit-scrollbar{width:10px;}
+  html::-webkit-scrollbar-track{background:#0c0c0c;}
+  html::-webkit-scrollbar-thumb{background:#333;border-radius:5px;}
+  html::-webkit-scrollbar-thumb:hover{background:#444;}
   body{
     background:#000;
     color:var(--text);
-    font-family:'Segoe UI', Arial, sans-serif;
+    font-family:'Poppins', 'Segoe UI', Arial, sans-serif;
     line-height:1.4;
-    overflow-x:hidden;
   }
   a{color:inherit;text-decoration:none;}
   .app{
     max-width:480px;
     margin:0 auto;
     background:var(--bg);
-    overflow-x:hidden;
     position:relative;
   }
   @media (min-width:481px){
@@ -45,15 +59,9 @@
     justify-content:space-between;
     padding:16px 20px;
   }
-  .menu-icon{font-size:22px;cursor:pointer;}
-  .logo-badge{
-    width:60px;height:60px;border-radius:50%;
-    background:#1a1a1a;
-    display:flex;align-items:center;justify-content:center;
-    font-weight:bold;
-    overflow:hidden;
-  }
-  .logo-badge img{width:70%;height:70%;object-fit:contain;}
+  .menu-btn{background:none;border:none;padding:4px;cursor:pointer;display:flex;align-items:center;}
+  .logo-nav{display:flex;align-items:center;}
+  .logo-nav img{height:34px;width:auto;display:block;}
 
   /* Hero */
   .hero{
@@ -78,8 +86,8 @@
   .hero::after{background-image:url('assets/img/hero-deco-2.png');bottom:-30px;right:-30px;}
   .hero .container{position:relative;z-index:1;}
   .hero .tag{
-    color:var(--magenta);
-    font-size:13px;
+    color:#f8f8f8;
+    font-size:14px;
     font-weight:600;
     margin-bottom:12px;
   }
@@ -89,22 +97,24 @@
     margin-bottom:14px;
   }
   .hero p{
-    color:var(--text-muted);
-    font-size:14px;
+    color:#f8f8f8;
+    font-size:16px;
+    font-weight:400;
     margin-bottom:20px;
   }
   .btn{
     display:inline-block;
     padding:14px 28px;
-    border-radius:30px;
-    font-weight:700;
-    font-size:14px;
+    border-radius:80px;
+    font-weight:600;
+    font-size:16px;
     border:none;
     cursor:pointer;
   }
   .btn-primary{
-    background:linear-gradient(90deg,var(--magenta),#e63cc9);
-    color:#fff;
+    background:var(--magenta);
+    color:#f8f8f8;
+    box-shadow:0 2px 3px rgba(0,0,0,.35);
   }
   .btn-outline{
     background:transparent;
@@ -113,13 +123,18 @@
   }
   .hero-meta{
     display:flex;
-    justify-content:center;
-    gap:20px;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
     margin-top:16px;
-    font-size:12px;
-    color:var(--text-muted);
+    font-size:10px;
+    color:#f8f8f8;
   }
+  .hero-meta span{display:flex;align-items:center;gap:4px;}
   .tags-strip{
+    background:#0c0c0c;
+    display:flex;
+    justify-content:center;
     overflow:hidden;
     padding:14px 0;
     -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
@@ -127,13 +142,14 @@
   }
   .tags-track{
     display:flex;
-    gap:16px;
+    gap:10px;
     width:max-content;
-    font-size:13px;
-    color:var(--text-muted);
+    font-size:12px;
+    color:#f8f8f8;
     white-space:nowrap;
     animation:tags-scroll 18s linear infinite;
   }
+  .tags-track span.sep{color:var(--teal);font-weight:900;}
   .tags-strip:hover .tags-track{animation-play-state:paused;}
   @keyframes tags-scroll{
     from{transform:translateX(0);}
@@ -143,19 +159,35 @@
   /* Quick actions */
   .quick-actions{
     display:flex;
+    justify-content:center;
+    padding:10px 20px;
+    position:sticky;
+    top:0;
+    z-index:80;
+    background:var(--bg);
+    box-shadow:0 8px 12px -8px rgba(0,0,0,.5);
+  }
+  .quick-actions-inner{
+    background:rgba(217,217,217,.1);
+    border-radius:130px;
+    display:flex;
+    align-items:center;
     gap:10px;
-    padding:10px 20px 0;
-    overflow-x:auto;
+    padding:10px;
   }
   .pill{
-    padding:10px 18px;
-    border-radius:30px;
-    font-size:13px;
+    padding:10px 20px;
+    border-radius:70px;
+    font-size:14px;
     font-weight:600;
     white-space:nowrap;
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
   }
-  .pill-teal{background:var(--teal);color:#0d0d0d;}
-  .pill-dark{background:#232323;color:#fff;}
+  .pill-teal{background:rgba(255,255,255,.1);color:#f8f8f8;}
+  .pill-dark{background:var(--magenta);color:#f8f8f8;}
+  .pill-dark img{width:18px;height:18px;}
 
   /* Section titles */
   .section-title{
@@ -170,7 +202,7 @@
     display:inline-block;
     padding-bottom:8px;
     background:url('assets/img/line-underline.svg') left bottom no-repeat;
-    background-size:70px 4px;
+    background-size:172px 3px;
   }
   .section-title .see-all{
     font-size:13px;
@@ -184,38 +216,28 @@
   .story .cards-row{margin:0;}
   .story-slide{
     position:relative;
-    background:var(--bg-alt);
-    border-radius:20px;
-    padding:28px 22px;
+    background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)), url('assets/img/story-bg.png') center/cover no-repeat;
+    border-radius:30px;
+    padding:30px 22px;
     text-align:center;
     overflow:hidden;
     flex:0 0 100%;
     scroll-snap-align:start;
   }
-  .story-slide::before, .story-slide::after{
-    content:'';
-    position:absolute;
-    width:70px;height:70px;
-    border-radius:50%;
-    background-size:cover;
-    opacity:.35;
-    z-index:0;
-  }
-  .story-slide::before{background-image:url('assets/img/story-deco-1.png');top:-15px;right:10px;}
-  .story-slide::after{background-image:url('assets/img/story-deco-2.png');bottom:-15px;left:10px;}
   .story-slide > *{position:relative;z-index:1;}
   .story-slide h2{
     font-size:20px;
     font-weight:800;
     margin-bottom:14px;
+    color:#f8f8f8;
   }
   .story-slide h2 span{
     display:block;
-    width:70px;height:4px;background:url('assets/img/line-underline.svg') center/contain no-repeat;
+    width:172px;height:7px;background:url('assets/img/line-underline.svg') center/contain no-repeat;
     margin:10px auto 0;
   }
   .story-slide p{
-    color:var(--text-muted);
+    color:#f8f8f8;
     font-size:14px;
     margin-bottom:12px;
   }
@@ -243,58 +265,92 @@
     scroll-snap-align:start;
     display:flex;
     flex-direction:column;
-    gap:14px;
+    gap:20px;
   }
   #row-entrenamientos .card{
     flex:0 0 auto;
     width:100%;
+    min-height:136px;
+    display:flex;
+    align-items:center;
     position:relative;
     overflow:hidden;
+    background:#1e1e1e;
+    border-radius:30px;
+    box-shadow:0 2px 6px rgba(0,0,0,.35);
+    padding:16px 10px 16px 24px;
   }
   #row-entrenamientos .card .card-icon{
     position:absolute;
-    right:-10px;
-    bottom:-10px;
+    right:-6px;
+    bottom:-8px;
     width:110px;
     height:auto;
-    opacity:.5;
     z-index:0;
     pointer-events:none;
   }
-  #row-entrenamientos .card .card-body{position:relative;z-index:1;}
-  .card h3{color:var(--teal);font-size:16px;margin-bottom:6px;}
-  .card p{color:var(--text-muted);font-size:13px;margin-bottom:10px;}
-  .card .schedule{color:var(--teal);font-size:12px;font-weight:600;}
+  #row-entrenamientos .card .card-body{position:relative;z-index:1;max-width:70%;}
+  .card h3{
+    color:var(--teal);font-size:18px;line-height:1;margin-bottom:4px;
+    display:flex;align-items:center;gap:4px;
+  }
+  .card h3::after{content:'>';color:var(--teal);font-size:16px;font-weight:700;line-height:1;position:relative;top:1px;}
+  .card p{color:#f8f8f8;font-size:14px;margin-bottom:8px;}
+  .card .schedule{color:var(--teal);font-size:10px;font-weight:700;}
 
   .plan-card{
-    flex:0 0 240px;
-    border-radius:16px;
+    flex:0 0 230px;
+    border-radius:30px;
     padding:20px;
     color:#fff;
+    text-align:center;
+    box-shadow:0 2px 12px rgba(0,0,0,.35);
   }
-  .plan-8{background:linear-gradient(160deg,#7a0e72,#3a0736);}
-  .plan-12{background:linear-gradient(160deg,#8a6a1f,#3a2c0c);}
-  .plan-16{background:linear-gradient(160deg,#1f6a3a,#0c2e18);}
-  .plan-20{background:linear-gradient(160deg,#8a2f1f,#3a120c);}
-  .plan-card .tokens{font-size:13px;font-weight:700;margin-bottom:10px;}
-  .plan-card h3{font-size:22px;margin-bottom:4px;}
-  .plan-card .desc{font-size:13px;color:#e6d9e4;margin-bottom:14px;}
-  .plan-card .price{font-size:26px;font-weight:800;margin-bottom:12px;}
-  .plan-card ul{list-style:none;font-size:12px;color:#e6d9e4;}
-  .plan-card ul li{margin-bottom:4px;}
+  .plan-12{background:rgba(193,126,9,.2);}
+  .plan-16{background:rgba(9,193,49,.2);}
+  .plan-20{background:rgba(193,58,9,.2);}
+  .plan-8-blue{background:rgba(0,61,246,.2);}
+  .plan-8-purple{background:rgba(138,56,245,.2);}
+  .plan-12 .tokens span:first-child{color:#c17e09;}
+  .plan-16 .tokens span:first-child{color:#09c131;}
+  .plan-20 .tokens span:first-child{color:#c13a09;}
+  .plan-8-blue .tokens span:first-child{color:#003df6;}
+  .plan-8-purple .tokens span:first-child{color:#8a38f5;}
+  .plan-card .tokens{font-size:18px;font-weight:700;margin-bottom:20px;}
+  .plan-card .tokens span:first-child{font-size:20px;margin-right:4px;}
+  .plan-card .underline{width:172px;height:3px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:0 auto 10px;}
+  .plan-card h3{font-size:40px;margin-bottom:10px;}
+  .plan-card .desc{font-size:18px;color:#fff;margin-bottom:10px;}
+  .plan-card .price{font-size:40px;font-weight:700;margin-bottom:6px;text-align:right;}
+  .plan-card .price-underline{width:172px;height:7px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:0 0 20px auto;}
+  .plan-card ul{list-style:none;font-size:10px;color:#f8f8f8;text-align:left;margin-bottom:20px;}
+  .plan-card ul li{margin-bottom:4px;display:flex;align-items:center;gap:4px;}
+  .plan-card ul li img{width:12px;height:12px;flex-shrink:0;}
+  .plan-card .reserve-btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    background:rgba(255,255,255,.1);color:#f8f8f8;
+    border-radius:70px;padding:10px 20px;font-size:14px;font-weight:600;
+  }
 
   .testimonial{
     flex:0 0 260px;
-    background:var(--card);
-    border-radius:16px;
+    background:#333;
+    border-radius:20px;
     padding:22px;
     text-align:center;
+    box-shadow:0 2px 6px rgba(0,0,0,.35);
   }
   .stars{margin-bottom:10px;}
   .stars img{width:16px;height:16px;margin:0 1px;}
   .stars img.empty{opacity:.25;filter:grayscale(1);}
-  .testimonial p{color:var(--text-muted);font-size:13px;margin-bottom:12px;}
-  .testimonial .author{color:var(--text-muted);font-size:12px;font-style:italic;}
+  .testimonial blockquote{
+    display:flex;align-items:flex-start;gap:4px;
+    margin:0 0 12px;
+  }
+  .testimonial blockquote img{width:16px;height:16px;flex-shrink:0;margin-top:2px;}
+  .testimonial blockquote img:last-child{transform:rotate(180deg);margin-top:auto;margin-bottom:2px;}
+  .testimonial p{color:#fff;font-size:14px;font-family:'Inter',sans-serif;}
+  .testimonial .author{color:#656565;font-size:14px;font-style:italic;font-family:'Inter',sans-serif;}
 
   .dots{
     display:flex;
@@ -315,8 +371,8 @@
     display:flex;
     justify-content:space-between;
     align-items:center;
-    font-weight:700;
-    font-size:14px;
+    font-weight:600;
+    font-size:16px;
     cursor:pointer;
   }
   .faq-item summary::-webkit-details-marker{display:none;}
@@ -342,21 +398,18 @@
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:14px;
+    gap:10px;
     margin-bottom:24px;
     font-weight:800;
     font-size:15px;
     flex-wrap:wrap;
   }
   .footer-logo .bull-badge{
-    width:42px;height:42px;border-radius:50%;
-    background:#1a1a1a;
     display:flex;align-items:center;justify-content:center;
-    overflow:hidden;
   }
-  .footer-logo .bull-badge img{width:70%;height:70%;object-fit:contain;}
+  .footer-logo .bull-badge img{width:50px;height:auto;object-fit:contain;}
   .footer-logo .wordmark{display:flex;flex-direction:column;gap:2px;}
-  .footer-logo .wordmark img{height:14px;width:auto;}
+  .footer-logo .wordmark img{height:21px;width:auto;}
   .footer-links{
     text-align:left;
     max-width:300px;
@@ -375,50 +428,95 @@
     font-size:14px;
   }
   .footer-links summary::-webkit-details-marker{display:none;}
-  .footer-links a.plain{display:block;padding:10px 0;font-weight:600;font-size:14px;}
+  .footer-links summary::after{content:'▾';color:var(--teal);transition:transform .2s;}
+  .footer-links details[open] summary::after{transform:rotate(180deg);}
+  .footer-links a.plain{display:flex;justify-content:space-between;align-items:center;padding:10px 0;font-weight:600;font-size:14px;}
+  .footer-links a.plain::after{content:'>';color:var(--magenta);font-weight:700;font-size:14px;line-height:1;position:relative;top:1px;}
   .footer-links details ul{list-style:none;padding:8px 0 4px 8px;}
   .footer-links details ul li{padding:6px 0;}
   .footer-links details ul a{color:var(--text-muted);font-size:13px;}
   .footer-links details ul a:hover{color:var(--teal);}
   .map-block{margin-bottom:24px;}
-  .map-block h3{font-size:16px;margin-bottom:8px;}
-  .map-block h3 span{display:block;width:70px;height:4px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:8px auto 0;}
-  .map-block p{color:var(--text-muted);font-size:13px;}
+  .map-block h3{font-size:18px;margin-bottom:8px;}
+  .map-block h3 span{display:block;width:172px;height:3px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:8px auto 0;}
+  .map-block p{color:#f8f8f8;font-size:14px;font-weight:600;}
+
+  /* Drawer menu */
+  .drawer-overlay{
+    position:fixed;inset:0;background:rgba(0,0,0,.6);
+    opacity:0;pointer-events:none;transition:opacity .25s;z-index:90;
+  }
+  .drawer-overlay.open{opacity:1;pointer-events:auto;}
+  .drawer{
+    position:fixed;top:0;left:0;height:100%;
+    width:min(330px,85vw);
+    background:var(--bg-alt);
+    padding:24px 20px;
+    transform:translateX(-100%);
+    transition:transform .3s ease;
+    z-index:91;
+    overflow-y:auto;
+  }
+  .drawer.open{transform:translateX(0);}
+  .drawer-close{
+    background:none;border:none;color:#fff;font-size:20px;
+    cursor:pointer;margin-bottom:16px;padding:4px;
+  }
+  .drawer-nav details{border-bottom:1px solid #2a2a2a;padding:10px 0;}
+  .drawer-nav summary{
+    cursor:pointer;list-style:none;display:flex;
+    justify-content:space-between;align-items:center;
+    font-weight:600;font-size:14px;color:#fff;
+  }
+  .drawer-nav summary::-webkit-details-marker{display:none;}
+  .drawer-nav summary::after{content:'▾';color:var(--teal);transition:transform .2s;}
+  .drawer-nav details[open] summary::after{transform:rotate(180deg);}
+  .drawer-nav details ul{list-style:none;padding:8px 0 4px 8px;}
+  .drawer-nav details ul li{padding:6px 0;}
+  .drawer-nav details ul a{color:var(--text-muted);font-size:13px;}
+  .drawer-nav details ul a:hover{color:var(--teal);}
+  .drawer-item-plain{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:10px 0;font-weight:600;font-size:14px;color:#fff;
+    border-bottom:1px solid #2a2a2a;
+  }
+  .drawer-item-plain::after{content:'>';color:var(--magenta);font-weight:700;font-size:14px;line-height:1;position:relative;top:1px;}
+  .drawer-map{
+    margin-top:24px;padding:10px 0;border-radius:20px;text-align:center;
+  }
+  .drawer-map h3{font-size:18px;margin-bottom:8px;color:#fff;}
+  .drawer-map h3 span{display:block;width:172px;height:3px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:8px auto 0;}
+  .drawer-map p{color:#f8f8f8;font-size:14px;font-weight:600;}
   .contact-box{
-    background:var(--card);
-    border-radius:16px;
-    padding:24px;
+    background:rgba(30,30,30,.5);
+    border-radius:30px;
+    padding:20px 24px;
     margin-bottom:24px;
   }
-  .contact-box h4{font-size:16px;margin-bottom:8px;}
-  .contact-box p{color:var(--text-muted);font-size:13px;margin-bottom:16px;}
+  .contact-box h4{font-size:18px;margin-bottom:8px;}
+  .contact-box .underline{width:172px;height:3px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:0 auto 8px;}
+  .contact-box p{color:#f8f8f8;font-size:12px;margin-bottom:16px;}
   .whatsapp-btn{
-    background:#25D366;
-    color:#0d0d0d;
-    font-weight:700;
-    padding:12px 24px;
-    border-radius:30px;
+    background:rgba(51,219,219,.2);
+    color:#f8f8f8;
+    font-weight:600;
+    padding:10px 20px;
+    border-radius:80px;
     display:inline-flex;
     align-items:center;
-    gap:8px;
+    gap:4px;
     font-size:14px;
+    box-shadow:0 2px 6px rgba(0,0,0,.35);
   }
   .socials{
     display:flex;
     justify-content:center;
     gap:20px;
-    font-size:13px;
-    color:var(--text-muted);
+    font-size:12px;
+    color:#fff;
     margin-bottom:20px;
   }
-  .legal-links{
-    display:flex;
-    justify-content:center;
-    gap:14px;
-    font-size:12px;
-    color:#666;
-    flex-wrap:wrap;
-  }
+  .copyright{font-size:16px;font-weight:600;color:#f8f8f8;text-align:center;}
 
   /* Desktop */
   @media (min-width:900px){
@@ -437,12 +535,13 @@
     /* Turn card carousels into grids: no scroll, no snap, all items visible */
     #row-planes, #row-testimonios{
       display:grid;
-      grid-template-columns:repeat(4,1fr);
+      grid-template-columns:repeat(3,1fr);
       overflow:visible;
       gap:20px;
     }
-    #row-testimonios{grid-template-columns:repeat(3,1fr);}
     #row-planes .plan-card, #row-testimonios .testimonial{flex:none;width:auto;}
+    #row-planes .price{text-align:center;}
+    #row-planes .price-underline{margin:0 auto 20px;}
 
     #row-entrenamientos{
       display:grid;
@@ -461,40 +560,90 @@
     .footer-links{max-width:900px;}
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ExerciseGym",
+  "name": "Bisonte CrossFit",
+  "description": "Box de CrossFit en San Miguel, Santiago de Chile. Clases para todos los niveles a pasos del Metro Departamental.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Calle Uno 1050",
+    "addressLocality": "San Miguel",
+    "addressRegion": "Región Metropolitana",
+    "addressCountry": "CL"
+  },
+  "telephone": "+56967374096",
+  "priceRange": "$25.000 - $64.990 CLP",
+  "sameAs": [
+    "https://www.instagram.com/bisontecrossfit",
+    "https://www.facebook.com/bisontecrossfit"
+  ]
+}
+</script>
 </head>
 <body>
 <div class="app">
 
 <header>
-  <img class="menu-icon" src="assets/icons/menu.svg" alt="Menú" style="width:22px;height:22px;">
-  <div class="logo-badge"><img src="assets/icons/logo-bull.svg" alt="Bisonte CrossFit"></div>
+  <button class="menu-btn" id="menuIcon" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer"><img src="assets/icons/menu.svg" alt="" width="22" height="22"></button>
+  <a href="index.html" class="logo-nav"><img src="assets/img/logo-nav-full.svg" alt="Bisonte CrossFit"></a>
   <span style="width:22px;"></span>
 </header>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú">✕</button>
+  <nav class="drawer-nav">
+    <details>
+      <summary>Explora</summary>
+      <ul>
+        <li><a href="#entrenamientos">Entrenamientos</a></li>
+        <li><a href="#planes">Planes</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Ayuda y Contacto</summary>
+      <ul>
+        <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+        <li><a href="https://wa.me/56967374096" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="como-llegar.html">Ubicación</a></li>
+      </ul>
+    </details>
+    <a class="drawer-item-plain" href="https://app.boxmagic.cl/" target="_blank" rel="noopener">Soy Alumno</a>
+  </nav>
+  <div class="drawer-map" id="drawerMap">
+    <h3>¿Cómo llegar?<span></span></h3>
+    <p>📍 Calle Uno 1050, San Miguel<br>A pasos de Metro Departamental</p>
+  </div>
+</aside>
 
 <section class="hero">
   <div class="container">
     <div class="tag">📍 Crossfit en San Miguel</div>
     <h1>Entrena fuerte<br>Empieza a tu ritmo</h1>
     <p>Clases para todos los niveles, con coaches que te acompañan desde el primer día</p>
-    <a id="cta" class="btn btn-primary" href="https://wa.me/56900000000?text=Quiero%20mi%20clase%20gratis" target="_blank" rel="noopener">¡Prueba tu clase gratis!</a>
+    <a id="cta" class="btn btn-primary" href="https://wa.me/56967374096?text=Quiero%20mi%20clase%20gratis" target="_blank" rel="noopener">¡Prueba tu clase gratis!</a>
     <div class="hero-meta">
-      <span><img src="assets/icons/seal-check.svg" alt="" style="width:14px;height:14px;vertical-align:-2px;"> Todos los niveles</span>
-      <span>📍 A pasos de Metro Departamental</span>
+      <span><img src="assets/icons/seal-check.svg" alt="" style="width:14px;height:14px;"> Todos los niveles</span>
+      <span><img src="assets/icons/sneaker-move.svg" alt="" style="width:14px;height:14px;"> A 7 pasos del metro Departamental</span>
     </div>
   </div>
 </section>
 
 <div class="tags-strip">
   <div class="tags-track">
-    <span>CrossFit</span> · <span>Halterofilia</span> · <span>Hybrid</span> · <span>Gymnastics</span> · <span>Strong</span> ·
-    <span>CrossFit</span> · <span>Halterofilia</span> · <span>Hybrid</span> · <span>Gymnastics</span> · <span>Strong</span> ·
+    <span class="sep">·</span> <span>CrossFit</span> <span class="sep">·</span> <span>Halterofilia</span> <span class="sep">·</span> <span>Hybrid</span> <span class="sep">·</span> <span>Gymnastics</span> <span class="sep">·</span> <span>StrongMan</span> <span class="sep">·</span> <span>Full Body</span>
+    <span class="sep">·</span> <span>CrossFit</span> <span class="sep">·</span> <span>Halterofilia</span> <span class="sep">·</span> <span>Hybrid</span> <span class="sep">·</span> <span>Gymnastics</span> <span class="sep">·</span> <span>StrongMan</span> <span class="sep">·</span> <span>Full Body</span>
   </div>
 </div>
 
 <div class="quick-actions">
-  <a class="pill pill-teal" href="#cta">¡Prueba tu clase gratis!</a>
-  <a class="pill pill-dark" href="#planes">Planes</a>
-  <a class="pill pill-dark" href="#entrenamientos">Horarios</a>
+  <div class="quick-actions-inner">
+    <a class="pill pill-teal" href="#entrenamientos">Reserva tu clase</a>
+    <a class="pill pill-dark" href="#cta"><img src="assets/icons/cursor-click.svg" alt="">Clase gratis</a>
+  </div>
 </div>
 
 <section class="story">
@@ -527,20 +676,20 @@
   <div class="container">
     <div class="section-title">
       <h2>Entrenamientos en Bisonte</h2>
-      <span class="see-all">Ver todos <img src="assets/icons/arrow-right.svg" alt="" style="width:12px;height:12px;vertical-align:-1px;"></span>
+      <a class="see-all" href="entrenamientos.html">Ver todos <img src="assets/icons/arrow-right.svg" alt="" style="width:12px;height:12px;vertical-align:-1px;"></a>
     </div>
     <div class="cards-row" id="row-entrenamientos">
       <div class="entrenamientos-page">
-        <div class="card">
-          <img class="card-icon" src="assets/icons/discipline-crossfit.svg" alt="">
+        <a class="card" href="crossfit.html">
+          <img loading="lazy" class="card-icon" src="assets/icons/discipline-crossfit.svg" alt="">
           <div class="card-body">
             <h3>CrossFit</h3>
             <p>Fuerza, resistencia y comunidad en cada clase</p>
             <div class="schedule">Lunes a Viernes<br>06:00 · 07:00 · 08:00 · 17:15 · 18:15 · 19:15</div>
           </div>
-        </div>
+        </a>
         <div class="card">
-          <img class="card-icon" src="assets/icons/discipline-levantamiento.svg" alt="">
+          <img loading="lazy" class="card-icon" src="assets/icons/discipline-levantamiento.svg" alt="">
           <div class="card-body">
             <h3>Levantamiento Olímpico</h3>
             <p>Técnica, fuerza y potencia</p>
@@ -548,7 +697,7 @@
           </div>
         </div>
         <div class="card">
-          <img class="card-icon" src="assets/icons/discipline-hybrid.svg" alt="">
+          <img loading="lazy" class="card-icon" src="assets/icons/discipline-hybrid.svg" alt="">
           <div class="card-body">
             <h3>Hybrid</h3>
             <p>Control y fuerza corporal</p>
@@ -556,7 +705,7 @@
           </div>
         </div>
         <div class="card">
-          <img class="card-icon" src="assets/icons/discipline-gymnastics.svg" alt="">
+          <img loading="lazy" class="card-icon" src="assets/icons/discipline-gymnastics.svg" alt="">
           <div class="card-body">
             <h3>Gymnastics</h3>
             <p>Control y fuerza corporal</p>
@@ -566,6 +715,7 @@
       </div>
       <div class="entrenamientos-page">
         <div class="card">
+          <img loading="lazy" class="card-icon" src="assets/icons/discipline-strongman.svg" alt="">
           <div class="card-body">
             <h3>StrongMan</h3>
             <p>Fuerza, resistencia y comunidad en cada clase</p>
@@ -573,6 +723,7 @@
           </div>
         </div>
         <div class="card">
+          <img loading="lazy" class="card-icon" src="assets/icons/discipline-fullbody.svg" alt="">
           <div class="card-body">
             <h3>Full Body</h3>
             <p>Técnica, fuerza y potencia</p>
@@ -580,6 +731,7 @@
           </div>
         </div>
         <div class="card">
+          <img loading="lazy" class="card-icon" src="assets/icons/discipline-competidor.svg" alt="">
           <div class="card-body">
             <h3>Competidor</h3>
             <p>Control y fuerza corporal</p>
@@ -587,6 +739,7 @@
           </div>
         </div>
         <div class="card">
+          <img loading="lazy" class="card-icon" src="assets/icons/discipline-adultomayor.svg" alt="">
           <div class="card-body">
             <h3>Adulto Mayor</h3>
             <p>Control y fuerza corporal</p>
@@ -603,52 +756,53 @@
   <div class="container">
     <div class="section-title">
       <h2>Planes más elegidos</h2>
-      <span class="see-all">Ver todos <img src="assets/icons/arrow-right.svg" alt="" style="width:12px;height:12px;vertical-align:-1px;"></span>
+      <a class="see-all" href="planes.html">Ver todos <img src="assets/icons/arrow-right.svg" alt="" style="width:12px;height:12px;vertical-align:-1px;"></a>
     </div>
     <div class="cards-row" id="row-planes">
-      <div class="plan-card plan-8">
-        <div class="tokens">8 Tokens</div>
-        <h3>Plan 8</h3>
-        <div class="desc">Inicio en CrossFit</div>
-        <div class="price">$35.000</div>
-        <ul>
-          <li>✔ Vigencia de 15 días</li>
-          <li>✔ Acceso a todas las disciplinas</li>
-          <li>✔ Reserva desde BoxMagic</li>
-        </ul>
-      </div>
       <div class="plan-card plan-12">
-        <div class="tokens">12 Tokens</div>
+        <div class="tokens"><span>12</span><span>Tokens</span></div>
+        <div class="underline"></div>
         <h3>Plan 12</h3>
         <div class="desc">Progreso inicial</div>
+        <div class="underline"></div>
         <div class="price">$49.990</div>
+        <div class="price-underline"></div>
         <ul>
-          <li>✔ Vigencia de 30 días</li>
-          <li>✔ Acceso a todas las disciplinas</li>
-          <li>✔ Reserva desde BoxMagic</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Vigencia de 30 días</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Acceso a todas las disciplinas</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Reserva desde BoxMagic</li>
         </ul>
+        <a class="reserve-btn" href="#cta">Reserva tu clase</a>
       </div>
       <div class="plan-card plan-16">
-        <div class="tokens">16 Tokens</div>
+        <div class="tokens"><span>16</span><span>Tokens</span></div>
+        <div class="underline"></div>
         <h3>Plan 16</h3>
         <div class="desc">Nivel intermedio</div>
+        <div class="underline"></div>
         <div class="price">$54.990</div>
+        <div class="price-underline"></div>
         <ul>
-          <li>✔ Vigencia de 30 días</li>
-          <li>✔ Acceso a todas las disciplinas</li>
-          <li>✔ Reserva desde BoxMagic</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Vigencia de 30 días</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Acceso a todas las disciplinas</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Reserva desde BoxMagic</li>
         </ul>
+        <a class="reserve-btn" href="#cta">Reserva tu clase</a>
       </div>
       <div class="plan-card plan-20">
-        <div class="tokens">20 Tokens</div>
+        <div class="tokens"><span>20</span><span>Tokens</span></div>
+        <div class="underline"></div>
         <h3>Plan 20</h3>
         <div class="desc">Constante</div>
+        <div class="underline"></div>
         <div class="price">$64.990</div>
+        <div class="price-underline"></div>
         <ul>
-          <li>✔ Vigencia de 30 días</li>
-          <li>✔ Acceso a todas las disciplinas</li>
-          <li>✔ Reserva desde BoxMagic</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Vigencia de 30 días</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Acceso a todas las disciplinas</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Reserva desde BoxMagic</li>
         </ul>
+        <a class="reserve-btn" href="#cta">Reserva tu clase</a>
       </div>
     </div>
     <div class="dots" data-for="row-planes"></div>
@@ -659,22 +813,34 @@
   <div class="container">
     <div class="section-title">
       <h2>¿Qué dicen de Bisonte?</h2>
-      <span class="see-all">Ver todos <img src="assets/icons/arrow-right.svg" alt="" style="width:12px;height:12px;vertical-align:-1px;"></span>
+      <a class="see-all" href="testimonios.html">Ver todos <img src="assets/icons/arrow-right.svg" alt="" style="width:12px;height:12px;vertical-align:-1px;"></a>
     </div>
     <div class="cards-row" id="row-testimonios">
       <div class="testimonial">
-        <div class="stars"><img src="assets/icons/star-fill.svg" alt="★"><img src="assets/icons/star-fill.svg" alt="★"><img src="assets/icons/star-fill.svg" alt="★"><img src="assets/icons/star-fill.svg" alt="★"><img src="assets/icons/star-fill.svg" alt="★"></div>
-        <p>"Las clases son desafiantes, entretenidas y nunca se sienten iguales. He mejorado muchísimo mi fuerza y mi confianza desde que llegué"</p>
+        <div class="stars"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"></div>
+        <blockquote>
+          <img loading="lazy" src="assets/icons/quote.svg" alt="">
+          <p>Las clases son desafiantes, entretenidas y nunca se sienten iguales. He mejorado muchísimo mi fuerza y mi confianza desde que llegué</p>
+          <img loading="lazy" src="assets/icons/quote.svg" alt="">
+        </blockquote>
         <div class="author">– Rodrigo Burgos –</div>
       </div>
       <div class="testimonial">
-        <div class="stars"><img src="assets/icons/star-fill.svg" alt="★"><img src="assets/icons/star-fill.svg" alt="★"><img src="assets/icons/star-fill.svg" alt="★"><img src="assets/icons/star-fill.svg" alt="★"><img class="empty" src="assets/icons/star-fill.svg" alt="☆"></div>
-        <p>"Llegué sin experiencia y desde el primer día me sentí muy acompañada. Los coaches explican todo con paciencia y adaptan los ejercicios según tu nivel"</p>
+        <div class="stars"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" class="empty" src="assets/icons/star-fill.svg" alt="☆"></div>
+        <blockquote>
+          <img loading="lazy" src="assets/icons/quote.svg" alt="">
+          <p>Llegué sin experiencia y desde el primer día me sentí muy acompañada. Los coaches explican todo con paciencia y adaptan los ejercicios según tu nivel</p>
+          <img loading="lazy" src="assets/icons/quote.svg" alt="">
+        </blockquote>
         <div class="author">– Constanza Lavado –</div>
       </div>
       <div class="testimonial">
-        <div class="stars"><img src="assets/icons/star-fill.svg" alt="★"><img src="assets/icons/star-fill.svg" alt="★"><img src="assets/icons/star-fill.svg" alt="★"><img src="assets/icons/star-fill.svg" alt="★"><img class="empty" src="assets/icons/star-fill.svg" alt="☆"></div>
-        <p>"Más que un lugar para entrenar, encontré una comunidad. Siempre hay alguien motivándote y celebrando tus avances"</p>
+        <div class="stars"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" class="empty" src="assets/icons/star-fill.svg" alt="☆"></div>
+        <blockquote>
+          <img loading="lazy" src="assets/icons/quote.svg" alt="">
+          <p>Más que un lugar para entrenar, encontré una comunidad. Siempre hay alguien motivándote y celebrando tus avances</p>
+          <img loading="lazy" src="assets/icons/quote.svg" alt="">
+        </blockquote>
         <div class="author">– Sonia Madariaga –</div>
       </div>
     </div>
@@ -686,15 +852,23 @@
   <div class="container">
     <div class="section-title">
       <h2>Preguntas frecuentes</h2>
-      <span class="see-all">Ver todos <img src="assets/icons/arrow-right.svg" alt="" style="width:12px;height:12px;vertical-align:-1px;"></span>
+      <a class="see-all" href="preguntas-frecuentes.html">Ver todas <img src="assets/icons/arrow-right.svg" alt="" style="width:12px;height:12px;vertical-align:-1px;"></a>
     </div>
-    <details class="faq-item" open>
+    <details class="faq-item">
       <summary>¿Necesito experiencia para comenzar?</summary>
       <p>No. Nuestras clases están diseñadas para todos los niveles, con coaches que adaptan cada movimiento a tu ritmo.</p>
     </details>
     <details class="faq-item">
       <summary>¿Cómo funciona la primera clase gratis?</summary>
       <p>Agenda tu clase de prueba sin costo y conoce nuestra metodología antes de inscribirte.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Qué plan debería elegir?</summary>
+      <p>Depende de tu frecuencia de entrenamiento. Nuestro equipo te ayuda a elegir el plan de tokens que mejor se adapte a ti.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Cómo reservo mis clases?</summary>
+      <p>Las reservas se realizan directamente desde la app de BoxMagic.</p>
     </details>
     <details class="faq-item">
       <summary>¿Qué horarios tienen disponibles?</summary>
@@ -705,11 +879,11 @@
 
 <footer>
   <div class="footer-logo">
-    <img src="assets/img/logo-footer.svg" alt="CrossFit Affiliates" style="width:120px;height:auto;">
-    <div class="bull-badge"><img src="assets/icons/logo-bull.svg" alt=""></div>
+    <img loading="lazy" src="assets/img/logo-footer.svg" alt="CrossFit Affiliates" style="width:88px;height:auto;">
+    <div class="bull-badge"><img loading="lazy" src="assets/icons/logo-bull.svg" alt=""></div>
     <div class="wordmark">
-      <img src="assets/img/logo-text-bisonte.svg" alt="Bisonte">
-      <img src="assets/img/logo-text-crossfit.svg" alt="CrossFit">
+      <img loading="lazy" src="assets/img/logo-text-bisonte.svg" alt="Bisonte">
+      <img loading="lazy" src="assets/img/logo-text-crossfit.svg" alt="CrossFit">
     </div>
   </div>
 
@@ -725,12 +899,12 @@
     <details>
       <summary>Ayuda y Contacto</summary>
       <ul>
-        <li><a href="#preguntas">Preguntas frecuentes</a></li>
-        <li><a href="https://wa.me/56900000000" target="_blank" rel="noopener">WhatsApp</a></li>
-        <li><a href="#">Ubicación</a></li>
+        <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+        <li><a href="https://wa.me/56967374096" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="como-llegar.html">Ubicación</a></li>
       </ul>
     </details>
-    <a class="plain" href="#">Soy Alumno ›</a>
+    <a class="plain" href="https://app.boxmagic.cl/" target="_blank" rel="noopener">Soy Alumno</a>
   </div>
 
   <div class="map-block">
@@ -740,24 +914,63 @@
 
   <div class="contact-box">
     <h4>¿Tienes más dudas?</h4>
+    <div class="underline"></div>
     <p>Revisa todas nuestras preguntas o escríbenos directo a WhatsApp</p>
-    <a class="whatsapp-btn" href="#"><img src="assets/icons/whatsapp.svg" alt="" style="width:18px;height:18px;"> WhatsApp Bisonte</a>
+    <a class="whatsapp-btn" href="https://wa.me/56967374096" target="_blank" rel="noopener"><img loading="lazy" src="assets/icons/whatsapp.svg" alt="" style="width:16px;height:16px;"> WhatsApp Bisonte</a>
   </div>
 
   <div class="socials">
-    <span><img src="assets/icons/instagram.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</span>
-    <span><img src="assets/icons/facebook.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</span>
+    <span><img loading="lazy" src="assets/icons/instagram.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</span>
+    <span><img loading="lazy" src="assets/icons/facebook.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</span>
   </div>
 
-  <div class="legal-links">
-    <a href="#">Privacidad</a>
-    <a href="#">Cookies</a>
-    <a href="#">Términos y Condiciones</a>
-  </div>
+  <p class="copyright">© 2026 Bisonte CrossFit</p>
 </footer>
 
 </div>
 <script>
+  (function(){
+    var menuIcon = document.getElementById('menuIcon');
+    var drawer = document.getElementById('drawer');
+    var overlay = document.getElementById('drawerOverlay');
+    var closeBtn = document.getElementById('drawerClose');
+
+    function openDrawer(){
+      drawer.classList.add('open');
+      overlay.classList.add('open');
+      drawer.setAttribute('aria-hidden', 'false');
+      menuIcon.setAttribute('aria-expanded', 'true');
+      closeBtn.focus();
+    }
+    function closeDrawer(){
+      if(!drawer.classList.contains('open')) return;
+      drawer.classList.remove('open');
+      overlay.classList.remove('open');
+      drawer.setAttribute('aria-hidden', 'true');
+      menuIcon.setAttribute('aria-expanded', 'false');
+      menuIcon.focus();
+    }
+
+    menuIcon.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') closeDrawer();
+    });
+    drawer.addEventListener('keydown', function(e){
+      if(e.key !== 'Tab') return;
+      var focusables = drawer.querySelectorAll('button, a[href], summary');
+      if(!focusables.length) return;
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    });
+    drawer.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', closeDrawer);
+    });
+  })();
+
   document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
     var row = document.getElementById(dotsEl.dataset.for);
     if(!row) return;

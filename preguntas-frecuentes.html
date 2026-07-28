@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Resuelve tus dudas sobre Bisonte CrossFit: primera clase gratis, planes de tokens, reservas por BoxMagic y horarios.">
+<meta property="og:site_name" content="Bisonte CrossFit">
+<meta property="og:title" content="Centro de ayuda · Bisonte CrossFit">
+<meta property="og:description" content="Resuelve tus dudas sobre Bisonte CrossFit: primera clase gratis, planes de tokens, reservas por BoxMagic y horarios.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CL">
+<!-- TODO: cuando exista dominio, cambiar og:image a URL absoluta (https://...) para que funcione el preview en WhatsApp -->
+<meta property="og:image" content="assets/img/crossfit-hero.png">
+<meta name="theme-color" content="#131313">
+<title>Centro de ayuda · Bisonte CrossFit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,400&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#131313;
+    --bg-alt:#1c1c1c;
+    --card:#1f1f1f;
+    --magenta:#C109B4;
+    --teal:#33DBDB;
+    --text:#ffffff;
+    --text-muted:#a3a3a3;
+    --gold:#caa24a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{overflow-x:hidden;scrollbar-width:thin;scrollbar-color:#333 #0c0c0c;}
+  html::-webkit-scrollbar{width:10px;}
+  html::-webkit-scrollbar-track{background:#0c0c0c;}
+  html::-webkit-scrollbar-thumb{background:#333;border-radius:5px;}
+  html::-webkit-scrollbar-thumb:hover{background:#444;}
+  body{
+    background:#000;
+    color:var(--text);
+    font-family:'Poppins', 'Segoe UI', Arial, sans-serif;
+    line-height:1.4;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  .app{
+    max-width:480px;
+    margin:0 auto;
+    background:var(--bg);
+    overflow-x:hidden;
+    position:relative;
+  }
+  @media (min-width:481px){
+    .app{box-shadow:0 0 60px rgba(0,0,0,.6);min-height:100vh;}
+  }
+  .container{padding:0 20px;}
+  section{padding:40px 0;}
+
+  /* Header */
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 20px;
+  }
+  .menu-btn{background:none;border:none;padding:4px;cursor:pointer;display:flex;align-items:center;}
+  .logo-nav{display:flex;align-items:center;}
+  .logo-nav img{height:34px;width:auto;display:block;}
+
+  /* Help header */
+  .help-title{
+    padding:24px 20px 0;
+  }
+  .help-title h1{
+    font-size:20px;
+    font-weight:800;
+    display:inline-block;
+    padding-bottom:8px;
+    background:url('assets/img/line-underline.svg') left bottom no-repeat;
+    background-size:70px 4px;
+  }
+  .help-tabs{
+    display:flex;
+    gap:10px;
+    padding:20px 20px 0;
+    overflow-x:auto;
+  }
+  .help-tab{
+    flex:1 0 auto;
+    padding:12px 16px;
+    border-radius:80px;
+    font-size:12px;
+    font-weight:600;
+    text-align:center;
+    white-space:nowrap;
+    background:rgba(51,51,51,.5);
+    color:var(--text-muted);
+    box-shadow:0 2px 6px rgba(0,0,0,.35);
+  }
+  .help-tab.active{
+    background:var(--magenta);
+    color:#fff;
+    box-shadow:0 2px 3px rgba(0,0,0,.35);
+  }
+
+  /* FAQ */
+  .faq-list{padding:0 20px;}
+  .faq-item{
+    border-bottom:1px solid #2a2a2a;
+    padding:16px 0;
+  }
+  .faq-item summary{
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    font-weight:600;
+    font-size:15px;
+    cursor:pointer;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:'▾';
+    color:var(--teal);
+    transition:transform .2s;
+    flex-shrink:0;
+  }
+  .faq-item[open] summary::after{transform:rotate(180deg);}
+  .faq-item p{
+    color:var(--text-muted);
+    font-size:13px;
+    margin-top:10px;
+  }
+
+  /* Footer */
+  footer{
+    background:var(--bg-alt);
+    padding:40px 20px;
+    text-align:center;
+  }
+  .footer-logo{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin-bottom:24px;
+    font-weight:800;
+    font-size:15px;
+    flex-wrap:wrap;
+  }
+  .footer-logo .bull-badge{
+    display:flex;align-items:center;justify-content:center;
+  }
+  .footer-logo .bull-badge img{width:50px;height:auto;object-fit:contain;}
+  .footer-logo .wordmark{display:flex;flex-direction:column;gap:2px;}
+  .footer-logo .wordmark img{height:21px;width:auto;}
+  .footer-links{
+    text-align:left;
+    max-width:300px;
+    margin:0 auto 20px;
+  }
+  .footer-links details{
+    border-bottom:1px solid #2a2a2a;
+    padding:12px 0;
+  }
+  .footer-links summary{
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+    font-weight:600;
+    font-size:14px;
+  }
+  .footer-links summary::-webkit-details-marker{display:none;}
+  .footer-links summary::after{content:'▾';color:var(--teal);transition:transform .2s;}
+  .footer-links details[open] summary::after{transform:rotate(180deg);}
+  .footer-links a.plain{display:flex;justify-content:space-between;align-items:center;padding:10px 0;font-weight:600;font-size:14px;}
+  .footer-links a.plain::after{content:'›';color:var(--magenta);font-weight:700;font-size:16px;}
+  .footer-links details ul{list-style:none;padding:8px 0 4px 8px;}
+  .footer-links details ul li{padding:6px 0;}
+  .footer-links details ul a{color:var(--text-muted);font-size:13px;}
+  .footer-links details ul a:hover{color:var(--teal);}
+  .map-block{margin-bottom:24px;}
+  .map-block h3{font-size:18px;margin-bottom:8px;}
+  .map-block h3 span{display:block;width:172px;height:3px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:8px auto 0;}
+  .map-block p{color:#f8f8f8;font-size:14px;font-weight:600;}
+
+  /* Drawer menu */
+  .drawer-overlay{
+    position:fixed;inset:0;background:rgba(0,0,0,.6);
+    opacity:0;pointer-events:none;transition:opacity .25s;z-index:90;
+  }
+  .drawer-overlay.open{opacity:1;pointer-events:auto;}
+  .drawer{
+    position:fixed;top:0;left:0;height:100%;
+    width:min(330px,85vw);
+    background:var(--bg-alt);
+    padding:24px 20px;
+    transform:translateX(-100%);
+    transition:transform .3s ease;
+    z-index:91;
+    overflow-y:auto;
+  }
+  .drawer.open{transform:translateX(0);}
+  .drawer-close{
+    background:none;border:none;color:#fff;font-size:20px;
+    cursor:pointer;margin-bottom:16px;padding:4px;
+  }
+  .drawer-nav details{border-bottom:1px solid #2a2a2a;padding:10px 0;}
+  .drawer-nav summary{
+    cursor:pointer;list-style:none;display:flex;
+    justify-content:space-between;align-items:center;
+    font-weight:600;font-size:14px;color:#fff;
+  }
+  .drawer-nav summary::-webkit-details-marker{display:none;}
+  .drawer-nav summary::after{content:'▾';color:var(--teal);transition:transform .2s;}
+  .drawer-nav details[open] summary::after{transform:rotate(180deg);}
+  .drawer-nav details ul{list-style:none;padding:8px 0 4px 8px;}
+  .drawer-nav details ul li{padding:6px 0;}
+  .drawer-nav details ul a{color:var(--text-muted);font-size:13px;}
+  .drawer-nav details ul a:hover{color:var(--teal);}
+  .drawer-item-plain{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:10px 0;font-weight:600;font-size:14px;color:#fff;
+    border-bottom:1px solid #2a2a2a;
+  }
+  .drawer-item-plain::after{content:'›';color:var(--magenta);font-weight:700;font-size:16px;}
+  .drawer-map{
+    margin-top:24px;padding:10px 0;border-radius:20px;text-align:center;
+  }
+  .drawer-map h3{font-size:18px;margin-bottom:8px;color:#fff;}
+  .drawer-map h3 span{display:block;width:172px;height:3px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:8px auto 0;}
+  .drawer-map p{color:#f8f8f8;font-size:14px;font-weight:600;}
+  .contact-box{
+    background:var(--card);
+    border-radius:16px;
+    padding:24px;
+    margin-bottom:24px;
+  }
+  .contact-box h4{font-size:16px;margin-bottom:8px;}
+  .contact-box p{color:var(--text-muted);font-size:13px;margin-bottom:16px;}
+  .whatsapp-btn{
+    background:#25D366;
+    color:#0d0d0d;
+    font-weight:700;
+    padding:12px 24px;
+    border-radius:30px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:14px;
+  }
+  .socials{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    font-size:13px;
+    color:var(--text-muted);
+    margin-bottom:20px;
+  }
+
+  /* Desktop */
+  @media (min-width:900px){
+    .app{max-width:none;box-shadow:none;}
+    .container{max-width:1100px;margin:0 auto;}
+    .help-title{max-width:900px;margin:0 auto;padding:24px 40px 0;}
+    .help-tabs{max-width:900px;margin:0 auto;padding:20px 40px 0;justify-content:flex-start;}
+    .help-tab{flex:none;}
+    .faq-list{max-width:900px;margin:0 auto;padding:0 40px;}
+    footer{padding:60px 40px;}
+    .footer-links{max-width:900px;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+<header>
+  <button class="menu-btn" id="menuIcon" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer"><img src="assets/icons/menu.svg" alt="" width="22" height="22"></button>
+  <a href="index.html" class="logo-nav"><img src="assets/img/logo-nav-full.svg" alt="Bisonte CrossFit"></a>
+  <span style="width:22px;"></span>
+</header>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú">✕</button>
+  <nav class="drawer-nav">
+    <details>
+      <summary>Explora</summary>
+      <ul>
+        <li><a href="entrenamientos.html">Entrenamientos</a></li>
+        <li><a href="planes.html">Planes</a></li>
+        <li><a href="testimonios.html">Testimonios</a></li>
+      </ul>
+    </details>
+    <details open>
+      <summary>Ayuda y Contacto</summary>
+      <ul>
+        <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+        <li><a href="https://wa.me/56967374096" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="como-llegar.html">Ubicación</a></li>
+      </ul>
+    </details>
+    <a class="drawer-item-plain" href="https://app.boxmagic.cl/" target="_blank" rel="noopener">Soy Alumno</a>
+  </nav>
+  <div class="drawer-map" id="drawerMap">
+    <h3>¿Cómo llegar?<span></span></h3>
+    <p>📍 Calle Uno 1050, San Miguel<br>A pasos de Metro Departamental</p>
+  </div>
+</aside>
+
+<div class="help-title">
+  <h1>Centro de ayuda</h1>
+</div>
+
+<div class="help-tabs">
+  <a class="help-tab active" href="preguntas-frecuentes.html">Preguntas frecuentes</a>
+  <a class="help-tab" href="#">Políticas de Privacidad</a>
+  <a class="help-tab" href="#">Política de Cookies</a>
+  <a class="help-tab" href="#">Términos y Condiciones</a>
+</div>
+
+<section id="preguntas">
+  <div class="container">
+    <div class="section-title" style="margin-bottom:16px;">
+      <h2 style="font-size:18px;font-weight:800;">Preguntas frecuentes sobre CrossFit en San Miguel</h2>
+    </div>
+  </div>
+  <div class="faq-list">
+    <details class="faq-item" open>
+      <summary>¿Dónde encontrar un box de CrossFit en San Miguel?</summary>
+      <p>Bisonte CrossFit está ubicado en Calle Uno 1050, San Miguel, a pasos de Metro Departamental.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Puedo tomar una clase de prueba gratis de CrossFit?</summary>
+      <p>Sí, ofrecemos una clase de prueba sin costo para que conozcas nuestra metodología antes de inscribirte.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Puedo comenzar CrossFit si nunca he entrenado?</summary>
+      <p>Por supuesto. Nuestras clases están pensadas para todos los niveles y los coaches adaptan cada movimiento a tu ritmo.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿CrossFit es apto para principiantes y todos los niveles?</summary>
+      <p>Sí, cada entrenamiento se puede escalar según tu experiencia, así que puedes entrenar junto a alumnos más avanzados sin problema.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Qué clase me conviene: CrossFit, HYROX o Full Body?</summary>
+      <p>Depende de tu objetivo: CrossFit combina fuerza y acondicionamiento general, HYROX se enfoca en resistencia funcional tipo carrera, y Full Body prioriza fuerza muscular. Nuestros coaches pueden orientarte según tus metas.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Cuál es la diferencia entre CrossFit y HYROX?</summary>
+      <p>CrossFit varía sus movimientos y cargas cada día, mientras que HYROX sigue un formato fijo de carrera combinada con estaciones funcionales.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Qué es el levantamiento olímpico o halterofilia?</summary>
+      <p>Es una disciplina centrada en dos movimientos técnicos, el arranque y el envión, que desarrollan fuerza, potencia y técnica.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Necesito experiencia para comenzar Gymnastic?</summary>
+      <p>No, la clase de Gymnastic parte desde lo básico y va progresando en fuerza y control corporal a tu ritmo.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Qué se trabaja en las clases de Strongman?</summary>
+      <p>Strongman trabaja fuerza bruta y funcional con implementos como neumáticos, troncos y cargas pesadas.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿En qué consiste una clase de Full Body?</summary>
+      <p>Es un entrenamiento de fuerza que trabaja todos los grupos musculares en una misma sesión.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Puedo combinar CrossFit con HYROX, Gymnastic o levantamiento olímpico?</summary>
+      <p>Sí, puedes combinar disciplinas según tu plan de tokens y tus objetivos de entrenamiento.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Los ejercicios se pueden adaptar si tengo una limitación física?</summary>
+      <p>Sí, nuestros coaches adaptan los movimientos según tus capacidades y cualquier limitación que nos cuentes antes de entrenar.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Cuánto dura una clase de CrossFit?</summary>
+      <p>Las clases tienen una duración aproximada de 60 minutos, incluyendo calentamiento, trabajo técnico y WOD.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Bisonte CrossFit cuenta con duchas y baños?</summary>
+      <p>Sí, contamos con duchas y baños disponibles para todos nuestros alumnos.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿El box tiene camarines para cambiarse de ropa?</summary>
+      <p>Sí, tenemos camarines habilitados para que puedas cambiarte antes y después de entrenar.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Qué disciplinas puedo practicar en Bisonte CrossFit?</summary>
+      <p>CrossFit, Levantamiento Olímpico, Hybrid, Gymnastics, Strongman, Full Body, Competidor y Adulto Mayor.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Puedo asistir a una clase aunque nunca haya practicado esa disciplina?</summary>
+      <p>Sí, todas las clases están abiertas a nuevos alumnos y los coaches te explican la técnica desde cero.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Las clases incluyen la supervisión de un coach?</summary>
+      <p>Sí, todas nuestras clases son guiadas por coaches presentes durante toda la sesión.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Puedo combinar diferentes clases durante la semana?</summary>
+      <p>Sí, puedes armar tu semana combinando las disciplinas que quieras según tu plan de tokens.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Cómo puedo reservar una clase en Bisonte CrossFit?</summary>
+      <p>Puedes reservar tus clases directamente desde la plataforma BoxMagic.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Puedo reservar una clase por WhatsApp?</summary>
+      <p>Sí, también puedes escribirnos por WhatsApp y te ayudamos a coordinar tu reserva.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Cómo puedo agendar mi primera clase de prueba?</summary>
+      <p>Escríbenos por WhatsApp o presiona el botón "Prueba tu clase gratis" en la portada y coordinamos el horario que más te acomode.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Qué medios de pago acepta Bisonte CrossFit?</summary>
+      <p>Aceptamos efectivo, tarjetas de débito y crédito, y transferencia bancaria.</p>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <img loading="lazy" src="assets/img/logo-footer.svg" alt="CrossFit Affiliates" style="width:88px;height:auto;">
+    <div class="bull-badge"><img loading="lazy" src="assets/icons/logo-bull.svg" alt=""></div>
+    <div class="wordmark">
+      <img loading="lazy" src="assets/img/logo-text-bisonte.svg" alt="Bisonte">
+      <img loading="lazy" src="assets/img/logo-text-crossfit.svg" alt="CrossFit">
+    </div>
+  </div>
+
+  <div class="footer-links">
+    <details>
+      <summary>Explora</summary>
+      <ul>
+        <li><a href="entrenamientos.html">Entrenamientos</a></li>
+        <li><a href="planes.html">Planes</a></li>
+        <li><a href="testimonios.html">Testimonios</a></li>
+      </ul>
+    </details>
+    <details open>
+      <summary>Ayuda y Contacto</summary>
+      <ul>
+        <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+        <li><a href="https://wa.me/56967374096" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="como-llegar.html">Ubicación</a></li>
+      </ul>
+    </details>
+    <a class="plain" href="https://app.boxmagic.cl/" target="_blank" rel="noopener">Soy Alumno</a>
+  </div>
+
+  <div class="map-block">
+    <h3>¿Cómo llegar?<span></span></h3>
+    <p>📍 Calle Uno 1050, San Miguel<br>A pasos de Metro Departamental</p>
+  </div>
+
+  <div class="contact-box">
+    <h4>¿Tienes más dudas?</h4>
+    <p>Revisa todas nuestras preguntas o escríbenos directo a WhatsApp</p>
+    <a class="whatsapp-btn" href="https://wa.me/56967374096" target="_blank" rel="noopener"><img loading="lazy" src="assets/icons/whatsapp.svg" alt="" style="width:18px;height:18px;"> WhatsApp Bisonte</a>
+  </div>
+
+  <div class="socials">
+    <span><img loading="lazy" src="assets/icons/instagram.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</span>
+    <span><img loading="lazy" src="assets/icons/facebook.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</span>
+  </div>
+
+</footer>
+
+</div>
+<script>
+  (function(){
+    var menuIcon = document.getElementById('menuIcon');
+    var drawer = document.getElementById('drawer');
+    var overlay = document.getElementById('drawerOverlay');
+    var closeBtn = document.getElementById('drawerClose');
+
+    function openDrawer(){
+      drawer.classList.add('open');
+      overlay.classList.add('open');
+      drawer.setAttribute('aria-hidden', 'false');
+      menuIcon.setAttribute('aria-expanded', 'true');
+      closeBtn.focus();
+    }
+    function closeDrawer(){
+      if(!drawer.classList.contains('open')) return;
+      drawer.classList.remove('open');
+      overlay.classList.remove('open');
+      drawer.setAttribute('aria-hidden', 'true');
+      menuIcon.setAttribute('aria-expanded', 'false');
+      menuIcon.focus();
+    }
+
+    menuIcon.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') closeDrawer();
+    });
+    drawer.addEventListener('keydown', function(e){
+      if(e.key !== 'Tab') return;
+      var focusables = drawer.querySelectorAll('button, a[href], summary');
+      if(!focusables.length) return;
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    });
+    drawer.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', closeDrawer);
+    });
+  })();
+</script>
+</body>
+</html>
