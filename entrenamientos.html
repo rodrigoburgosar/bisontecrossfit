@@ -529,48 +529,6 @@
 </footer>
 
 </div>
-<script>
-  (function(){
-    var menuIcon = document.getElementById('menuIcon');
-    var drawer = document.getElementById('drawer');
-    var overlay = document.getElementById('drawerOverlay');
-    var closeBtn = document.getElementById('drawerClose');
-
-    function openDrawer(){
-      drawer.classList.add('open');
-      overlay.classList.add('open');
-      drawer.setAttribute('aria-hidden', 'false');
-      menuIcon.setAttribute('aria-expanded', 'true');
-      closeBtn.focus();
-    }
-    function closeDrawer(){
-      if(!drawer.classList.contains('open')) return;
-      drawer.classList.remove('open');
-      overlay.classList.remove('open');
-      drawer.setAttribute('aria-hidden', 'true');
-      menuIcon.setAttribute('aria-expanded', 'false');
-      menuIcon.focus();
-    }
-
-    menuIcon.addEventListener('click', openDrawer);
-    closeBtn.addEventListener('click', closeDrawer);
-    overlay.addEventListener('click', closeDrawer);
-    document.addEventListener('keydown', function(e){
-      if(e.key === 'Escape') closeDrawer();
-    });
-    drawer.addEventListener('keydown', function(e){
-      if(e.key !== 'Tab') return;
-      var focusables = drawer.querySelectorAll('button, a[href], summary');
-      if(!focusables.length) return;
-      var first = focusables[0];
-      var last = focusables[focusables.length - 1];
-      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
-      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
-    });
-    drawer.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', closeDrawer);
-    });
-  })();
-</script>
+<script defer src="assets/js/app.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Resumen del proyecto
 
-Sitio de marketing estático para Bisonte CrossFit (un box de CrossFit en San Miguel, Chile). HTML/CSS/JS plano — sin framework, sin bundler, sin gestor de paquetes, sin build. Cada página es un `.html` autocontenido con un bloque `<style>` inline y un bloque `<script>` inline al final; no hay archivos `.css`/`.js` compartidos (el único recurso externo es la hoja de Google Fonts enlazada desde `index.html`).
+Sitio de marketing estático para Bisonte CrossFit (un box de CrossFit en San Miguel, Chile). HTML/CSS/JS plano — sin framework, sin bundler, sin gestor de paquetes, sin build. Cada página lleva su `<style>` inline (no hay stylesheet compartido), pero el JS **sí** está centralizado en `assets/js/app.js`, que las 14 páginas cargan con `<script defer src>` al final del `<body>`. Recursos externos: la hoja de Google Fonts enlazada desde `index.html` y el tag de Google Analytics (GA4 `G-0TLJMCT3TZ`), presente en el `<head>` de las 14 páginas justo después del `<meta name="viewport">`.
 
 ## Ejecutar / previsualizar
 
@@ -35,15 +35,17 @@ Como el contenido de preview en `index.html` y el de la página de detalle corre
   - `min-width:481px` — solo cosmético (sombra, `min-height:100vh` en `.app`).
   - `min-width:900px` — layout de escritorio real: `.app` pasa a ancho completo, los carruseles con scroll-snap horizontal (`.cards-row`) se convierten en grids CSS, y los puntos de paginación JS correspondientes se ocultan vía `[data-for="..."] { display:none; }`.
 - Las decoraciones de tarjetas/secciones (subrayados, subrayados de precio, fondos de story-slide) reutilizan el mismo set reducido de assets bajo `assets/img/` y `assets/icons/` vía rutas relativas — revisa ahí antes de agregar un asset nuevo.
-- `index.html` enlaza Google Fonts (Poppins + Inter); las otras cinco páginas todavía declaran `font-family:'Segoe UI', Arial, sans-serif` y no han sido migradas.
+- Las 14 páginas enlazan Google Fonts y declaran `font-family:'Poppins', 'Segoe UI', Arial, sans-serif` (Segoe UI y Arial son solo fallbacks). `Inter` se usa puntualmente y solo en `index.html`.
 
-## Patrones de interacción recurrentes (duplicados por página)
+## Patrones de interacción recurrentes
 
-- **Drawer del menú hamburguesa**: `#menuIcon` togglea `#drawer` / `#drawerOverlay`, se cierra con `#drawerClose`, click en el overlay, `Escape`, o al hacer click en un link del drawer. La lógica de abrir/cerrar está copiada y pegada al final del `<script>` de cada página.
+Todo el JS de interacción vive en `assets/js/app.js` — un solo archivo para las 14 páginas. Si tocas el drawer o los carruseles, se edita ahí y una vez.
+
+- **Drawer del menú hamburguesa**: `#menuIcon` togglea `#drawer` / `#drawerOverlay`, se cierra con `#drawerClose`, click en el overlay, `Escape`, o al hacer click en un link del drawer. Las 14 páginas deben mantener esos cuatro `id` — el IIFE los busca sin comprobar si existen, así que si falta uno la página lanza y el resto del archivo no corre.
 - **Acordeones**: los ítems de FAQ y los grupos de nav del footer/drawer usan `<details>/<summary>` nativos — no necesitan JS.
-- **Carruseles**: las filas con scroll-snap horizontal (`.cards-row`) se usan para los story slides, las tarjetas de disciplinas, las tarjetas de planes y los testimonios. Solo `index.html` genera puntos de paginación para estos (el JS escanea `.dots[data-for="<id de la fila>"]`, crea un botón por cada hijo de la fila referenciada, y resalta el más cercano al hacer scroll calculando posiciones). Las páginas de listado dedicadas (`entrenamientos.html`, `planes.html`, `testimonios.html`) renderizan la lista completa directamente en vez de un carrusel paginado.
+- **Carruseles**: las filas con scroll-snap horizontal (`.cards-row`) se usan para los story slides, las tarjetas de disciplinas, las tarjetas de planes y los testimonios. Solo `index.html` genera puntos de paginación para estos (el JS escanea `.dots[data-for="<id de la fila>"]`, crea un botón por cada hijo de la fila referenciada, y resalta el más cercano al hacer scroll calculando posiciones). Ese bloque va en el mismo `app.js` compartido: en las páginas sin `.dots[data-for]` recorre una lista vacía y no hace nada, por eso no hace falta un archivo por página. Las páginas de listado dedicadas (`entrenamientos.html`, `planes.html`, `testimonios.html`) renderizan la lista completa directamente en vez de un carrusel paginado.
 
 ## Notas de contenido
 
-- La info de contacto (número de WhatsApp vía links `wa.me/<numero>`, dirección del gym "Calle Uno 1050, San Miguel") está hardcodeada inline y repetida en las seis páginas — hay que actualizar cada ocurrencia si cambia.
+- La info de contacto (número de WhatsApp vía links `wa.me/<numero>`, dirección del gym "Calle Uno 1050, San Miguel") está hardcodeada inline y repetida en las 14 páginas — hay que actualizar cada ocurrencia si cambia.
 - `.mcp.json` configura el servidor MCP de Figma; este HTML se construyó/mantiene sincronizado contra un diseño de Figma (frame mobile, ~390px de ancho) — al aplicar cambios nuevos de Figma, usa el orden de secciones de `index.html` (hero → marquee de tags → quick actions → historia → entrenamientos → planes → testimonios → FAQ → footer) como referencia.
