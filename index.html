@@ -176,34 +176,38 @@
   .quick-actions{
     display:flex;
     justify-content:center;
-    padding:10px 20px;
-    position:sticky;
-    top:0;
+    padding:10px;
+    position:fixed;
+    left:50%;
+    bottom:0;
+    transform:translateX(-50%);
+    width:100%;
+    max-width:480px;
     z-index:80;
     background:var(--bg);
-    box-shadow:0 8px 12px -8px rgba(0,0,0,.5);
+    box-shadow:0 -8px 12px -8px rgba(0,0,0,.5);
   }
   .quick-actions-inner{
     background:rgba(217,217,217,.1);
     border-radius:130px;
     display:flex;
     align-items:center;
-    gap:10px;
-    padding:10px;
+    gap:8px;
+    padding:8px;
   }
   .pill{
-    padding:10px 20px;
+    padding:10px 14px;
     border-radius:70px;
-    font-size:14px;
+    font-size:13px;
     font-weight:600;
     white-space:nowrap;
     display:inline-flex;
     align-items:center;
-    gap:4px;
+    gap:3px;
   }
   .pill-teal{background:rgba(255,255,255,.1);color:#f8f8f8;}
   .pill-dark{background:var(--magenta);color:#f8f8f8;}
-  .pill-dark img{width:18px;height:18px;}
+  .pill-dark img{width:16px;height:16px;}
 
   /* Section titles */
   .section-title{
@@ -407,7 +411,7 @@
   /* Footer */
   footer{
     background:var(--bg-alt);
-    padding:40px 20px;
+    padding:40px 20px 120px;
     text-align:center;
   }
   .footer-logo{
@@ -532,6 +536,16 @@
     color:#fff;
     margin-bottom:20px;
   }
+  .legal-links{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+    font-size:13px;
+    color:var(--text-muted);
+    margin-bottom:12px;
+  }
+  .legal-links a:hover{color:var(--teal);}
   .copyright{font-size:16px;font-weight:600;color:#f8f8f8;text-align:center;}
 
   /* Desktop */
@@ -544,7 +558,7 @@
     .hero h1{font-size:38px;}
     .hero p{font-size:16px;max-width:520px;margin-left:auto;margin-right:auto;}
 
-    .quick-actions{max-width:900px;margin:0 auto;justify-content:center;}
+    .quick-actions{max-width:900px;justify-content:center;}
 
     .story{max-width:900px;margin:0 auto;padding:0 40px;}
 
@@ -572,7 +586,7 @@
 
     .cards-row{padding-bottom:0;}
 
-    footer{padding:60px 40px;}
+    footer{padding:60px 40px 130px;}
     .footer-links{max-width:900px;}
   }
 
@@ -943,6 +957,14 @@
   <div class="socials">
     <a href="https://www.instagram.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="Instagram de Bisonte CrossFit"><img loading="lazy" src="assets/icons/instagram.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</a>
     <a href="https://www.facebook.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="Facebook de Bisonte CrossFit"><img loading="lazy" src="assets/icons/facebook.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</a>
+  </div>
+
+  <div class="legal-links">
+    <a href="politica-privacidad.html">Privacidad</a>
+    <span>·</span>
+    <a href="politica-cookies.html">Cookies</a>
+    <span>·</span>
+    <a href="terminos-y-condiciones.html">Términos y Condiciones</a>
   </div>
 
   <p class="copyright">© 2026 Bisonte CrossFit</p>

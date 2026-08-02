@@ -83,48 +83,87 @@
 
   /* Page title */
   .page-title{padding-top:12px;}
-  .page-title h1{
-    font-size:22px;
-    font-weight:800;
-    display:inline-block;
-    padding-bottom:8px;
-    background:url('assets/img/line-underline.svg') left bottom no-repeat;
-    background-size:70px 4px;
-  }
-  .page-title p{
-    margin-top:14px;
-    color:var(--text-muted);
-    font-size:13px;
+  .page-title h1{font-size:20px;font-weight:800;}
+  .page-title h1 span{
+    display:block;width:172px;height:3px;margin-top:8px;
+    background:var(--teal);
+    -webkit-mask:url('assets/img/line-underline.svg') center/contain no-repeat;
+    mask:url('assets/img/line-underline.svg') center/contain no-repeat;
   }
 
-  /* Plan list */
-  .plan-list{
-    display:flex;
-    flex-direction:column;
-    gap:16px;
-    margin-top:24px;
+  /* Barra de filtros */
+  .filter-bar{background:#0c0c0c;padding:11px 10px;margin-top:20px;}
+  .filter-inner{display:flex;flex-direction:column;gap:20px;}
+  .filter-label{display:flex;align-items:center;gap:4px;font-size:12px;color:#f8f8f8;padding:0 10px;}
+  .filter-label img{width:16px;height:16px;}
+  .filter-chips{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;}
+  .filter-chips::-webkit-scrollbar{display:none;}
+  .chip{
+    flex:1;height:45px;display:flex;align-items:center;justify-content:center;
+    background:rgba(51,219,219,.5);border:none;border-radius:80px;
+    box-shadow:0 2px 6px rgba(0,0,0,.35);
+    color:#fff;font-family:inherit;font-size:10px;font-weight:600;
+    padding:10px 6px;white-space:nowrap;cursor:pointer;
   }
+  .chip.active{background:var(--teal);color:#0d0d0d;}
+
+  /* Tarjeta explicativa de tokens */
+  .token-info{
+    background:#1e1e1e;border:1px solid #000;border-radius:30px;
+    box-shadow:0 2px 6px rgba(0,0,0,.35);
+    padding:20px;margin-top:20px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .token-info img{width:32px;height:32px;flex-shrink:0;}
+  .token-info h2{font-size:16px;margin-bottom:4px;}
+  .token-info .equiv{font-size:20px;font-weight:700;color:#f8f8f8;}
+
+  /* Secciones de planes */
+  .plan-section{padding:20px 0 10px;}
+  .section-title{margin-bottom:10px;}
+  .section-title h2{
+    font-size:20px;font-weight:800;display:inline-block;padding-bottom:8px;
+    background:url('assets/img/line-underline.svg') left bottom no-repeat;
+    background-size:172px 3px;
+  }
+
+  /* Carruseles de tarjetas (mismo patron que index.html) */
+  .cards-row{
+    display:flex;gap:14px;overflow-x:auto;padding-bottom:8px;
+    scroll-snap-type:x mandatory;scrollbar-width:none;
+  }
+  .cards-row::-webkit-scrollbar{display:none;}
+
   .plan-card{
-    border-radius:16px;
-    padding:22px;
-    color:#fff;
+    flex:0 0 230px;border-radius:30px;padding:20px 27px;color:#fff;
+    text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.35);
+    scroll-snap-align:start;display:flex;flex-direction:column;
   }
-  .plan-8-invierno{background:linear-gradient(160deg,#0c3a7a,#061a36);}
-  .plan-8-am{background:linear-gradient(160deg,#8a6a1f,#3a2c0c);}
-  .plan-12{background:linear-gradient(160deg,#8a6a1f,#3a2c0c);}
-  .plan-16{background:linear-gradient(160deg,#1f6a3a,#0c2e18);}
-  .plan-16-estudiante{background:linear-gradient(160deg,#5a1f8a,#26093a);}
-  .plan-20{background:linear-gradient(160deg,#8a2f1f,#3a120c);}
-  .plan-card .tokens{font-size:13px;font-weight:700;margin-bottom:10px;color:var(--teal);}
-  .plan-card h3{font-size:24px;margin-bottom:4px;}
-  .plan-card .desc{font-size:13px;color:#e6d9e4;margin-bottom:14px;}
-  .plan-card .price{font-size:28px;font-weight:800;margin-bottom:14px;}
-  .plan-card ul{list-style:none;font-size:12px;color:#e6d9e4;margin-bottom:16px;}
-  .plan-card ul li{margin-bottom:5px;}
+  .plan-8,.pase-diario-normal{background:rgba(193,9,180,.2);--accent:#c109b4;}
+  .plan-12{background:rgba(193,126,9,.2);--accent:#c17e09;}
+  .plan-16,.plan-8-am,.pase-diario-am{background:rgba(9,193,49,.2);--accent:#09c131;}
+  .plan-20,.pase-diario-openbox{background:rgba(193,58,9,.2);--accent:#c13a09;}
+  .plan-8-invierno{background:rgba(0,61,246,.2);--accent:#003df6;}
+  .plan-16-estudiante{background:rgba(138,56,245,.2);--accent:#8a38f5;}
+  .plan-card .tokens{font-size:18px;font-weight:700;margin-bottom:20px;}
+  .plan-card .tokens span:first-child{font-size:20px;margin-right:4px;color:var(--accent);}
+  .plan-card h3{font-size:40px;line-height:1.2;margin-bottom:10px;}
+  .plan-card .desc{font-size:18px;margin-bottom:24px;}
+  .plan-card .price{font-size:40px;font-weight:700;margin-bottom:4px;}
+  .plan-card .price-underline{
+    width:172px;height:7px;margin:0 auto 20px;
+    background:var(--accent);
+    -webkit-mask:url('assets/img/line-underline.svg') center/contain no-repeat;
+    mask:url('assets/img/line-underline.svg') center/contain no-repeat;
+  }
+  .plan-card ul{list-style:none;font-size:10px;color:#f8f8f8;text-align:left;margin-bottom:20px;}
+  .plan-card ul li{margin-bottom:4px;display:flex;align-items:center;gap:4px;}
+  .plan-card ul li img{width:12px;height:12px;flex-shrink:0;}
   .plan-card .reserve-btn{
     display:inline-flex;align-items:center;justify-content:center;
-    background:rgba(255,255,255,.15);color:#fff;
-    border-radius:30px;padding:10px 22px;font-size:13px;font-weight:700;
+    background:rgba(255,255,255,.1);color:#f8f8f8;
+    border-radius:70px;padding:10px 20px;font-size:14px;font-weight:600;
+    margin-top:auto;align-self:center;
   }
 
   /* Footer */
@@ -245,6 +284,17 @@
     gap:8px;
     font-size:14px;
   }
+  .legal-links{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+    font-size:13px;
+    color:var(--text-muted);
+    margin-bottom:12px;
+  }
+  .legal-links a:hover{color:var(--teal);}
+  .copyright{font-size:16px;font-weight:600;color:#f8f8f8;text-align:center;}
   .socials{
     display:flex;
     justify-content:center;
@@ -261,11 +311,18 @@
 
     .page-title h1{font-size:30px;}
 
-    .plan-list{
+    .filter-inner{max-width:1100px;margin:0 auto;}
+    .filter-chips{flex-wrap:wrap;}
+    .chip{flex:none;min-width:150px;font-size:13px;}
+
+    /* Los carruseles pasan a grid: sin scroll, todo visible */
+    .plan-section .cards-row{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      overflow:visible;
       gap:20px;
     }
+    .plan-card{flex:none;width:auto;}
 
     footer{padding:60px 40px;}
     .footer-links{max-width:900px;}
@@ -316,81 +373,187 @@
 
 <section class="page-title">
   <div class="container">
-    <h1>Todos los planes<span></span></h1>
-    <p>Elige el plan de tokens que mejor se adapte a tu ritmo de entrenamiento.</p>
+    <h1>Todos los Planes<span></span></h1>
+  </div>
+</section>
 
-    <div class="plan-list">
+<div class="filter-bar">
+  <div class="filter-inner">
+    <div class="filter-label"><img src="assets/icons/sliders.svg" alt="" width="16" height="16"> Filtrar por</div>
+    <div class="filter-chips">
+      <button type="button" class="chip" data-filtro="diarios">Pases diarios</button>
+      <button type="button" class="chip" data-filtro="especiales">Especiales</button>
+      <button type="button" class="chip" data-filtro="mensuales">Mensuales</button>
+      <a class="chip" href="https://wa.me/56967374096?text=Quiero%20el%20Plan%20Personalizado" target="_blank" rel="noopener">Personalizado</a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="token-info">
+    <img src="assets/icons/seal-question.svg" alt="" width="32" height="32">
+    <div>
+      <h2>¿Cómo funcionan los token?</h2>
+      <p class="equiv">1 Token = 1 Clase</p>
+    </div>
+  </div>
+</div>
+
+<section class="plan-section" data-categoria="mensuales">
+  <div class="container">
+    <div class="section-title">
+      <h2>Pases mensuales</h2>
+    </div>
+    <div class="cards-row">
+      <div class="plan-card plan-8">
+        <div class="tokens"><span>8</span><span>Tokens</span></div>
+        <h3>Plan 8</h3>
+        <div class="desc">Inicio en CrossFit</div>
+        <div class="price">$35.000</div>
+        <div class="price-underline"></div>
+        <ul>
+          <li><img src="assets/icons/seal-check.svg" alt="">Vigencia de 30 días</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Acceso a todas las disciplinas</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Reserva desde BoxMagic</li>
+        </ul>
+        <a class="reserve-btn" href="https://wa.me/56967374096?text=Quiero%20el%20Plan%208" target="_blank" rel="noopener">Reserva tu clase</a>
+      </div>
       <div class="plan-card plan-12">
-        <div class="tokens">12 Tokens</div>
+        <div class="tokens"><span>12</span><span>Tokens</span></div>
         <h3>Plan 12</h3>
         <div class="desc">Progreso inicial</div>
         <div class="price">$49.990</div>
+        <div class="price-underline"></div>
         <ul>
-          <li>✔ Vigencia de 30 días</li>
-          <li>✔ Acceso a todas las disciplinas</li>
-          <li>✔ Reserva desde BoxMagic</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Vigencia de 30 días</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Acceso a todas las disciplinas</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Reserva desde BoxMagic</li>
         </ul>
         <a class="reserve-btn" href="https://wa.me/56967374096?text=Quiero%20el%20Plan%2012" target="_blank" rel="noopener">Reserva tu clase</a>
       </div>
       <div class="plan-card plan-16">
-        <div class="tokens">16 Tokens</div>
+        <div class="tokens"><span>16</span><span>Tokens</span></div>
         <h3>Plan 16</h3>
         <div class="desc">Nivel intermedio</div>
         <div class="price">$54.990</div>
+        <div class="price-underline"></div>
         <ul>
-          <li>✔ Vigencia de 30 días</li>
-          <li>✔ Acceso a todas las disciplinas</li>
-          <li>✔ Reserva desde BoxMagic</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Vigencia de 30 días</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Acceso a todas las disciplinas</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Reserva desde BoxMagic</li>
         </ul>
         <a class="reserve-btn" href="https://wa.me/56967374096?text=Quiero%20el%20Plan%2016" target="_blank" rel="noopener">Reserva tu clase</a>
       </div>
       <div class="plan-card plan-20">
-        <div class="tokens">20 Tokens</div>
+        <div class="tokens"><span>20</span><span>Tokens</span></div>
         <h3>Plan 20</h3>
         <div class="desc">Constante</div>
         <div class="price">$64.990</div>
+        <div class="price-underline"></div>
         <ul>
-          <li>✔ Vigencia de 30 días</li>
-          <li>✔ Acceso a todas las disciplinas</li>
-          <li>✔ Reserva desde BoxMagic</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Vigencia de 30 días</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Acceso a todas las disciplinas</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Reserva desde BoxMagic</li>
         </ul>
         <a class="reserve-btn" href="https://wa.me/56967374096?text=Quiero%20el%20Plan%2020" target="_blank" rel="noopener">Reserva tu clase</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="plan-section" data-categoria="especiales">
+  <div class="container">
+    <div class="section-title">
+      <h2>Pases especiales</h2>
+    </div>
+    <div class="cards-row">
       <div class="plan-card plan-8-invierno">
-        <div class="tokens">8 Tokens</div>
+        <div class="tokens"><span>8</span><span>Tokens</span></div>
         <h3>Plan 8</h3>
         <div class="desc">Ahorro invierno</div>
         <div class="price">$35.000</div>
+        <div class="price-underline"></div>
         <ul>
-          <li>✔ Vigencia de 30 días</li>
-          <li>✔ Acceso a todas las disciplinas AM</li>
-          <li>✔ Pago por transferencia</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Vigencia de 30 días</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Acceso a todas las disciplinas AM</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Pago transferencia</li>
         </ul>
         <a class="reserve-btn" href="https://wa.me/56967374096?text=Quiero%20el%20Plan%208%20Ahorro%20Invierno" target="_blank" rel="noopener">Reserva tu clase</a>
       </div>
       <div class="plan-card plan-8-am">
-        <div class="tokens">8 Tokens</div>
+        <div class="tokens"><span>8</span><span>Tokens</span></div>
         <h3>Plan 8</h3>
         <div class="desc"><a href="adulto-mayor.html">Adulto Mayor</a></div>
         <div class="price">$25.000</div>
+        <div class="price-underline"></div>
         <ul>
-          <li>✔ Vigencia de 30 días</li>
-          <li>✔ Acceso a todas las disciplinas</li>
-          <li>✔ Reserva desde BoxMagic</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Vigencia de 30 días</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Acceso a todas las disciplinas</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Reserva desde BoxMagic</li>
         </ul>
         <a class="reserve-btn" href="https://wa.me/56967374096?text=Quiero%20el%20Plan%208%20Adulto%20Mayor" target="_blank" rel="noopener">Reserva tu clase</a>
       </div>
       <div class="plan-card plan-16-estudiante">
-        <div class="tokens">16 Tokens</div>
+        <div class="tokens"><span>12</span><span>Tokens</span></div>
         <h3>Plan 16</h3>
         <div class="desc">Estudiante</div>
         <div class="price">$43.990</div>
+        <div class="price-underline"></div>
         <ul>
-          <li>✔ Vigencia de 30 días</li>
-          <li>✔ Acceso a todas las disciplinas</li>
-          <li>✔ Reserva desde BoxMagic</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Vigencia de 30 días</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Acceso a todas las disciplinas</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Reserva desde BoxMagic</li>
         </ul>
         <a class="reserve-btn" href="https://wa.me/56967374096?text=Quiero%20el%20Plan%2016%20Estudiante" target="_blank" rel="noopener">Reserva tu clase</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="plan-section" data-categoria="diarios">
+  <div class="container">
+    <div class="section-title">
+      <h2>Pases diarios</h2>
+    </div>
+    <div class="cards-row">
+      <div class="plan-card pase-diario-normal">
+        <div class="tokens"><span>1</span><span>Token</span></div>
+        <h3>Pase Diario</h3>
+        <div class="desc">Normal</div>
+        <div class="price">$8.000</div>
+        <div class="price-underline"></div>
+        <ul>
+          <li><img src="assets/icons/seal-check.svg" alt="">Vigencia de 30 días</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Acceso a todas las disciplinas</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Reserva desde BoxMagic</li>
+        </ul>
+        <a class="reserve-btn" href="https://wa.me/56967374096?text=Quiero%20el%20Pase%20Diario%20Normal" target="_blank" rel="noopener">Reserva tu clase</a>
+      </div>
+      <div class="plan-card pase-diario-openbox">
+        <div class="tokens"><span>1</span><span>Token</span></div>
+        <h3>Pase Diario</h3>
+        <div class="desc">Open Box</div>
+        <div class="price">$10.000</div>
+        <div class="price-underline"></div>
+        <ul>
+          <li><img src="assets/icons/seal-check.svg" alt="">Vigencia de 30 días</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Acceso a todas las disciplinas</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Reserva desde BoxMagic</li>
+        </ul>
+        <a class="reserve-btn" href="https://wa.me/56967374096?text=Quiero%20el%20Pase%20Diario%20Open%20Box" target="_blank" rel="noopener">Reserva tu clase</a>
+      </div>
+      <div class="plan-card pase-diario-am">
+        <div class="tokens"><span>1</span><span>Token</span></div>
+        <h3>Pase Diario</h3>
+        <div class="desc">Adulto mayor</div>
+        <div class="price">$3.000</div>
+        <div class="price-underline"></div>
+        <ul>
+          <li><img src="assets/icons/seal-check.svg" alt="">Vigencia de 30 días</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Acceso a todas las disciplinas</li>
+          <li><img src="assets/icons/seal-check.svg" alt="">Reserva desde BoxMagic</li>
+        </ul>
+        <a class="reserve-btn" href="https://wa.me/56967374096?text=Quiero%20el%20Pase%20Diario%20Adulto%20Mayor" target="_blank" rel="noopener">Reserva tu clase</a>
       </div>
     </div>
   </div>
@@ -442,6 +605,15 @@
     <a href="https://www.facebook.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="Facebook de Bisonte CrossFit"><img loading="lazy" src="assets/icons/facebook.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</a>
   </div>
 
+  <div class="legal-links">
+    <a href="politica-privacidad.html">Privacidad</a>
+    <span>·</span>
+    <a href="politica-cookies.html">Cookies</a>
+    <span>·</span>
+    <a href="terminos-y-condiciones.html">Términos y Condiciones</a>
+  </div>
+
+  <p class="copyright">© 2026 Bisonte CrossFit</p>
 </footer>
 
 </div>

@@ -366,6 +366,17 @@
     gap:8px;
     font-size:14px;
   }
+  .legal-links{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+    font-size:13px;
+    color:var(--text-muted);
+    margin-bottom:12px;
+  }
+  .legal-links a:hover{color:var(--teal);}
+  .copyright{font-size:16px;font-weight:600;color:#f8f8f8;text-align:center;}
   .socials{
     display:flex;
     justify-content:center;
@@ -505,30 +516,50 @@
           <select id="f-horario" name="horario" required>
             <option value="" selected disabled>Primero elige una clase</option>
 
-            <option value="Lunes a Viernes 06:00" data-clase="CrossFit">Lunes a Viernes · 06:00</option>
-            <option value="Lunes a Viernes 07:00" data-clase="CrossFit">Lunes a Viernes · 07:00</option>
-            <option value="Lunes a Viernes 08:00" data-clase="CrossFit">Lunes a Viernes · 08:00</option>
-            <option value="Lunes a Viernes 17:15" data-clase="CrossFit">Lunes a Viernes · 17:15</option>
-            <option value="Lunes a Viernes 18:15" data-clase="CrossFit">Lunes a Viernes · 18:15</option>
-            <option value="Lunes a Viernes 19:15" data-clase="CrossFit">Lunes a Viernes · 19:15</option>
+            <optgroup label="Lunes a Viernes">
+              <option value="Lunes a Viernes 06:00" data-clase="CrossFit">06:00</option>
+              <option value="Lunes a Viernes 07:00" data-clase="CrossFit">07:00</option>
+              <option value="Lunes a Viernes 08:00" data-clase="CrossFit">08:00</option>
+              <option value="Lunes a Viernes 17:15" data-clase="CrossFit">17:15</option>
+              <option value="Lunes a Viernes 18:15" data-clase="CrossFit">18:15</option>
+              <option value="Lunes a Viernes 19:15" data-clase="CrossFit">19:15</option>
+            </optgroup>
 
-            <option value="Martes y Jueves 18:15" data-clase="Hyrox / Hybrid">Martes y Jueves · 18:15</option>
-            <option value="Martes y Jueves 19:15" data-clase="Hyrox / Hybrid">Martes y Jueves · 19:15</option>
+            <optgroup label="Martes y Jueves">
+              <option value="Martes y Jueves 18:15" data-clase="Hyrox / Hybrid">18:15</option>
+              <option value="Martes y Jueves 19:15" data-clase="Hyrox / Hybrid">19:15</option>
+            </optgroup>
 
-            <option value="Lunes y Miércoles 20:15" data-clase="Levantamiento Olímpico">Lunes y Miércoles · 20:15</option>
-            <option value="Viernes 19:15" data-clase="Levantamiento Olímpico">Viernes · 19:15</option>
+            <optgroup label="Lunes y Miércoles">
+              <option value="Lunes y Miércoles 20:15" data-clase="Levantamiento Olímpico">20:15</option>
+            </optgroup>
+            <optgroup label="Viernes">
+              <option value="Viernes 19:15" data-clase="Levantamiento Olímpico">19:15</option>
+            </optgroup>
 
-            <option value="Lunes y Miércoles 19:15" data-clase="Gymnastics">Lunes y Miércoles · 19:15</option>
-            <option value="Viernes 18:15" data-clase="Gymnastics">Viernes · 18:15</option>
+            <optgroup label="Lunes y Miércoles">
+              <option value="Lunes y Miércoles 19:15" data-clase="Gymnastics">19:15</option>
+            </optgroup>
+            <optgroup label="Viernes">
+              <option value="Viernes 18:15" data-clase="Gymnastics">18:15</option>
+            </optgroup>
 
-            <option value="Martes y Jueves 20:15" data-clase="StrongMan">Martes y Jueves · 20:15</option>
+            <optgroup label="Martes y Jueves">
+              <option value="Martes y Jueves 20:15" data-clase="StrongMan">20:15</option>
+            </optgroup>
 
-            <option value="Martes y Jueves 06:00" data-clase="Full Body">Martes y Jueves · 06:00</option>
-            <option value="Martes y Jueves 07:00" data-clase="Full Body">Martes y Jueves · 07:00</option>
+            <optgroup label="Martes y Jueves">
+              <option value="Martes y Jueves 06:00" data-clase="Full Body">06:00</option>
+              <option value="Martes y Jueves 07:00" data-clase="Full Body">07:00</option>
+            </optgroup>
 
-            <option value="Martes y Jueves 17:00" data-clase="Adulto Mayor">Martes y Jueves · 17:00</option>
+            <optgroup label="Martes y Jueves">
+              <option value="Martes y Jueves 17:00" data-clase="Adulto Mayor">17:00</option>
+            </optgroup>
 
-            <option value="Sábados 10:30" data-clase="Competidor">Sábados · 10:30</option>
+            <optgroup label="Sábados">
+              <option value="Sábados 10:30" data-clase="Competidor">10:30</option>
+            </optgroup>
 
             <option value="Por coordinar">Prefiero coordinarlo por WhatsApp</option>
           </select>
@@ -605,6 +636,15 @@
     <a href="https://www.facebook.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="Facebook de Bisonte CrossFit"><img loading="lazy" src="assets/icons/facebook.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</a>
   </div>
 
+  <div class="legal-links">
+    <a href="politica-privacidad.html">Privacidad</a>
+    <span>·</span>
+    <a href="politica-cookies.html">Cookies</a>
+    <span>·</span>
+    <a href="terminos-y-condiciones.html">Términos y Condiciones</a>
+  </div>
+
+  <p class="copyright">© 2026 Bisonte CrossFit</p>
 </footer>
 
 </div>

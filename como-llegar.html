@@ -12,10 +12,10 @@
 
   gtag('config', 'G-0TLJMCT3TZ');
 </script>
-<meta name="description" content="Cómo llegar a Bisonte CrossFit: Calle Uno 1050, San Miguel, a pasos del Metro Departamental. Mapa y cómo funcionan los tokens.">
+<meta name="description" content="Cómo llegar a Bisonte CrossFit: Calle Uno 1050, San Miguel, a pasos del Metro Departamental. Mapa, indicaciones en metro y fotos del box.">
 <meta property="og:site_name" content="Bisonte CrossFit">
 <meta property="og:title" content="¿Cómo llegar? · Bisonte CrossFit">
-<meta property="og:description" content="Cómo llegar a Bisonte CrossFit: Calle Uno 1050, San Miguel, a pasos del Metro Departamental. Mapa y cómo funcionan los tokens.">
+<meta property="og:description" content="Cómo llegar a Bisonte CrossFit: Calle Uno 1050, San Miguel, a pasos del Metro Departamental. Mapa, indicaciones en metro y fotos del box.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CL">
 <meta property="og:url" content="https://bisontecrossfit.cl/como-llegar.html">
@@ -81,31 +81,19 @@
   .logo-nav{display:flex;align-items:center;}
   .logo-nav img{height:34px;width:auto;display:block;}
 
-  .section-title{
-    display:flex;
-    justify-content:space-between;
-    align-items:baseline;
-    margin-bottom:16px;
-  }
-  .section-title h2{
-    font-size:20px;
+  /* Page title */
+  .page-title{padding-top:12px;}
+  .page-title h1{
+    font-size:22px;
     font-weight:800;
     display:inline-block;
     padding-bottom:8px;
     background:url('assets/img/line-underline.svg') left bottom no-repeat;
-    background-size:172px 3px;
+    background-size:70px 4px;
   }
 
-  /* Ubicación / tokens */
-  .location-section{padding:24px 20px 40px;}
-  .location-map{
-    width:100%;
-    height:263px;
-    border-radius:30px;
-    display:block;
-    margin-bottom:20px;
-  }
-  .token-card{
+  /* Tarjeta de dirección */
+  .info-card{
     background:#1e1e1e;
     border:1px solid #000;
     border-radius:30px;
@@ -114,12 +102,152 @@
     align-items:center;
     gap:10px;
     box-shadow:0 2px 6px rgba(0,0,0,.35);
-    margin-bottom:20px;
+    margin-top:24px;
   }
-  .token-card img{width:32px;height:32px;flex-shrink:0;}
-  .token-card h3{font-size:16px;margin-bottom:4px;}
-  .token-card .token-eq{font-size:20px;font-weight:800;color:#f8f8f8;}
-  .token-card .token-eq span{color:#fff;}
+  .info-card img{width:28px;height:auto;flex-shrink:0;}
+  .info-card h3{font-size:16px;margin-bottom:4px;}
+  .info-card p{color:var(--text-muted);font-size:13px;}
+
+  .intro-bold{
+    font-weight:700;
+    color:#f8f8f8;
+    font-size:14px;
+    text-align:center;
+    margin-top:24px;
+  }
+
+  /* Mapa */
+  .location-map{
+    width:100%;
+    height:263px;
+    border-radius:30px;
+    display:block;
+    margin-top:24px;
+  }
+
+  /* "¿Cómo llegar?" - modos de transporte */
+  .subsection-title{text-align:center;margin-top:40px;margin-bottom:20px;}
+  .subsection-title h2{
+    font-size:20px;
+    font-weight:800;
+    display:inline-block;
+    padding-bottom:8px;
+    background:url('assets/img/line-underline.svg') center bottom no-repeat;
+    background-size:70px 4px;
+  }
+  .transport-tabs{
+    display:flex;
+    gap:8px;
+    margin-bottom:16px;
+  }
+  .transport-tab{
+    flex:1;
+    min-width:0;
+    background:rgba(0,61,246,.5);
+    color:#fff;
+    border:none;
+    border-radius:80px;
+    padding:12px 8px;
+    font-family:inherit;
+    font-weight:600;
+    font-size:11px;
+    line-height:1.25;
+    text-align:center;
+    cursor:pointer;
+    box-shadow:0 2px 6px rgba(0,0,0,.35);
+  }
+  .transport-tab.active{background:#003df6;}
+  .transport-info{
+    background:rgba(255,255,255,.1);
+    border-radius:20px;
+    padding:20px;
+  }
+  .transport-info h4{font-size:16px;color:#f8f8f8;margin-bottom:8px;}
+  .transport-info .transport-line{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    font-weight:700;
+    font-size:14px;
+    margin-bottom:12px;
+  }
+  .transport-info .transport-line .dash{color:var(--magenta);}
+  .transport-info .transport-line .line-name,
+  .transport-info .transport-line .dot{color:var(--teal);}
+  .transport-info p{color:#f8f8f8;font-size:14px;}
+
+  /* Galería */
+  .gallery-row{
+    display:flex;
+    gap:10px;
+    margin-top:32px;
+  }
+  .gallery-row .gallery-item{
+    flex:1;
+    aspect-ratio:4/3;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 2px 12px rgba(0,0,0,.5);
+  }
+  .gallery-row .gallery-item img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  /* Franja de highlights */
+  .highlight-strip{margin-top:32px;text-align:center;}
+  .highlight-tag{font-size:14px;color:#f8f8f8;margin-bottom:16px;}
+  .highlight-pills{display:flex;gap:10px;}
+  .highlight-pill{
+    flex:1;
+    background:rgba(193,9,180,.1);
+    border-radius:20px;
+    padding:14px 12px;
+    text-align:left;
+  }
+  .highlight-pill p{color:#f8f8f8;font-size:12px;}
+  .highlight-pill p:first-child{font-weight:700;margin-bottom:4px;}
+
+  .page-title .socials{margin-top:32px;}
+
+  /* CTAs de ubicación */
+  .location-cta{display:flex;gap:10px;margin-top:32px;}
+  .btn-outline{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,255,255,.1);
+    color:#f8f8f8;
+    font-weight:600;
+    font-size:14px;
+    padding:14px 16px;
+    border-radius:70px;
+    text-align:center;
+  }
+  .location-cta .btn-cta{
+    flex-shrink:0;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    background:linear-gradient(90deg,var(--magenta),#e63cc9);
+    color:#fff;
+    font-weight:700;
+    font-size:14px;
+    padding:14px 20px;
+    border-radius:70px;
+  }
+  .location-cta .btn-cta img{width:16px;height:16px;}
+
+  .legal-links{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+    font-size:13px;
+    color:var(--text-muted);
+    margin-bottom:12px;
+  }
+  .legal-links a:hover{color:var(--teal);}
+  .copyright{font-size:16px;font-weight:600;color:#f8f8f8;text-align:center;}
   .socials{
     display:flex;
     justify-content:center;
@@ -251,7 +379,9 @@
   @media (min-width:900px){
     .app{max-width:none;box-shadow:none;}
     .container{max-width:1100px;margin:0 auto;}
-    .location-section{max-width:900px;margin:0 auto;padding:40px 40px 60px;}
+    .page-title{max-width:720px;margin:0 auto;padding:20px 40px 60px;}
+    .page-title h1{font-size:30px;}
+    .transport-tab{font-size:13px;padding:14px 10px;}
     footer{padding:60px 40px;}
     .footer-links{max-width:900px;}
   }
@@ -295,21 +425,66 @@
   </nav>
 </aside>
 
-<section class="location-section" id="ubicacion">
-  <div class="section-title">
-    <h2>¿Cómo llegar a Bisonte?</h2>
-  </div>
-  <iframe class="location-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.9452376880295!2d-70.65678372430689!3d-33.502801873368796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662dbe5887db863%3A0xbc331814e27a2eff!2sBisonte%20CrossFit!5e0!3m2!1ses-419!2scl!4v1785214000145!5m2!1ses-419!2scl" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Mapa de ubicación de Bisonte CrossFit"></iframe>
-  <div class="token-card">
-    <img src="assets/icons/seal-question.svg" alt="">
-    <div>
-      <h3>¿Cómo funcionan los token?</h3>
-      <div class="token-eq">1 Token <span>=</span> 1 Clase</div>
+<section class="page-title" id="ubicacion">
+  <div class="container">
+    <h1>Cómo llegar a Bisonte CrossFit en San Miguel<span></span></h1>
+
+    <div class="info-card">
+      <img src="assets/icons/map-pin.svg" alt="">
+      <div>
+        <h3>Calle Uno #1050, San Miguel</h3>
+        <p>A pasos del metro Departamental</p>
+      </div>
     </div>
-  </div>
-  <div class="socials">
-    <a href="https://www.instagram.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="Instagram de Bisonte CrossFit"><img loading="lazy" src="assets/icons/instagram.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</a>
-    <a href="https://www.facebook.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="Facebook de Bisonte CrossFit"><img loading="lazy" src="assets/icons/facebook.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</a>
+
+    <p class="intro-bold">Si buscas un box de CrossFit o centro de entrenamiento en San Miguel, ven a conocer Bisonte y vive tu primera clase.</p>
+
+    <iframe class="location-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.9452376880295!2d-70.65678372430689!3d-33.502801873368796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662dbe5887db863%3A0xbc331814e27a2eff!2sBisonte%20CrossFit!5e0!3m2!1ses-419!2scl!4v1785214000145!5m2!1ses-419!2scl" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Mapa de ubicación de Bisonte CrossFit"></iframe>
+
+    <div class="subsection-title">
+      <h2>¿Cómo llegar?<span></span></h2>
+    </div>
+    <div class="transport-tabs" role="group" aria-label="Modo de transporte">
+      <button type="button" class="transport-tab active" aria-pressed="true">Metro</button>
+      <button type="button" class="transport-tab" aria-pressed="false">Micro</button>
+      <button type="button" class="transport-tab" aria-pressed="false">Bicicletas, scooters o patines</button>
+      <button type="button" class="transport-tab" aria-pressed="false">Auto</button>
+    </div>
+    <div class="transport-info">
+      <h4>🚇 Baja en Metro Departamental</h4>
+      <div class="transport-line"><span class="dash">—</span><span class="line-name">Línea 2</span><span class="dot">·</span><span class="line-name">Salida Calle Uno</span></div>
+      <p>Baja en <b>Estación Departamental</b> y dirígete hacia la <b>salida de Calle Uno</b>. Desde ahí estarás a pasos de Bisonte CrossFit.</p>
+    </div>
+
+    <div class="gallery-row">
+      <div class="gallery-item"><img loading="lazy" src="assets/img/ubicacion-galeria-1.webp" alt="Alumnos de Bisonte CrossFit en una foto grupal dentro del box"></div>
+      <div class="gallery-item"><img loading="lazy" src="assets/img/ubicacion-galeria-2.webp" alt="Comunidad de Bisonte CrossFit celebrando disfrazados dentro del box"></div>
+      <div class="gallery-item"><img loading="lazy" src="assets/img/ubicacion-galeria-3.webp" alt="Alumnos de Bisonte CrossFit en una actividad al aire libre"></div>
+    </div>
+
+    <div class="highlight-strip">
+      <p class="highlight-tag">✨ Único box afiliado a Crossfit en San Miguel ✨</p>
+      <div class="highlight-pills">
+        <div class="highlight-pill">
+          <p>📍 San Miguel</p>
+          <p>Calle Uno #1050</p>
+        </div>
+        <div class="highlight-pill">
+          <p>🚇 Metro Departamental</p>
+          <p>A pasos del Metro Línea 2</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="socials">
+      <a href="https://www.instagram.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="Instagram de Bisonte CrossFit"><img loading="lazy" src="assets/icons/instagram.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</a>
+      <a href="https://www.facebook.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="Facebook de Bisonte CrossFit"><img loading="lazy" src="assets/icons/facebook.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</a>
+    </div>
+
+    <div class="location-cta">
+      <a class="btn-outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bisonte+CrossFit+Calle+Uno+1050+San+Miguel" target="_blank" rel="noopener">Abrir en Maps</a>
+      <a class="btn-cta" href="clase-gratis.html"><img src="assets/icons/cursor-click.svg" alt=""> Clase gratis</a>
+    </div>
   </div>
 </section>
 
@@ -354,6 +529,15 @@
     <a href="https://www.facebook.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="Facebook de Bisonte CrossFit"><img loading="lazy" src="assets/icons/facebook.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</a>
   </div>
 
+  <div class="legal-links">
+    <a href="politica-privacidad.html">Privacidad</a>
+    <span>·</span>
+    <a href="politica-cookies.html">Cookies</a>
+    <span>·</span>
+    <a href="terminos-y-condiciones.html">Términos y Condiciones</a>
+  </div>
+
+  <p class="copyright">© 2026 Bisonte CrossFit</p>
 </footer>
 
 </div>

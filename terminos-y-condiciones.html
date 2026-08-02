@@ -12,13 +12,13 @@
 
   gtag('config', 'G-0TLJMCT3TZ');
 </script>
-<meta name="description" content="Resuelve tus dudas sobre Bisonte CrossFit: primera clase gratis, planes de tokens, reservas por BoxMagic y horarios.">
+<meta name="description" content="Términos y Condiciones de Bisonte CrossFit: planes, reservas, cancelaciones, pagos y normas de uso del box en San Miguel.">
 <meta property="og:site_name" content="Bisonte CrossFit">
-<meta property="og:title" content="Centro de ayuda · Bisonte CrossFit">
-<meta property="og:description" content="Resuelve tus dudas sobre Bisonte CrossFit: primera clase gratis, planes de tokens, reservas por BoxMagic y horarios.">
+<meta property="og:title" content="Términos y Condiciones · Bisonte CrossFit">
+<meta property="og:description" content="Términos y Condiciones de Bisonte CrossFit: planes, reservas, cancelaciones, pagos y normas de uso del box en San Miguel.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CL">
-<meta property="og:url" content="https://bisontecrossfit.cl/preguntas-frecuentes.html">
+<meta property="og:url" content="https://bisontecrossfit.cl/terminos-y-condiciones.html">
 <meta property="og:image" content="https://bisontecrossfit.cl/assets/img/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -28,7 +28,7 @@
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<title>Centro de ayuda · Bisonte CrossFit</title>
+<title>Términos y Condiciones · Bisonte CrossFit</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,400&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -93,6 +93,11 @@
     background:url('assets/img/line-underline.svg') left bottom no-repeat;
     background-size:70px 4px;
   }
+  .help-updated{
+    color:var(--text-muted);
+    font-size:12px;
+    margin-top:10px;
+  }
   .help-tabs{
     display:flex;
     gap:10px;
@@ -117,13 +122,20 @@
     box-shadow:0 2px 3px rgba(0,0,0,.35);
   }
 
-  /* FAQ */
-  .faq-list{padding:0 20px;}
-  .faq-item{
+  /* Legal intro */
+  .legal-intro{
+    color:var(--text-muted);
+    font-size:14px;
+    margin-top:16px;
+  }
+
+  /* Legal accordion (misma base que FAQ) */
+  .legal-list{padding:0 20px;}
+  .legal-item{
     border-bottom:1px solid #2a2a2a;
     padding:16px 0;
   }
-  .faq-item summary{
+  .legal-item summary{
     list-style:none;
     display:flex;
     justify-content:space-between;
@@ -133,15 +145,15 @@
     font-size:15px;
     cursor:pointer;
   }
-  .faq-item summary::-webkit-details-marker{display:none;}
-  .faq-item summary::after{
+  .legal-item summary::-webkit-details-marker{display:none;}
+  .legal-item summary::after{
     content:'▾';
     color:var(--teal);
     transition:transform .2s;
     flex-shrink:0;
   }
-  .faq-item[open] summary::after{transform:rotate(180deg);}
-  .faq-item p{
+  .legal-item[open] summary::after{transform:rotate(180deg);}
+  .legal-item p{
     color:var(--text-muted);
     font-size:13px;
     margin-top:10px;
@@ -265,6 +277,14 @@
     gap:8px;
     font-size:14px;
   }
+  .socials{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    font-size:13px;
+    color:var(--text-muted);
+    margin-bottom:20px;
+  }
   .legal-links{
     display:flex;
     justify-content:center;
@@ -276,14 +296,6 @@
   }
   .legal-links a:hover{color:var(--teal);}
   .copyright{font-size:16px;font-weight:600;color:#f8f8f8;text-align:center;}
-  .socials{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    font-size:13px;
-    color:var(--text-muted);
-    margin-bottom:20px;
-  }
 
   /* Desktop */
   @media (min-width:900px){
@@ -292,7 +304,7 @@
     .help-title{max-width:900px;margin:0 auto;padding:24px 40px 0;}
     .help-tabs{max-width:900px;margin:0 auto;padding:20px 40px 0;justify-content:flex-start;}
     .help-tab{flex:none;}
-    .faq-list{max-width:900px;margin:0 auto;padding:0 40px;}
+    .legal-list{max-width:900px;margin:0 auto;padding:0 40px;}
     footer{padding:60px 40px;}
     .footer-links{max-width:900px;}
   }
@@ -342,113 +354,131 @@
 
 <div class="help-title">
   <h1>Centro de ayuda</h1>
+  <p class="help-updated">Última actualización: 1 de agosto de 2026</p>
 </div>
 
 <div class="help-tabs">
-  <a class="help-tab active" href="preguntas-frecuentes.html">Preguntas frecuentes</a>
+  <a class="help-tab" href="preguntas-frecuentes.html">Preguntas frecuentes</a>
   <a class="help-tab" href="politica-privacidad.html">Políticas de Privacidad</a>
   <a class="help-tab" href="politica-cookies.html">Política de Cookies</a>
-  <a class="help-tab" href="terminos-y-condiciones.html">Términos y Condiciones</a>
+  <a class="help-tab active" href="terminos-y-condiciones.html">Términos y Condiciones</a>
 </div>
 
-<section id="preguntas">
+<section id="terminos">
   <div class="container">
-    <div class="section-title" style="margin-bottom:16px;">
-      <h2 style="font-size:18px;font-weight:800;">Preguntas frecuentes sobre CrossFit en San Miguel</h2>
+    <div class="section-title" style="margin-bottom:0;">
+      <h2 style="font-size:18px;font-weight:800;">Términos y Condiciones de Bisonte CrossFit</h2>
+      <p class="legal-intro">Estos Términos y Condiciones regulan la contratación y utilización de los servicios ofrecidos por Bisonte CrossFit a través de su sitio web, BoxMagic, WhatsApp y sus instalaciones físicas. Al comprar un plan, reservar una clase, crear una cuenta o utilizar los servicios, el alumno declara haber leído y aceptado estos términos.</p>
     </div>
   </div>
-  <div class="faq-list">
-    <details class="faq-item" open>
-      <summary>¿Dónde encontrar un box de CrossFit en San Miguel?</summary>
-      <p>Bisonte CrossFit está ubicado en Calle Uno 1050, San Miguel, a pasos de Metro Departamental.</p>
+  <div class="legal-list">
+    <details class="legal-item">
+      <summary>1. Identificación del prestador</summary>
+      <p>Los servicios descritos en este documento son prestados por Bisonte CrossFit, box de CrossFit ubicado en Calle Uno 1050, San Miguel, Región Metropolitana. Puedes contactarnos por WhatsApp al +56 9 6737 4096 o a través de nuestras redes sociales @Bisontecrossfit.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿Puedo tomar una clase de prueba gratis de CrossFit?</summary>
-      <p>Sí, ofrecemos una clase de prueba sin costo para que conozcas nuestra metodología antes de inscribirte.</p>
+    <details class="legal-item">
+      <summary>2. Servicios ofrecidos</summary>
+      <p>Bisonte CrossFit ofrece clases grupales de CrossFit, Levantamiento Olímpico, Hybrid, Gymnastics, Strongman, Full Body, Competidor y Adulto Mayor, además de una clase de prueba gratuita para nuevos alumnos. Los horarios y cupos disponibles se gestionan a través de la plataforma BoxMagic.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿Puedo comenzar CrossFit si nunca he entrenado?</summary>
-      <p>Por supuesto. Nuestras clases están pensadas para todos los niveles y los coaches adaptan cada movimiento a tu ritmo.</p>
+    <details class="legal-item">
+      <summary>3. Naturaleza de los servicios</summary>
+      <p>El entrenamiento funcional y de alta intensidad conlleva un esfuerzo físico exigente y un riesgo inherente de lesión, propio de cualquier actividad deportiva. El alumno participa de forma voluntaria y bajo su propia responsabilidad, sin perjuicio de las medidas de seguridad y supervisión que Bisonte CrossFit dispone en cada clase.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿CrossFit es apto para principiantes y todos los niveles?</summary>
-      <p>Sí, cada entrenamiento se puede escalar según tu experiencia, así que puedes entrenar junto a alumnos más avanzados sin problema.</p>
+    <details class="legal-item">
+      <summary>4. Requisitos de participación</summary>
+      <p>Para participar de las clases el alumno debe ser mayor de edad o contar con autorización de su apoderado, presentarse con ropa deportiva adecuada y seguir las indicaciones de calentamiento y técnica que entregue el coach a cargo.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿Qué clase me conviene: CrossFit, HYROX o Full Body?</summary>
-      <p>Depende de tu objetivo: CrossFit combina fuerza y acondicionamiento general, HYROX se enfoca en resistencia funcional tipo carrera, y Full Body prioriza fuerza muscular. Nuestros coaches pueden orientarte según tus metas.</p>
+    <details class="legal-item">
+      <summary>5. Estado de salud y seguridad</summary>
+      <p>El alumno declara encontrarse en condiciones físicas adecuadas para entrenar y se compromete a informar a su coach cualquier lesión, condición médica o embarazo antes de cada sesión. Recomendamos contar con un chequeo médico previo si tienes dudas sobre tu estado de salud.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿Cuál es la diferencia entre CrossFit y HYROX?</summary>
-      <p>CrossFit varía sus movimientos y cargas cada día, mientras que HYROX sigue un formato fijo de carrera combinada con estaciones funcionales.</p>
+    <details class="legal-item">
+      <summary>6. Menores de edad</summary>
+      <p>Los menores de edad solo pueden participar en clases habilitadas para su tramo etario y con la autorización expresa de su padre, madre o apoderado, quien acepta estos Términos y Condiciones en su representación.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿Qué es el levantamiento olímpico o halterofilia?</summary>
-      <p>Es una disciplina centrada en dos movimientos técnicos, el arranque y el envión, que desarrollan fuerza, potencia y técnica.</p>
+    <details class="legal-item">
+      <summary>7. Registro y cuenta de BoxMagic</summary>
+      <p>Para reservar clases y gestionar tu plan debes crear una cuenta en BoxMagic con datos veraces y actualizados. Eres responsable de mantener la confidencialidad de tus credenciales de acceso y de las reservas realizadas desde tu cuenta.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿Necesito experiencia para comenzar Gymnastic?</summary>
-      <p>No, la clase de Gymnastic parte desde lo básico y va progresando en fuerza y control corporal a tu ritmo.</p>
+    <details class="legal-item">
+      <summary>8. Planes, vigencia y condiciones particulares</summary>
+      <p>Los planes disponibles, sus precios, cantidad de tokens o clases y su vigencia se detallan en la sección de planes de nuestro sitio web y pueden actualizarse periódicamente. Las condiciones vigentes al momento de la contratación son las que rigen tu plan durante su duración.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿Qué se trabaja en las clases de Strongman?</summary>
-      <p>Strongman trabaja fuerza bruta y funcional con implementos como neumáticos, troncos y cargas pesadas.</p>
+    <details class="legal-item">
+      <summary>9. Medios de pago</summary>
+      <p>Aceptamos pago en efectivo, tarjetas de débito y crédito, y transferencia bancaria. Los pagos realizados mediante pasarelas de terceros pueden estar sujetos a las condiciones propias de dicho proveedor.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿En qué consiste una clase de Full Body?</summary>
-      <p>Es un entrenamiento de fuerza que trabaja todos los grupos musculares en una misma sesión.</p>
+    <details class="legal-item">
+      <summary>10. Renovaciones y cobros recurrentes</summary>
+      <p>Si tu plan contempla renovación automática, esta se mantendrá vigente hasta que solicites su término con la anticipación indicada al momento de la contratación. Cualquier cambio de tarifa se informará con anticipación razonable antes de la siguiente renovación.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿Puedo combinar CrossFit con HYROX, Gymnastic o levantamiento olímpico?</summary>
-      <p>Sí, puedes combinar disciplinas según tu plan de tokens y tus objetivos de entrenamiento.</p>
+    <details class="legal-item">
+      <summary>11. Reservas de clases</summary>
+      <p>Las clases deben reservarse previamente a través de BoxMagic o, si no es posible, coordinando directamente por WhatsApp. Los cupos son limitados y se asignan por orden de reserva.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿Los ejercicios se pueden adaptar si tengo una limitación física?</summary>
-      <p>Sí, nuestros coaches adaptan los movimientos según tus capacidades y cualquier limitación que nos cuentes antes de entrenar.</p>
+    <details class="legal-item">
+      <summary>12. Cancelación de reservas y ausencias</summary>
+      <p>Puedes cancelar una reserva con la anticipación mínima informada en BoxMagic sin perder tu token o cupo. Las ausencias no avisadas dentro de ese plazo descuentan el token correspondiente a la clase reservada.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿Cuánto dura una clase de CrossFit?</summary>
-      <p>Las clases tienen una duración aproximada de 60 minutos, incluyendo calentamiento, trabajo técnico y WOD.</p>
+    <details class="legal-item">
+      <summary>13. Lista de espera</summary>
+      <p>Cuando una clase está completa, puedes anotarte en la lista de espera de BoxMagic. Si se libera un cupo, este se asignará automáticamente según el orden de la lista y se te notificará por la plataforma.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿Bisonte CrossFit cuenta con duchas y baños?</summary>
-      <p>Sí, contamos con duchas y baños disponibles para todos nuestros alumnos.</p>
+    <details class="legal-item">
+      <summary>14. Puntualidad</summary>
+      <p>Te pedimos llegar con anticipación para calentar junto al grupo. Por seguridad, el coach puede negar el ingreso a alumnos que lleguen una vez iniciado el calentamiento, sin que esto genere derecho a devolución del token utilizado.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿El box tiene camarines para cambiarse de ropa?</summary>
-      <p>Sí, tenemos camarines habilitados para que puedas cambiarte antes y después de entrenar.</p>
+    <details class="legal-item">
+      <summary>15. Cambios de horario y cancelaciones por Bisonte</summary>
+      <p>Bisonte CrossFit puede modificar puntualmente el horario de una clase o cancelarla por motivos de fuerza mayor, mantención o disponibilidad de coaches. En estos casos avisaremos con la mayor anticipación posible por BoxMagic o WhatsApp y reprogramaremos el cupo afectado.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿Qué disciplinas puedo practicar en Bisonte CrossFit?</summary>
-      <p>CrossFit, Levantamiento Olímpico, Hybrid, Gymnastics, Strongman, Full Body, Competidor y Adulto Mayor.</p>
+    <details class="legal-item">
+      <summary>16. Congelamiento de planes</summary>
+      <p>Puedes solicitar el congelamiento temporal de tu plan por motivos justificados, como problemas de salud o viajes, escribiéndonos por WhatsApp con anticipación. El plazo de congelamiento se sumará a la vigencia original de tu plan.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿Puedo asistir a una clase aunque nunca haya practicado esa disciplina?</summary>
-      <p>Sí, todas las clases están abiertas a nuevos alumnos y los coaches te explican la técnica desde cero.</p>
+    <details class="legal-item">
+      <summary>17. Término anticipado y devoluciones</summary>
+      <p>Los planes contratados no son reembolsables una vez utilizados, salvo en los casos en que la ley chilena establezca un derecho de devolución. Ante situaciones excepcionales, evaluaremos cada solicitud de término anticipado de forma particular.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿Las clases incluyen la supervisión de un coach?</summary>
-      <p>Sí, todas nuestras clases son guiadas por coaches presentes durante toda la sesión.</p>
+    <details class="legal-item">
+      <summary>18. Uso de instalaciones e implementos</summary>
+      <p>El alumno debe utilizar las instalaciones e implementos del box de acuerdo a las indicaciones de su coach y cuidar el equipamiento compartido. Cualquier daño causado por mal uso deberá ser informado y podrá dar lugar a la reposición del implemento afectado.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿Puedo combinar diferentes clases durante la semana?</summary>
-      <p>Sí, puedes armar tu semana combinando las disciplinas que quieras según tu plan de tokens.</p>
+    <details class="legal-item">
+      <summary>19. Baños, duchas, camarines y objetos personales</summary>
+      <p>Contamos con baños, duchas y camarines disponibles para los alumnos durante el horario de funcionamiento. Bisonte CrossFit no se hace responsable por la pérdida, robo o daño de objetos personales dejados en las instalaciones.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿Cómo puedo reservar una clase en Bisonte CrossFit?</summary>
-      <p>Puedes reservar tus clases directamente desde la plataforma BoxMagic.</p>
+    <details class="legal-item">
+      <summary>20. Conducta y convivencia</summary>
+      <p>Esperamos un trato respetuoso entre alumnos y coaches dentro y fuera del box. Conductas discriminatorias, violentas o que afecten la convivencia del grupo pueden dar lugar a una amonestación o al término del contrato con el alumno involucrado.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿Puedo reservar una clase por WhatsApp?</summary>
-      <p>Sí, también puedes escribirnos por WhatsApp y te ayudamos a coordinar tu reserva.</p>
+    <details class="legal-item">
+      <summary>21. Fotografías y grabaciones</summary>
+      <p>Ocasionalmente registramos fotos y videos de nuestras clases y eventos para difundirlos en nuestras redes sociales. Si no deseas aparecer en este material, puedes indicarlo a tu coach o escribirnos por WhatsApp y excluiremos tu imagen de futuras publicaciones.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿Cómo puedo agendar mi primera clase de prueba?</summary>
-      <p>Completa el <a href="clase-gratis.html" style="color:var(--teal);">formulario de clase gratis</a> con el horario que más te acomode y te confirmamos el cupo por WhatsApp. Si prefieres, también puedes escribirnos directo al chat.</p>
+    <details class="legal-item">
+      <summary>22. Comunicaciones</summary>
+      <p>Utilizamos WhatsApp, correo electrónico y las notificaciones de BoxMagic como canales oficiales para avisos sobre tu plan, tus reservas y cambios en el funcionamiento del box. Es tu responsabilidad mantener actualizados tus datos de contacto.</p>
     </details>
-    <details class="faq-item">
-      <summary>¿Qué medios de pago acepta Bisonte CrossFit?</summary>
-      <p>Aceptamos efectivo, tarjetas de débito y crédito, y transferencia bancaria.</p>
+    <details class="legal-item">
+      <summary>23. Propiedad intelectual</summary>
+      <p>El nombre, logotipo, metodología de entrenamiento y contenidos publicados en este sitio y en nuestras redes sociales son propiedad de Bisonte CrossFit. No está permitida su reproducción o uso comercial sin autorización previa.</p>
+    </details>
+    <details class="legal-item">
+      <summary>24. Protección de datos</summary>
+      <p>El tratamiento de tus datos personales se rige por nuestra <a href="politica-privacidad.html" style="color:var(--teal);">Política de Privacidad</a>, la cual forma parte integrante de estos Términos y Condiciones.</p>
+    </details>
+    <details class="legal-item">
+      <summary>25. Modificaciones de estos términos</summary>
+      <p>Bisonte CrossFit puede actualizar estos Términos y Condiciones en cualquier momento para reflejar cambios en nuestros servicios o en la normativa vigente. La fecha de la última actualización se indica en la parte superior de esta página.</p>
+    </details>
+    <details class="legal-item">
+      <summary>26. Ley aplicable y atención de reclamos</summary>
+      <p>Estos Términos y Condiciones se rigen por las leyes de la República de Chile. Ante cualquier reclamo te invitamos a contactarnos primero directamente; si corresponde, puedes también recurrir al Servicio Nacional del Consumidor (SERNAC).</p>
+    </details>
+    <details class="legal-item">
+      <summary>27. Contacto</summary>
+      <p>Si tienes dudas sobre estos Términos y Condiciones, escríbenos por WhatsApp al +56 9 6737 4096, visítanos en Calle Uno 1050, San Miguel, o síguenos en Instagram y Facebook como @Bisontecrossfit.</p>
     </details>
   </div>
 </section>

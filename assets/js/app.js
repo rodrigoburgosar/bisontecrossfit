@@ -3,8 +3,10 @@
    2) Puntos de paginacion de los carruseles: solo actua si la pagina
       tiene .dots[data-for]; en el resto recorre una lista vacia y no
       hace nada, por eso el mismo archivo sirve para las 14 paginas.
-   3) Eventos de GA4 sobre los CTA.
-   4) Formulario de clase gratis: solo actua si la pagina tiene
+   3) Chips de filtro de planes: solo actua si la pagina tiene
+      .filter-chips (hoy solo planes.html).
+   4) Eventos de GA4 sobre los CTA.
+   5) Formulario de clase gratis: solo actua si la pagina tiene
       #freeClassForm (hoy solo clase-gratis.html).
    Se carga con defer, asi que corre con el DOM ya parseado. */
 (function(){
@@ -86,6 +88,32 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
     });
   }, {passive:true});
 });
+
+/* Chips de filtro de planes (planes.html). Cada chip togglea su categoria;
+   con uno o mas activos solo se muestran esas secciones, sin ninguno se ven
+   todas. En las paginas sin .filter-chips la lista queda vacia y no pasa nada. */
+(function(){
+  var chips = document.querySelectorAll('.filter-chips [data-filtro]');
+  if(!chips.length) return;
+  var secciones = document.querySelectorAll('.plan-section[data-categoria]');
+
+  function aplicar(){
+    var activos = [];
+    chips.forEach(function(c){
+      if(c.classList.contains('active')) activos.push(c.dataset.filtro);
+    });
+    secciones.forEach(function(sec){
+      sec.hidden = activos.length > 0 && activos.indexOf(sec.dataset.categoria) === -1;
+    });
+  }
+
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chip.classList.toggle('active');
+      aplicar();
+    });
+  });
+})();
 
 /* Eventos de GA4.
    Un solo listener delegado en document cubre las 14 paginas sin tocar el
@@ -211,7 +239,10 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
     if(rutInput.value.trim()) rutInput.value = rutFormateado(rutInput.value);
   });
 
-  /* --- Los horarios dependen de la clase elegida --- */
+  /* --- Los horarios dependen de la clase elegida ---
+     Las opciones van agrupadas en <optgroup> por dia (Lunes a Viernes,
+     Martes y Jueves...); ademas de filtrar las opciones hay que ocultar
+     los optgroup que se quedan sin ninguna opcion visible. */
   function filtrarHorarios(){
     var clase = claseSel.value;
     horarioOpts.forEach(function(opt){
@@ -220,6 +251,9 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
       var visible = !soloDe || soloDe === clase;
       opt.hidden = !visible;
       opt.disabled = !visible;
+    });
+    Array.from(horarioSel.querySelectorAll('optgroup')).forEach(function(grupo){
+      grupo.hidden = !Array.from(grupo.children).some(function(opt){ return !opt.hidden; });
     });
     var actual = horarioSel.options[horarioSel.selectedIndex];
     if(actual && actual.disabled) horarioSel.value = '';

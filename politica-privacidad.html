@@ -12,13 +12,13 @@
 
   gtag('config', 'G-0TLJMCT3TZ');
 </script>
-<meta name="description" content="Clases de Full Body en Bisonte, San Miguel: técnica, fuerza y potencia trabajando todos los grupos musculares. Martes y Jueves 06:00 y 07:00.">
+<meta name="description" content="Política de Privacidad de Bisonte CrossFit: qué datos recopilamos, para qué los usamos y cómo puedes ejercer tus derechos.">
 <meta property="og:site_name" content="Bisonte CrossFit">
-<meta property="og:title" content="Full Body · Bisonte CrossFit">
-<meta property="og:description" content="Clases de Full Body en Bisonte, San Miguel: técnica, fuerza y potencia trabajando todos los grupos musculares. Martes y Jueves 06:00 y 07:00.">
+<meta property="og:title" content="Política de Privacidad · Bisonte CrossFit">
+<meta property="og:description" content="Política de Privacidad de Bisonte CrossFit: qué datos recopilamos, para qué los usamos y cómo puedes ejercer tus derechos.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CL">
-<meta property="og:url" content="https://bisontecrossfit.cl/full-body.html">
+<meta property="og:url" content="https://bisontecrossfit.cl/politica-privacidad.html">
 <meta property="og:image" content="https://bisontecrossfit.cl/assets/img/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -28,19 +28,20 @@
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<title>Full Body · Bisonte CrossFit</title>
+<title>Política de Privacidad · Bisonte CrossFit</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,400&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#131313;
     --bg-alt:#1c1c1c;
-    --card:#1e1e1e;
+    --card:#1f1f1f;
     --magenta:#C109B4;
     --teal:#33DBDB;
     --text:#ffffff;
     --text-muted:#a3a3a3;
+    --gold:#caa24a;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{overflow-x:hidden;scrollbar-width:thin;scrollbar-color:#333 #0c0c0c;}
@@ -67,6 +68,7 @@
     .app{box-shadow:0 0 60px rgba(0,0,0,.6);min-height:100vh;}
   }
   .container{padding:0 20px;}
+  section{padding:40px 0;}
 
   /* Header */
   header{
@@ -79,157 +81,83 @@
   .logo-nav{display:flex;align-items:center;}
   .logo-nav img{height:34px;width:auto;display:block;}
 
-  /* Back link */
-  .back-row{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    padding:12px 0 4px;
-    font-size:15px;
-    font-weight:600;
+  /* Help header */
+  .help-title{
+    padding:24px 20px 0;
   }
-  .back-row img{width:24px;height:24px;}
-
-  /* Hero card */
-  .discipline-page{padding-top:0;padding-bottom:40px;}
-  .hero-card{
-    position:relative;
-    border-radius:30px;
-    overflow:hidden;
-    padding:30px 24px;
-    margin-top:16px;
-  }
-  .hero-card img.bg{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    opacity:.6;
-  }
-  .hero-card .overlay{
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.7);
-  }
-  .hero-card .content{position:relative;z-index:1;}
-  .hero-card h1{
-    font-size:24px;
-    font-weight:700;
+  .help-title h1{
+    font-size:20px;
+    font-weight:800;
     display:inline-block;
     padding-bottom:8px;
     background:url('assets/img/line-underline.svg') left bottom no-repeat;
-    background-size:172px 7px;
-    margin-bottom:10px;
+    background-size:70px 4px;
   }
-  .hero-card .subtitle{font-size:16px;font-weight:700;margin-bottom:10px;}
-  .hero-card .desc{font-size:14px;color:#f8f8f8;}
-
-  /* Info cards */
-  .info-card{
-    background:var(--card);
-    border-radius:30px;
-    padding:20px 20px 20px 30px;
-    margin-top:14px;
+  .help-updated{
+    color:var(--text-muted);
+    font-size:12px;
+    margin-top:10px;
+  }
+  .help-tabs{
+    display:flex;
+    gap:10px;
+    padding:20px 20px 0;
+    overflow-x:auto;
+  }
+  .help-tab{
+    flex:1 0 auto;
+    padding:12px 16px;
+    border-radius:80px;
+    font-size:12px;
+    font-weight:600;
+    text-align:center;
+    white-space:nowrap;
+    background:rgba(51,51,51,.5);
+    color:var(--text-muted);
     box-shadow:0 2px 6px rgba(0,0,0,.35);
   }
-  .info-card h2{font-size:18px;font-weight:700;margin-bottom:6px;}
-  .info-card p{font-size:14px;color:#f8f8f8;}
-  .info-card ul{list-style:disc;padding-left:20px;font-size:14px;color:#f8f8f8;}
-  .info-card ul li{margin-bottom:2px;}
+  .help-tab.active{
+    background:var(--magenta);
+    color:#fff;
+    box-shadow:0 2px 3px rgba(0,0,0,.35);
+  }
 
-  /* Beneficios */
-  .section-title{margin-top:28px;margin-bottom:14px;}
-  .section-title h2{
-    font-size:20px;
-    font-weight:700;
-    display:inline-block;
-    padding-bottom:8px;
-    background:url('assets/img/line-underline.svg') left bottom no-repeat;
-    background-size:172px 3px;
-  }
-  .benefits-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-  }
-  .benefit-card{
-    background:rgba(193,9,180,.2);
-    border-radius:30px;
-    padding:20px 10px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-    gap:4px;
-    box-shadow:0 2px 6px rgba(0,0,0,.5);
-  }
-  .benefit-card img{width:24px;height:24px;}
-  .benefit-card span{font-size:12px;font-weight:500;color:#fff;}
-
-  /* Coach */
-  .coach-row{
-    display:flex;
-    align-items:center;
-    padding:10px;
-  }
-  .coach-visual{
-    position:relative;
-    width:133px;
-    height:168px;
-    flex-shrink:0;
-    margin-right:-40px;
-  }
-  .coach-visual .ring{
-    position:absolute;
-    left:0;
-    top:36px;
-    width:133px;
-    height:132px;
-  }
-  .coach-visual .photo,
-  .coach-visual .photo-front{
-    position:absolute;
-    left:19px;
-    top:0;
-    width:96px;
-    height:160px;
-  }
-  /* la foto trasera solo se ve dentro del circulo del anillo */
-  .coach-visual .photo{filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));clip-path:circle(66px at 47.5px 102px);}
-  /* copia superior de la foto por delante del anillo, como en Figma (nodo 116:40416) */
-  .coach-visual .photo-front{clip-path:inset(0 0 51px 0);}
-  .coach-info{padding:0 20px;filter:drop-shadow(0 4px 2px rgba(0,0,0,.5));}
-  .coach-info h3{font-size:24px;font-weight:700;color:#f8f8f8;}
-  .coach-info p{font-size:16px;font-weight:700;color:#f8f8f8;}
-
-  /* CTA pill banner */
-  .cta-pills{
-    display:flex;
-    justify-content:center;
-    margin-top:28px;
-  }
-  .cta-pills-inner{
-    background:rgba(217,217,217,.1);
-    border-radius:130px;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:10px;
-  }
-  .pill{
-    padding:10px 20px;
-    border-radius:70px;
+  /* Legal intro */
+  .legal-intro{
+    color:var(--text-muted);
     font-size:14px;
-    font-weight:600;
-    white-space:nowrap;
-    display:inline-flex;
-    align-items:center;
-    gap:4px;
+    margin-top:16px;
   }
-  .pill-teal{background:rgba(255,255,255,.1);color:#f8f8f8;}
-  .pill-dark{background:var(--magenta);color:#f8f8f8;}
-  .pill-dark img{width:18px;height:18px;}
+
+  /* Legal accordion (misma base que FAQ) */
+  .legal-list{padding:0 20px;}
+  .legal-item{
+    border-bottom:1px solid #2a2a2a;
+    padding:16px 0;
+  }
+  .legal-item summary{
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    font-weight:600;
+    font-size:15px;
+    cursor:pointer;
+  }
+  .legal-item summary::-webkit-details-marker{display:none;}
+  .legal-item summary::after{
+    content:'▾';
+    color:var(--teal);
+    transition:transform .2s;
+    flex-shrink:0;
+  }
+  .legal-item[open] summary::after{transform:rotate(180deg);}
+  .legal-item p{
+    color:var(--text-muted);
+    font-size:13px;
+    margin-top:10px;
+  }
 
   /* Footer */
   footer{
@@ -274,7 +202,7 @@
   .footer-links summary::after{content:'▾';color:var(--teal);transition:transform .2s;}
   .footer-links details[open] summary::after{transform:rotate(180deg);}
   .footer-links a.plain{display:flex;justify-content:space-between;align-items:center;padding:10px 0;font-weight:600;font-size:14px;}
-  .footer-links a.plain::after{content:'>';color:var(--magenta);font-weight:700;font-size:14px;line-height:1;position:relative;top:1px;}
+  .footer-links a.plain::after{content:'›';color:var(--magenta);font-weight:700;font-size:16px;}
   .footer-links details ul{list-style:none;padding:8px 0 4px 8px;}
   .footer-links details ul li{padding:6px 0;}
   .footer-links details ul a{color:var(--text-muted);font-size:13px;}
@@ -323,7 +251,7 @@
     padding:10px 0;font-weight:600;font-size:14px;color:#fff;
     border-bottom:1px solid #2a2a2a;
   }
-  .drawer-item-plain::after{content:'>';color:var(--magenta);font-weight:700;font-size:14px;line-height:1;position:relative;top:1px;}
+  .drawer-item-plain::after{content:'›';color:var(--magenta);font-weight:700;font-size:16px;}
   .drawer-map{
     margin-top:24px;padding:10px 0;border-radius:20px;text-align:center;
   }
@@ -331,32 +259,30 @@
   .drawer-map h3 span{display:block;width:172px;height:3px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:8px auto 0;}
   .drawer-map p{color:#f8f8f8;font-size:14px;font-weight:600;}
   .contact-box{
-    background:rgba(30,30,30,.5);
-    border-radius:30px;
-    padding:20px 24px;
+    background:var(--card);
+    border-radius:16px;
+    padding:24px;
     margin-bottom:24px;
   }
-  .contact-box h4{font-size:18px;margin-bottom:8px;}
-  .contact-box .underline{width:172px;height:3px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:0 auto 8px;}
-  .contact-box p{color:#f8f8f8;font-size:12px;margin-bottom:16px;}
+  .contact-box h4{font-size:16px;margin-bottom:8px;}
+  .contact-box p{color:var(--text-muted);font-size:13px;margin-bottom:16px;}
   .whatsapp-btn{
-    background:rgba(51,219,219,.2);
-    color:#f8f8f8;
-    font-weight:600;
-    padding:10px 20px;
-    border-radius:80px;
+    background:#25D366;
+    color:#0d0d0d;
+    font-weight:700;
+    padding:12px 24px;
+    border-radius:30px;
     display:inline-flex;
     align-items:center;
-    gap:4px;
+    gap:8px;
     font-size:14px;
-    box-shadow:0 2px 6px rgba(0,0,0,.35);
   }
   .socials{
     display:flex;
     justify-content:center;
     gap:20px;
-    font-size:12px;
-    color:#fff;
+    font-size:13px;
+    color:var(--text-muted);
     margin-bottom:20px;
   }
   .legal-links{
@@ -375,13 +301,10 @@
   @media (min-width:900px){
     .app{max-width:none;box-shadow:none;}
     .container{max-width:1100px;margin:0 auto;}
-
-    .hero-card{padding:50px 60px;}
-    .hero-card .content{max-width:640px;margin:0 auto;text-align:center;}
-    .hero-card h1{font-size:32px;}
-
-    .benefits-grid{grid-template-columns:repeat(4,1fr);}
-
+    .help-title{max-width:900px;margin:0 auto;padding:24px 40px 0;}
+    .help-tabs{max-width:900px;margin:0 auto;padding:20px 40px 0;justify-content:flex-start;}
+    .help-tab{flex:none;}
+    .legal-list{max-width:900px;margin:0 auto;padding:0 40px;}
     footer{padding:60px 40px;}
     .footer-links{max-width:900px;}
   }
@@ -405,7 +328,7 @@
 <aside class="drawer" id="drawer" aria-hidden="true">
   <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú">✕</button>
   <nav class="drawer-nav">
-    <details open>
+    <details>
       <summary>Explora</summary>
       <ul>
         <li><a href="entrenamientos.html">Entrenamientos</a></li>
@@ -413,7 +336,7 @@
         <li><a href="testimonios.html">Testimonios</a></li>
       </ul>
     </details>
-    <details>
+    <details open>
       <summary>Ayuda y Contacto</summary>
       <ul>
         <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
@@ -429,77 +352,90 @@
   </div>
 </aside>
 
-<section class="discipline-page">
+<div class="help-title">
+  <h1>Centro de ayuda</h1>
+  <p class="help-updated">Última actualización: 1 de agosto de 2026</p>
+</div>
+
+<div class="help-tabs">
+  <a class="help-tab" href="preguntas-frecuentes.html">Preguntas frecuentes</a>
+  <a class="help-tab active" href="politica-privacidad.html">Políticas de Privacidad</a>
+  <a class="help-tab" href="politica-cookies.html">Política de Cookies</a>
+  <a class="help-tab" href="terminos-y-condiciones.html">Términos y Condiciones</a>
+</div>
+
+<section id="privacidad">
   <div class="container">
-    <a class="back-row" href="entrenamientos.html">
-      <img src="assets/icons/arrow-circle-left.svg" alt="">
-      Atrás
-    </a>
-
-    <div class="hero-card">
-      <img class="bg" src="assets/img/crossfit-hero.webp" alt="">
-      <div class="overlay"></div>
-      <div class="content">
-        <h1>Full Body</h1>
-        <div class="subtitle">Técnica, fuerza y potencia</div>
-        <p class="desc">Rutina de entrenamiento completo que trabaja todos los grupos musculares en una sola sesión, combinando fuerza y acondicionamiento.</p>
-      </div>
+    <div class="section-title" style="margin-bottom:0;">
+      <h2 style="font-size:18px;font-weight:800;">Política de Privacidad de Bisonte CrossFit</h2>
+      <p class="legal-intro">En Bisonte CrossFit nos importa proteger la privacidad y los datos personales de quienes visitan nuestro sitio web, solicitan información, reservan clases, compran planes o participan en nuestras actividades. Esta Política de Privacidad explica qué información recopilamos, para qué la utilizamos, con quién podría ser compartida y cómo puedes ejercer tus derechos.</p>
     </div>
-
-    <div class="info-card">
-      <h2>Horarios</h2>
-      <p>Martes y Jueves</p>
-      <p>06:00 · 07:00</p>
-    </div>
-
-    <div class="info-card">
-      <h2>¿Quiénes pueden entrenar?</h2>
-      <ul>
-        <li>Principiantes</li>
-        <li>Intermedios</li>
-        <li>Avanzados</li>
-      </ul>
-    </div>
-
-    <div class="section-title"><h2>Beneficios</h2></div>
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <img loading="lazy" src="assets/icons/benefit-heartbeat.svg" alt="">
-        <span>Mejora tu condición física general</span>
-      </div>
-      <div class="benefit-card">
-        <img loading="lazy" src="assets/icons/benefit-users.svg" alt="">
-        <span>Entrena en comunidad</span>
-      </div>
-      <div class="benefit-card">
-        <img loading="lazy" src="assets/icons/benefit-smiley.svg" alt="">
-        <span>Desarrolla técnica y coordinación</span>
-      </div>
-      <div class="benefit-card">
-        <img loading="lazy" src="assets/icons/benefit-chartlineup.svg" alt="">
-        <span>Aumenta tu fuerza</span>
-      </div>
-    </div>
-
-    <div class="section-title"><h2>Clases impartidas por</h2></div>
-    <div class="coach-row">
-      <div class="coach-visual">
-        <img loading="lazy" class="photo" src="assets/img/coach-sonia-bw.webp" alt="Sonia Madariaga">
-        <img class="ring" src="assets/icons/coach-ring.svg" alt="">
-        <img loading="lazy" class="photo-front" src="assets/img/coach-sonia-bw.webp" alt="" aria-hidden="true">
-      </div>
-      <div class="coach-info">
-        <h3>Sonia Madariaga</h3>
-        <p>Head Coach especializada</p>
-      </div>
-    </div>
-
-    <div class="cta-pills">
-      <div class="cta-pills-inner">
-        <a class="pill pill-teal" href="https://wa.me/56967374096?text=Quiero%20reservar%20una%20clase%20de%20Full%20Body" target="_blank" rel="noopener">Reserva tu clase</a>
-        <a class="pill pill-dark" href="clase-gratis.html?clase=full-body"><img src="assets/icons/cursor-click.svg" alt="">Clase gratis</a>
-      </div>
-    </div>
+  </div>
+  <div class="legal-list">
+    <details class="legal-item">
+      <summary>1. Responsable del tratamiento</summary>
+      <p>El responsable del tratamiento de tus datos personales es Bisonte CrossFit, con domicilio en Calle Uno 1050, San Miguel, Región Metropolitana. Puedes contactarnos por WhatsApp al +56 9 6737 4096 para cualquier consulta relacionada con esta política.</p>
+    </details>
+    <details class="legal-item">
+      <summary>2. Alcance de esta política</summary>
+      <p>Esta política aplica a los datos que recopilamos a través de nuestro sitio web, el formulario de clase gratis, WhatsApp, la plataforma BoxMagic y nuestras instalaciones físicas en San Miguel.</p>
+    </details>
+    <details class="legal-item">
+      <summary>3. Datos personales que podemos recopilar</summary>
+      <p>Podemos recopilar tu nombre, RUT, correo electrónico, teléfono, horario y clase de interés, mensajes que nos envíes, y de forma voluntaria, información sobre condiciones de salud relevantes para entrenar de forma segura.</p>
+    </details>
+    <details class="legal-item">
+      <summary>4. Finalidades del tratamiento</summary>
+      <p>Usamos tus datos para gestionar tu reserva de clase de prueba o clases regulares, contactarte, procesar pagos y planes, mejorar nuestros servicios y, si nos autorizas, enviarte comunicaciones comerciales sobre promociones o novedades.</p>
+    </details>
+    <details class="legal-item">
+      <summary>5. Fundamento para utilizar los datos</summary>
+      <p>Tratamos tus datos en base a tu consentimiento al completar un formulario o escribirnos, y en base a la ejecución del contrato de servicios cuando contratas un plan o clase con nosotros.</p>
+    </details>
+    <details class="legal-item">
+      <summary>6. Datos obligatorios y voluntarios</summary>
+      <p>Nombre, teléfono y la clase u horario de interés son datos obligatorios para agendar tu clase de prueba o reservar una sesión. Otros datos, como comentarios adicionales o condiciones de salud, son de entrega voluntaria.</p>
+    </details>
+    <details class="legal-item">
+      <summary>7. Uso de BoxMagic y proveedores externos</summary>
+      <p>Utilizamos BoxMagic como plataforma externa para la gestión de reservas y planes, y Google (Apps Script, Sheets y Analytics) para procesar el formulario de clase gratis y medir el uso de nuestro sitio web. Estos proveedores tratan tus datos conforme a sus propias políticas de privacidad.</p>
+    </details>
+    <details class="legal-item">
+      <summary>8. Transferencias y almacenamiento fuera de Chile</summary>
+      <p>Algunos de nuestros proveedores, como Google y BoxMagic, pueden almacenar y procesar información en servidores ubicados fuera de Chile. En estos casos, exigimos que dichos proveedores mantengan estándares adecuados de seguridad y confidencialidad.</p>
+    </details>
+    <details class="legal-item">
+      <summary>9. Conservación de los datos</summary>
+      <p>Conservamos tus datos mientras dure tu relación con Bisonte CrossFit y, posteriormente, durante los plazos que exija la normativa aplicable, por ejemplo para efectos tributarios o contables.</p>
+    </details>
+    <details class="legal-item">
+      <summary>10. Seguridad</summary>
+      <p>Adoptamos medidas razonables, técnicas y organizativas para proteger tus datos personales frente a accesos no autorizados, pérdida o uso indebido, aunque ningún sistema es completamente infalible.</p>
+    </details>
+    <details class="legal-item">
+      <summary>11. Derechos de las personas</summary>
+      <p>Puedes solicitar acceder, rectificar, cancelar u oponerte al tratamiento de tus datos personales (derechos ARCO) escribiéndonos por WhatsApp o a través de nuestras redes sociales, indicando tu nombre y la solicitud específica.</p>
+    </details>
+    <details class="legal-item">
+      <summary>12. Menores de edad</summary>
+      <p>Los datos de menores de edad solo se recopilan con la autorización de su padre, madre o apoderado, quien es responsable de la veracidad de la información entregada.</p>
+    </details>
+    <details class="legal-item">
+      <summary>13. Comunicaciones comerciales</summary>
+      <p>Solo te enviaremos comunicaciones comerciales por WhatsApp o correo electrónico si nos autorizas expresamente. Puedes retirar tu autorización en cualquier momento respondiendo el mensaje o contactándonos directamente.</p>
+    </details>
+    <details class="legal-item">
+      <summary>14. Enlaces externos</summary>
+      <p>Nuestro sitio incluye enlaces a Instagram, Facebook, WhatsApp y BoxMagic. El tratamiento de datos en esas plataformas se rige por las políticas de privacidad propias de cada una, que te recomendamos revisar.</p>
+    </details>
+    <details class="legal-item">
+      <summary>15. Modificaciones</summary>
+      <p>Podemos actualizar esta Política de Privacidad para reflejar cambios en nuestros servicios o en la normativa vigente. La fecha de la última actualización se indica en la parte superior de esta página.</p>
+    </details>
+    <details class="legal-item">
+      <summary>16. Contacto</summary>
+      <p>Si tienes dudas sobre el tratamiento de tus datos personales, escríbenos por WhatsApp al +56 9 6737 4096, visítanos en Calle Uno 1050, San Miguel, o síguenos en Instagram y Facebook como @Bisontecrossfit.</p>
+    </details>
   </div>
 </section>
 
@@ -522,7 +458,7 @@
         <li><a href="testimonios.html">Testimonios</a></li>
       </ul>
     </details>
-    <details>
+    <details open>
       <summary>Ayuda y Contacto</summary>
       <ul>
         <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
@@ -540,9 +476,8 @@
 
   <div class="contact-box">
     <h4>¿Tienes más dudas?</h4>
-    <div class="underline"></div>
     <p>Revisa todas nuestras preguntas o escríbenos directo a WhatsApp</p>
-    <a class="whatsapp-btn" href="https://wa.me/56967374096" target="_blank" rel="noopener"><img loading="lazy" src="assets/icons/whatsapp.svg" alt="" style="width:16px;height:16px;"> WhatsApp Bisonte</a>
+    <a class="whatsapp-btn" href="https://wa.me/56967374096" target="_blank" rel="noopener"><img loading="lazy" src="assets/icons/whatsapp.svg" alt="" style="width:18px;height:18px;"> WhatsApp Bisonte</a>
   </div>
 
   <div class="socials">
