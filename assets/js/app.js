@@ -3,6 +3,9 @@
    2) Puntos de paginacion de los carruseles: solo actua si la pagina
       tiene .dots[data-for]; en el resto recorre una lista vacia y no
       hace nada, por eso el mismo archivo sirve para las 14 paginas.
+   3) Eventos de GA4 sobre los CTA.
+   4) Formulario de clase gratis: solo actua si la pagina tiene
+      #freeClassForm (hoy solo clase-gratis.html).
    Se carga con defer, asi que corre con el DOM ya parseado. */
 (function(){
   var menuIcon = document.getElementById('menuIcon');
@@ -83,3 +86,236 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
     });
   }, {passive:true});
 });
+
+/* Eventos de GA4.
+   Un solo listener delegado en document cubre las 14 paginas sin tocar el
+   HTML. La intencion se deduce del propio href, asi que no hay que marcar
+   nada a mano ni recordar actualizarlo al agregar un CTA nuevo.
+   Se escucha en fase de captura para que el evento salga aunque algun otro
+   handler detenga la propagacion. */
+(function(){
+  var DISCIPLINAS = /^(crossfit|levantamiento-olimpico|hybrid|gymnastics|strongman|full-body|competidor|adulto-mayor)\.html$/;
+
+  function enviar(nombre, params){
+    // gtag existe siempre (lo define el snippet inline del <head>), pero si
+    // un bloqueador lo elimina, no queremos romper la navegacion.
+    if(typeof gtag !== 'function') return;
+    params.pagina = location.pathname;
+    gtag('event', nombre, params);
+  }
+
+  // De donde salio el clic, para saber que zona de la pagina convierte.
+  function origen(a){
+    if(a.closest('.tags-strip')) return 'marquee';
+    if(a.closest('.quick-actions')) return 'barra_fija';
+    if(a.closest('.cta-pills')) return 'cta_disciplina';
+    if(a.closest('.hero')) return 'hero';
+    if(a.closest('.drawer')) return 'menu';
+    if(a.closest('footer')) return 'footer';
+    return 'contenido';
+  }
+
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if(!a) return;
+    var href = a.getAttribute('href') || '';
+
+    // WhatsApp: es la unica via de contacto del sitio, o sea la conversion.
+    if(href.indexOf('wa.me/') !== -1){
+      var texto = '';
+      var q = href.split('?text=')[1];
+      if(q){ try { texto = decodeURIComponent(q); } catch(err){ texto = q; } }
+
+      var intencion = 'general';   // boton suelto de WhatsApp (footer, menu, dudas)
+      var detalle = '';
+      if(/clase gratis/i.test(texto)){
+        intencion = 'clase_gratis';
+      } else if(/^Quiero reservar una clase de /i.test(texto)){
+        intencion = 'reservar_clase';
+        detalle = texto.replace(/^Quiero reservar una clase de /i, '');
+      } else if(/^Quiero el /i.test(texto)){
+        intencion = 'plan';
+        detalle = texto.replace(/^Quiero el /i, '');
+      }
+
+      enviar('contacto_whatsapp', {intencion: intencion, detalle: detalle, origen: origen(a)});
+      return;
+    }
+
+    var d = href.match(DISCIPLINAS);
+    if(d){ enviar('ver_disciplina', {disciplina: d[1], origen: origen(a)}); return; }
+
+    if(href.indexOf('instagram.com') !== -1){ enviar('click_social', {red: 'instagram'}); return; }
+    if(href.indexOf('facebook.com') !== -1){ enviar('click_social', {red: 'facebook'}); return; }
+    if(href.indexOf('boxmagic') !== -1){ enviar('click_boxmagic', {}); return; }
+  }, true);
+})();
+
+/* Formulario "Prueba tu clase gratis" (clase-gratis.html).
+   Igual que el bloque de los dots: en las paginas que no tienen el
+   formulario sale en la primera linea y no hace nada.
+   La URL de la Web App de Apps Script se lee del atributo data-endpoint
+   del <form>, para no tener que tocar este archivo si cambia. */
+(function(){
+  var form = document.getElementById('freeClassForm');
+  if(!form) return;
+
+  var statusEl = document.getElementById('freeClassStatus');
+  var successEl = document.getElementById('freeClassSuccess');
+  var submitBtn = document.getElementById('freeClassSubmit');
+  var submitLabel = submitBtn.querySelector('span');
+  var claseSel = form.elements.clase;
+  var horarioSel = form.elements.horario;
+  var rutInput = form.elements.rut;
+  var horarioOpts = Array.from(horarioSel.options);
+  var whatsapp = form.dataset.whatsapp || 'https://wa.me/56967374096';
+
+  /* --- RUT: formato y digito verificador (modulo 11) --- */
+  function rutLimpio(v){ return String(v).replace(/[^0-9kK]/g, '').toUpperCase(); }
+
+  function rutFormateado(v){
+    var r = rutLimpio(v);
+    if(r.length < 2) return r;
+    var cuerpo = r.slice(0, -1);
+    return cuerpo.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '-' + r.slice(-1);
+  }
+
+  function rutValido(v){
+    var r = rutLimpio(v);
+    if(r.length < 7 || r.length > 9) return false;
+    var cuerpo = r.slice(0, -1);
+    if(!/^\d+$/.test(cuerpo)) return false;
+    var suma = 0;
+    var mult = 2;
+    for(var i = cuerpo.length - 1; i >= 0; i--){
+      suma += parseInt(cuerpo.charAt(i), 10) * mult;
+      mult = mult === 7 ? 2 : mult + 1;
+    }
+    var resto = 11 - (suma % 11);
+    var dv = resto === 11 ? '0' : resto === 10 ? 'K' : String(resto);
+    return r.slice(-1) === dv;
+  }
+
+  rutInput.addEventListener('blur', function(){
+    if(rutInput.value.trim()) rutInput.value = rutFormateado(rutInput.value);
+  });
+
+  /* --- Los horarios dependen de la clase elegida --- */
+  function filtrarHorarios(){
+    var clase = claseSel.value;
+    horarioOpts.forEach(function(opt){
+      if(!opt.value) return;                       // el placeholder siempre queda
+      var soloDe = opt.dataset.clase;              // sin data-clase = sirve para todas
+      var visible = !soloDe || soloDe === clase;
+      opt.hidden = !visible;
+      opt.disabled = !visible;
+    });
+    var actual = horarioSel.options[horarioSel.selectedIndex];
+    if(actual && actual.disabled) horarioSel.value = '';
+    horarioOpts[0].textContent = clase ? 'Selecciona un horario' : 'Primero elige una clase';
+  }
+  claseSel.addEventListener('change', function(){
+    filtrarHorarios();
+    marcarError(claseSel, false);
+  });
+
+  // Permite enlazar clase-gratis.html?clase=CrossFit desde las paginas de disciplina.
+  var claseInicial = new URLSearchParams(location.search).get('clase');
+  if(claseInicial){
+    Array.from(claseSel.options).forEach(function(opt){
+      if(opt.value.toLowerCase() === claseInicial.toLowerCase()) claseSel.value = opt.value;
+    });
+  }
+  filtrarHorarios();
+
+  /* --- Validacion --- */
+  function marcarError(campo, hayError){
+    var cont = campo.closest('.form-field');
+    if(cont) cont.classList.toggle('has-error', hayError);
+  }
+
+  function validar(){
+    var errores = [];
+    var nombre = form.elements.nombre;
+    var email = form.elements.email;
+    var telefono = form.elements.telefono;
+
+    var malNombre = nombre.value.trim().length < 3;
+    var malRut = !rutValido(rutInput.value);
+    var malEmail = !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim());
+    var malTelefono = telefono.value.trim() !== '' && telefono.value.replace(/\D/g, '').length < 8;
+    var malClase = !claseSel.value;
+    var malHorario = !horarioSel.value;
+
+    marcarError(nombre, malNombre);
+    marcarError(rutInput, malRut);
+    marcarError(email, malEmail);
+    marcarError(telefono, malTelefono);
+    marcarError(claseSel, malClase);
+    marcarError(horarioSel, malHorario);
+
+    [[malNombre, nombre], [malRut, rutInput], [malEmail, email],
+     [malTelefono, telefono], [malClase, claseSel], [malHorario, horarioSel]]
+      .forEach(function(par){ if(par[0]) errores.push(par[1]); });
+
+    if(errores.length) errores[0].focus();
+    return errores.length === 0;
+  }
+
+  form.addEventListener('input', function(e){
+    if(e.target.closest('.form-field.has-error')) marcarError(e.target, false);
+  });
+
+  /* --- Envio --- */
+  function mostrarEstado(tipo, html){
+    statusEl.className = 'form-status show ' + tipo;
+    statusEl.innerHTML = html;
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    statusEl.className = 'form-status';
+    if(!validar()) return;
+
+    var endpoint = (form.dataset.endpoint || '').trim();
+    if(!endpoint){
+      mostrarEstado('fail', 'Falta pegar la URL de la Web App en el atributo <b>data-endpoint</b> del formulario.');
+      return;
+    }
+
+    var datos = {};
+    new FormData(form).forEach(function(valor, campo){
+      datos[campo] = typeof valor === 'string' ? valor.trim() : valor;
+    });
+
+    submitBtn.disabled = true;
+    submitLabel.textContent = 'Enviando...';
+
+    /* Los datos van dos veces a proposito: en la query string (Apps Script los
+       expone en e.parameter) y en el body como JSON (e.postData.contents), asi
+       el doPost funciona lea como lea. El Content-Type text/plain evita el
+       preflight CORS, que Apps Script no responde. */
+    var url = endpoint + (endpoint.indexOf('?') === -1 ? '?' : '&') + new URLSearchParams(datos).toString();
+
+    fetch(url, {
+      method: 'POST',
+      headers: {'Content-Type': 'text/plain;charset=utf-8'},
+      body: JSON.stringify(datos)
+    })
+    .then(function(res){
+      if(!res.ok) throw new Error('HTTP ' + res.status);
+      form.style.display = 'none';
+      statusEl.className = 'form-status';
+      successEl.classList.add('show');
+      successEl.scrollIntoView({behavior: 'smooth', block: 'center'});
+      if(typeof gtag === 'function'){
+        gtag('event', 'clase_gratis_enviada', {clase: datos.clase, horario: datos.horario});
+      }
+    })
+    .catch(function(){
+      submitBtn.disabled = false;
+      submitLabel.textContent = 'Agendar mi clase gratis';
+      mostrarEstado('fail', 'No pudimos enviar tu solicitud. Intenta de nuevo o escríbenos por <a href="' + whatsapp + '" target="_blank" rel="noopener">WhatsApp</a>.');
+    });
+  });
+})();
