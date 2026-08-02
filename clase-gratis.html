@@ -12,20 +12,20 @@
 
   gtag('config', 'G-0TLJMCT3TZ');
 </script>
-<meta name="description" content="Todas las disciplinas de Bisonte CrossFit en San Miguel: CrossFit, Levantamiento Olímpico, Hybrid, Gymnastics, StrongMan, Full Body, Competidor y Adulto Mayor. Revisa horarios y niveles.">
+<meta name="description" content="Agenda tu primera clase gratis en Bisonte CrossFit, San Miguel. Elige la disciplina y el horario que te acomode y te confirmamos por WhatsApp.">
 <meta property="og:site_name" content="Bisonte CrossFit">
-<meta property="og:title" content="Todos los entrenamientos · Bisonte CrossFit">
-<meta property="og:description" content="Todas las disciplinas de Bisonte CrossFit en San Miguel: CrossFit, Levantamiento Olímpico, Hybrid, Gymnastics, StrongMan, Full Body, Competidor y Adulto Mayor. Revisa horarios y niveles.">
+<meta property="og:title" content="Prueba tu clase gratis · Bisonte CrossFit">
+<meta property="og:description" content="Agenda tu primera clase gratis en Bisonte CrossFit, San Miguel. Elige la disciplina y el horario que te acomode y te confirmamos por WhatsApp.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CL">
-<meta property="og:url" content="https://bisontecrossfit.cl/entrenamientos.html">
+<meta property="og:url" content="https://bisontecrossfit.cl/clase-gratis.html">
 <meta property="og:image" content="https://bisontecrossfit.cl/assets/img/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="La comunidad de Bisonte CrossFit reunida en el box de San Miguel">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#131313">
-<title>Todos los entrenamientos · Bisonte CrossFit</title>
+<title>Prueba tu clase gratis · Bisonte CrossFit</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,400&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -78,26 +78,6 @@
   .logo-nav{display:flex;align-items:center;}
   .logo-nav img{height:34px;width:auto;display:block;}
 
-  /* Section titles */
-  .section-title{
-    display:flex;
-    justify-content:space-between;
-    align-items:baseline;
-    margin-bottom:16px;
-  }
-  .section-title h2{
-    font-size:20px;
-    font-weight:800;
-    display:inline-block;
-    padding-bottom:8px;
-    background:url('assets/img/line-underline.svg') left bottom no-repeat;
-    background-size:70px 4px;
-  }
-  .section-title .see-all{
-    font-size:13px;
-    color:var(--text-muted);
-  }
-
   /* Page title */
   .page-title{padding-top:12px;}
   .page-title h1{
@@ -107,6 +87,11 @@
     padding-bottom:8px;
     background:url('assets/img/line-underline.svg') left bottom no-repeat;
     background-size:70px 4px;
+  }
+  .page-title .intro{
+    color:var(--text-muted);
+    font-size:14px;
+    margin-top:16px;
   }
   .meta-row{
     display:flex;
@@ -125,67 +110,140 @@
   .meta-row .meta-item img{width:14px;height:14px;}
   .meta-row .dot-sep{color:var(--text-muted);}
 
-  /* Training list */
-  .training-list{
+  /* Tarjeta informativa */
+  .info-card{
+    background:#1e1e1e;
+    border:1px solid #000;
+    border-radius:30px;
+    padding:20px;
     display:flex;
-    flex-direction:column;
-    gap:14px;
+    align-items:center;
+    gap:10px;
+    box-shadow:0 2px 6px rgba(0,0,0,.35);
     margin-top:24px;
   }
-  .training-card{
-    display:block;
-    background:var(--card);
-    border-radius:16px;
-    padding:20px;
-    position:relative;
-    overflow:hidden;
-  }
-  .training-card .card-icon{
-    position:absolute;
-    right:-10px;
-    bottom:-10px;
-    width:110px;
-    height:auto;
-    opacity:.5;
-    z-index:0;
-    pointer-events:none;
-  }
-  .training-card .card-body{position:relative;z-index:1;}
-  .training-card .card-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-  }
-  .training-card h3{color:var(--teal);font-size:17px;font-weight:800;}
-  .training-card .card-head img{width:20px;height:20px;flex-shrink:0;}
-  .training-card p{color:var(--text-muted);font-size:13px;margin-top:8px;}
-  .training-card .schedule{color:var(--teal);font-size:12px;font-weight:600;margin-top:10px;}
+  .info-card img{width:32px;height:32px;flex-shrink:0;}
+  .info-card h3{font-size:16px;margin-bottom:4px;}
+  .info-card p{color:var(--text-muted);font-size:13px;}
 
-  /* CTA banner */
-  .cta-banner{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:12px;
+  /* Formulario clase gratis */
+  .form-card{
     background:var(--card);
     border-radius:16px;
-    padding:14px 18px;
-    margin-top:28px;
+    padding:22px 20px;
+    margin-top:24px;
   }
-  .cta-banner .cta-label{font-size:14px;font-weight:700;}
-  .cta-banner .btn-cta{
-    display:inline-flex;
+  /* El espaciado sale del gap del form; nada de margenes entre campos. */
+  #freeClassForm{display:flex;flex-direction:column;gap:16px;}
+  .form-row{display:grid;gap:16px;}
+  .form-field{display:flex;flex-direction:column;}
+  .form-field label{
+    font-size:13px;
+    font-weight:600;
+    color:#f8f8f8;
+    margin-bottom:6px;
+  }
+  .form-field label .req{color:var(--magenta);}
+  .form-field input,
+  .form-field select,
+  .form-field textarea{
+    width:100%;
+    background:#181818;
+    border:1px solid #2a2a2a;
+    border-radius:14px;
+    padding:13px 16px;
+    color:var(--text);
+    font-family:inherit;
+    font-size:14px;
+    line-height:1.3;
+    transition:border-color .2s, box-shadow .2s;
+  }
+  .form-field textarea{min-height:96px;resize:vertical;}
+  .form-field input::placeholder,
+  .form-field textarea::placeholder{color:#6f6f6f;}
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus{
+    outline:none;
+    border-color:var(--teal);
+    box-shadow:0 0 0 3px rgba(51,219,219,.15);
+  }
+  .form-field select{
+    -webkit-appearance:none;
+    appearance:none;
+    cursor:pointer;
+    padding-right:42px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1.5 6 6.5 11 1.5' stroke='%2333DBDB' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat:no-repeat;
+    background-position:right 16px center;
+  }
+  .form-field select option{background:#1f1f1f;color:var(--text);}
+  .form-field select:invalid{color:#6f6f6f;}
+  .form-field.has-error input,
+  .form-field.has-error select,
+  .form-field.has-error textarea{border-color:#ff5c8a;}
+  .form-field .error-msg{
+    display:none;
+    font-size:11px;
+    color:#ff5c8a;
+    margin-top:6px;
+  }
+  .form-field.has-error .error-msg{display:block;}
+  .btn-submit{
+    display:flex;
     align-items:center;
+    justify-content:center;
     gap:8px;
+    width:100%;
+    margin-top:6px;
     background:linear-gradient(90deg,var(--magenta),#e63cc9);
     color:#fff;
+    font-family:inherit;
     font-weight:700;
-    font-size:14px;
-    padding:12px 20px;
+    font-size:15px;
+    padding:15px 20px;
+    border:none;
     border-radius:30px;
+    cursor:pointer;
+    box-shadow:0 2px 3px rgba(0,0,0,.35);
+    transition:opacity .2s;
   }
-  .cta-banner .btn-cta img{width:16px;height:16px;}
+  .btn-submit img{width:16px;height:16px;}
+  .btn-submit:hover{opacity:.92;}
+  .btn-submit[disabled]{opacity:.6;cursor:progress;}
+  .form-note{
+    font-size:11px;
+    color:var(--text-muted);
+    text-align:center;
+  }
+  .form-status{
+    display:none;
+    border-radius:14px;
+    padding:14px 16px;
+    font-size:13px;
+    margin-top:18px;
+  }
+  .form-status.show{display:block;}
+  .form-status.ok{
+    background:rgba(51,219,219,.1);
+    border:1px solid var(--teal);
+    color:#d7fbfb;
+  }
+  .form-status.fail{
+    background:rgba(255,92,138,.08);
+    border:1px solid #ff5c8a;
+    color:#ffd6e1;
+  }
+  .form-status a{color:var(--teal);text-decoration:underline;}
+  .form-success{
+    display:none;
+    text-align:center;
+    padding:10px 0 4px;
+  }
+  .form-success.show{display:block;}
+  .form-success img{width:44px;height:44px;margin-bottom:12px;}
+  .form-success h3{font-size:18px;margin-bottom:8px;}
+  .form-success p{color:var(--text-muted);font-size:14px;margin-bottom:18px;}
 
   /* Footer */
   footer{
@@ -311,22 +369,15 @@
     gap:20px;
     font-size:13px;
     color:var(--text-muted);
-    margin-bottom:20px;
   }
 
   /* Desktop */
   @media (min-width:900px){
     .app{max-width:none;box-shadow:none;}
     .container{max-width:1100px;margin:0 auto;}
-
-    .page-title h1{font-size:30px;}
-
-    .training-list{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:20px;
-    }
-
+    .page-title{max-width:720px;margin:0 auto;padding:20px 40px 60px;}
+    .form-card{padding:32px;}
+    .form-row{grid-template-columns:1fr 1fr;}
     footer{padding:60px 40px;}
     .footer-links{max-width:900px;}
   }
@@ -350,7 +401,7 @@
 <aside class="drawer" id="drawer" aria-hidden="true">
   <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú">✕</button>
   <nav class="drawer-nav">
-    <details open>
+    <details>
       <summary>Explora</summary>
       <ul>
         <li><a href="entrenamientos.html">Entrenamientos</a></li>
@@ -361,7 +412,7 @@
     <details>
       <summary>Ayuda y Contacto</summary>
       <ul>
-        <li><a href="index.html#preguntas">Preguntas frecuentes</a></li>
+        <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
         <li><a href="https://wa.me/56967374096" target="_blank" rel="noopener">WhatsApp</a></li>
         <li><a href="como-llegar.html">Ubicación</a></li>
       </ul>
@@ -376,110 +427,131 @@
 
 <section class="page-title">
   <div class="container">
-    <h1>Todos los entrenamientos<span></span></h1>
+    <h1>Prueba tu clase gratis</h1>
+    <p class="intro">Déjanos tus datos y te confirmamos el cupo por WhatsApp. Tu primera clase no tiene costo ni compromiso: solo trae ropa cómoda y ganas de empezar.</p>
     <div class="meta-row">
       <span class="meta-item"><img src="assets/icons/seal-check.svg" alt="">Todos los niveles</span>
       <span class="dot-sep">·</span>
       <span class="meta-item"><img src="assets/icons/graduation-cap.svg" alt="">Entrenadores certificados</span>
     </div>
 
-    <div class="training-list">
-      <a class="training-card" href="crossfit.html">
-        <img loading="lazy" class="card-icon" src="assets/icons/discipline-crossfit.svg" alt="">
-        <div class="card-body">
-          <div class="card-head">
-            <h3>CrossFit</h3>
-            <img src="assets/icons/chevron-right.svg" alt="">
-          </div>
-          <p>Fuerza, resistencia y comunidad en cada clase</p>
-          <div class="schedule">Lunes a Viernes 06:00 · 07:00 · 08:00 · 17:15 · 18:15 · 19:15</div>
-        </div>
-      </a>
-      <a class="training-card" href="hybrid.html">
-        <img loading="lazy" class="card-icon" src="assets/icons/discipline-hybrid.svg" alt="">
-        <div class="card-body">
-          <div class="card-head">
-            <h3>Hyrox / Hybrid</h3>
-            <img src="assets/icons/chevron-right.svg" alt="">
-          </div>
-          <p>Control y fuerza corporal</p>
-          <div class="schedule">Martes y Jueves 18:15 · 19:15</div>
-        </div>
-      </a>
-      <a class="training-card" href="levantamiento-olimpico.html">
-        <img loading="lazy" class="card-icon" src="assets/icons/discipline-levantamiento.svg" alt="">
-        <div class="card-body">
-          <div class="card-head">
-            <h3>Levantamiento Olímpico</h3>
-            <img src="assets/icons/chevron-right.svg" alt="">
-          </div>
-          <p>Técnica, fuerza y potencia</p>
-          <div class="schedule">Lunes, Miércoles 20:15 y Viernes 19:15</div>
-        </div>
-      </a>
-      <a class="training-card" href="gymnastics.html">
-        <img loading="lazy" class="card-icon" src="assets/icons/discipline-gymnastics.svg" alt="">
-        <div class="card-body">
-          <div class="card-head">
-            <h3>Gymnastics</h3>
-            <img src="assets/icons/chevron-right.svg" alt="">
-          </div>
-          <p>Control y fuerza corporal</p>
-          <div class="schedule">Lunes, Miércoles 19:15 y Viernes 18:15</div>
-        </div>
-      </a>
-      <a class="training-card" href="adulto-mayor.html">
-        <img loading="lazy" class="card-icon" src="assets/icons/discipline-adultomayor.svg" alt="">
-        <div class="card-body">
-          <div class="card-head">
-            <h3>Adulto Mayor</h3>
-            <img src="assets/icons/chevron-right.svg" alt="">
-          </div>
-          <p>Control y fuerza corporal</p>
-          <div class="schedule">Martes y Jueves 17:00</div>
-        </div>
-      </a>
-      <a class="training-card" href="strongman.html">
-        <img loading="lazy" class="card-icon" src="assets/icons/discipline-strongman.svg" alt="">
-        <div class="card-body">
-          <div class="card-head">
-            <h3>StrongMan</h3>
-            <img src="assets/icons/chevron-right.svg" alt="">
-          </div>
-          <p>Fuerza, resistencia y comunidad en cada clase</p>
-          <div class="schedule">Martes y Jueves 20:15</div>
-        </div>
-      </a>
-      <a class="training-card" href="full-body.html">
-        <img loading="lazy" class="card-icon" src="assets/icons/discipline-fullbody.svg" alt="">
-        <div class="card-body">
-          <div class="card-head">
-            <h3>Full Body</h3>
-            <img src="assets/icons/chevron-right.svg" alt="">
-          </div>
-          <p>Técnica, fuerza y potencia</p>
-          <div class="schedule">Martes y Jueves 06:00 · 07:00</div>
-        </div>
-      </a>
-      <a class="training-card" href="competidor.html">
-        <img loading="lazy" class="card-icon" src="assets/icons/discipline-competidor.svg" alt="">
-        <div class="card-body">
-          <div class="card-head">
-            <h3>Competidor</h3>
-            <img src="assets/icons/chevron-right.svg" alt="">
-          </div>
-          <p>Control y fuerza corporal</p>
-          <div class="schedule">Sábados 10:30</div>
-        </div>
-      </a>
+    <div class="info-card">
+      <img loading="lazy" src="assets/icons/sneaker-move.svg" alt="">
+      <div>
+        <h3>Sin costo y sin compromiso</h3>
+        <p>Calle Uno 1050, San Miguel · a pasos del Metro Departamental</p>
+      </div>
     </div>
 
-    <div class="cta-banner">
-      <span class="cta-label">Reserva tu clase</span>
-      <a class="btn-cta" href="clase-gratis.html">
-        <img src="assets/icons/cursor-click.svg" alt="">
-        Clase gratis
-      </a>
+    <div class="form-card">
+      <!-- data-endpoint: URL /exec de la Web App de Google Apps Script.
+           Es el unico lugar donde hay que pegarla; el envio vive en assets/js/app.js. -->
+      <form id="freeClassForm" novalidate
+            data-endpoint=""
+            data-whatsapp="https://wa.me/56967374096?text=Quiero%20mi%20clase%20gratis">
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="f-nombre">Nombre completo <span class="req">*</span></label>
+            <input id="f-nombre" name="nombre" type="text" autocomplete="name" placeholder="Ej: Camila Rojas" required>
+            <span class="error-msg">Escribe tu nombre y apellido.</span>
+          </div>
+          <div class="form-field">
+            <label for="f-rut">RUT <span class="req">*</span></label>
+            <input id="f-rut" name="rut" type="text" inputmode="text" placeholder="12.345.678-9" required>
+            <span class="error-msg">Revisa el RUT, no parece válido.</span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="f-email">Email <span class="req">*</span></label>
+            <input id="f-email" name="email" type="email" autocomplete="email" placeholder="tucorreo@mail.com" required>
+            <span class="error-msg">Revisa el email, falta algo.</span>
+          </div>
+          <div class="form-field">
+            <label for="f-telefono">Teléfono</label>
+            <input id="f-telefono" name="telefono" type="tel" autocomplete="tel" placeholder="+56 9 1234 5678">
+            <span class="error-msg">Revisa el teléfono.</span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="f-clase">¿Qué clase quieres probar? <span class="req">*</span></label>
+          <!-- data-slug: permite enlazar clase-gratis.html?clase=<slug> desde cada
+               pagina de disciplina. El slug es el nombre del archivo de esa pagina. -->
+          <select id="f-clase" name="clase" required>
+            <option value="" selected disabled>Selecciona una clase</option>
+            <option value="CrossFit" data-slug="crossfit">CrossFit</option>
+            <option value="Hyrox / Hybrid" data-slug="hybrid">Hyrox / Hybrid</option>
+            <option value="Levantamiento Olímpico" data-slug="levantamiento-olimpico">Levantamiento Olímpico</option>
+            <option value="Gymnastics" data-slug="gymnastics">Gymnastics</option>
+            <option value="StrongMan" data-slug="strongman">StrongMan</option>
+            <option value="Full Body" data-slug="full-body">Full Body</option>
+            <option value="Adulto Mayor" data-slug="adulto-mayor">Adulto Mayor</option>
+            <option value="Competidor" data-slug="competidor">Competidor</option>
+            <option value="Aún no lo sé">Aún no lo sé, quiero orientación</option>
+          </select>
+          <span class="error-msg">Elige una clase.</span>
+        </div>
+
+        <div class="form-field">
+          <label for="f-horario">Horario que te acomoda <span class="req">*</span></label>
+          <!-- data-clase filtra las opciones segun la clase elegida (ver app.js).
+               Los horarios son los mismos de entrenamientos.html: si cambian alla, cambian aca. -->
+          <select id="f-horario" name="horario" required>
+            <option value="" selected disabled>Primero elige una clase</option>
+
+            <option value="Lunes a Viernes 06:00" data-clase="CrossFit">Lunes a Viernes · 06:00</option>
+            <option value="Lunes a Viernes 07:00" data-clase="CrossFit">Lunes a Viernes · 07:00</option>
+            <option value="Lunes a Viernes 08:00" data-clase="CrossFit">Lunes a Viernes · 08:00</option>
+            <option value="Lunes a Viernes 17:15" data-clase="CrossFit">Lunes a Viernes · 17:15</option>
+            <option value="Lunes a Viernes 18:15" data-clase="CrossFit">Lunes a Viernes · 18:15</option>
+            <option value="Lunes a Viernes 19:15" data-clase="CrossFit">Lunes a Viernes · 19:15</option>
+
+            <option value="Martes y Jueves 18:15" data-clase="Hyrox / Hybrid">Martes y Jueves · 18:15</option>
+            <option value="Martes y Jueves 19:15" data-clase="Hyrox / Hybrid">Martes y Jueves · 19:15</option>
+
+            <option value="Lunes y Miércoles 20:15" data-clase="Levantamiento Olímpico">Lunes y Miércoles · 20:15</option>
+            <option value="Viernes 19:15" data-clase="Levantamiento Olímpico">Viernes · 19:15</option>
+
+            <option value="Lunes y Miércoles 19:15" data-clase="Gymnastics">Lunes y Miércoles · 19:15</option>
+            <option value="Viernes 18:15" data-clase="Gymnastics">Viernes · 18:15</option>
+
+            <option value="Martes y Jueves 20:15" data-clase="StrongMan">Martes y Jueves · 20:15</option>
+
+            <option value="Martes y Jueves 06:00" data-clase="Full Body">Martes y Jueves · 06:00</option>
+            <option value="Martes y Jueves 07:00" data-clase="Full Body">Martes y Jueves · 07:00</option>
+
+            <option value="Martes y Jueves 17:00" data-clase="Adulto Mayor">Martes y Jueves · 17:00</option>
+
+            <option value="Sábados 10:30" data-clase="Competidor">Sábados · 10:30</option>
+
+            <option value="Por coordinar">Prefiero coordinarlo por WhatsApp</option>
+          </select>
+          <span class="error-msg">Elige un horario.</span>
+        </div>
+
+        <div class="form-field">
+          <label for="f-mensaje">Mensaje (opcional)</label>
+          <textarea id="f-mensaje" name="mensaje" maxlength="500" placeholder="¿Vienes desde cero? ¿Alguna lesión que debamos saber? Cuéntanos."></textarea>
+        </div>
+
+        <button class="btn-submit" type="submit" id="freeClassSubmit">
+          <img src="assets/icons/cursor-click.svg" alt="">
+          <span>Agendar mi clase gratis</span>
+        </button>
+        <p class="form-note">Usamos tus datos solo para contactarte y coordinar la clase.</p>
+      </form>
+
+      <div class="form-status" id="freeClassStatus" role="status" aria-live="polite"></div>
+
+      <div class="form-success" id="freeClassSuccess">
+        <img src="assets/icons/seal-check.svg" alt="">
+        <h3>¡Listo! Recibimos tu solicitud</h3>
+        <p>Te escribimos por WhatsApp para confirmar el cupo y el horario. Nos vemos pronto en el box.</p>
+        <a class="whatsapp-btn" href="https://wa.me/56967374096?text=Acabo%20de%20agendar%20mi%20clase%20gratis" target="_blank" rel="noopener"><img loading="lazy" src="assets/icons/whatsapp.svg" alt="" style="width:18px;height:18px;"> Escríbenos ahora</a>
+      </div>
     </div>
   </div>
 </section>
@@ -506,7 +578,7 @@
     <details>
       <summary>Ayuda y Contacto</summary>
       <ul>
-        <li><a href="index.html#preguntas">Preguntas frecuentes</a></li>
+        <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
         <li><a href="https://wa.me/56967374096" target="_blank" rel="noopener">WhatsApp</a></li>
         <li><a href="como-llegar.html">Ubicación</a></li>
       </ul>

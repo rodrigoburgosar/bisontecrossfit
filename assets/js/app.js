@@ -109,6 +109,7 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
     if(a.closest('.tags-strip')) return 'marquee';
     if(a.closest('.quick-actions')) return 'barra_fija';
     if(a.closest('.cta-pills')) return 'cta_disciplina';
+    if(a.closest('.cta-banner')) return 'cta_listado';
     if(a.closest('.hero')) return 'hero';
     if(a.closest('.drawer')) return 'menu';
     if(a.closest('footer')) return 'footer';
@@ -142,6 +143,15 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
       return;
     }
 
+    /* Clase gratis: antes era un link a WhatsApp y caia en contacto_whatsapp.
+       Ahora es la pagina del formulario, asi que se mide aparte. El embudo
+       queda: ver_clase_gratis (clic) -> clase_gratis_enviada (formulario ok). */
+    if(href.indexOf('clase-gratis.html') === 0){
+      var slug = href.split('?clase=')[1] || '';
+      enviar('ver_clase_gratis', {disciplina: slug, origen: origen(a)});
+      return;
+    }
+
     var d = href.match(DISCIPLINAS);
     if(d){ enviar('ver_disciplina', {disciplina: d[1], origen: origen(a)}); return; }
 
@@ -164,6 +174,7 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
   var successEl = document.getElementById('freeClassSuccess');
   var submitBtn = document.getElementById('freeClassSubmit');
   var submitLabel = submitBtn.querySelector('span');
+  var submitTexto = submitLabel.textContent;
   var claseSel = form.elements.clase;
   var horarioSel = form.elements.horario;
   var rutInput = form.elements.rut;
@@ -219,11 +230,15 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
     marcarError(claseSel, false);
   });
 
-  // Permite enlazar clase-gratis.html?clase=CrossFit desde las paginas de disciplina.
-  var claseInicial = new URLSearchParams(location.search).get('clase');
+  /* Preselecciona la disciplina si vienen por clase-gratis.html?clase=<slug>.
+     Acepta el slug (crossfit, full-body...) o el nombre visible de la opcion. */
+  var claseInicial = (new URLSearchParams(location.search).get('clase') || '').toLowerCase();
   if(claseInicial){
     Array.from(claseSel.options).forEach(function(opt){
-      if(opt.value.toLowerCase() === claseInicial.toLowerCase()) claseSel.value = opt.value;
+      if(!opt.value) return;
+      if(opt.value.toLowerCase() === claseInicial || opt.dataset.slug === claseInicial){
+        claseSel.value = opt.value;
+      }
     });
   }
   filtrarHorarios();
@@ -314,7 +329,7 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
     })
     .catch(function(){
       submitBtn.disabled = false;
-      submitLabel.textContent = 'Agendar mi clase gratis';
+      submitLabel.textContent = submitTexto;
       mostrarEstado('fail', 'No pudimos enviar tu solicitud. Intenta de nuevo o escríbenos por <a href="' + whatsapp + '" target="_blank" rel="noopener">WhatsApp</a>.');
     });
   });
