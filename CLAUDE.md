@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Resumen del proyecto
 
-Sitio de marketing estático para Bisonte CrossFit (un box de CrossFit en San Miguel, Chile). HTML/CSS/JS plano — sin framework, sin bundler, sin gestor de paquetes, sin build. Cada página lleva su `<style>` inline (no hay stylesheet compartido), pero el JS **sí** está centralizado en `assets/js/app.js`, que las 15 páginas cargan con `<script defer src>` al final del `<body>`. Recursos externos: la hoja de Google Fonts enlazada desde `index.html` y el tag de Google Analytics (GA4 `G-0TLJMCT3TZ`), presente en el `<head>` de las 15 páginas justo después del `<meta name="viewport">`.
+Sitio de marketing estático para Bisonte CrossFit (un box de CrossFit en San Miguel, Chile). HTML/CSS/JS plano — sin framework, sin bundler, sin gestor de paquetes, sin build. Cada página lleva su `<style>` inline (no hay stylesheet compartido), pero el JS **sí** está centralizado en `assets/js/app.js`, que las 15 páginas cargan con `<script defer src>` al final del `<body>`. Recursos externos: la hoja de Google Fonts enlazada desde `index.html` y el contenedor de Google Tag Manager (`GTM-WVD4NKS4`), presente en el `<head>` de las 18 páginas justo después del `<meta name="viewport">` (más su `<noscript>` al inicio del `<body>`). **GTM es la única vía de medición**: no hay snippet de `gtag.js` en el HTML, y GA4 se dispara desde dentro del contenedor. Los eventos personalizados de `app.js` se empujan a `window.dataLayer` como `{event:'<nombre>', ...params}` y necesitan un trigger de Custom Event en GTM para llegar a GA4 — ver "Eventos de conversión".
 
 ## Ejecutar / previsualizar
 
@@ -23,7 +23,7 @@ y visita `http://localhost:8000/index.html`. No hay lint ni tests configurados.
 - `entrenamientos.html` — todas las disciplinas/clases
 - `planes.html` — todos los planes de precios
 - `testimonios.html` — todos los testimonios
-- `preguntas-frecuentes.html` — FAQ completo
+- `preguntas-frecuentes.html` — FAQ completo. Lleva un `<script type="application/ld+json">` con el `FAQPage` de schema.org en el `<head>`: es una **copia literal** de las 23 preguntas del `<body>`, así que al editar una pregunta o respuesta hay que actualizar las dos.
 - `como-llegar.html` — ubicación (mapa embebido de Google + explicación de tokens)
 - `clase-gratis.html` — formulario para agendar la primera clase de prueba (ver "Formulario de clase gratis")
 
@@ -31,7 +31,8 @@ Como el contenido de preview en `index.html` y el de la página de detalle corre
 
 ## Convenciones de estilos
 
-- Cada página vuelve a declarar las mismas variables CSS en `:root` (`--bg`, `--bg-alt`, `--card`, `--magenta`, `--teal`, `--text`, `--text-muted`, `--gold`) — no hay stylesheet compartido, así que los cambios de paleta/tokens hay que aplicarlos archivo por archivo.
+- Cada página vuelve a declarar las mismas variables CSS en `:root` (`--bg`, `--bg-alt`, `--card`, `--magenta`, `--teal`, `--text`, `--text-muted`, `--gold`) — casi no hay stylesheet compartido, así que los cambios de paleta/tokens hay que aplicarlos archivo por archivo.
+- **Excepción: el cluster "Centro de ayuda".** `preguntas-frecuentes.html`, `politica-privacidad.html`, `politica-cookies.html` y `terminos-y-condiciones.html` tenían el mismo CSS copiado cuatro veces, así que se extrajo a `assets/css/help.css` y esas cuatro páginas **no llevan `<style>` inline**: solo un `<link rel="stylesheet" href="assets/css/help.css">`. El acordeón está definido para `.faq-item` y `.legal-item` a la vez, y las `url()` de ese archivo son relativas a `assets/css/` (`../img/...`), no a la raíz. Las otras 14 páginas siguen con su `<style>` inline.
 - Mobile-first: los estilos base apuntan a un viewport angosto, el contenido va envuelto en un contenedor `.app` (`max-width:480px`, centrado). Se repiten dos breakpoints en todos los archivos:
   - `min-width:481px` — solo cosmético (sombra, `min-height:100vh` en `.app`).
   - `min-width:900px` — layout de escritorio real: `.app` pasa a ancho completo, los carruseles con scroll-snap horizontal (`.cards-row`) se convierten en grids CSS, y los puntos de paginación JS correspondientes se ocultan vía `[data-for="..."] { display:none; }`.
@@ -44,6 +45,12 @@ Todo el JS de interacción vive en `assets/js/app.js` — un solo archivo para l
 
 - **Drawer del menú hamburguesa**: `#menuIcon` togglea `#drawer` / `#drawerOverlay`, se cierra con `#drawerClose`, click en el overlay, `Escape`, o al hacer click en un link del drawer. Las 15 páginas deben mantener esos cuatro `id` — el IIFE los busca sin comprobar si existen, así que si falta uno la página lanza y el resto del archivo no corre.
 - **Acordeones**: los ítems de FAQ y los grupos de nav del footer/drawer usan `<details>/<summary>` nativos — no necesitan JS.
+- **Barra fija de CTA** (`.quick-actions`): los dos botones "Reserva tu clase" / "Clase gratis" van fijos abajo (`position:fixed;bottom:0`) en **las 18 páginas**, con el mismo markup y el mismo aspecto que en `index.html`. Es CSS puro, sin JS. Dos cosas que hay que respetar al tocarla:
+  - Los `.pill` de la barra están scopeados como `.quick-actions .pill` a propósito: las 8 páginas de disciplina definen su propio `.pill` más grande para el bloque `.cta-pills` del contenido, y sin el scope la barra se vería distinta ahí.
+  - La barra tapa el final de la página, así que el `footer` lleva `padding-bottom:120px` (móvil) y `130px` (≥900px). Si agregas la barra a una página nueva, agrega también ese espacio.
+
+  Los `href` cambian según la página: en `index.html` y `entrenamientos.html` "Reserva tu clase" es el ancla `#entrenamientos`; en las 8 disciplinas son los mismos dos links que ya usaba el `.cta-pills` de esa página (WhatsApp con el mensaje de la disciplina + `clase-gratis.html?clase=<slug>`); en el resto son `entrenamientos.html` + `clase-gratis.html`. En `clase-gratis.html` el segundo botón baja al formulario (`#freeClassForm`) en vez de recargar la propia página.
+- **Botonera del centro de ayuda** (`.help-tabs`): las mismas 4 pestañas en `preguntas-frecuentes.html` y las 3 páginas legales, cada una con `.active` en la suya. Son links normales (una pestaña = una carga de página, sin JS). Como en móvil no caben y la fila scrollea en horizontal, `app.js` ajusta el `scrollLeft` para centrar la pestaña activa al entrar — sin eso, en Cookies y Términos la activa queda fuera de pantalla.
 - **Carruseles**: las filas con scroll-snap horizontal (`.cards-row`) se usan para los story slides, las tarjetas de disciplinas, las tarjetas de planes y los testimonios. Solo `index.html` genera puntos de paginación para estos (el JS escanea `.dots[data-for="<id de la fila>"]`, crea un botón por cada hijo de la fila referenciada, y resalta el más cercano al hacer scroll calculando posiciones). Ese bloque va en el mismo `app.js` compartido: en las páginas sin `.dots[data-for]` recorre una lista vacía y no hace nada, por eso no hace falta un archivo por página. Las páginas de listado dedicadas (`entrenamientos.html`, `planes.html`, `testimonios.html`) renderizan la lista completa directamente en vez de un carrusel paginado.
 
 ## Formulario de clase gratis
@@ -55,6 +62,23 @@ Todo el JS de interacción vive en `assets/js/app.js` — un solo archivo para l
 - Las opciones del `<select name="horario">` llevan `data-clase` y el JS las filtra según la clase elegida. **Esos horarios son una copia de los de `entrenamientos.html`** — si cambian los horarios reales hay que actualizarlos en ambos sitios (y en la página de la disciplina correspondiente).
 - El RUT se valida en el cliente con módulo 11 y se formatea al salir del campo. Un RUT con dígito verificador incorrecto bloquea el envío.
 - Acepta `?clase=CrossFit` en la URL para preseleccionar la disciplina al enlazar desde una página de disciplina.
+
+## Eventos de conversión
+
+El bloque de tracking de `app.js` es un solo listener delegado en `document` (fase de captura) que deduce la intención del `href` del `<a>` clickeado — no hay que marcar nada a mano en el HTML al agregar un CTA nuevo. Todo pasa por el helper `enviar(nombre, params)`, que agrega `pagina` (el pathname) y hace `window.dataLayer.push({event: nombre, ...params})`.
+
+Nombres de evento que el contenedor GTM debe tener registrados como trigger de **Custom Event** (si falta el trigger, el push ocurre pero no llega nada a GA4):
+
+| Evento | Se dispara al | Params |
+|---|---|---|
+| `contacto_whatsapp` | click en cualquier link `wa.me/` | `intencion` (`general` / `clase_gratis` / `reservar_clase` / `plan`), `detalle`, `origen` |
+| `ver_clase_gratis` | click hacia `clase-gratis.html` | `disciplina`, `origen` |
+| `ver_disciplina` | click hacia una de las 8 páginas de disciplina | `disciplina`, `origen` |
+| `click_social` | click a Instagram o Facebook | `red` |
+| `click_boxmagic` | click a un link de BoxMagic | — |
+| `clase_gratis_enviada` | respuesta OK del form de `clase-gratis.html` | `clase`, `horario` |
+
+`origen` sale de la función `origen(a)`, que mira el ancestro del link (`marquee`, `barra_fija`, `cta_disciplina`, `cta_listado`, `hero`, `menu`, `footer`, `contenido`) para saber qué zona de la página convierte.
 
 ## Notas de contenido
 

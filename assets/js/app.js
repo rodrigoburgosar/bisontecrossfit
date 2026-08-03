@@ -115,7 +115,22 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
   });
 })();
 
-/* Eventos de GA4.
+/* Botonera del centro de ayuda (preguntas-frecuentes + las 3 paginas legales).
+   En movil las 4 pestañas no caben y la fila scrollea en horizontal, asi que
+   al entrar a Cookies o Terminos (3a y 4a) la pestaña activa queda fuera de
+   pantalla y parece que no estuviera. La traemos a la vista moviendo el
+   scrollLeft de la fila; scrollIntoView tambien moveria la pagina en vertical. */
+(function(){
+  var tabs = document.querySelector('.help-tabs');
+  if(!tabs) return;
+  var activa = tabs.querySelector('.help-tab.active');
+  if(!activa) return;
+  tabs.scrollLeft = Math.max(0, activa.offsetLeft - (tabs.clientWidth - activa.offsetWidth) / 2);
+})();
+
+/* Eventos hacia GTM (dataLayer).
+   Cada evento se empuja como {event:'<nombre>', ...params}; el contenedor GTM
+   los recoge con un trigger de Custom Event y los reenvia a GA4.
    Un solo listener delegado en document cubre las 14 paginas sin tocar el
    HTML. La intencion se deduce del propio href, asi que no hay que marcar
    nada a mano ni recordar actualizarlo al agregar un CTA nuevo.
@@ -125,11 +140,12 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
   var DISCIPLINAS = /^(crossfit|levantamiento-olimpico|hybrid|gymnastics|strongman|full-body|competidor|adulto-mayor)\.html$/;
 
   function enviar(nombre, params){
-    // gtag existe siempre (lo define el snippet inline del <head>), pero si
+    // dataLayer existe siempre (lo crea el snippet de GTM del <head>), pero si
     // un bloqueador lo elimina, no queremos romper la navegacion.
-    if(typeof gtag !== 'function') return;
+    if(!window.dataLayer || typeof window.dataLayer.push !== 'function') return;
+    params.event = nombre;
     params.pagina = location.pathname;
-    gtag('event', nombre, params);
+    window.dataLayer.push(params);
   }
 
   // De donde salio el clic, para saber que zona de la pagina convierte.
@@ -357,8 +373,8 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
       statusEl.className = 'form-status';
       successEl.classList.add('show');
       successEl.scrollIntoView({behavior: 'smooth', block: 'center'});
-      if(typeof gtag === 'function'){
-        gtag('event', 'clase_gratis_enviada', {clase: datos.clase, horario: datos.horario});
+      if(window.dataLayer && typeof window.dataLayer.push === 'function'){
+        window.dataLayer.push({event: 'clase_gratis_enviada', clase: datos.clase, horario: datos.horario});
       }
     })
     .catch(function(){

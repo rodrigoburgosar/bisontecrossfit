@@ -1,0 +1,64 @@
+# Bisonte CrossFit
+
+> Box de CrossFit afiliado en San Miguel, Santiago de Chile, a pasos del Metro Departamental. Ocho disciplinas, clases guiadas por coaches que adaptan el trabajo a cada nivel y primera clase de prueba gratuita.
+
+Bisonte CrossFit es un gimnasio presencial ubicado en Calle Uno 1050, San Miguel, Región Metropolitana. El enfoque es comunitario y para todos los niveles: no hace falta llegar preparado ni tener experiencia previa. Las reservas de clases se gestionan con la app BoxMagic y el contacto principal es por WhatsApp.
+
+Este sitio es estático y en español (es-CL). Todos los precios están en pesos chilenos (CLP) y pueden cambiar; la página de planes es la fuente autoritativa.
+
+## Páginas principales
+
+- [Inicio](https://bisontecrossfit.cl/): resumen del box, historia, y vista previa de entrenamientos, planes, testimonios y preguntas frecuentes.
+- [Todos los entrenamientos](https://bisontecrossfit.cl/entrenamientos.html): listado completo de las ocho disciplinas con sus horarios.
+- [Todos los planes](https://bisontecrossfit.cl/planes.html): precios vigentes de pases mensuales, especiales y diarios.
+- [Prueba tu clase gratis](https://bisontecrossfit.cl/clase-gratis.html): formulario para agendar la primera clase de prueba sin costo. Acepta el parámetro `?clase=<disciplina>` para preseleccionar la disciplina.
+- [Cómo llegar](https://bisontecrossfit.cl/como-llegar.html): dirección, mapa y referencias desde el Metro Departamental.
+- [Centro de ayuda](https://bisontecrossfit.cl/preguntas-frecuentes.html): preguntas frecuentes sobre niveles, equipamiento, reservas y pagos.
+- [Testimonios](https://bisontecrossfit.cl/testimonios.html): experiencias de alumnos del box.
+
+## Disciplinas
+
+- [CrossFit](https://bisontecrossfit.cl/crossfit.html): fuerza, resistencia y comunidad en cada clase. Horarios de mañana y tarde, de lunes a viernes.
+- [Levantamiento Olímpico](https://bisontecrossfit.cl/levantamiento-olimpico.html): técnica, fuerza y potencia en arranque y envión. Lunes, miércoles y viernes.
+- [Hyrox / Hybrid](https://bisontecrossfit.cl/hybrid.html): combinación de resistencia y fuerza funcional. Martes y jueves, 18:15 y 19:15.
+- [Gymnastics](https://bisontecrossfit.cl/gymnastics.html): control y fuerza corporal mediante habilidades gimnásticas. Lunes, miércoles y viernes.
+- [StrongMan](https://bisontecrossfit.cl/strongman.html): entrenamiento con implementos de fuerza. Martes y jueves, 20:15.
+- [Full Body](https://bisontecrossfit.cl/full-body.html): trabajo de todos los grupos musculares. Martes y jueves, 06:00 y 07:00.
+- [Competidor](https://bisontecrossfit.cl/competidor.html): programación de alto rendimiento para atletas que buscan competir. Sábados, 10:30.
+- [Adulto Mayor](https://bisontecrossfit.cl/adulto-mayor.html): entrenamiento funcional de bajo impacto para mejorar movilidad, equilibrio y fuerza. Martes y jueves, 17:00.
+
+## Planes y precios
+
+Todos los planes funcionan con tokens (cada token es una clase), tienen vigencia de 30 días y dan acceso a todas las disciplinas. La reserva se hace desde BoxMagic.
+
+Pases mensuales:
+
+- Plan 8 — "Inicio en CrossFit": $35.000 CLP, 8 tokens.
+- Plan 12 — "Progreso inicial": $49.990 CLP, 12 tokens.
+- Plan 16 — "Nivel intermedio": $54.990 CLP, 16 tokens.
+- Plan 20 — "Constante": $64.990 CLP, 20 tokens.
+
+Pases especiales:
+
+- Plan 8 "Ahorro invierno": $35.000 CLP, acceso solo a disciplinas AM, pago por transferencia.
+- Plan 8 "Adulto Mayor": $25.000 CLP, 8 tokens.
+- Plan 16 "Estudiante": $43.990 CLP, 12 tokens.
+
+Pases diarios:
+
+- Pase Diario "Normal": $8.000 CLP, 1 token.
+- Pase Diario "Open Box": $10.000 CLP, 1 token.
+
+## Contacto y ubicación
+
+- Dirección: Calle Uno 1050, San Miguel, Santiago, Chile (cerca del Metro Departamental, Línea 2).
+- WhatsApp: +56 9 6737 4096 — https://wa.me/56967374096
+- Reservas y pagos: app BoxMagic (https://app.boxmagic.cl).
+- Instagram y Facebook: @Bisontecrossfit
+- Primera clase de prueba: gratuita, se agenda en https://bisontecrossfit.cl/clase-gratis.html
+
+## Opcional
+
+- [Política de Privacidad](https://bisontecrossfit.cl/politica-privacidad.html)
+- [Política de Cookies](https://bisontecrossfit.cl/politica-cookies.html)
+- [Términos y Condiciones](https://bisontecrossfit.cl/terminos-y-condiciones.html)
