@@ -170,7 +170,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     min-height:96px;display:flex;align-items:center;justify-content:center;
   }
   .plan-card h3.sm{font-size:28px;}
-  .plan-card .desc{font-size:18px;margin-bottom:24px;}
+  /* Igual que el h3: alto fijo de 2 lineas para que el precio y la lista queden
+     a la misma altura tenga la bajada una linea ("Madrugadores") o dos
+     ("Media o universidad"). */
+  .plan-card .desc{
+    font-size:18px;line-height:1.2;margin-bottom:24px;
+    min-height:44px;display:flex;align-items:center;justify-content:center;
+  }
   .plan-card .price{font-size:40px;font-weight:700;margin-bottom:4px;}
   .plan-card .price-underline{
     width:172px;height:7px;margin:0 auto 20px;
@@ -181,6 +187,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .plan-card ul{list-style:none;font-size:10px;color:#f8f8f8;text-align:left;margin-bottom:20px;}
   .plan-card ul li{margin-bottom:4px;display:flex;align-items:center;gap:4px;}
   .plan-card ul li img{width:12px;height:12px;flex-shrink:0;}
+  /* Aviso al pie de una tarjeta puntual (ej: el Plan Ahorro invierno). */
+  .plan-card .plan-note{
+    font-size:10px;line-height:1.3;color:rgba(255,255,255,.65);
+    font-style:italic;margin-bottom:16px;
+  }
   .plan-card .reserve-btn{
     display:inline-flex;align-items:center;justify-content:center;
     background:rgba(255,255,255,.1);color:#f8f8f8;
@@ -397,6 +408,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .plan-card ul{width:max-content;max-width:100%;margin-inline:auto;font-size:13px;}
     .plan-card ul li{margin-bottom:8px;gap:8px;}
     .plan-card ul li img{width:15px;height:15px;}
+    .plan-card .plan-note{font-size:12px;}
 
     .quick-actions{max-width:900px;justify-content:center;}
     footer{padding:60px 40px 130px;}
@@ -432,6 +444,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="entrenamientos.html">Entrenamientos</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
+        <li><a href="clase-gratis.html">Clase gratis</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Disciplinas</summary>
+      <ul>
+        <li><a href="crossfit.html">CrossFit</a></li>
+        <li><a href="hybrid.html">Hybrid / Hyrox</a></li>
+        <li><a href="levantamiento-olimpico.html">Levantamiento Olímpico</a></li>
+        <li><a href="gymnastics.html">Gymnastics</a></li>
+        <li><a href="adulto-mayor.html">Adulto Mayor</a></li>
+        <li><a href="strongman.html">StrongMan</a></li>
+        <li><a href="full-body.html">Full Body</a></li>
+        <li><a href="competidor.html">Competidor</a></li>
       </ul>
     </details>
     <details>
@@ -465,7 +491,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button type="button" class="chip" data-filtro="diarios">Pases diarios</button>
       <button type="button" class="chip" data-filtro="especiales">Especiales</button>
       <button type="button" class="chip" data-filtro="mensuales">Mensuales</button>
-      <a class="chip" href="https://wa.me/56967374096?text=Quiero%20el%20Plan%20Personalizado" target="_blank" rel="noopener">Personalizado</a>
+      <a class="chip" href="https://wa.me/56967374096?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20el%20Plan%20Personalizado" target="_blank" rel="noopener">Personalizado</a>
     </div>
   </div>
 </div>
@@ -612,6 +638,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><img src="assets/icons/seal-check.svg" alt="">Hasta 1 sesión al día</li>
           <li><img src="assets/icons/seal-check.svg" alt="">Pago por transferencia</li>
         </ul>
+        <p class="plan-note">* Sujeto a cambios</p>
         <a class="reserve-btn" href="https://wa.me/56967374096?text=Quiero%20el%20Plan%208%20Ahorro%20Invierno" target="_blank" rel="noopener">Reserva tu clase</a>
       </div>
       <div class="plan-card plan-16-estudiante">
@@ -630,7 +657,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a class="reserve-btn" href="https://wa.me/56967374096?text=Quiero%20el%20Plan%2016%20Estudiante" target="_blank" rel="noopener">Reserva tu clase</a>
       </div>
     </div>
-    <p class="section-note">El Plan Ahorro invierno está sujeto a cambios.</p>
   </div>
 </section>
 
@@ -691,6 +717,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="entrenamientos.html">Entrenamientos</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Disciplinas</summary>
+      <ul>
+        <li><a href="crossfit.html">CrossFit</a></li>
+        <li><a href="hybrid.html">Hybrid / Hyrox</a></li>
+        <li><a href="levantamiento-olimpico.html">Levantamiento Olímpico</a></li>
+        <li><a href="gymnastics.html">Gymnastics</a></li>
+        <li><a href="adulto-mayor.html">Adulto Mayor</a></li>
+        <li><a href="strongman.html">StrongMan</a></li>
+        <li><a href="full-body.html">Full Body</a></li>
+        <li><a href="competidor.html">Competidor</a></li>
       </ul>
     </details>
     <details>

@@ -140,10 +140,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     gap:8px;
     margin-bottom:16px;
   }
+  /* Mismos colores que los .chip de planes.html: teal translucido en reposo,
+     teal solido con texto oscuro en la activa. Antes eran azul #003df6, que
+     no esta en la paleta del sitio. */
   .transport-tab{
     flex:1;
     min-width:0;
-    background:rgba(0,61,246,.5);
+    background:rgba(51,219,219,.5);
     color:#fff;
     border:none;
     border-radius:80px;
@@ -155,13 +158,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     text-align:center;
     cursor:pointer;
     box-shadow:0 2px 6px rgba(0,0,0,.35);
+    transition:background .2s, color .2s;
   }
-  .transport-tab.active{background:#003df6;}
+  .transport-tab:hover{background:rgba(51,219,219,.7);}
+  .transport-tab:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
+  .transport-tab.active{background:var(--teal);color:#0d0d0d;}
   .transport-info{
     background:rgba(255,255,255,.1);
     border-radius:20px;
     padding:20px;
   }
+  .transport-info[hidden]{display:none;}
   .transport-info h4{font-size:16px;color:#f8f8f8;margin-bottom:8px;}
   .transport-info .transport-line{
     display:flex;
@@ -209,6 +216,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   /* CTAs de ubicación */
   .location-cta{display:flex;gap:10px;margin-top:32px;}
+  /* Mismos colores que la barra flotante: el secundario blanco al 10% como
+     .pill-teal y el principal magenta solido como .pill-dark. */
   .btn-outline{
     flex:1;
     display:flex;
@@ -221,20 +230,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     padding:14px 16px;
     border-radius:70px;
     text-align:center;
+    transition:background .2s;
   }
+  .btn-outline:hover{background:rgba(255,255,255,.18);}
   .location-cta .btn-cta{
     flex-shrink:0;
     display:inline-flex;
     align-items:center;
     justify-content:center;
     gap:8px;
-    background:linear-gradient(90deg,var(--magenta),#e63cc9);
-    color:#fff;
+    background:var(--magenta);
+    color:#f8f8f8;
     font-weight:700;
     font-size:14px;
     padding:14px 20px;
     border-radius:70px;
+    transition:background .2s;
   }
+  .location-cta .btn-cta:hover{background:#e63cc9;}
   .location-cta .btn-cta img{width:16px;height:16px;}
 
   .legal-links{
@@ -254,7 +267,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     gap:20px;
     font-size:13px;
     color:var(--text-muted);
+    margin-bottom:20px;
   }
+  .socials a:hover{color:var(--teal);}
 
   /* Barra flotante de CTA (la misma de index.html). Los .pill van scopeados a
      .quick-actions para que la barra se vea igual en todo el sitio aunque la
@@ -462,6 +477,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="entrenamientos.html">Entrenamientos</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
+        <li><a href="clase-gratis.html">Clase gratis</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Disciplinas</summary>
+      <ul>
+        <li><a href="crossfit.html">CrossFit</a></li>
+        <li><a href="hybrid.html">Hybrid / Hyrox</a></li>
+        <li><a href="levantamiento-olimpico.html">Levantamiento Olímpico</a></li>
+        <li><a href="gymnastics.html">Gymnastics</a></li>
+        <li><a href="adulto-mayor.html">Adulto Mayor</a></li>
+        <li><a href="strongman.html">StrongMan</a></li>
+        <li><a href="full-body.html">Full Body</a></li>
+        <li><a href="competidor.html">Competidor</a></li>
       </ul>
     </details>
     <details>
@@ -474,6 +503,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </details>
     <a class="drawer-item-plain" href="https://app.boxmagic.cl/" target="_blank" rel="noopener">Soy Alumno</a>
   </nav>
+  <div class="drawer-map" id="drawerMap">
+    <h3>¿Cómo llegar?<span></span></h3>
+    <p>📍 Calle Uno 1050, San Miguel<br>A pasos de Metro Departamental</p>
+  </div>
 </aside>
 
 <main>
@@ -497,16 +530,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="subsection-title">
       <h2>¿Cómo llegar?<span></span></h2>
     </div>
-    <div class="transport-tabs" role="group" aria-label="Modo de transporte">
-      <button type="button" class="transport-tab active" aria-pressed="true">Metro</button>
-      <button type="button" class="transport-tab" aria-pressed="false">Micro</button>
-      <button type="button" class="transport-tab" aria-pressed="false">Bicicletas, scooters o patines</button>
-      <button type="button" class="transport-tab" aria-pressed="false">Auto</button>
+    <div class="transport-tabs" role="tablist" aria-label="Modo de transporte">
+      <button type="button" class="transport-tab active" role="tab" id="tab-metro" aria-controls="panel-metro" aria-selected="true">Metro</button>
+      <button type="button" class="transport-tab" role="tab" id="tab-micro" aria-controls="panel-micro" aria-selected="false" tabindex="-1">Micro</button>
+      <button type="button" class="transport-tab" role="tab" id="tab-bici" aria-controls="panel-bici" aria-selected="false" tabindex="-1">Bicicletas, scooters o patines</button>
+      <button type="button" class="transport-tab" role="tab" id="tab-auto" aria-controls="panel-auto" aria-selected="false" tabindex="-1">Auto</button>
     </div>
-    <div class="transport-info">
+    <div class="transport-info" role="tabpanel" id="panel-metro" aria-labelledby="tab-metro" tabindex="0">
       <h4>🚇 Baja en Metro Departamental</h4>
       <div class="transport-line"><span class="dash">—</span><span class="line-name">Línea 2</span><span class="dot">·</span><span class="line-name">Salida Calle Uno</span></div>
       <p>Baja en <b>Estación Departamental</b> y dirígete hacia la <b>salida de Calle Uno</b>. Desde ahí estarás a pasos de Bisonte CrossFit.</p>
+    </div>
+    <div class="transport-info" role="tabpanel" id="panel-micro" aria-labelledby="tab-micro" tabindex="0" hidden>
+      <h4>🚌 Micros por Gran Avenida</h4>
+      <div class="transport-line"><span class="dash">—</span><span class="line-name">Gran Avenida</span><span class="dot">·</span><span class="line-name">Paradero Departamental</span></div>
+      <p>Toma cualquier recorrido que baje por <b>Gran Avenida José Miguel Carrera</b> y bájate en el <b>paradero de Departamental</b>. Desde ahí caminas hacia Calle Uno y llegas al box en pocos minutos.</p>
+    </div>
+    <div class="transport-info" role="tabpanel" id="panel-bici" aria-labelledby="tab-bici" tabindex="0" hidden>
+      <h4>🚲 En bici, scooter o patines</h4>
+      <div class="transport-line"><span class="dash">—</span><span class="line-name">Ciclovía Gran Avenida</span><span class="dot">·</span><span class="line-name">Llegada por Calle Uno</span></div>
+      <p>Puedes llegar por la <b>ciclovía de Gran Avenida</b> y doblar en <b>Departamental</b> hacia Calle Uno. Escríbenos por <a href="https://wa.me/56967374096" target="_blank" rel="noopener" style="color:var(--teal);font-weight:700;">WhatsApp</a> si necesitas dejar tu bicicleta o scooter dentro del box.</p>
+    </div>
+    <div class="transport-info" role="tabpanel" id="panel-auto" aria-labelledby="tab-auto" tabindex="0" hidden>
+      <h4>🚗 En auto</h4>
+      <div class="transport-line"><span class="dash">—</span><span class="line-name">Calle Uno #1050</span><span class="dot">·</span><span class="line-name">Entrada por Departamental</span></div>
+      <p>Busca <b>“Bisonte CrossFit, Calle Uno 1050, San Miguel”</b> en Waze o Google Maps. Lo más directo es entrar por <b>Departamental</b> desde Gran Avenida. Hay estacionamiento en la calle según disponibilidad.</p>
     </div>
 
     <div class="gallery-row">
@@ -562,6 +610,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="testimonios.html">Testimonios</a></li>
       </ul>
     </details>
+    <details>
+      <summary>Disciplinas</summary>
+      <ul>
+        <li><a href="crossfit.html">CrossFit</a></li>
+        <li><a href="hybrid.html">Hybrid / Hyrox</a></li>
+        <li><a href="levantamiento-olimpico.html">Levantamiento Olímpico</a></li>
+        <li><a href="gymnastics.html">Gymnastics</a></li>
+        <li><a href="adulto-mayor.html">Adulto Mayor</a></li>
+        <li><a href="strongman.html">StrongMan</a></li>
+        <li><a href="full-body.html">Full Body</a></li>
+        <li><a href="competidor.html">Competidor</a></li>
+      </ul>
+    </details>
     <details open>
       <summary>Ayuda y Contacto</summary>
       <ul>
@@ -571,6 +632,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
     </details>
     <a class="plain" href="https://app.boxmagic.cl/" target="_blank" rel="noopener">Soy Alumno</a>
+  </div>
+
+  <div class="map-block">
+    <h3>¿Cómo llegar?<span></span></h3>
+    <p>📍 Calle Uno 1050, San Miguel<br>Gimnasio de CrossFit a pasos del Metro Departamental, Gran Avenida</p>
   </div>
 
   <div class="contact-box">

@@ -181,6 +181,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border-radius:20px;
   }
   @media (max-width:380px){ .coach-row{--cv:88px;padding-right:12px;} }
+  @media (max-width:380px){ .coach-tags li{font-size:9px;padding:3px 8px;} }
+
+  /* Enlaces cruzados al resto de las disciplinas (cierre de la pagina). */
+  .other-disciplines{list-style:none;display:flex;flex-wrap:wrap;gap:8px;}
+  .other-disciplines a{
+    display:inline-flex;align-items:center;
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:70px;
+    padding:10px 16px;font-size:13px;font-weight:600;color:#f8f8f8;
+  }
   .coach-visual{
     position:relative;
     width:var(--cv);
@@ -215,6 +226,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .coach-info h3{font-size:clamp(16px,5.1vw,20px);font-weight:700;color:#f8f8f8;line-height:1.2;text-wrap:balance;}
   .coach-info p{font-size:clamp(11.5px,3.6vw,13px);font-weight:600;color:#f8f8f8;margin-top:4px;line-height:1.4;}
+  /* Credenciales de la coach: badges bajo el cargo. Envuelven en dos filas en
+     pantallas angostas, por eso flex-wrap. */
+  .coach-tags{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+  .coach-tags li{
+    display:inline-flex;align-items:center;
+    background:rgba(51,219,219,.14);
+    border:1px solid rgba(51,219,219,.4);
+    color:var(--teal);border-radius:70px;
+    padding:3px 9px;font-size:10px;font-weight:600;line-height:1.3;
+    white-space:nowrap;max-width:100%;
+  }
 
   /* Pills (base heredada por .quick-actions .pill) */
   .pill{
@@ -460,6 +482,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="entrenamientos.html">Entrenamientos</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
+        <li><a href="clase-gratis.html">Clase gratis</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Disciplinas</summary>
+      <ul>
+        <li><a href="crossfit.html">CrossFit</a></li>
+        <li><a href="hybrid.html">Hybrid / Hyrox</a></li>
+        <li><a href="levantamiento-olimpico.html">Levantamiento Olímpico</a></li>
+        <li><a href="gymnastics.html">Gymnastics</a></li>
+        <li><a href="adulto-mayor.html">Adulto Mayor</a></li>
+        <li><a href="strongman.html">StrongMan</a></li>
+        <li><a href="full-body.html">Full Body</a></li>
+        <li><a href="competidor.html">Competidor</a></li>
       </ul>
     </details>
     <details>
@@ -541,8 +577,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="coach-info">
         <h3>Sonia Madariaga</h3>
         <p>Head Coach especializada</p>
+        <ul class="coach-tags">
+          <li>Head Coach</li>
+          <li>CrossFit Level 2</li>
+          <li>Especialista en Halterofilia</li>
+        </ul>
       </div>
     </div>
+
+    <div class="section-title"><h2>Otras disciplinas</h2></div>
+    <ul class="other-disciplines">
+      <li><a href="crossfit.html">CrossFit</a></li>
+      <li><a href="hybrid.html">Hybrid / Hyrox</a></li>
+      <li><a href="gymnastics.html">Gymnastics</a></li>
+      <li><a href="adulto-mayor.html">Adulto Mayor</a></li>
+      <li><a href="strongman.html">StrongMan</a></li>
+      <li><a href="full-body.html">Full Body</a></li>
+      <li><a href="competidor.html">Competidor</a></li>
+    </ul>
   </div>
 </section>
 
@@ -565,6 +617,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="entrenamientos.html">Entrenamientos</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Disciplinas</summary>
+      <ul>
+        <li><a href="crossfit.html">CrossFit</a></li>
+        <li><a href="hybrid.html">Hybrid / Hyrox</a></li>
+        <li><a href="levantamiento-olimpico.html">Levantamiento Olímpico</a></li>
+        <li><a href="gymnastics.html">Gymnastics</a></li>
+        <li><a href="adulto-mayor.html">Adulto Mayor</a></li>
+        <li><a href="strongman.html">StrongMan</a></li>
+        <li><a href="full-body.html">Full Body</a></li>
+        <li><a href="competidor.html">Competidor</a></li>
       </ul>
     </details>
     <details>

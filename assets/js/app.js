@@ -5,8 +5,10 @@
       hace nada, por eso el mismo archivo sirve para las 14 paginas.
    3) Chips de filtro de planes: solo actua si la pagina tiene
       .filter-chips (hoy solo planes.html).
-   4) Eventos de GA4 sobre los CTA.
-   5) Formulario de clase gratis: solo actua si la pagina tiene
+   4) Pestañas de transporte: solo actua si la pagina tiene
+      .transport-tabs (hoy solo como-llegar.html).
+   5) Eventos de GA4 sobre los CTA.
+   6) Formulario de clase gratis: solo actua si la pagina tiene
       #freeClassForm (hoy solo clase-gratis.html).
    Se carga con defer, asi que corre con el DOM ya parseado. */
 (function(){
@@ -128,6 +130,42 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
   tabs.scrollLeft = Math.max(0, activa.offsetLeft - (tabs.clientWidth - activa.offsetWidth) / 2);
 })();
 
+/* Pestañas de "¿Cómo llegar?" (como-llegar.html). Metro / Micro / Bici / Auto
+   cambian el panel visible sin recargar la pagina. Cada boton apunta a su
+   panel con aria-controls, asi que para agregar un modo de transporte basta
+   con sumar el <button role="tab"> y su <div role="tabpanel"> en el HTML.
+   En las paginas sin .transport-tabs la lista queda vacia y no hace nada. */
+(function(){
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.transport-tabs [role="tab"]'));
+  if(!tabs.length) return;
+  var paneles = tabs.map(function(t){ return document.getElementById(t.getAttribute('aria-controls')); });
+
+  function activar(i, foco){
+    tabs.forEach(function(tab, j){
+      var sel = j === i;
+      tab.classList.toggle('active', sel);
+      tab.setAttribute('aria-selected', sel ? 'true' : 'false');
+      tab.tabIndex = sel ? 0 : -1;          // roving tabindex: solo la activa es tabulable
+      if(paneles[j]) paneles[j].hidden = !sel;
+    });
+    if(foco) tabs[i].focus();
+  }
+
+  tabs.forEach(function(tab, i){
+    tab.addEventListener('click', function(){ activar(i, false); });
+    tab.addEventListener('keydown', function(e){
+      var salto = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if(!salto) return;
+      e.preventDefault();
+      activar((i + salto + tabs.length) % tabs.length, true);
+    });
+  });
+
+  // Deja el estado coherente aunque el HTML venga con otra pestaña marcada.
+  var inicial = tabs.findIndex ? tabs.findIndex(function(t){ return t.classList.contains('active'); }) : 0;
+  activar(inicial > -1 ? inicial : 0, false);
+})();
+
 /* Eventos hacia GTM (dataLayer).
    Cada evento se empuja como {event:'<nombre>', ...params}; el contenedor GTM
    los recoge con un trigger de Custom Event y los reenvia a GA4.
@@ -181,6 +219,11 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
       } else if(/^Quiero el /i.test(texto)){
         intencion = 'plan';
         detalle = texto.replace(/^Quiero el /i, '');
+      } else if(/saber m[áa]s sobre el /i.test(texto)){
+        // Plan Personalizado: no tiene precio publicado, asi que su mensaje
+        // pregunta en vez de pedir. Igual cuenta como intencion de plan.
+        intencion = 'plan';
+        detalle = texto.replace(/^.*saber m[áa]s sobre el /i, '');
       }
 
       enviar('contacto_whatsapp', {intencion: intencion, detalle: detalle, origen: origen(a)});

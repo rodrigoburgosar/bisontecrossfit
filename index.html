@@ -368,9 +368,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .plan-card .underline{width:172px;height:3px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:0 auto 10px;}
   .plan-card h3{font-size:40px;margin-bottom:10px;}
   .plan-card .desc{font-size:18px;color:#fff;margin-bottom:10px;}
-  .plan-card .price{font-size:40px;font-weight:700;margin-bottom:6px;text-align:right;}
-  .plan-card .price-underline{width:172px;height:7px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:0 0 20px auto;}
-  .plan-card ul{list-style:none;font-size:10px;color:#f8f8f8;text-align:left;margin-bottom:20px;}
+  .plan-card .price{font-size:40px;font-weight:700;margin-bottom:6px;}
+  .plan-card .price-underline{width:172px;height:7px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:0 auto 20px;}
+  /* La lista se centra como bloque (width:max-content + margin auto) para que no
+     quede pegada al borde izquierdo de la card; el texto de cada item sigue
+     alineado a la izquierda entre si. */
+  .plan-card ul{
+    list-style:none;font-size:10px;color:#f8f8f8;text-align:left;
+    width:max-content;max-width:100%;margin:0 auto 20px;
+  }
   .plan-card ul li{margin-bottom:4px;display:flex;align-items:center;gap:4px;}
   .plan-card ul li img{width:12px;height:12px;flex-shrink:0;}
   .plan-card .reserve-btn{
@@ -379,8 +385,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border-radius:70px;padding:10px 20px;font-size:14px;font-weight:600;
   }
 
+  /* Mismo patron que #row-historia: una reseña por pantalla, con snap y
+     navegacion por los puntos de abajo. Antes eran tarjetas de 260px, pero
+     las reseñas de Google son de largo muy distinto y a ese ancho la mas
+     larga obligaba a recortar el texto o a meterle scroll propio. */
   .testimonial{
-    flex:0 0 260px;
+    flex:0 0 100%;
+    scroll-snap-align:start;
+    display:flex;
+    flex-direction:column;
     background:#333;
     border-radius:20px;
     padding:22px;
@@ -397,7 +410,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .testimonial blockquote img{width:16px;height:16px;flex-shrink:0;margin-top:2px;}
   .testimonial blockquote img:last-child{transform:rotate(180deg);margin-top:auto;margin-bottom:2px;}
   .testimonial p{color:#fff;font-size:14px;font-family:'Inter',sans-serif;}
-  .testimonial .author{color:var(--text-muted);font-size:14px;font-style:italic;font-family:'Inter',sans-serif;}
+  /* margin-top:auto pega el nombre al fondo: en el carrusel (y en la grilla de
+     escritorio) las tarjetas se estiran a la altura de la mas larga, asi que sin
+     esto el autor queda flotando a distinta altura en cada una. */
+  .testimonial .author{color:var(--text-muted);font-size:14px;font-style:italic;font-family:'Inter',sans-serif;margin-top:auto;}
+
 
   .dots{
     display:flex;
@@ -716,6 +733,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="entrenamientos.html">Entrenamientos</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
+        <li><a href="clase-gratis.html">Clase gratis</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Disciplinas</summary>
+      <ul>
+        <li><a href="crossfit.html">CrossFit</a></li>
+        <li><a href="hybrid.html">Hybrid / Hyrox</a></li>
+        <li><a href="levantamiento-olimpico.html">Levantamiento Olímpico</a></li>
+        <li><a href="gymnastics.html">Gymnastics</a></li>
+        <li><a href="adulto-mayor.html">Adulto Mayor</a></li>
+        <li><a href="strongman.html">StrongMan</a></li>
+        <li><a href="full-body.html">Full Body</a></li>
+        <li><a href="competidor.html">Competidor</a></li>
       </ul>
     </details>
     <details>
@@ -930,31 +961,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="cards-row" id="row-testimonios">
       <div class="testimonial">
-        <div class="stars"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"></div>
+        <div class="stars" role="img" aria-label="5 de 5 estrellas"><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""></div>
+        <blockquote>
+          <img loading="lazy" src="assets/icons/quote.svg" alt="">
+          <p>Gimnasio súper bien equipado, cerca del metro y personalmente lo más importante, el staff siempre con muy buena disposición para ayudar y cooperar en pos del crecimiento del alumno.</p>
+          <img loading="lazy" src="assets/icons/quote.svg" alt="">
+        </blockquote>
+        <div class="author">– Patricio Pinto –</div>
+      </div>
+      <div class="testimonial">
+        <div class="stars" role="img" aria-label="5 de 5 estrellas"><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""></div>
+        <blockquote>
+          <img loading="lazy" src="assets/icons/quote.svg" alt="">
+          <p>Muy buen box, los coaches muy profesionales y el espacio muy cómodo 💖 la comunidad es otro nivel!!</p>
+          <img loading="lazy" src="assets/icons/quote.svg" alt="">
+        </blockquote>
+        <div class="author">– Constanza L. Magnani –</div>
+      </div>
+      <div class="testimonial">
+        <div class="stars" role="img" aria-label="5 de 5 estrellas"><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""></div>
         <blockquote>
           <img loading="lazy" src="assets/icons/quote.svg" alt="">
           <p>Las clases son desafiantes, entretenidas y nunca se sienten iguales. He mejorado muchísimo mi fuerza y mi confianza desde que llegué</p>
           <img loading="lazy" src="assets/icons/quote.svg" alt="">
         </blockquote>
         <div class="author">– Rodrigo Burgos –</div>
-      </div>
-      <div class="testimonial">
-        <div class="stars"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" class="empty" src="assets/icons/star-fill.svg" alt="☆"></div>
-        <blockquote>
-          <img loading="lazy" src="assets/icons/quote.svg" alt="">
-          <p>Llegué sin experiencia y desde el primer día me sentí muy acompañada. Los coaches explican todo con paciencia y adaptan los ejercicios según tu nivel</p>
-          <img loading="lazy" src="assets/icons/quote.svg" alt="">
-        </blockquote>
-        <div class="author">– Constanza Lavado –</div>
-      </div>
-      <div class="testimonial">
-        <div class="stars"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" class="empty" src="assets/icons/star-fill.svg" alt="☆"></div>
-        <blockquote>
-          <img loading="lazy" src="assets/icons/quote.svg" alt="">
-          <p>Más que un lugar para entrenar, encontré una comunidad. Siempre hay alguien motivándote y celebrando tus avances</p>
-          <img loading="lazy" src="assets/icons/quote.svg" alt="">
-        </blockquote>
-        <div class="author">– Sonia Madariaga –</div>
       </div>
     </div>
     <div class="dots" data-for="row-testimonios"></div>
@@ -1008,6 +1039,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="entrenamientos.html">Entrenamientos</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Disciplinas</summary>
+      <ul>
+        <li><a href="crossfit.html">CrossFit</a></li>
+        <li><a href="hybrid.html">Hybrid / Hyrox</a></li>
+        <li><a href="levantamiento-olimpico.html">Levantamiento Olímpico</a></li>
+        <li><a href="gymnastics.html">Gymnastics</a></li>
+        <li><a href="adulto-mayor.html">Adulto Mayor</a></li>
+        <li><a href="strongman.html">StrongMan</a></li>
+        <li><a href="full-body.html">Full Body</a></li>
+        <li><a href="competidor.html">Competidor</a></li>
       </ul>
     </details>
     <details>

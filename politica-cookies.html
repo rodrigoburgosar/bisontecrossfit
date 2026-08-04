@@ -107,9 +107,18 @@ header{
 .help-tabs{
   display:flex;
   gap:10px;
-  padding:20px 20px 0;
+  padding:20px 0 0;
   overflow-x:auto;
+  scrollbar-width:none;
 }
+.help-tabs::-webkit-scrollbar{display:none;}
+/* Espaciadores de 10px (+ los 10px del gap = 20px de aire a cada lado) en vez
+   de padding lateral: el padding derecho de un contenedor con scroll horizontal
+   no se respeta al llegar al final del scroll. Se notaba en
+   terminos-y-condiciones.html, donde la pestaña activa es la ultima y el boton
+   magenta quedaba pegado al borde de la pantalla. */
+.help-tabs::before,
+.help-tabs::after{content:'';flex:0 0 10px;}
 .help-tab{
   flex:1 0 auto;
   padding:12px 16px;
@@ -372,10 +381,18 @@ footer{
 /* Desktop */
 @media (min-width:900px){
   .app{max-width:none;box-shadow:none;}
-  .container{max-width:1100px;margin:0 auto;}
+  /* El centro de ayuda usa una columna de 900px (.help-title, .help-tabs,
+     .faq-list, .legal-list). El .container heredado media 1100px con 20px de
+     padding, asi que en escritorio el h2 y el parrafo de intro arrancaban ~120px
+     mas a la izquierda que el resto de la pagina. En movil no se notaba porque
+     ambos comparten los mismos 20px. */
+  .container{max-width:900px;margin:0 auto;padding:0 40px;}
   .help-title{max-width:900px;margin:0 auto;padding:24px 40px 0;}
   .help-tabs{max-width:900px;margin:0 auto;padding:20px 40px 0;justify-content:flex-start;}
   .help-tab{flex:none;}
+  /* Aca la fila ya no scrollea, asi que los espaciadores sobran; display:none
+     los saca del flex para que tampoco aporten el gap. */
+  .help-tabs::before,.help-tabs::after{display:none;}
   .faq-list,
   .legal-list{max-width:900px;margin:0 auto;padding:0 40px;}
   .quick-actions{max-width:900px;justify-content:center;}
@@ -412,6 +429,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="entrenamientos.html">Entrenamientos</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
+        <li><a href="clase-gratis.html">Clase gratis</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Disciplinas</summary>
+      <ul>
+        <li><a href="crossfit.html">CrossFit</a></li>
+        <li><a href="hybrid.html">Hybrid / Hyrox</a></li>
+        <li><a href="levantamiento-olimpico.html">Levantamiento Olímpico</a></li>
+        <li><a href="gymnastics.html">Gymnastics</a></li>
+        <li><a href="adulto-mayor.html">Adulto Mayor</a></li>
+        <li><a href="strongman.html">StrongMan</a></li>
+        <li><a href="full-body.html">Full Body</a></li>
+        <li><a href="competidor.html">Competidor</a></li>
       </ul>
     </details>
     <details open>
@@ -510,6 +541,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="entrenamientos.html">Entrenamientos</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Disciplinas</summary>
+      <ul>
+        <li><a href="crossfit.html">CrossFit</a></li>
+        <li><a href="hybrid.html">Hybrid / Hyrox</a></li>
+        <li><a href="levantamiento-olimpico.html">Levantamiento Olímpico</a></li>
+        <li><a href="gymnastics.html">Gymnastics</a></li>
+        <li><a href="adulto-mayor.html">Adulto Mayor</a></li>
+        <li><a href="strongman.html">StrongMan</a></li>
+        <li><a href="full-body.html">Full Body</a></li>
+        <li><a href="competidor.html">Competidor</a></li>
       </ul>
     </details>
     <details open>

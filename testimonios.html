@@ -109,12 +109,51 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border-radius:16px;
     padding:22px;
     text-align:center;
+    display:flex;
+    flex-direction:column;
   }
   .stars{margin-bottom:10px;}
   .stars img{width:16px;height:16px;margin:0 1px;}
   .stars img.empty{opacity:.25;filter:grayscale(1);}
   .testimonial p{color:var(--text-muted);font-size:14px;margin-bottom:12px;}
-  .testimonial .author{color:var(--text-muted);font-size:12px;font-style:italic;}
+  /* margin-top:auto pega el nombre al fondo: en la grilla de 3 columnas de
+     escritorio las tarjetas se estiran a la altura de la mas larga. */
+  .testimonial .author{color:var(--text-muted);font-size:12px;font-style:italic;margin-top:auto;}
+
+  /* Reseñas de Google.
+     .reviews-source es la atribucion + el link a la ficha del negocio (el
+     ?cid= sale del mismo id que usa el iframe del mapa en como-llegar.html).
+     .testimonial.review es la variante de tarjeta para una reseña real:
+     alineada a la izquierda y con la ficha del autor arriba. El avatar es la
+     inicial del nombre, no la foto de Google: esas URLs caducan y ademas
+     cargarlas desde googleusercontent filtra la visita a Google. */
+  .reviews-source{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    background:var(--card);
+    border-radius:16px;
+    padding:14px 16px;
+    margin-top:20px;
+  }
+  .reviews-source .who{display:flex;align-items:center;gap:10px;min-width:0;}
+  .reviews-source .who img{width:22px;height:22px;flex-shrink:0;}
+  .reviews-source b{font-size:14px;font-weight:700;display:block;}
+  .reviews-source small{color:var(--text-muted);font-size:11px;}
+  .google-cta{
+    background:rgba(255,255,255,.1);
+    color:#f8f8f8;
+    font-weight:600;
+    font-size:12px;
+    padding:10px 14px;
+    border-radius:70px;
+    white-space:nowrap;
+    flex-shrink:0;
+    transition:background .2s;
+  }
+  .google-cta:hover{background:rgba(255,255,255,.18);}
+
 
   /* Barra flotante de CTA (la misma de index.html). Los .pill van scopeados a
      .quick-actions para que la barra se vea igual en todo el sitio aunque la
@@ -347,6 +386,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="entrenamientos.html">Entrenamientos</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
+        <li><a href="clase-gratis.html">Clase gratis</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Disciplinas</summary>
+      <ul>
+        <li><a href="crossfit.html">CrossFit</a></li>
+        <li><a href="hybrid.html">Hybrid / Hyrox</a></li>
+        <li><a href="levantamiento-olimpico.html">Levantamiento Olímpico</a></li>
+        <li><a href="gymnastics.html">Gymnastics</a></li>
+        <li><a href="adulto-mayor.html">Adulto Mayor</a></li>
+        <li><a href="strongman.html">StrongMan</a></li>
+        <li><a href="full-body.html">Full Body</a></li>
+        <li><a href="competidor.html">Competidor</a></li>
       </ul>
     </details>
     <details>
@@ -372,22 +425,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1>¿Qué dicen de Bisonte?<span></span></h1>
     <p>Lo que nuestra comunidad opina de entrenar en Bisonte CrossFit.</p>
 
+    <div class="reviews-source">
+      <div class="who">
+        <img loading="lazy" src="assets/icons/google.svg" alt="Google" width="22" height="22">
+        <div>
+          <b>Reseñas en Google</b>
+          <small>Publicadas por nuestra comunidad</small>
+        </div>
+      </div>
+      <a class="google-cta" href="https://maps.google.com/?cid=13561209380920766207" target="_blank" rel="noopener">Ver todas</a>
+    </div>
+
     <div class="testimonial-list">
-      <div class="testimonial">
-        <div class="stars"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"></div>
-        <p>"Las clases son desafiantes, entretenidas y nunca se sienten iguales. He mejorado muchísimo mi fuerza y mi confianza desde que llegué"</p>
+      <article class="testimonial">
+        <div class="stars" role="img" aria-label="5 de 5 estrellas"><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""></div>
+        <p>Gimnasio súper bien equipado, cerca del metro y personalmente lo más importante, el staff siempre con muy buena disposición para ayudar y cooperar en pos del crecimiento del alumno.</p>
+        <div class="author">– Patricio Pinto –</div>
+      </article>
+      <article class="testimonial">
+        <div class="stars" role="img" aria-label="5 de 5 estrellas"><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""></div>
+        <p>Muy buen box, los coaches muy profesionales y el espacio muy cómodo 💖 la comunidad es otro nivel!!</p>
+        <div class="author">– Constanza L. Magnani –</div>
+      </article>
+      <article class="testimonial">
+        <div class="stars" role="img" aria-label="5 de 5 estrellas"><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""><img loading="lazy" src="assets/icons/star-fill.svg" alt=""></div>
+        <p>Las clases son desafiantes, entretenidas y nunca se sienten iguales. He mejorado muchísimo mi fuerza y mi confianza desde que llegué</p>
         <div class="author">– Rodrigo Burgos –</div>
-      </div>
-      <div class="testimonial">
-        <div class="stars"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" class="empty" src="assets/icons/star-fill.svg" alt="☆"></div>
-        <p>"Llegué sin experiencia y desde el primer día me sentí muy acompañada. Los coaches explican todo con paciencia y adaptan los ejercicios según tu nivel"</p>
-        <div class="author">– Constanza Lavado –</div>
-      </div>
-      <div class="testimonial">
-        <div class="stars"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" src="assets/icons/star-fill.svg" alt="★"><img loading="lazy" class="empty" src="assets/icons/star-fill.svg" alt="☆"></div>
-        <p>"Más que un lugar para entrenar, encontré una comunidad. Siempre hay alguien motivándote y celebrando tus avances"</p>
-        <div class="author">– Sonia Madariaga –</div>
-      </div>
+      </article>
     </div>
   </div>
 </section>
@@ -411,6 +475,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="entrenamientos.html">Entrenamientos</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Disciplinas</summary>
+      <ul>
+        <li><a href="crossfit.html">CrossFit</a></li>
+        <li><a href="hybrid.html">Hybrid / Hyrox</a></li>
+        <li><a href="levantamiento-olimpico.html">Levantamiento Olímpico</a></li>
+        <li><a href="gymnastics.html">Gymnastics</a></li>
+        <li><a href="adulto-mayor.html">Adulto Mayor</a></li>
+        <li><a href="strongman.html">StrongMan</a></li>
+        <li><a href="full-body.html">Full Body</a></li>
+        <li><a href="competidor.html">Competidor</a></li>
       </ul>
     </details>
     <details>
