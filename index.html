@@ -154,6 +154,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     justify-content:center;
     overflow:hidden;
     padding:14px 0;
+    margin-bottom:22px;
     -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
     mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
   }
@@ -173,23 +174,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     to{transform:translateX(-50%);}
   }
 
-  /* Quick actions */
+  /* Quick actions: barra flotante, sin marco negro y despegada del borde.
+     pointer-events:none en el contenedor + auto en el inner deja pasar el
+     scroll y los clicks al contenido que queda a los costados de la pildora. */
   .quick-actions{
     display:flex;
     justify-content:center;
-    padding:10px;
+    padding:0 12px;
     position:fixed;
     left:50%;
-    bottom:0;
+    bottom:14px;
     transform:translateX(-50%);
     width:100%;
     max-width:480px;
     z-index:80;
-    background:var(--bg);
-    box-shadow:0 -8px 12px -8px rgba(0,0,0,.5);
+    pointer-events:none;
   }
   .quick-actions-inner{
-    background:rgba(217,217,217,.1);
+    pointer-events:auto;
+    background:rgba(30,30,30,.88);
+    -webkit-backdrop-filter:blur(14px);
+    backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,.10);
+    box-shadow:0 10px 28px rgba(0,0,0,.55);
     border-radius:130px;
     display:flex;
     align-items:center;
@@ -210,10 +217,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .pill-dark{background:var(--magenta);color:#f8f8f8;}
   .pill-dark img{width:16px;height:16px;}
 
-  /* Section titles */
+  /* Section titles: hoy solo llevan el h2 (se quitaron los "Ver todos"),
+     por eso ya no hace falta justify-content:space-between. */
   .section-title{
     display:flex;
-    justify-content:space-between;
     align-items:baseline;
     margin-bottom:16px;
   }
@@ -225,14 +232,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background:url('assets/img/line-underline.svg') left bottom no-repeat;
     background-size:172px 3px;
   }
-  .section-title .see-all{
-    font-size:13px;
-    color:var(--text-muted);
-  }
 
   /* Historia */
   .story{
     padding:0 20px;
+    margin-top:6px;
   }
   .story .cards-row{margin:0;}
   .story-slide{
@@ -311,13 +315,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     pointer-events:none;
   }
   #row-entrenamientos .card .card-body{position:relative;z-index:1;max-width:70%;}
+  /* El chevron va inline (no como flex item): con display:flex y un titulo de
+     dos lineas quedaba centrado verticalmente y despegado del texto. El nbsp
+     del content lo mantiene pegado a la ultima palabra sin que salte solo. */
   .card h3{
-    color:var(--teal);font-size:18px;line-height:1;margin-bottom:4px;
-    display:flex;align-items:center;gap:4px;
+    color:var(--teal);font-size:18px;line-height:1.15;margin-bottom:4px;
   }
-  .card h3::after{content:'>';color:var(--teal);font-size:16px;font-weight:700;line-height:1;position:relative;top:1px;}
+  .card h3::after{content:'\00a0>';color:var(--teal);font-size:16px;font-weight:700;}
   .card p{color:#f8f8f8;font-size:14px;margin-bottom:8px;}
   .card .schedule{color:var(--teal);font-size:10px;font-weight:700;}
+
+  /* El carrusel de planes centra la tarjeta activa (el resto de las filas
+     siguen alineando al borde izquierdo). El padding lateral es lo que
+     permite que la primera y la ultima tarjeta lleguen al centro:
+     (ancho de la fila - ancho de la tarjeta) / 2.
+     Ojo: en @media (min-width:900px) esta fila pasa a grid y ahi el
+     padding-inline se resetea a 0. */
+  #row-planes{
+    scroll-snap-type:x mandatory;
+    padding-inline:calc((100% - 230px) / 2);
+  }
+  #row-planes .plan-card{scroll-snap-align:center;}
 
   .plan-card{
     flex:0 0 230px;
@@ -401,7 +419,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     justify-content:space-between;
     align-items:center;
     font-weight:600;
-    font-size:16px;
+    font-size:17px;
     cursor:pointer;
   }
   .faq-item summary::-webkit-details-marker{display:none;}
@@ -413,7 +431,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .faq-item[open] summary::after{transform:rotate(180deg);}
   .faq-item p{
     color:var(--text-muted);
-    font-size:13px;
+    font-size:15px;
+    line-height:1.6;
     margin-top:10px;
   }
 
@@ -570,7 +589,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     .quick-actions{max-width:900px;justify-content:center;}
 
-    .story{max-width:900px;margin:0 auto;padding:0 40px;}
+    /* margin-top:6px se conserva (ver .story base) para no pegar el marquee al primer slide */
+    .story{max-width:900px;margin:6px auto 0;padding:0 40px;}
 
     /* Turn card carousels into grids: no scroll, no snap, all items visible */
     #row-planes, #row-testimonios{
@@ -579,9 +599,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       overflow:visible;
       gap:20px;
     }
+    /* Anula el carrusel centrado del movil: aca es una grilla, sin scroll ni snap. */
+    #row-planes{padding-inline:0;scroll-snap-type:none;}
     #row-planes .plan-card, #row-testimonios .testimonial{flex:none;width:auto;}
     #row-planes .price{text-align:center;}
     #row-planes .price-underline{margin:0 auto 20px;}
+    /* En movil la tarjeta mide 230px y la lista llena el ancho; en la grilla
+       de escritorio queda mucho mas ancha, asi que el bloque se centra
+       (el texto sigue alineado a la izquierda entre si) y sube de tamaño
+       para no quedar diminuto al lado del precio de 40px. */
+    #row-planes .plan-card ul{width:max-content;max-width:100%;margin-inline:auto;font-size:13px;}
+    #row-planes .plan-card ul li{margin-bottom:8px;gap:8px;}
+    #row-planes .plan-card ul li img{width:15px;height:15px;}
 
     #row-entrenamientos{
       display:grid;
@@ -590,7 +619,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       gap:20px;
     }
     .entrenamientos-page{display:contents;}
-    #row-entrenamientos .card{width:auto;}
+    /* En grid las tarjetas de una misma fila quedan todas de la altura de la
+       mas alta. Con el align-items:center de mobile el contenido se centra y
+       los titulos arrancan a distinta altura segun cuantas lineas ocupe la
+       descripcion, asi que aca se alinea arriba y el horario se ancla abajo. */
+    #row-entrenamientos .card{width:auto;align-items:stretch;}
+    #row-entrenamientos .card .card-body{display:flex;flex-direction:column;width:100%;}
+    #row-entrenamientos .card .schedule{margin-top:auto;}
 
     [data-for="row-planes"], [data-for="row-testimonios"], [data-for="row-entrenamientos"]{display:none;}
 
@@ -716,8 +751,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="tags-strip">
   <div class="tags-track">
-    <span class="sep">·</span> <a href="crossfit.html">CrossFit</a> <span class="sep">·</span> <a href="levantamiento-olimpico.html">Halterofilia</a> <span class="sep">·</span> <a href="hybrid.html">Hybrid</a> <span class="sep">·</span> <a href="gymnastics.html">Gymnastics</a> <span class="sep">·</span> <a href="strongman.html">StrongMan</a> <span class="sep">·</span> <a href="full-body.html">Full Body</a>
-    <span class="sep">·</span> <a href="crossfit.html">CrossFit</a> <span class="sep">·</span> <a href="levantamiento-olimpico.html">Halterofilia</a> <span class="sep">·</span> <a href="hybrid.html">Hybrid</a> <span class="sep">·</span> <a href="gymnastics.html">Gymnastics</a> <span class="sep">·</span> <a href="strongman.html">StrongMan</a> <span class="sep">·</span> <a href="full-body.html">Full Body</a>
+    <span class="sep">·</span> <a href="crossfit.html">CrossFit</a> <span class="sep">·</span> <a href="levantamiento-olimpico.html">Halterofilia</a> <span class="sep">·</span> <a href="hybrid.html">Hybrid/Hyrox</a> <span class="sep">·</span> <a href="gymnastics.html">Gymnastics</a> <span class="sep">·</span> <a href="strongman.html">StrongMan</a> <span class="sep">·</span> <a href="full-body.html">Full Body</a>
+    <span class="sep">·</span> <a href="crossfit.html">CrossFit</a> <span class="sep">·</span> <a href="levantamiento-olimpico.html">Halterofilia</a> <span class="sep">·</span> <a href="hybrid.html">Hybrid/Hyrox</a> <span class="sep">·</span> <a href="gymnastics.html">Gymnastics</a> <span class="sep">·</span> <a href="strongman.html">StrongMan</a> <span class="sep">·</span> <a href="full-body.html">Full Body</a>
   </div>
 </div>
 
@@ -751,7 +786,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <div class="section-title">
       <h2>Entrenamientos en Bisonte</h2>
-      <a class="see-all" href="entrenamientos.html">Ver todos <img src="assets/icons/arrow-right.svg" alt="" style="width:12px;height:12px;vertical-align:-1px;"></a>
     </div>
     <div class="cards-row" id="row-entrenamientos">
       <div class="entrenamientos-page">
@@ -774,7 +808,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a class="card" href="hybrid.html">
           <img loading="lazy" class="card-icon" src="assets/icons/discipline-hybrid.svg" alt="">
           <div class="card-body">
-            <h3>Hybrid</h3>
+            <h3>Hybrid/Hyrox</h3>
             <p>Control y fuerza corporal</p>
             <div class="schedule">Martes y Jueves 18:15 - 19:15</div>
           </div>
@@ -831,7 +865,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <div class="section-title">
       <h2>Planes más elegidos</h2>
-      <a class="see-all" href="planes.html">Ver todos <img src="assets/icons/arrow-right.svg" alt="" style="width:12px;height:12px;vertical-align:-1px;"></a>
     </div>
     <div class="cards-row" id="row-planes">
       <div class="plan-card plan-8 destacado">
@@ -894,7 +927,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <div class="section-title">
       <h2>¿Qué dicen de Bisonte?</h2>
-      <a class="see-all" href="testimonios.html">Ver todos <img src="assets/icons/arrow-right.svg" alt="" style="width:12px;height:12px;vertical-align:-1px;"></a>
     </div>
     <div class="cards-row" id="row-testimonios">
       <div class="testimonial">
@@ -933,7 +965,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <div class="section-title">
       <h2>Preguntas frecuentes</h2>
-      <a class="see-all" href="preguntas-frecuentes.html">Ver todas <img src="assets/icons/arrow-right.svg" alt="" style="width:12px;height:12px;vertical-align:-1px;"></a>
     </div>
     <details class="faq-item">
       <summary>¿Necesito experiencia para comenzar?</summary>

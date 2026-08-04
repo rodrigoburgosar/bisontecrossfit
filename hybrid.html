@@ -10,10 +10,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-WVD4NKS4');</script>
 <!-- End Google Tag Manager -->
-<meta name="description" content="Clases de Hyrox / Hybrid en Bisonte, San Miguel: control y fuerza corporal combinando resistencia y fuerza funcional. Martes y Jueves 18:15 y 19:15.">
+<meta name="description" content="Clases de Hybrid/Hyrox en Bisonte, San Miguel: control y fuerza corporal combinando resistencia y fuerza funcional. Martes y Jueves 18:15 y 19:15.">
 <meta property="og:site_name" content="Bisonte CrossFit">
-<meta property="og:title" content="Hyrox y Hybrid en San Miguel | Bisonte CrossFit">
-<meta property="og:description" content="Clases de Hyrox / Hybrid en Bisonte, San Miguel: control y fuerza corporal combinando resistencia y fuerza funcional. Martes y Jueves 18:15 y 19:15.">
+<meta property="og:title" content="Hybrid/Hyrox en San Miguel | Bisonte CrossFit">
+<meta property="og:description" content="Clases de Hybrid/Hyrox en Bisonte, San Miguel: control y fuerza corporal combinando resistencia y fuerza funcional. Martes y Jueves 18:15 y 19:15.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CL">
 <link rel="canonical" href="https://bisontecrossfit.cl/hybrid.html">
@@ -27,7 +27,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<title>Hyrox y Hybrid en San Miguel | Bisonte CrossFit</title>
+<title>Hybrid/Hyrox en San Miguel | Bisonte CrossFit</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -171,7 +171,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .coach-row{
     display:flex;
     align-items:center;
-    padding:10px;
+    padding:12px 18px 12px 10px;
+    background:var(--card);
+    border-radius:20px;
   }
   .coach-visual{
     position:relative;
@@ -199,24 +201,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .coach-visual .photo{filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));clip-path:circle(66px at 47.5px 102px);}
   /* copia superior de la foto por delante del anillo, como en Figma (nodo 116:40416) */
   .coach-visual .photo-front{clip-path:inset(0 0 51px 0);}
-  .coach-info{padding:0 20px;filter:drop-shadow(0 4px 2px rgba(0,0,0,.5));}
-  .coach-info h3{font-size:24px;font-weight:700;color:#f8f8f8;}
-  .coach-info p{font-size:16px;font-weight:700;color:#f8f8f8;}
+  .coach-info{
+    flex:1;
+    min-width:0;
+    padding:0 6px 0 48px;
+    filter:drop-shadow(0 4px 2px rgba(0,0,0,.5));
+  }
+  .coach-info h3{font-size:20px;font-weight:700;color:#f8f8f8;line-height:1.2;}
+  .coach-info p{font-size:13px;font-weight:600;color:#f8f8f8;margin-top:4px;line-height:1.4;}
 
-  /* CTA pill banner */
-  .cta-pills{
-    display:flex;
-    justify-content:center;
-    margin-top:28px;
-  }
-  .cta-pills-inner{
-    background:rgba(217,217,217,.1);
-    border-radius:130px;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:10px;
-  }
+  /* Pills (base heredada por .quick-actions .pill) */
   .pill{
     padding:10px 20px;
     border-radius:70px;
@@ -237,19 +231,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .quick-actions{
     display:flex;
     justify-content:center;
-    padding:10px;
+    padding:0 12px;
     position:fixed;
     left:50%;
-    bottom:0;
+    bottom:14px;
     transform:translateX(-50%);
     width:100%;
     max-width:480px;
     z-index:80;
-    background:var(--bg);
-    box-shadow:0 -8px 12px -8px rgba(0,0,0,.5);
+    pointer-events:none;
   }
   .quick-actions-inner{
-    background:rgba(217,217,217,.1);
+    pointer-events:auto;
+    background:rgba(30,30,30,.88);
+    -webkit-backdrop-filter:blur(14px);
+    backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,.10);
+    box-shadow:0 10px 28px rgba(0,0,0,.55);
     border-radius:130px;
     display:flex;
     align-items:center;
@@ -487,7 +485,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <img class="bg" src="assets/img/crossfit-hero.webp" alt="">
       <div class="overlay"></div>
       <div class="content">
-        <h1>Hyrox / Hybrid</h1>
+        <h1>Hybrid/Hyrox</h1>
         <div class="subtitle">Control y fuerza corporal</div>
         <p class="desc">Entrenamiento híbrido que combina resistencia cardiovascular y fuerza funcional, inspirado en el formato Hyrox. Alterna carrera y estaciones de fuerza para mejorar tu capacidad física general.</p>
       </div>
@@ -538,13 +536,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="coach-info">
         <h3>Sonia Madariaga</h3>
         <p>Head Coach especializada</p>
-      </div>
-    </div>
-
-    <div class="cta-pills">
-      <div class="cta-pills-inner">
-        <a class="pill pill-teal" href="https://wa.me/56967374096?text=Quiero%20reservar%20una%20clase%20de%20Hyrox%20%2F%20Hybrid" target="_blank" rel="noopener">Reserva tu clase</a>
-        <a class="pill pill-dark" href="clase-gratis.html?clase=hybrid"><img src="assets/icons/cursor-click.svg" alt="">Clase gratis</a>
       </div>
     </div>
   </div>
@@ -612,7 +603,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="quick-actions">
   <div class="quick-actions-inner">
-    <a class="pill pill-teal" href="https://wa.me/56967374096?text=Quiero%20reservar%20una%20clase%20de%20Hyrox%20%2F%20Hybrid" target="_blank" rel="noopener">Reserva tu clase</a>
+    <a class="pill pill-teal" href="https://wa.me/56967374096?text=Quiero%20reservar%20una%20clase%20de%20Hybrid%2FHyrox" target="_blank" rel="noopener">Reserva tu clase</a>
     <a class="pill pill-dark" href="clase-gratis.html?clase=hybrid"><img src="assets/icons/cursor-click.svg" alt="">Clase gratis</a>
   </div>
 </div>

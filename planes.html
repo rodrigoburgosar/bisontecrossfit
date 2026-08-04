@@ -188,25 +188,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin-top:auto;align-self:center;
   }
 
-  /* Barra fija de CTA (la misma de index.html). Los .pill van scopeados a
+  /* Barra flotante de CTA (la misma de index.html). Los .pill van scopeados a
      .quick-actions para que la barra se vea igual en todo el sitio aunque la
-     pagina defina su propio .pill con otro tamaño (pasa en las disciplinas). */
+     pagina defina su propio .pill con otro tamaño (pasa en las disciplinas).
+     pointer-events:none en el contenedor + auto en el inner deja pasar el
+     scroll y los clicks al contenido que queda a los costados de la pildora. */
   .quick-actions{
     display:flex;
     justify-content:center;
-    padding:10px;
+    padding:0 12px;
     position:fixed;
     left:50%;
-    bottom:0;
+    bottom:14px;
     transform:translateX(-50%);
     width:100%;
     max-width:480px;
     z-index:80;
-    background:var(--bg);
-    box-shadow:0 -8px 12px -8px rgba(0,0,0,.5);
+    pointer-events:none;
   }
   .quick-actions-inner{
-    background:rgba(217,217,217,.1);
+    pointer-events:auto;
+    background:rgba(30,30,30,.88);
+    -webkit-backdrop-filter:blur(14px);
+    backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,.10);
+    box-shadow:0 10px 28px rgba(0,0,0,.55);
     border-radius:130px;
     display:flex;
     align-items:center;
@@ -385,6 +391,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       gap:20px;
     }
     .plan-card{flex:none;width:auto;}
+    /* Misma correccion que en index.html: en la grilla la tarjeta es mucho mas
+       ancha que los 230px del movil, asi que la lista se centra como bloque
+       (el texto sigue alineado entre si) y sube de tamaño. */
+    .plan-card ul{width:max-content;max-width:100%;margin-inline:auto;font-size:13px;}
+    .plan-card ul li{margin-bottom:8px;gap:8px;}
+    .plan-card ul li img{width:15px;height:15px;}
 
     .quick-actions{max-width:900px;justify-content:center;}
     footer{padding:60px 40px 130px;}
