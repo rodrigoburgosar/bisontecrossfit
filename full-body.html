@@ -167,48 +167,54 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .benefit-card img{width:24px;height:24px;}
   .benefit-card span{font-size:12px;font-weight:500;color:#fff;}
 
-  /* Coach */
+  /* Coach.
+     Todas las medidas del bloque de la foto salen de --cv (el ancho del
+     anillo, 133px en el Figma) para poder achicarlo de una sola vez en
+     pantallas angostas: con 133px fijos, en un iPhone de 320px CSS (Display
+     Zoom) el circulo se comia el ancho y el nombre se salia de la tarjeta. */
   .coach-row{
+    --cv:133px;
     display:flex;
     align-items:center;
     padding:12px 18px 12px 10px;
     background:var(--card);
     border-radius:20px;
   }
+  @media (max-width:380px){ .coach-row{--cv:88px;padding-right:12px;} }
   .coach-visual{
     position:relative;
-    width:133px;
-    height:168px;
+    width:var(--cv);
+    height:calc(var(--cv) * 168 / 133);
     flex-shrink:0;
-    margin-right:-40px;
+    margin-right:calc(var(--cv) * -40 / 133);
   }
   .coach-visual .ring{
     position:absolute;
     left:0;
-    top:36px;
-    width:133px;
-    height:132px;
+    top:calc(var(--cv) * 36 / 133);
+    width:var(--cv);
+    height:calc(var(--cv) * 132 / 133);
   }
   .coach-visual .photo,
   .coach-visual .photo-front{
     position:absolute;
-    left:19px;
+    left:calc(var(--cv) * 19 / 133);
     top:0;
-    width:96px;
-    height:160px;
+    width:calc(var(--cv) * 96 / 133);
+    height:calc(var(--cv) * 160 / 133);
   }
   /* la foto trasera solo se ve dentro del circulo del anillo */
-  .coach-visual .photo{filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));clip-path:circle(66px at 47.5px 102px);}
+  .coach-visual .photo{filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));clip-path:circle(calc(var(--cv) * 66 / 133) at calc(var(--cv) * 47.5 / 133) calc(var(--cv) * 102 / 133));}
   /* copia superior de la foto por delante del anillo, como en Figma (nodo 116:40416) */
-  .coach-visual .photo-front{clip-path:inset(0 0 51px 0);}
+  .coach-visual .photo-front{clip-path:inset(0 0 calc(var(--cv) * 51 / 133) 0);}
   .coach-info{
     flex:1;
     min-width:0;
-    padding:0 6px 0 48px;
+    padding:0 6px 0 calc(var(--cv) * 48 / 133);
     filter:drop-shadow(0 4px 2px rgba(0,0,0,.5));
   }
-  .coach-info h3{font-size:20px;font-weight:700;color:#f8f8f8;line-height:1.2;}
-  .coach-info p{font-size:13px;font-weight:600;color:#f8f8f8;margin-top:4px;line-height:1.4;}
+  .coach-info h3{font-size:clamp(16px,5.1vw,20px);font-weight:700;color:#f8f8f8;line-height:1.2;text-wrap:balance;}
+  .coach-info p{font-size:clamp(11.5px,3.6vw,13px);font-weight:600;color:#f8f8f8;margin-top:4px;line-height:1.4;}
 
   /* Pills (base heredada por .quick-actions .pill) */
   .pill{
