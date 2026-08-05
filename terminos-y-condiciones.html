@@ -83,6 +83,25 @@ a{color:inherit;text-decoration:none;}
   .app{box-shadow:0 0 60px rgba(0,0,0,.6);min-height:100vh;}
 }
 .container{padding:0 20px;}
+
+/* Migas de pan */
+.breadcrumb{padding:0 0 12px;}
+.breadcrumb ol{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:6px;
+  list-style:none;
+  margin:0;
+  padding:0;
+  font-size:12px;
+  color:var(--text-muted);
+}
+.breadcrumb li{display:flex;align-items:center;gap:6px;}
+.breadcrumb li+li::before{content:'\203A';opacity:.65;}
+.breadcrumb a{color:var(--text-muted);text-decoration:none;}
+.breadcrumb a:hover{color:var(--teal);text-decoration:underline;}
+.breadcrumb [aria-current='page']{color:var(--text);font-weight:600;}
 section{padding:40px 0;}
 
 /* Header */
@@ -414,6 +433,17 @@ footer{
 .footer-links a.plain,
 .drawer-item-plain{display:none;}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+  {"@type":"ListItem","position":1,"name":"Inicio","item":"https://bisontecrossfit.cl/"},
+  {"@type":"ListItem","position":2,"name":"Centro de ayuda","item":"https://bisontecrossfit.cl/preguntas-frecuentes.html"},
+  {"@type":"ListItem","position":3,"name":"Términos y Condiciones","item":"https://bisontecrossfit.cl/terminos-y-condiciones.html"}
+  ]
+}
+</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -435,7 +465,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <details>
       <summary>Explora</summary>
       <ul>
-        <li><a href="entrenamientos.html">Entrenamientos</a></li>
+        <li><a href="disciplinas.html">Todas las disciplinas</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
         <li><a href="clase-gratis.html">Clase gratis</a></li>
@@ -473,6 +503,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main>
 
 <div class="help-title">
+  <nav class="breadcrumb" aria-label="Migas de pan">
+    <ol>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="preguntas-frecuentes.html">Centro de ayuda</a></li>
+      <li><span aria-current="page">Términos y Condiciones</span></li>
+    </ol>
+  </nav>
   <h1>Centro de ayuda</h1>
   <p class="help-updated">Última actualización: 1 de agosto de 2026</p>
 </div>
@@ -619,7 +656,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <details>
       <summary>Explora</summary>
       <ul>
-        <li><a href="entrenamientos.html">Entrenamientos</a></li>
+        <li><a href="disciplinas.html">Todas las disciplinas</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
       </ul>
@@ -677,7 +714,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="quick-actions">
   <div class="quick-actions-inner">
-    <a class="pill pill-teal" href="entrenamientos.html">Reserva tu clase</a>
+    <a class="pill pill-teal" href="disciplinas.html">Ver clases</a>
     <a class="pill pill-dark" href="clase-gratis.html"><img src="assets/icons/cursor-click.svg" alt="">Clase gratis</a>
   </div>
 </div>

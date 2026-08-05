@@ -8,8 +8,8 @@ Este sitio es estático y en español (es-CL). Todos los precios están en pesos
 
 ## Páginas principales
 
-- [Inicio](https://bisontecrossfit.cl/): resumen del box, historia, y vista previa de entrenamientos, planes, testimonios y preguntas frecuentes.
-- [Todos los entrenamientos](https://bisontecrossfit.cl/entrenamientos.html): listado completo de las ocho disciplinas con sus horarios.
+- [Inicio](https://bisontecrossfit.cl/): resumen del box, historia, y vista previa de disciplinas, planes, testimonios y preguntas frecuentes.
+- [Todas las disciplinas](https://bisontecrossfit.cl/disciplinas.html): listado completo de las ocho disciplinas con sus horarios.
 - [Todos los planes](https://bisontecrossfit.cl/planes.html): precios vigentes de pases mensuales, especiales y diarios.
 - [Prueba tu clase gratis](https://bisontecrossfit.cl/clase-gratis.html): formulario para agendar la primera clase de prueba sin costo. Acepta el parámetro `?clase=<disciplina>` para preseleccionar la disciplina.
 - [Cómo llegar](https://bisontecrossfit.cl/como-llegar.html): dirección, mapa y referencias desde el Metro Departamental.
@@ -29,25 +29,27 @@ Este sitio es estático y en español (es-CL). Todos los precios están en pesos
 
 ## Planes y precios
 
-Todos los planes funcionan con tokens (cada token es una clase), tienen vigencia de 30 días y dan acceso a todas las disciplinas. La reserva se hace desde BoxMagic.
+Los planes funcionan con tokens (cada token es una clase). Los mensuales tienen vigencia de 30 días y, salvo que se indique lo contrario, dan acceso a todas las disciplinas. La reserva se hace desde BoxMagic.
 
 Pases mensuales:
 
-- Plan 8 — "Inicio en CrossFit": $35.000 CLP, 8 tokens.
-- Plan 12 — "Progreso inicial": $49.990 CLP, 12 tokens.
-- Plan 16 — "Nivel intermedio": $54.990 CLP, 16 tokens.
-- Plan 20 — "Constante": $64.990 CLP, 20 tokens.
+- Plan 8 — "Inicio en CrossFit": $39.990 CLP, 8 tokens, hasta 3 sesiones al día.
+- Plan 12 — "Progreso inicial": $49.990 CLP, 12 tokens, hasta 3 sesiones al día.
+- Plan Full — "Nivel competencia": $87.990 CLP, tokens ilimitados, hasta 3 sesiones al día.
+- Plan 16 — "Nivel intermedio": $54.990 CLP, 16 tokens, hasta 3 sesiones al día.
+- Plan 20 — "Constante": $64.990 CLP, 20 tokens, acceso a gymnastics, weightlifting y monoestructurales.
+- Full Elite — "Nivel avanzado": $137.000 CLP, tokens ilimitados, hasta 5 sesiones al día y planificación personalizada.
 
-Pases especiales:
+Pases especiales (cada uno exige cumplir su condición):
 
-- Plan 8 "Ahorro invierno": $35.000 CLP, acceso solo a disciplinas AM, pago por transferencia.
-- Plan 8 "Adulto Mayor": $25.000 CLP, 8 tokens.
-- Plan 16 "Estudiante": $43.990 CLP, 12 tokens.
+- Master's — "Adulto Mayor": $25.000 CLP, 8 tokens, programa Tercera Edad, 1 sesión al día.
+- Plan Ahorro invierno — "Madrugadores": $35.000 CLP, 8 clases al mes en horario de madrugada, solo alumnos nuevos, pago por transferencia (sujeto a cambios).
+- Plan Estudiante — "Media o universidad": $43.990 CLP, 16 tokens, acceso a CrossFit, Strongman, Gymnastics y Full Body, requiere certificado de estudios vigente.
 
 Pases diarios:
 
-- Pase Diario "Normal": $8.000 CLP, 1 token.
-- Pase Diario "Open Box": $10.000 CLP, 1 token.
+- Pase Diario "Normal": $8.000 CLP, 1 token, vigencia de 2 días.
+- Open Box — "Entrenamiento libre": $10.000 CLP, 1 token, entrenamiento no dirigido, vigencia de 1 día.
 
 ## Contacto y ubicación
 

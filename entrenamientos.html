@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Redireccion de la URL antigua.
+
+     Esta pagina se llamaba entrenamientos.html y paso a ser disciplinas.html.
+     El hosting es estatico y no permite un 301 de verdad, asi que se queda este
+     stub: el <meta refresh> a 0 segundos + el canonical son la senal que Google
+     interpreta como redireccion permanente y con la que traspasa el
+     posicionamiento a la URL nueva.
+
+     No lleva noindex a proposito: si se le pone, Google deja de seguir la
+     senal y se pierde el traspaso. Tampoco lleva GTM ni Clarity, para no
+     registrar una visita fantasma por cada rebote.
+
+     Se puede borrar cuando Search Console ya no reporte trafico ni impresiones
+     para /entrenamientos.html (normalmente unos meses). -->
+<title>Disciplinas y Horarios | Bisonte CrossFit San Miguel</title>
+<link rel="canonical" href="https://bisontecrossfit.cl/disciplinas.html">
+<meta http-equiv="refresh" content="0; url=disciplinas.html">
+<meta name="robots" content="follow">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<script>window.location.replace('disciplinas.html');</script>
+<style>
+  body{
+    background:#131313;
+    color:#fff;
+    font-family:'Poppins', 'Segoe UI', Arial, sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    margin:0;
+    padding:20px;
+    text-align:center;
+    line-height:1.5;
+  }
+  a{color:#33DBDB;}
+</style>
+</head>
+<body>
+  <p>Esta página ahora se llama <a href="disciplinas.html">Disciplinas</a>.<br>
+  Si no te redirige en un segundo, toca el enlace.</p>
+</body>
+</html>

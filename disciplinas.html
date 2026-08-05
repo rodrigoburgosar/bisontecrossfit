@@ -21,12 +21,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Microsoft Clarity -->
 <meta name="description" content="CrossFit, halterofilia, gymnastics, strongman y full body en nuestro gimnasio de San Miguel. Horarios de mañana y tarde, lunes a sábado.">
 <meta property="og:site_name" content="Bisonte CrossFit">
-<meta property="og:title" content="Entrenamientos y Horarios | Bisonte CrossFit San Miguel">
+<meta property="og:title" content="Disciplinas y Horarios | Bisonte CrossFit San Miguel">
 <meta property="og:description" content="CrossFit, halterofilia, gymnastics, strongman y full body en nuestro gimnasio de San Miguel. Horarios de mañana y tarde, lunes a sábado.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CL">
-<link rel="canonical" href="https://bisontecrossfit.cl/entrenamientos.html">
-<meta property="og:url" content="https://bisontecrossfit.cl/entrenamientos.html">
+<link rel="canonical" href="https://bisontecrossfit.cl/disciplinas.html">
+<meta property="og:url" content="https://bisontecrossfit.cl/disciplinas.html">
 <meta property="og:image" content="https://bisontecrossfit.cl/assets/img/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -36,7 +36,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<title>Entrenamientos y Horarios | Bisonte CrossFit San Miguel</title>
+<title>Disciplinas y Horarios | Bisonte CrossFit San Miguel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,400&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -77,6 +77,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .app{box-shadow:0 0 60px rgba(0,0,0,.6);min-height:100vh;}
   }
   .container{padding:0 20px;}
+
+  /* Migas de pan */
+  .breadcrumb{padding:10px 0 12px;}
+  .breadcrumb ol{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:6px;
+    list-style:none;
+    margin:0;
+    padding:0;
+    font-size:12px;
+    color:var(--text-muted);
+  }
+  .breadcrumb li{display:flex;align-items:center;gap:6px;}
+  .breadcrumb li+li::before{content:'\203A';opacity:.65;}
+  .breadcrumb a{color:var(--text-muted);text-decoration:none;}
+  .breadcrumb a:hover{color:var(--teal);text-decoration:underline;}
+  .breadcrumb [aria-current='page']{color:var(--text);font-weight:600;}
   section{padding:40px 0;}
 
   /* Header */
@@ -381,6 +400,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .footer-links a.plain,
   .drawer-item-plain{display:none;}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+  {"@type":"ListItem","position":1,"name":"Inicio","item":"https://bisontecrossfit.cl/"},
+  {"@type":"ListItem","position":2,"name":"Disciplinas","item":"https://bisontecrossfit.cl/disciplinas.html"}
+  ]
+}
+</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -402,7 +431,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <details open>
       <summary>Explora</summary>
       <ul>
-        <li><a href="entrenamientos.html">Entrenamientos</a></li>
+        <li><a href="disciplinas.html">Todas las disciplinas</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
         <li><a href="clase-gratis.html">Clase gratis</a></li>
@@ -424,7 +453,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <details>
       <summary>Ayuda y Contacto</summary>
       <ul>
-        <li><a href="index.html#preguntas">Preguntas frecuentes</a></li>
+        <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
         <li><a href="https://wa.me/56967374096" target="_blank" rel="noopener">WhatsApp</a></li>
         <li><a href="como-llegar.html">Ubicación</a></li>
       </ul>
@@ -439,9 +468,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <main>
 
-<section class="page-title" id="entrenamientos">
+<section class="page-title" id="disciplinas">
   <div class="container">
-    <h1>Todos los entrenamientos<span></span></h1>
+    <nav class="breadcrumb" aria-label="Migas de pan">
+      <ol>
+        <li><a href="index.html">Inicio</a></li>
+        <li><span aria-current="page">Disciplinas</span></li>
+      </ol>
+    </nav>
+
+    <h1>Todas las disciplinas<span></span></h1>
     <div class="meta-row">
       <span class="meta-item"><img src="assets/icons/seal-check.svg" alt="">Todos los niveles</span>
       <span class="dot-sep">·</span>
@@ -557,7 +593,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <details>
       <summary>Explora</summary>
       <ul>
-        <li><a href="entrenamientos.html">Entrenamientos</a></li>
+        <li><a href="disciplinas.html">Todas las disciplinas</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
       </ul>
@@ -578,7 +614,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <details>
       <summary>Ayuda y Contacto</summary>
       <ul>
-        <li><a href="index.html#preguntas">Preguntas frecuentes</a></li>
+        <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
         <li><a href="https://wa.me/56967374096" target="_blank" rel="noopener">WhatsApp</a></li>
         <li><a href="como-llegar.html">Ubicación</a></li>
       </ul>
@@ -615,7 +651,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="quick-actions">
   <div class="quick-actions-inner">
-    <a class="pill pill-teal" href="#entrenamientos">Reserva tu clase</a>
+    <a class="pill pill-teal" href="#disciplinas">Ver clases</a>
     <a class="pill pill-dark" href="clase-gratis.html"><img src="assets/icons/cursor-click.svg" alt="">Clase gratis</a>
   </div>
 </div>

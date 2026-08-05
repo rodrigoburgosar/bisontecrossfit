@@ -77,6 +77,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .container{padding:0 20px;}
 
+  /* Migas de pan */
+  .breadcrumb{padding:10px 0 12px;}
+  .breadcrumb ol{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:6px;
+    list-style:none;
+    margin:0;
+    padding:0;
+    font-size:12px;
+    color:var(--text-muted);
+  }
+  .breadcrumb li{display:flex;align-items:center;gap:6px;}
+  .breadcrumb li+li::before{content:'\203A';opacity:.65;}
+  .breadcrumb a{color:var(--text-muted);text-decoration:none;}
+  .breadcrumb a:hover{color:var(--teal);text-decoration:underline;}
+  .breadcrumb [aria-current='page']{color:var(--text);font-weight:600;}
+
   /* Header */
   header{
     display:flex;
@@ -87,17 +106,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .menu-btn{background:none;border:none;padding:4px;cursor:pointer;display:flex;align-items:center;}
   .logo-nav{display:flex;align-items:center;}
   .logo-nav img{height:64px;width:auto;display:block;}
-
-  /* Back link */
-  .back-row{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    padding:12px 0 4px;
-    font-size:15px;
-    font-weight:600;
-  }
-  .back-row img{width:24px;height:24px;}
 
   /* Hero card */
   .discipline-page{padding-top:0;padding-bottom:40px;}
@@ -467,6 +475,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .footer-links a.plain,
   .drawer-item-plain{display:none;}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+  {"@type":"ListItem","position":1,"name":"Inicio","item":"https://bisontecrossfit.cl/"},
+  {"@type":"ListItem","position":2,"name":"Disciplinas","item":"https://bisontecrossfit.cl/disciplinas.html"},
+  {"@type":"ListItem","position":3,"name":"Full Body","item":"https://bisontecrossfit.cl/full-body.html"}
+  ]
+}
+</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -488,7 +507,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <details open>
       <summary>Explora</summary>
       <ul>
-        <li><a href="entrenamientos.html">Entrenamientos</a></li>
+        <li><a href="disciplinas.html">Todas las disciplinas</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
         <li><a href="clase-gratis.html">Clase gratis</a></li>
@@ -527,10 +546,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="discipline-page">
   <div class="container">
-    <a class="back-row" href="entrenamientos.html">
-      <img src="assets/icons/arrow-circle-left.svg" alt="">
-      Atrás
-    </a>
+    <nav class="breadcrumb" aria-label="Migas de pan">
+      <ol>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="disciplinas.html">Disciplinas</a></li>
+        <li><span aria-current="page">Full Body</span></li>
+      </ol>
+    </nav>
 
     <div class="hero-card">
       <img class="bg" src="assets/img/crossfit-hero.webp" alt="">
@@ -624,7 +646,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <details>
       <summary>Explora</summary>
       <ul>
-        <li><a href="entrenamientos.html">Entrenamientos</a></li>
+        <li><a href="disciplinas.html">Todas las disciplinas</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
       </ul>
@@ -683,7 +705,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="quick-actions">
   <div class="quick-actions-inner">
-    <a class="pill pill-teal" href="https://wa.me/56967374096?text=Quiero%20reservar%20una%20clase%20de%20Full%20Body" target="_blank" rel="noopener">Reserva tu clase</a>
+    <a class="pill pill-teal" href="disciplinas.html">Ver clases</a>
     <a class="pill pill-dark" href="clase-gratis.html?clase=full-body"><img src="assets/icons/cursor-click.svg" alt="">Clase gratis</a>
   </div>
 </div>

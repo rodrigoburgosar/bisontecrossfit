@@ -77,6 +77,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .app{box-shadow:0 0 60px rgba(0,0,0,.6);min-height:100vh;}
   }
   .container{padding:0 20px;}
+
+  /* Migas de pan */
+  .breadcrumb{padding:10px 0 12px;}
+  .breadcrumb ol{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:6px;
+    list-style:none;
+    margin:0;
+    padding:0;
+    font-size:12px;
+    color:var(--text-muted);
+  }
+  .breadcrumb li{display:flex;align-items:center;gap:6px;}
+  .breadcrumb li+li::before{content:'\203A';opacity:.65;}
+  .breadcrumb a{color:var(--text-muted);text-decoration:none;}
+  .breadcrumb a:hover{color:var(--teal);text-decoration:underline;}
+  .breadcrumb [aria-current='page']{color:var(--text);font-weight:600;}
   section{padding:40px 0;}
 
   /* Header */
@@ -222,42 +241,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .highlight-pill p:first-child{font-weight:700;margin-bottom:4px;}
 
   .page-title .socials{margin-top:32px;}
-
-  /* CTAs de ubicación */
-  .location-cta{display:flex;gap:10px;margin-top:32px;}
-  /* Mismos colores que la barra flotante: el secundario blanco al 10% como
-     .pill-teal y el principal magenta solido como .pill-dark. */
-  .btn-outline{
-    flex:1;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:rgba(255,255,255,.1);
-    color:#f8f8f8;
-    font-weight:600;
-    font-size:14px;
-    padding:14px 16px;
-    border-radius:70px;
-    text-align:center;
-    transition:background .2s;
-  }
-  .btn-outline:hover{background:rgba(255,255,255,.18);}
-  .location-cta .btn-cta{
-    flex-shrink:0;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    background:var(--magenta);
-    color:#f8f8f8;
-    font-weight:700;
-    font-size:14px;
-    padding:14px 20px;
-    border-radius:70px;
-    transition:background .2s;
-  }
-  .location-cta .btn-cta:hover{background:#e63cc9;}
-  .location-cta .btn-cta img{width:16px;height:16px;}
 
   .legal-links{
     display:flex;
@@ -462,6 +445,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .footer-links a.plain,
   .drawer-item-plain{display:none;}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+  {"@type":"ListItem","position":1,"name":"Inicio","item":"https://bisontecrossfit.cl/"},
+  {"@type":"ListItem","position":2,"name":"Cómo llegar","item":"https://bisontecrossfit.cl/como-llegar.html"}
+  ]
+}
+</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -483,7 +476,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <details>
       <summary>Explora</summary>
       <ul>
-        <li><a href="entrenamientos.html">Entrenamientos</a></li>
+        <li><a href="disciplinas.html">Todas las disciplinas</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
         <li><a href="clase-gratis.html">Clase gratis</a></li>
@@ -522,6 +515,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="page-title" id="ubicacion">
   <div class="container">
+    <nav class="breadcrumb" aria-label="Migas de pan">
+      <ol>
+        <li><a href="index.html">Inicio</a></li>
+        <li><span aria-current="page">Cómo llegar</span></li>
+      </ol>
+    </nav>
+
     <h1>Cómo llegar a Bisonte CrossFit en San Miguel<span></span></h1>
 
     <div class="info-card">
@@ -590,11 +590,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="https://www.instagram.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="@Bisontecrossfit en Instagram"><img loading="lazy" src="assets/icons/instagram.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</a>
       <a href="https://www.facebook.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="@Bisontecrossfit en Facebook"><img loading="lazy" src="assets/icons/facebook.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</a>
     </div>
-
-    <div class="location-cta">
-      <a class="btn-outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bisonte+CrossFit+Calle+Uno+1050+San+Miguel" target="_blank" rel="noopener">Abrir en Maps</a>
-      <a class="btn-cta" href="clase-gratis.html"><img src="assets/icons/cursor-click.svg" alt=""> Clase gratis</a>
-    </div>
   </div>
 </section>
 
@@ -614,7 +609,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <details>
       <summary>Explora</summary>
       <ul>
-        <li><a href="entrenamientos.html">Entrenamientos</a></li>
+        <li><a href="disciplinas.html">Todas las disciplinas</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
       </ul>
@@ -672,7 +667,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="quick-actions">
   <div class="quick-actions-inner">
-    <a class="pill pill-teal" href="entrenamientos.html">Reserva tu clase</a>
+    <a class="pill pill-teal" href="disciplinas.html">Ver clases</a>
     <a class="pill pill-dark" href="clase-gratis.html"><img src="assets/icons/cursor-click.svg" alt="">Clase gratis</a>
   </div>
 </div>

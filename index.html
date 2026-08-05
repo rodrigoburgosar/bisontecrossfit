@@ -294,14 +294,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     padding:18px;
     scroll-snap-align:start;
   }
-  .entrenamientos-page{
+  .disciplinas-page{
     flex:0 0 100%;
     scroll-snap-align:start;
     display:flex;
     flex-direction:column;
     gap:20px;
   }
-  #row-entrenamientos .card{
+  #row-disciplinas .card{
     flex:0 0 auto;
     width:100%;
     min-height:136px;
@@ -314,7 +314,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     box-shadow:0 2px 6px rgba(0,0,0,.35);
     padding:16px 10px 16px 24px;
   }
-  #row-entrenamientos .card .card-icon{
+  #row-disciplinas .card .card-icon{
     position:absolute;
     right:-6px;
     bottom:-8px;
@@ -323,7 +323,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     z-index:0;
     pointer-events:none;
   }
-  #row-entrenamientos .card .card-body{position:relative;z-index:1;max-width:70%;}
+  #row-disciplinas .card .card-body{position:relative;z-index:1;max-width:70%;}
   /* El chevron va inline (no como flex item): con display:flex y un titulo de
      dos lineas quedaba centrado verticalmente y despegado del texto. El nbsp
      del content lo mantiene pegado a la ultima palabra sin que salte solo. */
@@ -638,22 +638,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     #row-planes .plan-card ul li{margin-bottom:8px;gap:8px;}
     #row-planes .plan-card ul li img{width:15px;height:15px;}
 
-    #row-entrenamientos{
+    #row-disciplinas{
       display:grid;
       grid-template-columns:repeat(4,1fr);
       overflow:visible;
       gap:20px;
     }
-    .entrenamientos-page{display:contents;}
+    .disciplinas-page{display:contents;}
     /* En grid las tarjetas de una misma fila quedan todas de la altura de la
        mas alta. Con el align-items:center de mobile el contenido se centra y
        los titulos arrancan a distinta altura segun cuantas lineas ocupe la
        descripcion, asi que aca se alinea arriba y el horario se ancla abajo. */
-    #row-entrenamientos .card{width:auto;align-items:stretch;}
-    #row-entrenamientos .card .card-body{display:flex;flex-direction:column;width:100%;}
-    #row-entrenamientos .card .schedule{margin-top:auto;}
+    #row-disciplinas .card{width:auto;align-items:stretch;}
+    #row-disciplinas .card .card-body{display:flex;flex-direction:column;width:100%;}
+    #row-disciplinas .card .schedule{margin-top:auto;}
 
-    [data-for="row-planes"], [data-for="row-testimonios"], [data-for="row-entrenamientos"]{display:none;}
+    [data-for="row-planes"], [data-for="row-testimonios"], [data-for="row-disciplinas"]{display:none;}
 
     .cards-row{padding-bottom:0;}
 
@@ -739,7 +739,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <details>
       <summary>Explora</summary>
       <ul>
-        <li><a href="entrenamientos.html">Entrenamientos</a></li>
+        <li><a href="disciplinas.html">Todas las disciplinas</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
         <li><a href="clase-gratis.html">Clase gratis</a></li>
@@ -822,13 +822,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="dots" data-for="row-historia"></div>
 </section>
 
-<section id="entrenamientos">
+<section id="disciplinas">
   <div class="container">
     <div class="section-title">
-      <h2>Entrenamientos en Bisonte</h2>
+      <h2>Disciplinas en Bisonte</h2>
     </div>
-    <div class="cards-row" id="row-entrenamientos">
-      <div class="entrenamientos-page">
+    <div class="cards-row" id="row-disciplinas">
+      <div class="disciplinas-page">
         <a class="card" href="crossfit.html">
           <img loading="lazy" class="card-icon" src="assets/icons/discipline-crossfit.svg" alt="">
           <div class="card-body">
@@ -862,7 +862,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </a>
       </div>
-      <div class="entrenamientos-page">
+      <div class="disciplinas-page">
         <a class="card" href="strongman.html">
           <img loading="lazy" class="card-icon" src="assets/icons/discipline-strongman.svg" alt="">
           <div class="card-body">
@@ -897,7 +897,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </a>
       </div>
     </div>
-    <div class="dots" data-for="row-entrenamientos"></div>
+    <div class="dots" data-for="row-disciplinas"></div>
   </div>
 </section>
 
@@ -1024,7 +1024,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </details>
     <details class="faq-item">
       <summary>¿Qué horarios tienen disponibles?</summary>
-      <p>Contamos con horarios de mañana y tarde de lunes a viernes. Revisa el detalle en la sección de entrenamientos.</p>
+      <p>Contamos con horarios de mañana y tarde de lunes a viernes. Revisa el detalle en la sección de disciplinas.</p>
     </details>
   </div>
 </section>
@@ -1045,7 +1045,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <details>
       <summary>Explora</summary>
       <ul>
-        <li><a href="entrenamientos.html">Entrenamientos</a></li>
+        <li><a href="disciplinas.html">Todas las disciplinas</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="testimonios.html">Testimonios</a></li>
       </ul>
@@ -1104,7 +1104,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="quick-actions">
   <div class="quick-actions-inner">
-    <a class="pill pill-teal" href="#entrenamientos">Reserva tu clase</a>
+    <a class="pill pill-teal" href="disciplinas.html">Ver clases</a>
     <a class="pill pill-dark" href="clase-gratis.html"><img src="assets/icons/cursor-click.svg" alt="">Clase gratis</a>
   </div>
 </div>
