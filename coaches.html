@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Consentimiento de cookies.
+     Google Tag Manager y Microsoft Clarity ya NO se cargan aqui: los carga
+     assets/js/consent.js, y solo despues de que la persona elija. Antes
+     arrancaban en estas mismas lineas, sin pedir permiso, en todas las
+     paginas incluidas las propias politicas.
+     Va sin defer y lo primero del <head> para decidir antes de pintar. -->
+<script src="assets/js/consent.js"></script>
+<meta name="description" content="Conoce a los coaches de Bisonte CrossFit en San Miguel: CrossFit Level 2, una kinesióloga con más de 10 años y un competidor nacional de halterofilia.">
+<meta property="og:site_name" content="Bisonte CrossFit">
+<meta property="og:title" content="Nuestros Coaches | Bisonte CrossFit San Miguel">
+<meta property="og:description" content="Conoce a los coaches de Bisonte CrossFit en San Miguel: CrossFit Level 2, una kinesióloga con más de 10 años y un competidor nacional de halterofilia.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CL">
+<link rel="canonical" href="https://bisontecrossfit.cl/coaches">
+<meta property="og:url" content="https://bisontecrossfit.cl/coaches">
+<meta property="og:image" content="https://bisontecrossfit.cl/assets/img/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="La comunidad de Bisonte CrossFit reunida en el box de San Miguel">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#131313">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<title>Nuestros Coaches | Bisonte CrossFit San Miguel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="assets/css/disciplina.css">
+<style>
+  /* Ficha de coach. Reutiliza disciplina.css para el chrome y solo anade
+     lo propio de esta pagina. */
+  .page-intro{padding:8px 0 4px;}
+  .page-intro h1{font-size:24px;font-weight:800;margin-bottom:10px;text-wrap:balance;}
+  .page-intro p{font-size:14px;color:#f8f8f8;line-height:1.55;}
+
+  .coach-card{
+    background:var(--card);
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:20px;
+    box-shadow:0 2px 6px rgba(0,0,0,.35);
+  }
+  .coach-photo{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+    object-position:center 22%;
+    display:block;
+    background:#242424;
+  }
+  .coach-body{padding:18px 20px 22px;}
+  .coach-body h2{font-size:20px;font-weight:800;margin-bottom:2px;}
+  .coach-cargo{
+    font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--teal);margin-bottom:12px;
+  }
+  .coach-resumen{font-size:14px;color:#e2e2e2;line-height:1.6;margin-bottom:18px;}
+  .coach-body h3{
+    font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--text-muted);margin:0 0 9px;
+  }
+  .coach-creds{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;}
+  .coach-creds li{
+    background:rgba(51,219,219,.14);
+    border:1px solid rgba(51,219,219,.4);
+    color:var(--teal);border-radius:70px;
+    padding:4px 11px;font-size:11px;font-weight:600;line-height:1.35;
+  }
+  .coach-clases{list-style:none;display:flex;flex-wrap:wrap;gap:8px;}
+  .coach-clases a{
+    display:inline-flex;align-items:center;
+    background:rgba(255,255,255,.07);
+    border-radius:70px;padding:8px 15px;
+    font-size:13px;font-weight:600;color:#e6e6e6;
+  }
+  .coach-clases a:hover{background:rgba(193,9,180,.25);color:#fff;}
+
+  @media (min-width:900px){
+    .coach-card{display:grid;grid-template-columns:300px 1fr;}
+    .coach-photo{height:100%;min-height:330px;}
+  }
+</style>
+<link rel="stylesheet" href="assets/css/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://bisontecrossfit.cl/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Coaches",
+      "item": "https://bisontecrossfit.cl/coaches"
+    }
+  ]
+}
+</script>
+<!-- El servicio (la disciplina) como entidad propia, colgando del negocio via
+     "provider": {"@id"} — la ficha completa vive solo en index.html y
+     como-llegar.html. El texto es el mismo de la pagina; si cambia el horario o
+     la descripcion, actualizalo aca tambien. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "https://bisontecrossfit.cl/coaches#equipo",
+  "name": "Coaches de Bisonte CrossFit",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Person",
+        "name": "Sonia Madariaga",
+        "jobTitle": "Head Coach",
+        "image": "https://bisontecrossfit.cl/assets/img/coach-sonia-bw.webp",
+        "worksFor": {
+          "@id": "https://bisontecrossfit.cl/#gimnasio"
+        },
+        "knowsAbout": [
+          "CrossFit",
+          "StrongMan",
+          "Full Body",
+          "Competidor"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Person",
+        "name": "Karen Low",
+        "jobTitle": "Coach de Gimnasia",
+        "image": "https://bisontecrossfit.cl/assets/img/karen.webp",
+        "worksFor": {
+          "@id": "https://bisontecrossfit.cl/#gimnasio"
+        },
+        "knowsAbout": [
+          "Gymnastics",
+          "Hybrid / Hyrox",
+          "Adulto Mayor"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Person",
+        "name": "Benjamín Aranis",
+        "jobTitle": "Coach de Weightlifting",
+        "image": "https://bisontecrossfit.cl/assets/img/benja.webp",
+        "worksFor": {
+          "@id": "https://bisontecrossfit.cl/#gimnasio"
+        },
+        "knowsAbout": [
+          "Levantamiento Olímpico"
+        ]
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="app">
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<header>
+  <button class="menu-btn" id="menuIcon" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer"><img src="assets/icons/menu.svg" alt="" width="22" height="22"></button>
+  <a href="/" class="logo-nav"><img src="assets/img/logo-nav-full.svg" alt="Bisonte CrossFit" width="162" height="64"></a>
+  <span style="width:22px;"></span>
+</header>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú">✕</button>
+  <nav class="drawer-nav">
+    <details open>
+      <summary>Explora</summary>
+      <ul>
+        <li><a href="/disciplinas">Todas las disciplinas</a></li>
+        <li><a href="/horarios">Horarios</a></li>
+        <li><a href="/planes">Planes</a></li>
+        <li><a href="/coaches">Coaches</a></li>
+        <li><a href="/testimonios">Testimonios</a></li>
+        <li><a href="/clase-gratis">Clase gratis</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Disciplinas</summary>
+      <ul>
+        <li><a href="/crossfit">CrossFit</a></li>
+        <li><a href="/hybrid">Hybrid / Hyrox</a></li>
+        <li><a href="/levantamiento-olimpico">Levantamiento Olímpico</a></li>
+        <li><a href="/gymnastics">Gymnastics</a></li>
+        <li><a href="/adulto-mayor">Adulto Mayor</a></li>
+        <li><a href="/strongman">StrongMan</a></li>
+        <li><a href="/full-body">Full Body</a></li>
+        <li><a href="/competidor">Competidor</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Ayuda y Contacto</summary>
+      <ul>
+        <li><a href="/preguntas-frecuentes">Preguntas frecuentes</a></li>
+        <li><a href="https://wa.me/56967374096" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="/como-llegar">Ubicación</a></li>
+      </ul>
+    </details>
+    <a class="drawer-item-plain" href="https://app.boxmagic.cl/" target="_blank" rel="noopener">Soy Alumno</a>
+  </nav>
+  <div class="drawer-map" id="drawerMap">
+    <h3>¿Cómo llegar?<span></span></h3>
+    <p>📍 Calle Uno 1050, San Miguel<br>A pasos de Metro Departamental</p>
+  </div>
+</aside>
+
+<main id="contenido">
+
+<section class="discipline-page">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Migas de pan">
+      <ol>
+        <li><a href="/">Inicio</a></li>
+        <li><span aria-current="page">Coaches</span></li>
+      </ol>
+    </nav>
+
+    <div class="page-intro">
+      <h1>Quién te va a entrenar</h1>
+      <p>En Bisonte no entrenas solo con un programa: entrenas con alguien que te mira, te corrige y te escala el movimiento. Estos son los tres coaches que dan las clases.</p>
+    </div>
+
+      <article class="coach-card">
+        <img class="coach-photo" src="assets/img/coach-sonia-bw.webp" alt="Sonia Madariaga, head coach en Bisonte CrossFit" width="288" height="384" loading="lazy" decoding="async">
+        <div class="coach-body">
+          <h2>Sonia Madariaga</h2>
+          <p class="coach-cargo">Head Coach</p>
+          <p class="coach-resumen">Dirige el equipo de coaches del box y es quien más horas de clase acumula. Su especialidad es enseñar a quien nunca ha entrenado: escalar un movimiento hasta la versión que hoy sí puedes hacer, y subir desde ahí.</p>
+          <h3>Credenciales</h3>
+          <ul class="coach-creds">
+            <li>Head Coach</li>
+            <li>CrossFit Level 2</li>
+            <li>Especialista en CrossFit</li>
+          </ul>
+          <h3>Clases que imparte</h3>
+          <ul class="coach-clases">
+            <li><a href="/crossfit">CrossFit</a></li>
+            <li><a href="/strongman">StrongMan</a></li>
+            <li><a href="/full-body">Full Body</a></li>
+            <li><a href="/competidor">Competidor</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="coach-card">
+        <img class="coach-photo" src="assets/img/karen.webp" alt="Karen Low, coach de gimnasia en Bisonte CrossFit" width="288" height="480" loading="lazy" decoding="async">
+        <div class="coach-body">
+          <h2>Karen Low</h2>
+          <p class="coach-cargo">Coach de Gimnasia</p>
+          <p class="coach-resumen">Kinesióloga con más de diez años de ejercicio, además de atleta en competencia. Esa doble mirada se nota en sus clases: sabe hasta dónde puede llegar cada cuerpo y cómo llevarlo ahí sin romperlo por el camino.</p>
+          <h3>Credenciales</h3>
+          <ul class="coach-creds">
+            <li>Kinesióloga con más de 10 años de experiencia</li>
+            <li>Atleta +35</li>
+            <li>2° lugar StrongFit Games 2026</li>
+            <li>3° lugar Throwdown 2024</li>
+          </ul>
+          <h3>Clases que imparte</h3>
+          <ul class="coach-clases">
+            <li><a href="/gymnastics">Gymnastics</a></li>
+            <li><a href="/hybrid">Hybrid / Hyrox</a></li>
+            <li><a href="/adulto-mayor">Adulto Mayor</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="coach-card">
+        <img class="coach-photo" src="assets/img/benja.webp" alt="Benjamín Aranis, coach de weightlifting en Bisonte CrossFit" width="288" height="480" loading="lazy" decoding="async">
+        <div class="coach-body">
+          <h2>Benjamín Aranis</h2>
+          <p class="coach-cargo">Coach de Weightlifting</p>
+          <p class="coach-resumen">Compite en halterofilia al máximo nivel nacional y ha representado a Chile en Sudamericanos, Panamericanos y en los Juegos Panamericanos de Asunción 2025. En clase filma y corrige levantamiento a levantamiento.</p>
+          <h3>Credenciales</h3>
+          <ul class="coach-creds">
+            <li>🥇 1° Nacional juvenil · Cat 61kg</li>
+            <li>🥇 1° Nacional de clubes · Cat 61kg</li>
+            <li>🥇 1° Nacional de clubes · Cat 65kg</li>
+            <li>🥇 1° Nacional juvenil y adulto · Cat 65kg</li>
+            <li>🥉 3° Sudamericano juvenil Ecuador · Cat 61kg</li>
+            <li>🥉 3° Sudamericano juvenil y adulto Ecuador · Cat 65kg</li>
+            <li>5° Panamericano juvenil Cuba · Cat 65kg</li>
+            <li>5° Juegos Panamericanos Asunción 2025 · Cat 65kg</li>
+            <li>7° Panamericano adulto Colombia · Cat 65kg</li>
+          </ul>
+          <h3>Clases que imparte</h3>
+          <ul class="coach-clases">
+            <li><a href="/levantamiento-olimpico">Levantamiento Olímpico</a></li>
+          </ul>
+        </div>
+      </article>
+
+    <div class="cta-pills">
+      <h2>Conócelos en una clase</h2>
+      <p>La primera es gratis y sin compromiso. Elige el día que te acomode y te esperamos.</p>
+      <div class="cta-actions">
+        <a class="cta-go" href="/clase-gratis">Reservar mi clase gratis</a>
+        <a class="cta-alt" href="/disciplinas">Ver todas las clases</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-logo">
+    <img loading="lazy" src="assets/img/logo-footer.webp" alt="CrossFit Affiliates" width="88" height="39" style="width:88px;height:auto;">
+    <div class="bull-badge"><img loading="lazy" src="assets/icons/logo-bull.svg" alt="" width="50" height="55"></div>
+    <div class="wordmark">
+      <img loading="lazy" src="assets/img/logo-text-bisonte.svg" alt="Bisonte" width="101" height="21">
+      <img loading="lazy" src="assets/img/logo-text-crossfit.svg" alt="CrossFit" width="118" height="21">
+    </div>
+  </div>
+
+  <div class="footer-links">
+    <details>
+      <summary>Explora</summary>
+      <ul>
+        <li><a href="/disciplinas">Todas las disciplinas</a></li>
+        <li><a href="/horarios">Horarios</a></li>
+        <li><a href="/planes">Planes</a></li>
+        <li><a href="/coaches">Coaches</a></li>
+        <li><a href="/testimonios">Testimonios</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Disciplinas</summary>
+      <ul>
+        <li><a href="/crossfit">CrossFit</a></li>
+        <li><a href="/hybrid">Hybrid / Hyrox</a></li>
+        <li><a href="/levantamiento-olimpico">Levantamiento Olímpico</a></li>
+        <li><a href="/gymnastics">Gymnastics</a></li>
+        <li><a href="/adulto-mayor">Adulto Mayor</a></li>
+        <li><a href="/strongman">StrongMan</a></li>
+        <li><a href="/full-body">Full Body</a></li>
+        <li><a href="/competidor">Competidor</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Ayuda y Contacto</summary>
+      <ul>
+        <li><a href="/preguntas-frecuentes">Preguntas frecuentes</a></li>
+        <li><a href="https://wa.me/56967374096" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="/como-llegar">Ubicación</a></li>
+      </ul>
+    </details>
+    <a class="plain" href="https://app.boxmagic.cl/" target="_blank" rel="noopener">Soy Alumno</a>
+  </div>
+
+  <div class="map-block">
+    <h3>¿Cómo llegar?<span></span></h3>
+    <p>📍 Calle Uno 1050, San Miguel<br>Gimnasio de CrossFit a pasos del Metro Departamental, Gran Avenida</p>
+  </div>
+
+  <div class="contact-box">
+    <h4>¿Tienes más dudas?</h4>
+    <div class="underline"></div>
+    <p>Revisa todas nuestras preguntas o escríbenos directo a WhatsApp</p>
+    <a class="whatsapp-btn" href="https://wa.me/56967374096" target="_blank" rel="noopener"><img loading="lazy" src="assets/icons/whatsapp.svg" alt="" style="width:16px;height:16px;" width="18" height="18"> WhatsApp Bisonte</a>
+  </div>
+
+  <div class="socials">
+    <a href="https://www.instagram.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="@Bisontecrossfit en Instagram"><img loading="lazy" src="assets/icons/instagram.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;" width="16" height="16"> @Bisontecrossfit</a>
+    <a href="https://www.facebook.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="@Bisontecrossfit en Facebook"><img loading="lazy" src="assets/icons/facebook.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;" width="16" height="16"> @Bisontecrossfit</a>
+  </div>
+
+  <div class="legal-links">
+    <a href="/politica-privacidad">Privacidad</a>
+    <span>·</span>
+    <a href="/politica-cookies">Cookies</a>
+    <span>·</span>
+    <a href="/terminos-y-condiciones">Términos y Condiciones</a>
+  </div>
+
+  <p class="copyright">© 2026 Bisonte CrossFit</p>
+</footer>
+
+<div class="quick-actions">
+  <div class="quick-actions-inner">
+    <a class="pill pill-teal" href="/disciplinas">Ver clases</a>
+    <a class="pill pill-dark" href="/clase-gratis"><img src="assets/icons/cursor-click.svg" alt="" width="16" height="16">Clase gratis</a>
+  </div>
+</div>
+
+<a class="wa-float" href="https://wa.me/56967374096?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20las%20clases%20y%20los%20coaches" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.17c-.24.68-1.4 1.3-1.94 1.34-.5.04-.98.22-3.3-.69-2.78-1.1-4.55-3.94-4.69-4.12-.14-.18-1.13-1.5-1.13-2.86s.71-2.03.97-2.31c.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.57.8 1.97.87 2.11.07.14.12.31.02.49-.1.18-.15.29-.29.45-.14.16-.3.36-.43.48-.14.14-.29.29-.13.57.17.28.74 1.22 1.59 1.98 1.09.97 2.01 1.27 2.29 1.41.28.14.45.12.61-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.63-.14.26.09 1.65.78 1.93.92.28.14.47.21.54.33.07.11.07.65-.17 1.33Z"/></svg></a>
+
+</div>
+<script defer src="assets/js/app.js"></script>
+</body>
+</html>

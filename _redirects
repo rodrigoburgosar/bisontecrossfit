@@ -1,0 +1,28 @@
+# Redirecciones de Cloudflare Pages.
+#
+# Formato: <origen> <destino> <codigo>
+# Se evaluan de arriba abajo y gana la primera que coincida.
+#
+# OJO: este archivo NO puede redirigir de www a sin-www. Las reglas de
+# _redirects hacen match por ruta, no por dominio. Para eso hay que crear
+# una Redirect Rule en el panel de Cloudflare (Rules > Redirect Rules):
+#
+#   Si  hostname igual a  www.bisontecrossfit.cl
+#   Entonces  redireccion dinamica  301  a
+#   concat("https://bisontecrossfit.cl", http.request.uri.path)
+#
+# Hoy https://www.bisontecrossfit.cl/ responde 200 en vez de redirigir, asi
+# que el sitio existe dos veces para Google.
+
+# La pagina de entrenamientos paso a llamarse disciplinas. Antes esto se
+# resolvia con un stub de entrenamientos.html que llevaba <meta refresh>,
+# porque se dio por hecho que el hosting no permitia un 301 de verdad.
+# Cloudflare Pages si lo permite, y un 301 traspasa el posicionamiento
+# mejor que un meta refresh, que Google trata como una senal debil.
+/entrenamientos.html   /disciplinas   301
+/entrenamientos        /disciplinas   301
+
+# Las URLs .html siguen respondiendo por si hay enlaces externos apuntando
+# a ellas. Cloudflare Pages ya hace este 308 por su cuenta, pero dejarlo
+# explicito documenta la forma canonica y sobrevive a un cambio de hosting.
+/index.html            /              301

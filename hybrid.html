@@ -3,30 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WVD4NKS4');</script>
-<!-- End Google Tag Manager -->
-<!-- Microsoft Clarity -->
-<script type="text/javascript">
-(function(c,l,a,r,i,t,y){
-    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-})(window, document, "clarity", "script", "xx809mpyos");
-</script>
-<!-- End Microsoft Clarity -->
-<meta name="description" content="Clases de Hybrid/Hyrox en Bisonte, San Miguel: control y fuerza corporal combinando resistencia y fuerza funcional. Martes y Jueves 18:15 y 19:15.">
+<!-- Consentimiento de cookies.
+     Google Tag Manager y Microsoft Clarity ya NO se cargan aqui: los carga
+     assets/js/consent.js, y solo despues de que la persona elija. Antes
+     arrancaban en estas mismas lineas, sin pedir permiso, en todas las
+     paginas incluidas las propias politicas.
+     Va sin defer y lo primero del <head> para decidir antes de pintar. -->
+<script src="assets/js/consent.js"></script>
+<meta name="description" content="Entrenamiento híbrido estilo Hyrox en San Miguel: carrera, trineo, burpees y sandbag. Prepárate para competir o mejora tu resistencia.">
 <meta property="og:site_name" content="Bisonte CrossFit">
-<meta property="og:title" content="Hybrid/Hyrox en San Miguel | Bisonte CrossFit">
-<meta property="og:description" content="Clases de Hybrid/Hyrox en Bisonte, San Miguel: control y fuerza corporal combinando resistencia y fuerza funcional. Martes y Jueves 18:15 y 19:15.">
+<meta property="og:title" content="Hyrox y Entrenamiento Híbrido en San Miguel">
+<meta property="og:description" content="Entrenamiento híbrido estilo Hyrox en San Miguel: carrera, trineo, burpees y sandbag. Prepárate para competir o mejora tu resistencia.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CL">
-<link rel="canonical" href="https://bisontecrossfit.cl/hybrid.html">
-<meta property="og:url" content="https://bisontecrossfit.cl/hybrid.html">
+<link rel="canonical" href="https://bisontecrossfit.cl/hybrid">
+<meta property="og:url" content="https://bisontecrossfit.cl/hybrid">
 <meta property="og:image" content="https://bisontecrossfit.cl/assets/img/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -36,467 +27,66 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<title>Hybrid/Hyrox en San Miguel | Bisonte CrossFit</title>
+<title>Hyrox y Entrenamiento Híbrido en San Miguel</title>
+<link rel="preload" as="image" href="assets/img/crossfit-hero.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="assets/css/disciplina.css">
 <style>
-  :root{
-    --bg:#131313;
-    --bg-alt:#1c1c1c;
-    --card:#1e1e1e;
-    --magenta:#C109B4;
-    --teal:#33DBDB;
-    --text:#ffffff;
-    --text-muted:#a3a3a3;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{overflow-x:hidden;scrollbar-width:thin;scrollbar-color:var(--teal) #0c0c0c;}
-  html::-webkit-scrollbar{width:10px;}
-  html::-webkit-scrollbar-track{background:#0c0c0c;}
-  html::-webkit-scrollbar-thumb{background:var(--teal);border-radius:5px;}
-  html::-webkit-scrollbar-thumb:hover{background:#5ce6e6;}
-  body{
-    background:#000;
-    color:var(--text);
-    font-family:'Poppins', 'Segoe UI', Arial, sans-serif;
-    line-height:1.4;
-    overflow-x:hidden;
-  }
-  a{color:inherit;text-decoration:none;}
-  .app{
-    max-width:480px;
-    margin:0 auto;
-    background:var(--bg);
-    overflow-x:hidden;
-    position:relative;
-  }
-  @media (min-width:481px){
-    .app{box-shadow:0 0 60px rgba(0,0,0,.6);min-height:100vh;}
-  }
-  .container{padding:0 20px;}
-
-  /* Migas de pan */
-  .breadcrumb{padding:10px 0 12px;}
-  .breadcrumb ol{
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    gap:6px;
-    list-style:none;
-    margin:0;
-    padding:0;
-    font-size:12px;
-    color:var(--text-muted);
-  }
-  .breadcrumb li{display:flex;align-items:center;gap:6px;}
-  .breadcrumb li+li::before{content:'\203A';opacity:.65;}
-  .breadcrumb a{color:var(--text-muted);text-decoration:none;}
-  .breadcrumb a:hover{color:var(--teal);text-decoration:underline;}
-  .breadcrumb [aria-current='page']{color:var(--text);font-weight:600;}
-
-  /* Header */
-  header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:16px 20px;
-  }
-  .menu-btn{background:none;border:none;padding:4px;cursor:pointer;display:flex;align-items:center;}
-  .logo-nav{display:flex;align-items:center;}
-  .logo-nav img{height:64px;width:auto;display:block;}
-
-  /* Hero card */
-  .discipline-page{padding-top:0;padding-bottom:40px;}
-  .hero-card{
-    position:relative;
-    border-radius:30px;
-    overflow:hidden;
-    padding:30px 24px;
-    margin-top:16px;
-  }
-  .hero-card img.bg{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    opacity:.6;
-  }
-  .hero-card .overlay{
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.7);
-  }
-  .hero-card .content{position:relative;z-index:1;}
-  .hero-card h1{
-    font-size:24px;
-    font-weight:700;
-    display:inline-block;
-    padding-bottom:8px;
-    background:url('assets/img/line-underline.svg') left bottom no-repeat;
-    background-size:172px 7px;
-    margin-bottom:10px;
-  }
-  .hero-card .subtitle{font-size:16px;font-weight:700;margin-bottom:10px;}
-  .hero-card .desc{font-size:14px;color:#f8f8f8;}
-
-  /* Info cards */
-  .info-card{
-    background:var(--card);
-    border-radius:30px;
-    padding:20px 20px 20px 30px;
-    margin-top:14px;
-    box-shadow:0 2px 6px rgba(0,0,0,.35);
-  }
-  .info-card h2{font-size:18px;font-weight:700;margin-bottom:6px;}
-  .info-card p{font-size:14px;color:#f8f8f8;}
-  .info-card ul{list-style:disc;padding-left:20px;font-size:14px;color:#f8f8f8;}
-  .info-card ul li{margin-bottom:2px;}
-
-  /* Beneficios */
-  .section-title{margin-top:28px;margin-bottom:14px;}
-  .section-title h2{
-    font-size:20px;
-    font-weight:700;
-    display:inline-block;
-    padding-bottom:8px;
-    background:url('assets/img/line-underline.svg') left bottom no-repeat;
-    background-size:172px 3px;
-  }
-  .benefits-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-  }
-  .benefit-card{
-    background:rgba(193,9,180,.2);
-    border-radius:30px;
-    padding:20px 10px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-    gap:4px;
-    box-shadow:0 2px 6px rgba(0,0,0,.5);
-  }
-  .benefit-card img{width:24px;height:24px;}
-  .benefit-card span{font-size:12px;font-weight:500;color:#fff;}
-
-  /* Coach.
-     Todas las medidas del bloque de la foto salen de --cv (el ancho del
-     anillo, 133px en el Figma) para poder achicarlo de una sola vez en
-     pantallas angostas: con 133px fijos, en un iPhone de 320px CSS (Display
-     Zoom) el circulo se comia el ancho y el nombre se salia de la tarjeta. */
-  .coach-row{
-    --cv:133px;
-    display:flex;
-    align-items:center;
-    padding:12px 18px 12px 10px;
-    background:var(--card);
-    border-radius:20px;
-  }
-  @media (max-width:380px){ .coach-row{--cv:88px;padding-right:12px;} }
-  @media (max-width:380px){ .coach-tags li{font-size:9px;padding:3px 8px;} }
-
-  /* Enlaces cruzados al resto de las disciplinas (cierre de la pagina). */
-  .other-disciplines{list-style:none;display:flex;flex-wrap:wrap;gap:8px;}
-  .other-disciplines a{
-    display:inline-flex;align-items:center;
-    background:var(--card);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:70px;
-    padding:10px 16px;font-size:13px;font-weight:600;color:#f8f8f8;
-  }
-  .coach-visual{
-    position:relative;
-    width:var(--cv);
-    height:calc(var(--cv) * 168 / 133);
-    flex-shrink:0;
-    margin-right:calc(var(--cv) * -40 / 133);
-  }
-  .coach-visual .ring{
-    position:absolute;
-    left:0;
-    top:calc(var(--cv) * 36 / 133);
-    width:var(--cv);
-    height:calc(var(--cv) * 132 / 133);
-  }
-  .coach-visual .photo,
-  .coach-visual .photo-front{
-    position:absolute;
-    left:calc(var(--cv) * 19 / 133);
-    top:0;
-    width:calc(var(--cv) * 96 / 133);
-    height:calc(var(--cv) * 160 / 133);
-  }
-  /* la foto trasera solo se ve dentro del circulo del anillo */
-  .coach-visual .photo{filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));clip-path:circle(calc(var(--cv) * 66 / 133) at calc(var(--cv) * 47.5 / 133) calc(var(--cv) * 102 / 133));}
-  /* copia superior de la foto por delante del anillo, como en Figma (nodo 116:40416) */
-  .coach-visual .photo-front{clip-path:inset(0 0 calc(var(--cv) * 51 / 133) 0);}
-  .coach-info{
-    flex:1;
-    min-width:0;
-    padding:0 6px 0 calc(var(--cv) * 48 / 133);
-    filter:drop-shadow(0 4px 2px rgba(0,0,0,.5));
-  }
-  .coach-info h3{font-size:clamp(16px,5.1vw,20px);font-weight:700;color:#f8f8f8;line-height:1.2;text-wrap:balance;}
-  .coach-info p{font-size:clamp(11.5px,3.6vw,13px);font-weight:600;color:#f8f8f8;margin-top:4px;line-height:1.4;}
-  /* Credenciales de la coach: badges bajo el cargo. Envuelven en dos filas en
-     pantallas angostas, por eso flex-wrap. */
-  .coach-tags{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
-  .coach-tags li{
-    display:inline-flex;align-items:center;
-    background:rgba(51,219,219,.14);
-    border:1px solid rgba(51,219,219,.4);
-    color:var(--teal);border-radius:70px;
-    padding:3px 9px;font-size:10px;font-weight:600;line-height:1.3;
-    max-width:100%;
-  }
-
-  /* Pills (base heredada por .quick-actions .pill) */
-  .pill{
-    padding:10px 20px;
-    border-radius:70px;
-    font-size:14px;
-    font-weight:600;
-    white-space:nowrap;
-    display:inline-flex;
-    align-items:center;
-    gap:4px;
-  }
-  .pill-teal{background:rgba(255,255,255,.1);color:#f8f8f8;}
-  .pill-dark{background:var(--magenta);color:#f8f8f8;}
-  .pill-dark img{width:18px;height:18px;}
-
-  /* Barra fija de CTA (la misma de index.html). Los .pill van scopeados a
-     .quick-actions para que la barra se vea igual en todo el sitio aunque la
-     pagina defina su propio .pill con otro tamaño (pasa en las disciplinas). */
-  .quick-actions{
-    display:flex;
-    justify-content:center;
-    padding:0 12px;
-    position:fixed;
-    left:50%;
-    bottom:14px;
-    transform:translateX(-50%);
-    width:100%;
-    max-width:480px;
-    z-index:80;
-    pointer-events:none;
-  }
-  .quick-actions-inner{
-    pointer-events:auto;
-    background:rgba(30,30,30,.88);
-    -webkit-backdrop-filter:blur(14px);
-    backdrop-filter:blur(14px);
-    border:1px solid rgba(255,255,255,.10);
-    box-shadow:0 10px 28px rgba(0,0,0,.55);
-    border-radius:130px;
-    display:flex;
-    align-items:center;
-    gap:8px;
-    padding:8px;
-  }
-  .quick-actions .pill{
-    padding:10px 14px;
-    border-radius:70px;
-    font-size:13px;
-    font-weight:600;
-    white-space:nowrap;
-    display:inline-flex;
-    align-items:center;
-    gap:3px;
-  }
-  .quick-actions .pill-teal{background:rgba(255,255,255,.1);color:#f8f8f8;font-size:18px;}
-  .quick-actions .pill-dark{background:var(--magenta);color:#f8f8f8;font-size:20px;}
-  .quick-actions .pill-dark img{width:16px;height:16px;}
-
-  /* Footer */
-  footer{
-    background:var(--bg-alt);
-    padding:40px 20px 120px;
-    text-align:center;
-  }
-  .footer-logo{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-    margin-bottom:24px;
-    font-weight:800;
-    font-size:15px;
-    flex-wrap:wrap;
-  }
-  .footer-logo .bull-badge{
-    display:flex;align-items:center;justify-content:center;
-  }
-  .footer-logo .bull-badge img{width:50px;height:auto;object-fit:contain;}
-  .footer-logo .wordmark{display:flex;flex-direction:column;gap:2px;}
-  .footer-logo .wordmark img{height:21px;width:auto;}
-  .footer-links{
-    text-align:left;
-    max-width:300px;
-    margin:0 auto 20px;
-  }
-  .footer-links details{
-    border-bottom:1px solid #2a2a2a;
-    padding:12px 0;
-  }
-  .footer-links summary{
-    cursor:pointer;
-    list-style:none;
-    display:flex;
-    justify-content:space-between;
-    font-weight:600;
-    font-size:14px;
-  }
-  .footer-links summary::-webkit-details-marker{display:none;}
-  .footer-links summary::after{content:'▾';color:var(--teal);transition:transform .2s;}
-  .footer-links details[open] summary::after{transform:rotate(180deg);}
-  .footer-links a.plain{display:flex;justify-content:space-between;align-items:center;padding:10px 0;font-weight:600;font-size:14px;}
-  .footer-links a.plain::after{content:'>';color:var(--magenta);font-weight:700;font-size:14px;line-height:1;position:relative;top:1px;}
-  .footer-links details ul{list-style:none;padding:8px 0 4px 8px;}
-  .footer-links details ul li{padding:6px 0;}
-  .footer-links details ul a{color:var(--text-muted);font-size:13px;}
-  .footer-links details ul a:hover{color:var(--teal);}
-  .map-block{margin-bottom:24px;}
-  .map-block h3{font-size:18px;margin-bottom:8px;}
-  .map-block h3 span{display:block;width:172px;height:3px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:8px auto 0;}
-  .map-block p{color:#f8f8f8;font-size:14px;font-weight:600;}
-
-  /* Drawer menu */
-  .drawer-overlay{
-    position:fixed;inset:0;background:rgba(0,0,0,.6);
-    opacity:0;pointer-events:none;transition:opacity .25s;z-index:90;
-  }
-  .drawer-overlay.open{opacity:1;pointer-events:auto;}
-  .drawer{
-    position:fixed;top:0;left:0;height:100%;
-    width:min(330px,85vw);
-    background:var(--bg-alt);
-    padding:24px 20px;
-    transform:translateX(-100%);
-    visibility:hidden;
-    transition:transform .3s ease, visibility .3s;
-    z-index:91;
-    overflow-y:auto;
-  }
-  .drawer.open{transform:translateX(0);visibility:visible;}
-  .drawer-close{
-    background:none;border:none;color:#fff;font-size:20px;
-    cursor:pointer;margin-bottom:16px;padding:4px;
-  }
-  .drawer-nav details{border-bottom:1px solid #2a2a2a;padding:10px 0;}
-  .drawer-nav summary{
-    cursor:pointer;list-style:none;display:flex;
-    justify-content:space-between;align-items:center;
-    font-weight:600;font-size:14px;color:#fff;
-  }
-  .drawer-nav summary::-webkit-details-marker{display:none;}
-  .drawer-nav summary::after{content:'▾';color:var(--teal);transition:transform .2s;}
-  .drawer-nav details[open] summary::after{transform:rotate(180deg);}
-  .drawer-nav details ul{list-style:none;padding:8px 0 4px 8px;}
-  .drawer-nav details ul li{padding:6px 0;}
-  .drawer-nav details ul a{color:var(--text-muted);font-size:13px;}
-  .drawer-nav details ul a:hover{color:var(--teal);}
-  .drawer-item-plain{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:10px 0;font-weight:600;font-size:14px;color:#fff;
-    border-bottom:1px solid #2a2a2a;
-  }
-  .drawer-item-plain::after{content:'>';color:var(--magenta);font-weight:700;font-size:14px;line-height:1;position:relative;top:1px;}
-  .drawer-map{
-    margin-top:24px;padding:10px 0;border-radius:20px;text-align:center;
-  }
-  .drawer-map h3{font-size:18px;margin-bottom:8px;color:#fff;}
-  .drawer-map h3 span{display:block;width:172px;height:3px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:8px auto 0;}
-  .drawer-map p{color:#f8f8f8;font-size:14px;font-weight:600;}
-  .contact-box{
-    background:rgba(30,30,30,.5);
-    border-radius:30px;
-    padding:20px 24px;
-    margin-bottom:24px;
-  }
-  .contact-box h4{font-size:18px;margin-bottom:8px;}
-  .contact-box .underline{width:172px;height:3px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:0 auto 8px;}
-  .contact-box p{color:#f8f8f8;font-size:12px;margin-bottom:16px;}
-  .whatsapp-btn{
-    background:rgba(51,219,219,.2);
-    color:#f8f8f8;
-    font-weight:600;
-    padding:10px 20px;
-    border-radius:80px;
-    display:inline-flex;
-    align-items:center;
-    gap:4px;
-    font-size:14px;
-    box-shadow:0 2px 6px rgba(0,0,0,.35);
-  }
-  .socials{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    font-size:12px;
-    color:#fff;
-    margin-bottom:20px;
-  }
-  .legal-links{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:8px;
-    font-size:13px;
-    color:var(--text-muted);
-    margin-bottom:12px;
-  }
-  .legal-links a:hover{color:var(--teal);}
-  .copyright{font-size:16px;font-weight:600;color:#f8f8f8;text-align:center;}
-
-  /* Desktop */
-  @media (min-width:900px){
-    .app{max-width:none;box-shadow:none;}
-    .container{max-width:1100px;margin:0 auto;}
-
-    .hero-card{padding:50px 60px;}
-    .hero-card .content{max-width:640px;margin:0 auto;text-align:center;}
-    .hero-card h1{font-size:32px;}
-
-    .benefits-grid{grid-template-columns:repeat(4,1fr);}
-
-    .quick-actions{max-width:900px;justify-content:center;}
-    footer{padding:60px 40px 130px;}
-    .footer-links{max-width:900px;}
-  }
-
-  /* Oculto temporalmente: portal de alumnos BoxMagic.
-     Para volver a mostrarlo, borra esta regla. */
-  .footer-links a.plain,
-  .drawer-item-plain{display:none;}
+  /* Karen tiene credenciales mas largas que las de la base y con
+     white-space:nowrap la pildora se salia de la tarjeta en movil. */
+  .coach-tags li{white-space:normal;}
 </style>
+<link rel="stylesheet" href="assets/css/site.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
   {"@type":"ListItem","position":1,"name":"Inicio","item":"https://bisontecrossfit.cl/"},
-  {"@type":"ListItem","position":2,"name":"Disciplinas","item":"https://bisontecrossfit.cl/disciplinas.html"},
-  {"@type":"ListItem","position":3,"name":"Hybrid / Hyrox","item":"https://bisontecrossfit.cl/hybrid.html"}
+  {"@type":"ListItem","position":2,"name":"Disciplinas","item":"https://bisontecrossfit.cl/disciplinas"},
+  {"@type":"ListItem","position":3,"name":"Hybrid / Hyrox","item":"https://bisontecrossfit.cl/hybrid"}
   ]
+}
+</script>
+<!-- El servicio (la disciplina) como entidad propia, colgando del negocio via
+     "provider": {"@id"} — la ficha completa vive solo en index.html y
+     como-llegar.html. El texto es el mismo de la pagina; si cambia el horario o
+     la descripcion, actualizalo aca tambien. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://bisontecrossfit.cl/hybrid#servicio",
+  "name": "Entrenamiento híbrido y Hyrox en San Miguel",
+  "serviceType": "Entrenamiento híbrido / preparación Hyrox",
+  "description": "Clase híbrida inspirada en el formato Hyrox: carrera, remo y ergómetros combinados con trineo, farmer carry y wall balls. Martes y jueves, 18:15 y 19:15.",
+  "url": "https://bisontecrossfit.cl/hybrid",
+  "image": "https://bisontecrossfit.cl/assets/img/crossfit-hero.webp",
+  "provider": {"@id": "https://bisontecrossfit.cl/#gimnasio"},
+  "areaServed": [
+    {"@type": "City", "name": "San Miguel"},
+    {"@type": "City", "name": "Santiago"}
+  ],
+  "audience": {"@type": "Audience", "audienceType": "Corredores, principiantes y atletas que preparan una Hyrox"},
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "serviceLocation": {"@id": "https://bisontecrossfit.cl/#gimnasio"},
+    "serviceUrl": "https://bisontecrossfit.cl/clase-gratis?clase=hybrid"
+  }
 }
 </script>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVD4NKS4"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 <div class="app">
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
 <header>
   <button class="menu-btn" id="menuIcon" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer"><img src="assets/icons/menu.svg" alt="" width="22" height="22"></button>
-  <a href="index.html" class="logo-nav"><img src="assets/img/logo-nav-full.svg" alt="Bisonte CrossFit" width="162" height="64"></a>
+  <a href="/" class="logo-nav"><img src="assets/img/logo-nav-full.svg" alt="Bisonte CrossFit" width="162" height="64"></a>
   <span style="width:22px;"></span>
 </header>
 
@@ -507,31 +97,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <details open>
       <summary>Explora</summary>
       <ul>
-        <li><a href="disciplinas.html">Todas las disciplinas</a></li>
-        <li><a href="planes.html">Planes</a></li>
-        <li><a href="testimonios.html">Testimonios</a></li>
-        <li><a href="clase-gratis.html">Clase gratis</a></li>
+        <li><a href="/disciplinas">Todas las disciplinas</a></li>
+        <li><a href="/horarios">Horarios</a></li>
+        <li><a href="/planes">Planes</a></li>
+        <li><a href="/coaches">Coaches</a></li>
+        <li><a href="/testimonios">Testimonios</a></li>
+        <li><a href="/clase-gratis">Clase gratis</a></li>
       </ul>
     </details>
     <details>
       <summary>Disciplinas</summary>
       <ul>
-        <li><a href="crossfit.html">CrossFit</a></li>
-        <li><a href="hybrid.html">Hybrid / Hyrox</a></li>
-        <li><a href="levantamiento-olimpico.html">Levantamiento Olímpico</a></li>
-        <li><a href="gymnastics.html">Gymnastics</a></li>
-        <li><a href="adulto-mayor.html">Adulto Mayor</a></li>
-        <li><a href="strongman.html">StrongMan</a></li>
-        <li><a href="full-body.html">Full Body</a></li>
-        <li><a href="competidor.html">Competidor</a></li>
+        <li><a href="/crossfit">CrossFit</a></li>
+        <li><a href="/hybrid">Hybrid / Hyrox</a></li>
+        <li><a href="/levantamiento-olimpico">Levantamiento Olímpico</a></li>
+        <li><a href="/gymnastics">Gymnastics</a></li>
+        <li><a href="/adulto-mayor">Adulto Mayor</a></li>
+        <li><a href="/strongman">StrongMan</a></li>
+        <li><a href="/full-body">Full Body</a></li>
+        <li><a href="/competidor">Competidor</a></li>
       </ul>
     </details>
     <details>
       <summary>Ayuda y Contacto</summary>
       <ul>
-        <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+        <li><a href="/preguntas-frecuentes">Preguntas frecuentes</a></li>
         <li><a href="https://wa.me/56967374096" target="_blank" rel="noopener">WhatsApp</a></li>
-        <li><a href="como-llegar.html">Ubicación</a></li>
+        <li><a href="/como-llegar">Ubicación</a></li>
       </ul>
     </details>
     <a class="drawer-item-plain" href="https://app.boxmagic.cl/" target="_blank" rel="noopener">Soy Alumno</a>
@@ -542,25 +134,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </aside>
 
-<main>
+<main id="contenido">
 
 <section class="discipline-page">
   <div class="container">
     <nav class="breadcrumb" aria-label="Migas de pan">
       <ol>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="disciplinas.html">Disciplinas</a></li>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/disciplinas">Disciplinas</a></li>
         <li><span aria-current="page">Hybrid / Hyrox</span></li>
       </ol>
     </nav>
 
     <div class="hero-card">
-      <img class="bg" src="assets/img/crossfit-hero.webp" alt="">
+      <img class="bg" src="assets/img/crossfit-hero.webp" width="692" height="483" fetchpriority="high" decoding="async" alt="Clase de entrenamiento híbrido estilo Hyrox en Bisonte CrossFit, San Miguel">
       <div class="overlay"></div>
       <div class="content">
-        <h1>Hybrid/Hyrox</h1>
-        <div class="subtitle">Control y fuerza corporal</div>
-        <p class="desc">Entrenamiento híbrido que combina resistencia cardiovascular y fuerza funcional, inspirado en el formato Hyrox. Alterna carrera y estaciones de fuerza para mejorar tu capacidad física general.</p>
+        <h1>Hybrid / Hyrox en San Miguel</h1>
+        <div class="subtitle">Resistencia y fuerza en un mismo entrenamiento</div>
+        <p class="desc">Entrenamiento híbrido inspirado en el formato Hyrox: alterna carrera, remo y ergómetros con estaciones de fuerza como trineo, farmer carry y wall balls. Ideal si quieres ganar resistencia cardiovascular sin dejar de trabajar la fuerza.</p>
       </div>
     </div>
 
@@ -571,30 +163,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="info-card">
+      <h2>¿Qué es el entrenamiento Hybrid / Hyrox?</h2>
+      <p>Hyrox es una competencia de fitness que combina ocho kilómetros de carrera con ocho estaciones funcionales: skierg, empuje y arrastre de trineo, burpees broad jump, remo, farmer carry, estocadas con saco y wall balls. La clase Hybrid replica esa lógica en una hora, con distancias y cargas ajustadas a cada persona.</p>
+      <p>Es el formato indicado si vienes del running y quieres ganar fuerza, o si entrenas fuerza y te falta capacidad cardiovascular. No hace falta que te estés preparando para competir: funciona igual de bien como acondicionamiento físico general.</p>
+      <p>Las clases son martes y jueves a las 18:15 y 19:15 en Calle Uno 1050, San Miguel, a pasos del Metro Departamental. Puedes probar la primera clase sin costo.</p>
+    </div>
+
+    <div class="info-card">
       <h2>¿Quiénes pueden entrenar?</h2>
       <ul>
-        <li>Principiantes</li>
-        <li>Intermedios</li>
-        <li>Avanzados</li>
+        <li>Principiantes: se ajustan distancias, cargas y ritmo</li>
+        <li>Corredores que quieren ganar fuerza funcional</li>
+        <li>Atletas que preparan una Hyrox o una carrera con obstáculos</li>
       </ul>
     </div>
 
     <div class="section-title"><h2>Beneficios</h2></div>
     <div class="benefits-grid">
       <div class="benefit-card">
-        <img loading="lazy" src="assets/icons/benefit-heartbeat.svg" alt="">
+        <img loading="lazy" src="assets/icons/benefit-heartbeat.svg" alt="" width="24" height="24">
         <span>Mejora tu resistencia cardiovascular</span>
       </div>
       <div class="benefit-card">
-        <img loading="lazy" src="assets/icons/benefit-users.svg" alt="">
+        <img loading="lazy" src="assets/icons/benefit-users.svg" alt="" width="24" height="24">
         <span>Entrena en comunidad</span>
       </div>
       <div class="benefit-card">
-        <img loading="lazy" src="assets/icons/benefit-smiley.svg" alt="">
+        <img loading="lazy" src="assets/icons/benefit-smiley.svg" alt="" width="24" height="24">
         <span>Desarrolla control corporal</span>
       </div>
       <div class="benefit-card">
-        <img loading="lazy" src="assets/icons/benefit-chartlineup.svg" alt="">
+        <img loading="lazy" src="assets/icons/benefit-chartlineup.svg" alt="" width="24" height="24">
         <span>Aumenta tu fuerza funcional</span>
       </div>
     </div>
@@ -602,9 +201,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="section-title"><h2>Clases impartidas por</h2></div>
     <div class="coach-row">
       <div class="coach-visual">
-        <img loading="lazy" class="photo" src="assets/img/karen.webp" alt="Karen Low">
+        <img loading="lazy" class="photo" src="assets/img/karen.webp" alt="Karen Low" width="288" height="480">
         <img class="ring" src="assets/icons/coach-ring.svg" alt="">
-        <img loading="lazy" class="photo-front" src="assets/img/karen.webp" alt="" aria-hidden="true">
+        <img loading="lazy" class="photo-front" src="assets/img/karen.webp" alt="" aria-hidden="true" width="288" height="480">
       </div>
       <div class="coach-info">
         <h3>Karen Low</h3>
@@ -618,15 +217,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
+    <div class="cta-pills">
+      <h2>¿Te tinca probar Hybrid / Hyrox?</h2>
+      <p>Tu primera clase es gratis y sin compromiso. Reserva tu cupo y ven a conocer el box.</p>
+      <div class="cta-actions">
+        <a class="cta-go" href="/clase-gratis?clase=hybrid">Reservar mi clase gratis</a>
+        <a class="cta-alt" href="/planes">Ver planes y precios</a>
+      </div>
+    </div>
+
     <div class="section-title"><h2>Otras disciplinas</h2></div>
     <ul class="other-disciplines">
-      <li><a href="crossfit.html">CrossFit</a></li>
-      <li><a href="levantamiento-olimpico.html">Levantamiento Olímpico</a></li>
-      <li><a href="gymnastics.html">Gymnastics</a></li>
-      <li><a href="adulto-mayor.html">Adulto Mayor</a></li>
-      <li><a href="strongman.html">StrongMan</a></li>
-      <li><a href="full-body.html">Full Body</a></li>
-      <li><a href="competidor.html">Competidor</a></li>
+      <li><a href="/crossfit">CrossFit</a></li>
+      <li><a href="/levantamiento-olimpico">Levantamiento Olímpico</a></li>
+      <li><a href="/gymnastics">Gymnastics</a></li>
+      <li><a href="/adulto-mayor">Adulto Mayor</a></li>
+      <li><a href="/strongman">StrongMan</a></li>
+      <li><a href="/full-body">Full Body</a></li>
+      <li><a href="/competidor">Competidor</a></li>
     </ul>
   </div>
 </section>
@@ -647,30 +255,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <details>
       <summary>Explora</summary>
       <ul>
-        <li><a href="disciplinas.html">Todas las disciplinas</a></li>
-        <li><a href="planes.html">Planes</a></li>
-        <li><a href="testimonios.html">Testimonios</a></li>
+        <li><a href="/disciplinas">Todas las disciplinas</a></li>
+        <li><a href="/horarios">Horarios</a></li>
+        <li><a href="/planes">Planes</a></li>
+        <li><a href="/coaches">Coaches</a></li>
+        <li><a href="/testimonios">Testimonios</a></li>
       </ul>
     </details>
     <details>
       <summary>Disciplinas</summary>
       <ul>
-        <li><a href="crossfit.html">CrossFit</a></li>
-        <li><a href="hybrid.html">Hybrid / Hyrox</a></li>
-        <li><a href="levantamiento-olimpico.html">Levantamiento Olímpico</a></li>
-        <li><a href="gymnastics.html">Gymnastics</a></li>
-        <li><a href="adulto-mayor.html">Adulto Mayor</a></li>
-        <li><a href="strongman.html">StrongMan</a></li>
-        <li><a href="full-body.html">Full Body</a></li>
-        <li><a href="competidor.html">Competidor</a></li>
+        <li><a href="/crossfit">CrossFit</a></li>
+        <li><a href="/hybrid">Hybrid / Hyrox</a></li>
+        <li><a href="/levantamiento-olimpico">Levantamiento Olímpico</a></li>
+        <li><a href="/gymnastics">Gymnastics</a></li>
+        <li><a href="/adulto-mayor">Adulto Mayor</a></li>
+        <li><a href="/strongman">StrongMan</a></li>
+        <li><a href="/full-body">Full Body</a></li>
+        <li><a href="/competidor">Competidor</a></li>
       </ul>
     </details>
     <details>
       <summary>Ayuda y Contacto</summary>
       <ul>
-        <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+        <li><a href="/preguntas-frecuentes">Preguntas frecuentes</a></li>
         <li><a href="https://wa.me/56967374096" target="_blank" rel="noopener">WhatsApp</a></li>
-        <li><a href="como-llegar.html">Ubicación</a></li>
+        <li><a href="/como-llegar">Ubicación</a></li>
       </ul>
     </details>
     <a class="plain" href="https://app.boxmagic.cl/" target="_blank" rel="noopener">Soy Alumno</a>
@@ -685,20 +295,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h4>¿Tienes más dudas?</h4>
     <div class="underline"></div>
     <p>Revisa todas nuestras preguntas o escríbenos directo a WhatsApp</p>
-    <a class="whatsapp-btn" href="https://wa.me/56967374096" target="_blank" rel="noopener"><img loading="lazy" src="assets/icons/whatsapp.svg" alt="" style="width:16px;height:16px;"> WhatsApp Bisonte</a>
+    <a class="whatsapp-btn" href="https://wa.me/56967374096" target="_blank" rel="noopener"><img loading="lazy" src="assets/icons/whatsapp.svg" alt="" style="width:16px;height:16px;" width="18" height="18"> WhatsApp Bisonte</a>
   </div>
 
   <div class="socials">
-    <a href="https://www.instagram.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="@Bisontecrossfit en Instagram"><img loading="lazy" src="assets/icons/instagram.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</a>
-    <a href="https://www.facebook.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="@Bisontecrossfit en Facebook"><img loading="lazy" src="assets/icons/facebook.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</a>
+    <a href="https://www.instagram.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="@Bisontecrossfit en Instagram"><img loading="lazy" src="assets/icons/instagram.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;" width="16" height="16"> @Bisontecrossfit</a>
+    <a href="https://www.facebook.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="@Bisontecrossfit en Facebook"><img loading="lazy" src="assets/icons/facebook.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;" width="16" height="16"> @Bisontecrossfit</a>
   </div>
 
   <div class="legal-links">
-    <a href="politica-privacidad.html">Privacidad</a>
+    <a href="/politica-privacidad">Privacidad</a>
     <span>·</span>
-    <a href="politica-cookies.html">Cookies</a>
+    <a href="/politica-cookies">Cookies</a>
     <span>·</span>
-    <a href="terminos-y-condiciones.html">Términos y Condiciones</a>
+    <a href="/terminos-y-condiciones">Términos y Condiciones</a>
   </div>
 
   <p class="copyright">© 2026 Bisonte CrossFit</p>
@@ -706,10 +316,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="quick-actions">
   <div class="quick-actions-inner">
-    <a class="pill pill-teal" href="disciplinas.html">Ver clases</a>
-    <a class="pill pill-dark" href="clase-gratis.html?clase=hybrid"><img src="assets/icons/cursor-click.svg" alt="">Clase gratis</a>
+    <a class="pill pill-teal" href="/disciplinas">Ver clases</a>
+    <a class="pill pill-dark" href="/clase-gratis?clase=hybrid"><img src="assets/icons/cursor-click.svg" alt="" width="16" height="16">Clase gratis</a>
   </div>
 </div>
+
+<a class="wa-float" href="https://wa.me/56967374096?text=Quiero%20reservar%20una%20clase%20de%20Hybrid%20/%20Hyrox" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.17c-.24.68-1.4 1.3-1.94 1.34-.5.04-.98.22-3.3-.69-2.78-1.1-4.55-3.94-4.69-4.12-.14-.18-1.13-1.5-1.13-2.86s.71-2.03.97-2.31c.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.57.8 1.97.87 2.11.07.14.12.31.02.49-.1.18-.15.29-.29.45-.14.16-.3.36-.43.48-.14.14-.29.29-.13.57.17.28.74 1.22 1.59 1.98 1.09.97 2.01 1.27 2.29 1.41.28.14.45.12.61-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.63-.14.26.09 1.65.78 1.93.92.28.14.47.21.54.33.07.11.07.65-.17 1.33Z"/></svg></a>
 
 </div>
 <script defer src="assets/js/app.js"></script>

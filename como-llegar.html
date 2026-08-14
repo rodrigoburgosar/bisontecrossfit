@@ -3,30 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WVD4NKS4');</script>
-<!-- End Google Tag Manager -->
-<!-- Microsoft Clarity -->
-<script type="text/javascript">
-(function(c,l,a,r,i,t,y){
-    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-})(window, document, "clarity", "script", "xx809mpyos");
-</script>
-<!-- End Microsoft Clarity -->
+<!-- Consentimiento de cookies.
+     Google Tag Manager y Microsoft Clarity ya NO se cargan aqui: los carga
+     assets/js/consent.js, y solo despues de que la persona elija. Antes
+     arrancaban en estas mismas lineas, sin pedir permiso, en todas las
+     paginas incluidas las propias politicas.
+     Va sin defer y lo primero del <head> para decidir antes de pintar. -->
+<script src="assets/js/consent.js"></script>
 <meta name="description" content="Encuéntranos en Calle Uno 1050, San Miguel, a pasos del Metro Departamental. Gimnasio de CrossFit con acceso fácil desde Gran Avenida.">
 <meta property="og:site_name" content="Bisonte CrossFit">
-<meta property="og:title" content="Ubicación | Gimnasio de CrossFit en San Miguel, Metro Departamental">
+<meta property="og:title" content="Cómo llegar | Bisonte CrossFit San Miguel">
 <meta property="og:description" content="Encuéntranos en Calle Uno 1050, San Miguel, a pasos del Metro Departamental. Gimnasio de CrossFit con acceso fácil desde Gran Avenida.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CL">
-<link rel="canonical" href="https://bisontecrossfit.cl/como-llegar.html">
-<meta property="og:url" content="https://bisontecrossfit.cl/como-llegar.html">
+<link rel="canonical" href="https://bisontecrossfit.cl/como-llegar">
+<meta property="og:url" content="https://bisontecrossfit.cl/como-llegar">
 <meta property="og:image" content="https://bisontecrossfit.cl/assets/img/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -36,11 +27,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<title>Ubicación | Gimnasio de CrossFit en San Miguel, Metro Departamental</title>
+<title>Cómo llegar | Bisonte CrossFit San Miguel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,400&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,400&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
 <style>
   :root{
     --bg:#131313;
@@ -445,27 +436,79 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .footer-links a.plain,
   .drawer-item-plain{display:none;}
 </style>
+<link rel="stylesheet" href="assets/css/site.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
   {"@type":"ListItem","position":1,"name":"Inicio","item":"https://bisontecrossfit.cl/"},
-  {"@type":"ListItem","position":2,"name":"Cómo llegar","item":"https://bisontecrossfit.cl/como-llegar.html"}
+  {"@type":"ListItem","position":2,"name":"Cómo llegar","item":"https://bisontecrossfit.cl/como-llegar"}
+  ]
+}
+</script>
+<!-- Copia literal de la ficha ExerciseGym de index.html: mismo "@id", asi que
+     para Google es la misma entidad y no un negocio duplicado. Va tambien aca
+     porque esta es la pagina de ubicacion, la que compite por las busquedas
+     locales ("crossfit cerca de mi", "gimnasio san miguel"). Si cambian la
+     direccion, el telefono o los horarios, hay que editar las dos copias. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ExerciseGym",
+  "@id": "https://bisontecrossfit.cl/#gimnasio",
+  "name": "Bisonte CrossFit",
+  "description": "Box de CrossFit y gimnasio funcional en San Miguel, Santiago. Clases de CrossFit, halterofilia, gymnastics, strongman y full body para todos los niveles.",
+  "url": "https://bisontecrossfit.cl/",
+  "logo": "https://bisontecrossfit.cl/assets/img/logo-nav-full.svg",
+  "image": "https://bisontecrossfit.cl/assets/img/og-cover.jpg",
+  "telephone": "+56967374096",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Calle Uno 1050",
+    "addressLocality": "San Miguel",
+    "addressRegion": "Región Metropolitana",
+    "postalCode": "7980032",
+    "addressCountry": "CL"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -33.5028019,
+    "longitude": -70.6567837
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "06:00",
+      "closes": "21:15"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "10:30",
+      "closes": "12:00"
+    }
+  ],
+  "priceRange": "$8.000 - $137.000 CLP",
+  "hasMap": "https://maps.google.com/?cid=13561209380920766207",
+  "sameAs": [
+    "https://maps.google.com/?cid=13561209380920766207",
+    "https://www.instagram.com/bisontecrossfit",
+    "https://www.facebook.com/bisontecrossfit",
+    "https://www.crossfit.com/gym/32666/bisonte-crossfit"
   ]
 }
 </script>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVD4NKS4"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 <div class="app">
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
 <header>
   <button class="menu-btn" id="menuIcon" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer"><img src="assets/icons/menu.svg" alt="" width="22" height="22"></button>
-  <a href="index.html" class="logo-nav"><img src="assets/img/logo-nav-full.svg" alt="Bisonte CrossFit" width="162" height="64"></a>
+  <a href="/" class="logo-nav"><img src="assets/img/logo-nav-full.svg" alt="Bisonte CrossFit" width="162" height="64"></a>
   <span style="width:22px;"></span>
 </header>
 
@@ -476,31 +519,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <details>
       <summary>Explora</summary>
       <ul>
-        <li><a href="disciplinas.html">Todas las disciplinas</a></li>
-        <li><a href="planes.html">Planes</a></li>
-        <li><a href="testimonios.html">Testimonios</a></li>
-        <li><a href="clase-gratis.html">Clase gratis</a></li>
+        <li><a href="/disciplinas">Todas las disciplinas</a></li>
+        <li><a href="/horarios">Horarios</a></li>
+        <li><a href="/planes">Planes</a></li>
+        <li><a href="/coaches">Coaches</a></li>
+        <li><a href="/testimonios">Testimonios</a></li>
+        <li><a href="/clase-gratis">Clase gratis</a></li>
       </ul>
     </details>
     <details>
       <summary>Disciplinas</summary>
       <ul>
-        <li><a href="crossfit.html">CrossFit</a></li>
-        <li><a href="hybrid.html">Hybrid / Hyrox</a></li>
-        <li><a href="levantamiento-olimpico.html">Levantamiento Olímpico</a></li>
-        <li><a href="gymnastics.html">Gymnastics</a></li>
-        <li><a href="adulto-mayor.html">Adulto Mayor</a></li>
-        <li><a href="strongman.html">StrongMan</a></li>
-        <li><a href="full-body.html">Full Body</a></li>
-        <li><a href="competidor.html">Competidor</a></li>
+        <li><a href="/crossfit">CrossFit</a></li>
+        <li><a href="/hybrid">Hybrid / Hyrox</a></li>
+        <li><a href="/levantamiento-olimpico">Levantamiento Olímpico</a></li>
+        <li><a href="/gymnastics">Gymnastics</a></li>
+        <li><a href="/adulto-mayor">Adulto Mayor</a></li>
+        <li><a href="/strongman">StrongMan</a></li>
+        <li><a href="/full-body">Full Body</a></li>
+        <li><a href="/competidor">Competidor</a></li>
       </ul>
     </details>
     <details>
       <summary>Ayuda y Contacto</summary>
       <ul>
-        <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+        <li><a href="/preguntas-frecuentes">Preguntas frecuentes</a></li>
         <li><a href="https://wa.me/56967374096" target="_blank" rel="noopener">WhatsApp</a></li>
-        <li><a href="como-llegar.html">Ubicación</a></li>
+        <li><a href="/como-llegar">Ubicación</a></li>
       </ul>
     </details>
     <a class="drawer-item-plain" href="https://app.boxmagic.cl/" target="_blank" rel="noopener">Soy Alumno</a>
@@ -511,13 +556,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </aside>
 
-<main>
+<main id="contenido">
 
 <section class="page-title" id="ubicacion">
   <div class="container">
     <nav class="breadcrumb" aria-label="Migas de pan">
       <ol>
-        <li><a href="index.html">Inicio</a></li>
+        <li><a href="/">Inicio</a></li>
         <li><span aria-current="page">Cómo llegar</span></li>
       </ol>
     </nav>
@@ -525,7 +570,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1>Cómo llegar a Bisonte CrossFit en San Miguel<span></span></h1>
 
     <div class="info-card">
-      <img src="assets/icons/map-pin.svg" alt="">
+      <img src="assets/icons/map-pin.svg" alt="" width="16" height="16">
       <div>
         <h3>Calle Uno #1050, San Miguel</h3>
         <p>A pasos del metro Departamental</p>
@@ -567,9 +612,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="gallery-row">
-      <div class="gallery-item"><img loading="lazy" src="assets/img/ubicacion-galeria-1.webp" alt="Alumnos de Bisonte CrossFit en una foto grupal dentro del box"></div>
-      <div class="gallery-item"><img loading="lazy" src="assets/img/ubicacion-galeria-2.webp" alt="Comunidad de Bisonte CrossFit celebrando disfrazados dentro del box"></div>
-      <div class="gallery-item"><img loading="lazy" src="assets/img/ubicacion-galeria-3.webp" alt="Alumnos de Bisonte CrossFit en una actividad al aire libre"></div>
+      <div class="gallery-item"><img loading="lazy" src="assets/img/ubicacion-galeria-1.webp" alt="Alumnos de Bisonte CrossFit en una foto grupal dentro del box" width="700" height="523"></div>
+      <div class="gallery-item"><img loading="lazy" src="assets/img/ubicacion-galeria-2.webp" alt="Comunidad de Bisonte CrossFit celebrando disfrazados dentro del box" width="700" height="652"></div>
+      <div class="gallery-item"><img loading="lazy" src="assets/img/ubicacion-galeria-3.webp" alt="Alumnos de Bisonte CrossFit en una actividad al aire libre" width="700" height="525"></div>
     </div>
 
     <div class="highlight-strip">
@@ -587,8 +632,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="socials">
-      <a href="https://www.instagram.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="@Bisontecrossfit en Instagram"><img loading="lazy" src="assets/icons/instagram.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</a>
-      <a href="https://www.facebook.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="@Bisontecrossfit en Facebook"><img loading="lazy" src="assets/icons/facebook.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</a>
+      <a href="https://www.instagram.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="@Bisontecrossfit en Instagram"><img loading="lazy" src="assets/icons/instagram.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;" width="16" height="16"> @Bisontecrossfit</a>
+      <a href="https://www.facebook.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="@Bisontecrossfit en Facebook"><img loading="lazy" src="assets/icons/facebook.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;" width="16" height="16"> @Bisontecrossfit</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="cta-banner">
+      <h2>Ya sabes dónde estamos</h2>
+      <p>Agenda tu primera clase gratis y te esperamos en Calle Uno 1050.</p>
+      <div class="cta-actions">
+        <a class="cta-go" href="/clase-gratis">Reservar mi clase gratis</a>
+        <a class="cta-alt" href="/disciplinas">Ver las clases</a>
+      </div>
     </div>
   </div>
 </section>
@@ -609,30 +667,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <details>
       <summary>Explora</summary>
       <ul>
-        <li><a href="disciplinas.html">Todas las disciplinas</a></li>
-        <li><a href="planes.html">Planes</a></li>
-        <li><a href="testimonios.html">Testimonios</a></li>
+        <li><a href="/disciplinas">Todas las disciplinas</a></li>
+        <li><a href="/horarios">Horarios</a></li>
+        <li><a href="/planes">Planes</a></li>
+        <li><a href="/coaches">Coaches</a></li>
+        <li><a href="/testimonios">Testimonios</a></li>
       </ul>
     </details>
     <details>
       <summary>Disciplinas</summary>
       <ul>
-        <li><a href="crossfit.html">CrossFit</a></li>
-        <li><a href="hybrid.html">Hybrid / Hyrox</a></li>
-        <li><a href="levantamiento-olimpico.html">Levantamiento Olímpico</a></li>
-        <li><a href="gymnastics.html">Gymnastics</a></li>
-        <li><a href="adulto-mayor.html">Adulto Mayor</a></li>
-        <li><a href="strongman.html">StrongMan</a></li>
-        <li><a href="full-body.html">Full Body</a></li>
-        <li><a href="competidor.html">Competidor</a></li>
+        <li><a href="/crossfit">CrossFit</a></li>
+        <li><a href="/hybrid">Hybrid / Hyrox</a></li>
+        <li><a href="/levantamiento-olimpico">Levantamiento Olímpico</a></li>
+        <li><a href="/gymnastics">Gymnastics</a></li>
+        <li><a href="/adulto-mayor">Adulto Mayor</a></li>
+        <li><a href="/strongman">StrongMan</a></li>
+        <li><a href="/full-body">Full Body</a></li>
+        <li><a href="/competidor">Competidor</a></li>
       </ul>
     </details>
     <details open>
       <summary>Ayuda y Contacto</summary>
       <ul>
-        <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+        <li><a href="/preguntas-frecuentes">Preguntas frecuentes</a></li>
         <li><a href="https://wa.me/56967374096" target="_blank" rel="noopener">WhatsApp</a></li>
-        <li><a href="como-llegar.html">Ubicación</a></li>
+        <li><a href="/como-llegar">Ubicación</a></li>
       </ul>
     </details>
     <a class="plain" href="https://app.boxmagic.cl/" target="_blank" rel="noopener">Soy Alumno</a>
@@ -646,20 +706,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="contact-box">
     <h4>¿Tienes más dudas?</h4>
     <p>Revisa todas nuestras preguntas o escríbenos directo a WhatsApp</p>
-    <a class="whatsapp-btn" href="https://wa.me/56967374096" target="_blank" rel="noopener"><img loading="lazy" src="assets/icons/whatsapp.svg" alt="" style="width:18px;height:18px;"> WhatsApp Bisonte</a>
+    <a class="whatsapp-btn" href="https://wa.me/56967374096" target="_blank" rel="noopener"><img loading="lazy" src="assets/icons/whatsapp.svg" alt="" style="width:18px;height:18px;" width="18" height="18"> WhatsApp Bisonte</a>
   </div>
 
   <div class="socials">
-    <a href="https://www.instagram.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="@Bisontecrossfit en Instagram"><img loading="lazy" src="assets/icons/instagram.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</a>
-    <a href="https://www.facebook.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="@Bisontecrossfit en Facebook"><img loading="lazy" src="assets/icons/facebook.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</a>
+    <a href="https://www.instagram.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="@Bisontecrossfit en Instagram"><img loading="lazy" src="assets/icons/instagram.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;" width="16" height="16"> @Bisontecrossfit</a>
+    <a href="https://www.facebook.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="@Bisontecrossfit en Facebook"><img loading="lazy" src="assets/icons/facebook.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;" width="16" height="16"> @Bisontecrossfit</a>
   </div>
 
   <div class="legal-links">
-    <a href="politica-privacidad.html">Privacidad</a>
+    <a href="/politica-privacidad">Privacidad</a>
     <span>·</span>
-    <a href="politica-cookies.html">Cookies</a>
+    <a href="/politica-cookies">Cookies</a>
     <span>·</span>
-    <a href="terminos-y-condiciones.html">Términos y Condiciones</a>
+    <a href="/terminos-y-condiciones">Términos y Condiciones</a>
   </div>
 
   <p class="copyright">© 2026 Bisonte CrossFit</p>
@@ -667,10 +727,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="quick-actions">
   <div class="quick-actions-inner">
-    <a class="pill pill-teal" href="disciplinas.html">Ver clases</a>
-    <a class="pill pill-dark" href="clase-gratis.html"><img src="assets/icons/cursor-click.svg" alt="">Clase gratis</a>
+    <a class="pill pill-teal" href="/disciplinas">Ver clases</a>
+    <a class="pill pill-dark" href="/clase-gratis"><img src="assets/icons/cursor-click.svg" alt="" width="16" height="16">Clase gratis</a>
   </div>
 </div>
+
+<a class="wa-float" href="https://wa.me/56967374096?text=Hola%2C%20tengo%20una%20duda%20sobre%20c%C3%B3mo%20llegar%20al%20box" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.17c-.24.68-1.4 1.3-1.94 1.34-.5.04-.98.22-3.3-.69-2.78-1.1-4.55-3.94-4.69-4.12-.14-.18-1.13-1.5-1.13-2.86s.71-2.03.97-2.31c.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.57.8 1.97.87 2.11.07.14.12.31.02.49-.1.18-.15.29-.29.45-.14.16-.3.36-.43.48-.14.14-.29.29-.13.57.17.28.74 1.22 1.59 1.98 1.09.97 2.01 1.27 2.29 1.41.28.14.45.12.61-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.63-.14.26.09 1.65.78 1.93.92.28.14.47.21.54.33.07.11.07.65-.17 1.33Z"/></svg></a>
 
 </div>
 <script defer src="assets/js/app.js"></script>

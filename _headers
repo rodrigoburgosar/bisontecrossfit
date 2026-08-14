@@ -1,0 +1,60 @@
+# Cabeceras HTTP de Cloudflare Pages.
+#
+# Antes de este archivo el sitio no enviaba ninguna cabecera de seguridad
+# (ni HSTS, ni CSP, ni Permissions-Policy) y los assets se cacheaban solo
+# 4 horas, asi que quien volvia al dia siguiente revalidaba todo otra vez.
+
+/*
+  # Fuerza HTTPS durante un ano. No lleva preload a proposito: entrar en la
+  # lista de precarga de los navegadores es practicamente irreversible y
+  # conviene decidirlo aparte, no de refilon.
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+  # Evita que el sitio se pueda meter en un iframe ajeno (clickjacking).
+  X-Frame-Options: SAMEORIGIN
+
+  # Corta el acceso por defecto a APIs del navegador que el sitio no usa.
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()
+
+  # CSP en modo informe primero. Se deja SIN aplicar a proposito: el sitio
+  # carga GTM, Clarity, Google Fonts y un iframe de Google Maps, y una CSP
+  # mal ajustada los rompe en silencio. Revisar los informes del navegador
+  # unos dias y solo entonces cambiar el nombre de la cabecera a
+  # Content-Security-Policy para que empiece a bloquear de verdad.
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms https://*.clarity.ms https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://*.clarity.ms https://www.google-analytics.com; connect-src 'self' https://*.clarity.ms https://www.google-analytics.com https://script.google.com https://script.googleusercontent.com; frame-src https://www.googletagmanager.com https://www.google.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://script.google.com
+
+# El HTML no se cachea: es lo que cambia. must-revalidate obliga a
+# comprobar contra el servidor en cada visita.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Imagenes, iconos y fuentes: un ano. No llevan hash en el nombre, asi que
+# NO se puede poner immutable (obligaria a renombrar el archivo para
+# publicar un cambio). stale-while-revalidate deja que el navegador use la
+# copia vieja mientras baja la nueva por detras.
+/assets/img/*
+  Cache-Control: public, max-age=31536000, stale-while-revalidate=86400
+
+/assets/icons/*
+  Cache-Control: public, max-age=31536000, stale-while-revalidate=86400
+
+# CSS y JS: una semana. Mas corto que las imagenes porque son los archivos
+# que mas se tocan y tampoco llevan hash en el nombre.
+/assets/css/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/assets/js/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+# Archivos que los rastreadores releen a menudo.
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+
+/robots.txt
+  Cache-Control: public, max-age=3600
+
+/llms.txt
+  Cache-Control: public, max-age=3600

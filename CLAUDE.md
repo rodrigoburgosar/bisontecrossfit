@@ -29,6 +29,8 @@ y visita `http://localhost:8000/index.html`. No hay lint ni tests configurados.
 
 Las 8 páginas de disciplina se enlazan además desde un grupo `<details><summary>Disciplinas</summary>` presente **en el drawer y en el footer de las 18 páginas** (por SEO: sin él cada disciplina recibía enlaces internos solo desde `index.html` y `disciplinas.html`), y desde el bloque `.other-disciplines` que cierra el contenido de cada disciplina con links a las otras 7. Los tres listados están copiados a mano, así que **agregar o renombrar una disciplina implica tocar los 18 drawers, los 18 footers y los 8 bloques de cierre** — conviene hacerlo con script.
 
+Cada página de disciplina tiene el mismo esqueleto de contenido: hero (`h1` + `.subtitle` + `.desc`), `.info-card` de **Horarios**, `.info-card` descriptiva (`¿Qué es…?` / `¿Cómo es la clase?`, con 3 `<p>` — es el bloque de texto largo que Google indexa y **es único por disciplina, no lo hagas plantilla**), `.info-card` de **¿Quiénes pueden entrenar?**, beneficios, coach y `.other-disciplines`. El `h1` incluye el nombre de la disciplina **más "en San Miguel"** (keyword local) y el `.subtitle` es la misma frase que aparece en la tarjeta de `disciplinas.html` y en la de preview de `index.html`: **cambiarlo implica los tres lugares**. Las 8 páginas llevan `<meta name="keywords">` con términos propios de esa disciplina; Google lo ignora, pero lo leen otros buscadores y los crawlers de IA — el trabajo real de posicionamiento está en el `<title>`, la `description` y ese texto visible.
+
 ### Migas de pan
 
 Las 17 páginas internas (todas menos `index.html`) llevan un `<nav class="breadcrumb" aria-label="Migas de pan">` con un `<ol>` de links y el último ítem como `<span aria-current="page">`, más un `<script type="application/ld+json">` con el `BreadcrumbList` de schema.org al final del `<head>` (URLs absolutas a `https://bisontecrossfit.cl/`, las mismas del `<link rel="canonical">`). **El texto visible y el JSON-LD son copias del mismo trail: al renombrar una página hay que actualizar los dos**, y también el trail de las páginas hijas.
@@ -38,6 +40,21 @@ Jerarquías: `Inicio › <listado>` para `disciplinas` / `planes` / `testimonios
 Dónde va el markup según el tipo de página: primer hijo del `.container` de `.discipline-page` en las disciplinas (**ahí reemplazó al link `.back-row` "Atrás"**, que iba al mismo destino y quedaba duplicado — su CSS también se borró), primer hijo del `.container` de `<section class="page-title">` en las 5 páginas de listado, y dentro de `.help-title` antes del `<h1>` en las 4 del centro de ayuda (así hereda el ancho de 900px de escritorio sin reglas extra). El CSS de `.breadcrumb` está inline y duplicado en las 17 páginas, como el resto de los estilos: solo cambia el `padding` del `nav` (`10px 0 12px` en general, `0 0 12px` en el centro de ayuda).
 
 Como el contenido de preview en `index.html` y el de la página de detalle correspondiente son copias independientes y hechas a mano de la misma data (tarjetas, precios, horarios, citas), **editar contenido normalmente implica actualizarlo en dos lugares** — la fila de preview en `index.html` y el listado completo en la página dedicada.
+
+### Datos estructurados (JSON-LD) y la ficha de Google Business
+
+Todo el schema.org va inline al final del `<head>`, en bloques `<script type="application/ld+json">`. Hay cuatro tipos y **todos son copias a mano del contenido visible**, así que se desincronizan solo:
+
+- **`ExerciseGym`** (subtipo de `LocalBusiness`) — la ficha del negocio: nombre, dirección, teléfono, `geo`, `openingHoursSpecification`, `priceRange`, `hasMap` y `sameAs`. Está en `index.html` **y duplicada literal en `como-llegar.html`** (la página de ubicación es la que compite por las búsquedas locales). Las dos copias comparten `"@id": "https://bisontecrossfit.cl/#gimnasio"`, que es lo que hace que Google las lea como **una sola entidad** y no como dos negocios: si cambias el `@id` en una, aparecen duplicados. Un cambio de dirección, teléfono, horario o precio se toca en las dos.
+- **La vinculación con Google Business Profile** no es un meta tag: son `hasMap` y el primer `sameAs`, ambos apuntando a `https://maps.google.com/?cid=13561209380920766207`. Ese `cid` es el mismo id de la ficha que usa el iframe del mapa en `como-llegar.html` y el botón "Ver todas" de `testimonios.html` — si alguna vez cambia, hay que cambiarlo en los cuatro lugares. Lo demás que conecta sitio y ficha es que el NAP (nombre, dirección, teléfono) coincida en las 18 páginas y en la ficha.
+- **`Service`** — una por disciplina, en las 8 páginas. Cuelga del negocio con `"provider": {"@id": "…#gimnasio"}` en vez de repetir la ficha entera. La `description` es una copia del `<meta name="description">` de esa página, con el horario incluido.
+- **`BreadcrumbList`** en las 17 internas y **`FAQPage`** en `preguntas-frecuentes.html` — ver las secciones correspondientes.
+
+Antes de publicar cambios de schema, pásalos por el [validador de Schema.org](https://validator.schema.org/) o Search Console: un JSON mal formado hace que Google descarte el bloque entero en silencio.
+
+El horario (lun-vie 06:00-21:15, sábado 10:30-12:00) y el `postalCode` están confirmados por el dueño (2026-08-10). Si cambia el horario de puertas hay que actualizarlo en el schema **y** en la ficha de Google Business: que se contradigan es peor que no declarar el horario.
+
+**No agregues `aggregateRating` ni `Review` al negocio.** Google no acepta reseñas *self-serving* — valoraciones sobre el propio negocio, publicadas en su propio sitio — para `LocalBusiness` ni `Organization`: no generan estrellas en los resultados y son marcado sancionable. Las estrellas que aparecen en las búsquedas locales salen de la ficha de Google Business, no de acá. Las 3 reseñas de `testimonios.html` van sin marcar, solo como contenido.
 
 ### `sitemap.xml` y `llms.txt` — hay que mantenerlos a mano
 

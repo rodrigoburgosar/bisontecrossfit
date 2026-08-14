@@ -1,0 +1,320 @@
+/* ============================================================
+   site.css — componentes compartidos por todas las paginas.
+
+   Este archivo existe para no volver a copiar CSS dentro de cada
+   HTML. Todo lo que se anada de aqui en adelante y valga para mas
+   de una pagina va aqui, no en el <style> inline.
+
+   Se carga DESPUES del <style> de cada pagina, asi que puede
+   sobreescribir lo de arriba cuando haga falta.
+
+   Depende de las variables que cada pagina define en :root
+   (--magenta, --teal, --bg, --card...). Si en algun momento se
+   extraen tambien esas variables, este archivo sigue funcionando
+   sin cambios.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   Accesibilidad base
+   ------------------------------------------------------------ */
+
+/* Antes solo dos paginas definian foco visible, y era en inputs.
+   Quien navega con teclado no veia donde estaba en el resto del sitio.
+   :focus-visible no dispara con el raton, asi que esto no cambia nada
+   para quien navega con puntero. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible{
+  outline:2px solid var(--teal, #33DBDB);
+  outline-offset:3px;
+  border-radius:6px;
+}
+
+/* Salto al contenido: el menu y el pie suman unos 40 enlaces repetidos
+   en cada pagina. Sin esto hay que tabularlos todos antes de llegar al
+   contenido. Solo se ve cuando recibe el foco. */
+.skip-link{
+  position:absolute;
+  left:50%;
+  top:0;
+  transform:translate(-50%, -140%);
+  z-index:200;
+  background:var(--teal, #33DBDB);
+  color:#0b0b0b;
+  font-size:14px;
+  font-weight:700;
+  padding:10px 20px;
+  border-radius:0 0 12px 12px;
+  transition:transform .16s ease;
+}
+.skip-link:focus{
+  transform:translate(-50%, 0);
+}
+@media (prefers-reduced-motion:reduce){
+  .skip-link{transition:none;}
+}
+
+/* ------------------------------------------------------------
+   Llamadas a la accion dentro del contenido
+
+   Las clases .cta-pills y .cta-banner no son nuevas: app.js ya las
+   usaba en origen() para clasificar de que zona sale cada clic
+   ('cta_disciplina' y 'cta_listado'), pero no existian en ningun
+   HTML. Se respetan esos nombres para que el seguimiento funcione
+   sin tocar el JS.
+
+   .cta-pills  -> dentro de una pagina de disciplina
+   .cta-banner -> en el listado de disciplinas
+   ------------------------------------------------------------ */
+
+.cta-pills,
+.cta-banner{
+  background:linear-gradient(135deg, rgba(193,9,180,.22), rgba(51,219,219,.13));
+  border:1px solid rgba(51,219,219,.32);
+  border-radius:20px;
+  padding:22px 20px;
+  text-align:center;
+  margin:28px 0 8px;
+}
+.cta-pills h2,
+.cta-banner h2{
+  font-size:18px;
+  font-weight:800;
+  line-height:1.2;
+  margin:0 0 8px;
+  text-wrap:balance;
+}
+.cta-pills p,
+.cta-banner p{
+  font-size:13px;
+  color:#d6d6d6;
+  margin:0 0 16px;
+  line-height:1.45;
+}
+.cta-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+}
+.cta-actions a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:70px;
+  padding:12px 22px;
+  font-size:14px;
+  font-weight:600;
+  line-height:1;
+}
+.cta-actions .cta-go{
+  background:var(--magenta, #C109B4);
+  color:#f8f8f8;
+  box-shadow:0 2px 3px rgba(0,0,0,.35);
+}
+.cta-actions .cta-alt{
+  background:transparent;
+  border:1px solid var(--teal, #33DBDB);
+  color:var(--teal, #33DBDB);
+}
+
+@media (min-width:900px){
+  .cta-pills,
+  .cta-banner{
+    max-width:760px;
+    margin-left:auto;
+    margin-right:auto;
+    padding:30px 28px;
+  }
+  .cta-pills h2,
+  .cta-banner h2{font-size:22px;}
+}
+
+/* ------------------------------------------------------------
+   Boton flotante de WhatsApp
+
+   WhatsApp es la via por la que se cierra la venta, y hasta ahora
+   solo estaba en el menu y en el pie. Va por encima de la barra
+   .quick-actions, que esta fija en bottom:14px y mide ~54px.
+   ------------------------------------------------------------ */
+
+.wa-float{
+  position:fixed;
+  right:16px;
+  bottom:82px;
+  z-index:85;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:#25D366;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.5);
+  transition:transform .16s ease;
+}
+.wa-float svg{
+  width:29px;
+  height:29px;
+  fill:#fff;
+  display:block;
+}
+.wa-float:hover{transform:scale(1.06);}
+.wa-float:focus-visible{
+  outline:2px solid #fff;
+  outline-offset:3px;
+}
+@media (prefers-reduced-motion:reduce){
+  .wa-float{transition:none;}
+  .wa-float:hover{transform:none;}
+}
+
+/* En pantallas anchas la barra fija se centra y deja libre la derecha,
+   asi que el boton puede bajar a su sitio natural. */
+@media (min-width:900px){
+  .wa-float{bottom:24px;right:24px;}
+}
+
+/* La pagina del formulario no lleva barra fija: sin ella el boton
+   puede bajar. clase-gratis.html ya tiene su propio CTA de WhatsApp
+   en el mensaje de exito, pero durante el llenado del formulario
+   sigue siendo util poder preguntar. */
+.no-quick-actions .wa-float{bottom:24px;}
+
+/* ------------------------------------------------------------
+   Banner de consentimiento
+
+   El markup lo inyecta assets/js/consent.js, para no repetirlo en
+   los 20 HTML. Se ancla abajo porque en movil es donde queda a
+   mano, y no tapa la barra .quick-actions: la desplaza hacia
+   arriba mientras esta visible.
+   ------------------------------------------------------------ */
+
+.consent{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:120;
+  background:#0f0f0f;
+  border-top:1px solid rgba(51,219,219,.3);
+  box-shadow:0 -8px 30px rgba(0,0,0,.6);
+  transform:translateY(100%);
+  transition:transform .22s ease;
+}
+.consent.visible{transform:translateY(0);}
+@media (prefers-reduced-motion:reduce){
+  .consent{transition:none;}
+}
+
+.consent-inner{
+  max-width:760px;
+  margin:0 auto;
+  padding:18px 20px 20px;
+}
+.consent-texto h2{
+  font-size:15px;
+  font-weight:700;
+  margin:0 0 6px;
+}
+.consent-texto p{
+  font-size:12.5px;
+  line-height:1.5;
+  color:#c4c4c4;
+  margin:0 0 14px;
+}
+.consent-texto a{
+  color:var(--teal, #33DBDB);
+  text-decoration:underline;
+}
+
+.consent-acciones{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.consent-btn{
+  flex:1 1 auto;
+  min-width:96px;
+  border:none;
+  border-radius:70px;
+  padding:11px 16px;
+  font-family:inherit;
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+  line-height:1.2;
+}
+/* Rechazar y Aceptar tienen el mismo tamano y el mismo peso visual a
+   proposito. Si rechazar cuesta mas que aceptar, el consentimiento no
+   es libre y no sirve. */
+.consent-rechazar{background:rgba(255,255,255,.12);color:#f0f0f0;}
+.consent-preferencias{background:transparent;border:1px solid rgba(255,255,255,.25);color:#d8d8d8;}
+.consent-aceptar{background:var(--magenta, #C109B4);color:#fff;}
+.consent-btn:hover{filter:brightness(1.12);}
+.consent-btn:focus-visible{outline:2px solid var(--teal, #33DBDB);outline-offset:2px;}
+
+.consent-detalle{
+  margin-top:16px;
+  padding-top:16px;
+  border-top:1px solid #262626;
+  display:flex;
+  flex-direction:column;
+  gap:13px;
+}
+/* El display:flex de arriba gana al display:none que el navegador aplica
+   por el atributo hidden, asi que sin esta regla el panel de preferencias
+   sale desplegado desde el principio. */
+.consent-detalle[hidden]{display:none;}
+.consent-opcion{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  font-size:12px;
+  line-height:1.45;
+  color:#c4c4c4;
+  cursor:pointer;
+}
+.consent-opcion b{color:#fff;font-weight:600;}
+.consent-opcion input{
+  flex:0 0 auto;
+  width:16px;
+  height:16px;
+  margin-top:2px;
+  accent-color:var(--teal, #33DBDB);
+  cursor:pointer;
+}
+.consent-fija{opacity:.7;cursor:default;}
+.consent-fija input{cursor:not-allowed;}
+.consent-guardar{
+  background:var(--teal, #33DBDB);
+  color:#0b0b0b;
+  align-self:flex-start;
+  flex:0 0 auto;
+}
+
+/* Mientras el banner esta visible, la barra fija sube para no quedar
+   debajo. 190px cubre el banner cerrado; con las preferencias abiertas
+   el banner crece, pero entonces la barra ya no estorba porque el foco
+   esta en el propio banner. */
+body:has(.consent.visible) .quick-actions{bottom:190px;}
+body:has(.consent.visible) .wa-float{bottom:258px;}
+
+@media (min-width:600px){
+  .consent-acciones{justify-content:flex-end;}
+  .consent-btn{flex:0 0 auto;min-width:120px;}
+}
+
+/* Enlaces dentro de los textos legales. El reset global pone
+   a{color:inherit;text-decoration:none}, asi que sin esto un enlace en
+   medio de un parrafo legal es indistinguible del texto: nadie
+   encontraria el panel para retirar el consentimiento. */
+.legal-item a,
+.legal-intro a{
+  color:var(--teal, #33DBDB);
+  text-decoration:underline;
+}

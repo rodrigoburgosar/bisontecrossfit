@@ -17,6 +17,12 @@
   var overlay = document.getElementById('drawerOverlay');
   var closeBtn = document.getElementById('drawerClose');
 
+  /* Mismo patron de guarda que el resto de bloques: si la pagina no tiene
+     drawer (404.html, gracias.html), salimos sin tocar nada. Sin esto, el
+     addEventListener de mas abajo lanzaba TypeError y se llevaba por delante
+     todos los bloques siguientes, incluido el formulario de clase gratis. */
+  if(!menuIcon || !drawer || !overlay || !closeBtn) return;
+
   function openDrawer(){
     drawer.classList.add('open');
     overlay.classList.add('open');
@@ -175,7 +181,15 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
    Se escucha en fase de captura para que el evento salga aunque algun otro
    handler detenga la propagacion. */
 (function(){
-  var DISCIPLINAS = /^(crossfit|levantamiento-olimpico|hybrid|gymnastics|strongman|full-body|competidor|adulto-mayor)\.html$/;
+  /* Acepta las dos formas de URL: la canonica de hoy (/crossfit) y la
+     antigua con extension (crossfit.html), que puede seguir llegando desde
+     un enlace externo o un marcador viejo. Sin el segundo caso, esos clics
+     dejarian de medirse sin que nadie se entere. */
+  var SLUGS = 'crossfit|levantamiento-olimpico|hybrid|gymnastics|strongman|full-body|competidor|adulto-mayor';
+  var DISCIPLINAS = new RegExp('^/?(' + SLUGS + ')(?:\\.html)?(?:[?#]|$)');
+
+  // Igual que arriba, para la pagina del formulario.
+  var CLASE_GRATIS = /^\/?clase-gratis(?:\.html)?(?:[?#]|$)/;
 
   function enviar(nombre, params){
     // dataLayer existe siempre (lo crea el snippet de GTM del <head>), pero si
@@ -233,8 +247,8 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
     /* Clase gratis: antes era un link a WhatsApp y caia en contacto_whatsapp.
        Ahora es la pagina del formulario, asi que se mide aparte. El embudo
        queda: ver_clase_gratis (clic) -> clase_gratis_enviada (formulario ok). */
-    if(href.indexOf('clase-gratis.html') === 0){
-      var slug = href.split('?clase=')[1] || '';
+    if(CLASE_GRATIS.test(href)){
+      var slug = (href.split('?clase=')[1] || '').split('&')[0];
       enviar('ver_clase_gratis', {disciplina: slug, origen: origen(a)});
       return;
     }
@@ -347,6 +361,7 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
     var nombre = form.elements.nombre;
     var email = form.elements.email;
     var telefono = form.elements.telefono;
+    var consent = form.elements.consentimiento;
 
     var malNombre = nombre.value.trim().length < 3;
     var malRut = !rutValido(rutInput.value);
@@ -354,6 +369,9 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
     var malTelefono = telefono.value.trim() !== '' && telefono.value.replace(/\D/g, '').length < 8;
     var malClase = !claseSel.value;
     var malHorario = !horarioSel.value;
+    // El formulario recoge RUT y posibles lesiones: sin la casilla marcada no
+    // hay base legal para tratar esos datos, asi que no se envia.
+    var malConsent = !!consent && !consent.checked;
 
     marcarError(nombre, malNombre);
     marcarError(rutInput, malRut);
@@ -361,10 +379,12 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
     marcarError(telefono, malTelefono);
     marcarError(claseSel, malClase);
     marcarError(horarioSel, malHorario);
+    if(consent) marcarError(consent, malConsent);
 
     [[malNombre, nombre], [malRut, rutInput], [malEmail, email],
-     [malTelefono, telefono], [malClase, claseSel], [malHorario, horarioSel]]
-      .forEach(function(par){ if(par[0]) errores.push(par[1]); });
+     [malTelefono, telefono], [malClase, claseSel], [malHorario, horarioSel],
+     [malConsent, consent]]
+      .forEach(function(par){ if(par[0] && par[1]) errores.push(par[1]); });
 
     if(errores.length) errores[0].focus();
     return errores.length === 0;
@@ -372,6 +392,10 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
 
   form.addEventListener('input', function(e){
     if(e.target.closest('.form-field.has-error')) marcarError(e.target, false);
+  });
+  // Las casillas no emiten 'input' en todos los navegadores al pulsarlas.
+  form.addEventListener('change', function(e){
+    if(e.target.type === 'checkbox') marcarError(e.target, !e.target.checked);
   });
 
   /* --- Envio --- */
@@ -412,13 +436,39 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
     })
     .then(function(res){
       if(!res.ok) throw new Error('HTTP ' + res.status);
+
+      /* Se sigue mostrando el mensaje inline aunque despues naveguemos: si la
+         redireccion no llegara a ocurrir, el alumno ve igualmente que su
+         solicitud entro. */
       form.style.display = 'none';
       statusEl.className = 'form-status';
       successEl.classList.add('show');
-      successEl.scrollIntoView({behavior: 'smooth', block: 'center'});
-      if(window.dataLayer && typeof window.dataLayer.push === 'function'){
-        window.dataLayer.push({event: 'clase_gratis_enviada', clase: datos.clase, horario: datos.horario});
+
+      var destino = '/gracias?clase=' + encodeURIComponent(datos.clase || '') +
+                    '&horario=' + encodeURIComponent(datos.horario || '');
+
+      var yaNavegamos = false;
+      function irAGracias(){
+        if(yaNavegamos) return;
+        yaNavegamos = true;
+        location.href = destino;
       }
+
+      /* El evento se empuja con eventCallback para no navegar antes de que GTM
+         haya disparado sus etiquetas (la conversion de Ads se perderia). El
+         setTimeout es la red de seguridad: si GTM esta bloqueado o falla,
+         eventCallback no se ejecuta nunca y sin el timeout nos quedariamos
+         aqui para siempre. */
+      if(window.dataLayer && typeof window.dataLayer.push === 'function'){
+        window.dataLayer.push({
+          event: 'clase_gratis_enviada',
+          clase: datos.clase,
+          horario: datos.horario,
+          eventCallback: irAGracias,
+          eventTimeout: 1500
+        });
+      }
+      setTimeout(irAGracias, 1500);
     })
     .catch(function(){
       submitBtn.disabled = false;
@@ -426,4 +476,22 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
       mostrarEstado('fail', 'No pudimos enviar tu solicitud. Intenta de nuevo o escríbenos por <a href="' + whatsapp + '" target="_blank" rel="noopener">WhatsApp</a>.');
     });
   });
+})();
+
+/* Resumen de la reserva en gracias.html.
+   La clase y el horario llegan por query string desde el formulario. Si no
+   vienen (alguien entra a /gracias directamente), el bloque se queda oculto
+   en vez de mostrar guiones. */
+(function(){
+  var caja = document.getElementById('resumenReserva');
+  if(!caja) return;
+
+  var params = new URLSearchParams(location.search);
+  var clase = (params.get('clase') || '').trim();
+  var horario = (params.get('horario') || '').trim();
+  if(!clase && !horario) return;
+
+  if(clase) document.getElementById('resumenClase').textContent = clase;
+  if(horario) document.getElementById('resumenHorario').textContent = horario;
+  caja.hidden = false;
 })();

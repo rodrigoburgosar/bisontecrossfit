@@ -3,30 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WVD4NKS4');</script>
-<!-- End Google Tag Manager -->
-<!-- Microsoft Clarity -->
-<script type="text/javascript">
-(function(c,l,a,r,i,t,y){
-    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-})(window, document, "clarity", "script", "xx809mpyos");
-</script>
-<!-- End Microsoft Clarity -->
+<!-- Consentimiento de cookies.
+     Google Tag Manager y Microsoft Clarity ya NO se cargan aqui: los carga
+     assets/js/consent.js, y solo despues de que la persona elija. Antes
+     arrancaban en estas mismas lineas, sin pedir permiso, en todas las
+     paginas incluidas las propias politicas.
+     Va sin defer y lo primero del <head> para decidir antes de pintar. -->
+<script src="assets/js/consent.js"></script>
 <meta name="description" content="Términos y Condiciones de Bisonte CrossFit: planes, reservas, cancelaciones, pagos y normas de uso del box en San Miguel.">
 <meta property="og:site_name" content="Bisonte CrossFit">
 <meta property="og:title" content="Términos y Condiciones · Bisonte CrossFit">
 <meta property="og:description" content="Términos y Condiciones de Bisonte CrossFit: planes, reservas, cancelaciones, pagos y normas de uso del box en San Miguel.">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="es_CL">
-<link rel="canonical" href="https://bisontecrossfit.cl/terminos-y-condiciones.html">
-<meta property="og:url" content="https://bisontecrossfit.cl/terminos-y-condiciones.html">
+<link rel="canonical" href="https://bisontecrossfit.cl/terminos-y-condiciones">
+<meta property="og:url" content="https://bisontecrossfit.cl/terminos-y-condiciones">
 <meta property="og:image" content="https://bisontecrossfit.cl/assets/img/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -39,422 +30,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <title>Términos y Condiciones · Bisonte CrossFit</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,400&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,400&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
-<style>
-/* Estilos del cluster "Centro de ayuda":
-   preguntas-frecuentes.html, politica-privacidad.html,
-   politica-cookies.html y terminos-y-condiciones.html.
-   Copia inline de assets/css/help.css (el hosting no sirve ese archivo).
-   Ojo: aca las rutas url() son relativas a la raiz (assets/img/...). */
-
-:root{
-  --bg:#131313;
-  --bg-alt:#1c1c1c;
-  --card:#1f1f1f;
-  --magenta:#C109B4;
-  --teal:#33DBDB;
-  --text:#ffffff;
-  --text-muted:#a3a3a3;
-  --gold:#caa24a;
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-html{overflow-x:hidden;scrollbar-width:thin;scrollbar-color:var(--teal) #0c0c0c;}
-html::-webkit-scrollbar{width:10px;}
-html::-webkit-scrollbar-track{background:#0c0c0c;}
-html::-webkit-scrollbar-thumb{background:var(--teal);border-radius:5px;}
-html::-webkit-scrollbar-thumb:hover{background:#5ce6e6;}
-body{
-  background:#000;
-  color:var(--text);
-  font-family:'Poppins', 'Segoe UI', Arial, sans-serif;
-  line-height:1.4;
-  overflow-x:hidden;
-}
-a{color:inherit;text-decoration:none;}
-.app{
-  max-width:480px;
-  margin:0 auto;
-  background:var(--bg);
-  overflow-x:hidden;
-  position:relative;
-}
-@media (min-width:481px){
-  .app{box-shadow:0 0 60px rgba(0,0,0,.6);min-height:100vh;}
-}
-.container{padding:0 20px;}
-
-/* Migas de pan */
-.breadcrumb{padding:0 0 12px;}
-.breadcrumb ol{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  gap:6px;
-  list-style:none;
-  margin:0;
-  padding:0;
-  font-size:12px;
-  color:var(--text-muted);
-}
-.breadcrumb li{display:flex;align-items:center;gap:6px;}
-.breadcrumb li+li::before{content:'\203A';opacity:.65;}
-.breadcrumb a{color:var(--text-muted);text-decoration:none;}
-.breadcrumb a:hover{color:var(--teal);text-decoration:underline;}
-.breadcrumb [aria-current='page']{color:var(--text);font-weight:600;}
-section{padding:40px 0;}
-
-/* Header */
-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:16px 20px;
-}
-.menu-btn{background:none;border:none;padding:4px;cursor:pointer;display:flex;align-items:center;}
-.logo-nav{display:flex;align-items:center;}
-.logo-nav img{height:64px;width:auto;display:block;}
-
-/* Help header */
-.help-title{
-  padding:24px 20px 0;
-}
-.help-title h1{
-  font-size:20px;
-  font-weight:800;
-  display:inline-block;
-  padding-bottom:8px;
-  background:url('assets/img/line-underline.svg') left bottom no-repeat;
-  background-size:70px 4px;
-}
-.help-updated{
-  color:var(--text-muted);
-  font-size:12px;
-  margin-top:10px;
-}
-.help-tabs{
-  display:flex;
-  gap:10px;
-  padding:20px 0 0;
-  overflow-x:auto;
-  scrollbar-width:none;
-}
-.help-tabs::-webkit-scrollbar{display:none;}
-/* Espaciadores de 10px (+ los 10px del gap = 20px de aire a cada lado) en vez
-   de padding lateral: el padding derecho de un contenedor con scroll horizontal
-   no se respeta al llegar al final del scroll. Se notaba en
-   terminos-y-condiciones.html, donde la pestaña activa es la ultima y el boton
-   magenta quedaba pegado al borde de la pantalla. */
-.help-tabs::before,
-.help-tabs::after{content:'';flex:0 0 10px;}
-.help-tab{
-  flex:1 0 auto;
-  padding:12px 16px;
-  border-radius:80px;
-  font-size:12px;
-  font-weight:600;
-  text-align:center;
-  white-space:nowrap;
-  background:rgba(51,51,51,.5);
-  color:var(--text-muted);
-  box-shadow:0 2px 6px rgba(0,0,0,.35);
-}
-.help-tab.active{
-  background:var(--magenta);
-  color:#fff;
-  box-shadow:0 2px 3px rgba(0,0,0,.35);
-}
-
-/* Legal intro */
-.legal-intro{
-  color:var(--text-muted);
-  font-size:14px;
-  margin-top:16px;
-}
-
-/* Acordeon de FAQ y de paginas legales (misma base) */
-.faq-list,
-.legal-list{padding:0 20px;}
-.faq-item,
-.legal-item{
-  border-bottom:1px solid #2a2a2a;
-  padding:16px 0;
-}
-.faq-item summary,
-.legal-item summary{
-  list-style:none;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  font-weight:600;
-  font-size:16px;
-  cursor:pointer;
-}
-.faq-item summary::-webkit-details-marker,
-.legal-item summary::-webkit-details-marker{display:none;}
-.faq-item summary::after,
-.legal-item summary::after{
-  content:'▾';
-  color:var(--teal);
-  transition:transform .2s;
-  flex-shrink:0;
-}
-.faq-item[open] summary::after,
-.legal-item[open] summary::after{transform:rotate(180deg);}
-.faq-item p,
-.legal-item p{
-  color:var(--text-muted);
-  font-size:15px;
-  line-height:1.6;
-  margin-top:10px;
-}
-/* Tabla de cookies (solo la usa politica-cookies.html) */
-.legal-item table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:12px;
-  font-size:12px;
-}
-.legal-item th, .legal-item td{
-  text-align:left;
-  padding:8px 6px;
-  border-bottom:1px solid #2a2a2a;
-  color:var(--text-muted);
-}
-.legal-item th{color:var(--text);font-weight:600;}
-
-/* Barra flotante de CTA (la misma de index.html). Los .pill van scopeados a
-   .quick-actions para que la barra se vea igual en todo el sitio aunque la
-   pagina defina su propio .pill con otro tamaño. */
-.quick-actions{
-  display:flex;
-  justify-content:center;
-  padding:0 12px;
-  position:fixed;
-  left:50%;
-  bottom:14px;
-  transform:translateX(-50%);
-  width:100%;
-  max-width:480px;
-  z-index:80;
-  pointer-events:none;
-}
-.quick-actions-inner{
-  pointer-events:auto;
-  background:rgba(30,30,30,.88);
-  -webkit-backdrop-filter:blur(14px);
-  backdrop-filter:blur(14px);
-  border:1px solid rgba(255,255,255,.10);
-  box-shadow:0 10px 28px rgba(0,0,0,.55);
-  border-radius:130px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  padding:8px;
-}
-.quick-actions .pill{
-  padding:10px 14px;
-  border-radius:70px;
-  font-size:13px;
-  font-weight:600;
-  white-space:nowrap;
-  display:inline-flex;
-  align-items:center;
-  gap:3px;
-}
-.quick-actions .pill-teal{background:rgba(255,255,255,.1);color:#f8f8f8;font-size:18px;}
-.quick-actions .pill-dark{background:var(--magenta);color:#f8f8f8;font-size:20px;}
-.quick-actions .pill-dark img{width:16px;height:16px;}
-
-/* Footer */
-footer{
-  background:var(--bg-alt);
-  padding:40px 20px 120px;
-  text-align:center;
-}
-.footer-logo{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-  margin-bottom:24px;
-  font-weight:800;
-  font-size:15px;
-  flex-wrap:wrap;
-}
-.footer-logo .bull-badge{
-  display:flex;align-items:center;justify-content:center;
-}
-.footer-logo .bull-badge img{width:50px;height:auto;object-fit:contain;}
-.footer-logo .wordmark{display:flex;flex-direction:column;gap:2px;}
-.footer-logo .wordmark img{height:21px;width:auto;}
-.footer-links{
-  text-align:left;
-  max-width:300px;
-  margin:0 auto 20px;
-}
-.footer-links details{
-  border-bottom:1px solid #2a2a2a;
-  padding:12px 0;
-}
-.footer-links summary{
-  cursor:pointer;
-  list-style:none;
-  display:flex;
-  justify-content:space-between;
-  font-weight:600;
-  font-size:14px;
-}
-.footer-links summary::-webkit-details-marker{display:none;}
-.footer-links summary::after{content:'▾';color:var(--teal);transition:transform .2s;}
-.footer-links details[open] summary::after{transform:rotate(180deg);}
-.footer-links a.plain{display:flex;justify-content:space-between;align-items:center;padding:10px 0;font-weight:600;font-size:14px;}
-.footer-links a.plain::after{content:'›';color:var(--magenta);font-weight:700;font-size:16px;}
-.footer-links details ul{list-style:none;padding:8px 0 4px 8px;}
-.footer-links details ul li{padding:6px 0;}
-.footer-links details ul a{color:var(--text-muted);font-size:13px;}
-.footer-links details ul a:hover{color:var(--teal);}
-.map-block{margin-bottom:24px;}
-.map-block h3{font-size:18px;margin-bottom:8px;}
-.map-block h3 span{display:block;width:172px;height:3px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:8px auto 0;}
-.map-block p{color:#f8f8f8;font-size:14px;font-weight:600;}
-
-/* Drawer menu */
-.drawer-overlay{
-  position:fixed;inset:0;background:rgba(0,0,0,.6);
-  opacity:0;pointer-events:none;transition:opacity .25s;z-index:90;
-}
-.drawer-overlay.open{opacity:1;pointer-events:auto;}
-.drawer{
-  position:fixed;top:0;left:0;height:100%;
-  width:min(330px,85vw);
-  background:var(--bg-alt);
-  padding:24px 20px;
-  transform:translateX(-100%);
-  visibility:hidden;
-  transition:transform .3s ease, visibility .3s;
-  z-index:91;
-  overflow-y:auto;
-}
-.drawer.open{transform:translateX(0);visibility:visible;}
-.drawer-close{
-  background:none;border:none;color:#fff;font-size:20px;
-  cursor:pointer;margin-bottom:16px;padding:4px;
-}
-.drawer-nav details{border-bottom:1px solid #2a2a2a;padding:10px 0;}
-.drawer-nav summary{
-  cursor:pointer;list-style:none;display:flex;
-  justify-content:space-between;align-items:center;
-  font-weight:600;font-size:14px;color:#fff;
-}
-.drawer-nav summary::-webkit-details-marker{display:none;}
-.drawer-nav summary::after{content:'▾';color:var(--teal);transition:transform .2s;}
-.drawer-nav details[open] summary::after{transform:rotate(180deg);}
-.drawer-nav details ul{list-style:none;padding:8px 0 4px 8px;}
-.drawer-nav details ul li{padding:6px 0;}
-.drawer-nav details ul a{color:var(--text-muted);font-size:13px;}
-.drawer-nav details ul a:hover{color:var(--teal);}
-.drawer-item-plain{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:10px 0;font-weight:600;font-size:14px;color:#fff;
-  border-bottom:1px solid #2a2a2a;
-}
-.drawer-item-plain::after{content:'›';color:var(--magenta);font-weight:700;font-size:16px;}
-.drawer-map{
-  margin-top:24px;padding:10px 0;border-radius:20px;text-align:center;
-}
-.drawer-map h3{font-size:18px;margin-bottom:8px;color:#fff;}
-.drawer-map h3 span{display:block;width:172px;height:3px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:8px auto 0;}
-.drawer-map p{color:#f8f8f8;font-size:14px;font-weight:600;}
-.contact-box{
-  background:var(--card);
-  border-radius:16px;
-  padding:24px;
-  margin-bottom:24px;
-}
-.contact-box h4{font-size:16px;margin-bottom:8px;}
-.contact-box p{color:var(--text-muted);font-size:13px;margin-bottom:16px;}
-.whatsapp-btn{
-  background:#25D366;
-  color:#0d0d0d;
-  font-weight:700;
-  padding:12px 24px;
-  border-radius:30px;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  font-size:14px;
-}
-.socials{
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  font-size:13px;
-  color:var(--text-muted);
-  margin-bottom:20px;
-}
-.legal-links{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:8px;
-  font-size:13px;
-  color:var(--text-muted);
-  margin-bottom:12px;
-}
-.legal-links a:hover{color:var(--teal);}
-.copyright{font-size:16px;font-weight:600;color:#f8f8f8;text-align:center;}
-
-/* Desktop */
-@media (min-width:900px){
-  .app{max-width:none;box-shadow:none;}
-  /* El centro de ayuda usa una columna de 900px (.help-title, .help-tabs,
-     .faq-list, .legal-list). El .container heredado media 1100px con 20px de
-     padding, asi que en escritorio el h2 y el parrafo de intro arrancaban ~120px
-     mas a la izquierda que el resto de la pagina. En movil no se notaba porque
-     ambos comparten los mismos 20px. */
-  .container{max-width:900px;margin:0 auto;padding:0 40px;}
-  .help-title{max-width:900px;margin:0 auto;padding:24px 40px 0;}
-  .help-tabs{max-width:900px;margin:0 auto;padding:20px 40px 0;justify-content:flex-start;}
-  .help-tab{flex:none;}
-  /* Aca la fila ya no scrollea, asi que los espaciadores sobran; display:none
-     los saca del flex para que tampoco aporten el gap. */
-  .help-tabs::before,.help-tabs::after{display:none;}
-  .faq-list,
-  .legal-list{max-width:900px;margin:0 auto;padding:0 40px;}
-  .quick-actions{max-width:900px;justify-content:center;}
-  footer{padding:60px 40px 130px;}
-  .footer-links{max-width:900px;}
-}
-
-/* Oculto temporalmente: portal de alumnos BoxMagic.
-   Para volver a mostrarlo, borra esta regla. */
-.footer-links a.plain,
-.drawer-item-plain{display:none;}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="assets/css/help.css">
+<link rel="stylesheet" href="assets/css/site.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
   {"@type":"ListItem","position":1,"name":"Inicio","item":"https://bisontecrossfit.cl/"},
-  {"@type":"ListItem","position":2,"name":"Centro de ayuda","item":"https://bisontecrossfit.cl/preguntas-frecuentes.html"},
-  {"@type":"ListItem","position":3,"name":"Términos y Condiciones","item":"https://bisontecrossfit.cl/terminos-y-condiciones.html"}
+  {"@type":"ListItem","position":2,"name":"Términos y Condiciones","item":"https://bisontecrossfit.cl/terminos-y-condiciones"}
   ]
 }
 </script>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVD4NKS4"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 <div class="app">
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
 <header>
   <button class="menu-btn" id="menuIcon" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer"><img src="assets/icons/menu.svg" alt="" width="22" height="22"></button>
-  <a href="index.html" class="logo-nav"><img src="assets/img/logo-nav-full.svg" alt="Bisonte CrossFit" width="162" height="64"></a>
+  <a href="/" class="logo-nav"><img src="assets/img/logo-nav-full.svg" alt="Bisonte CrossFit" width="162" height="64"></a>
   <span style="width:22px;"></span>
 </header>
 
@@ -465,31 +63,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <details>
       <summary>Explora</summary>
       <ul>
-        <li><a href="disciplinas.html">Todas las disciplinas</a></li>
-        <li><a href="planes.html">Planes</a></li>
-        <li><a href="testimonios.html">Testimonios</a></li>
-        <li><a href="clase-gratis.html">Clase gratis</a></li>
+        <li><a href="/disciplinas">Todas las disciplinas</a></li>
+        <li><a href="/horarios">Horarios</a></li>
+        <li><a href="/planes">Planes</a></li>
+        <li><a href="/coaches">Coaches</a></li>
+        <li><a href="/testimonios">Testimonios</a></li>
+        <li><a href="/clase-gratis">Clase gratis</a></li>
       </ul>
     </details>
     <details>
       <summary>Disciplinas</summary>
       <ul>
-        <li><a href="crossfit.html">CrossFit</a></li>
-        <li><a href="hybrid.html">Hybrid / Hyrox</a></li>
-        <li><a href="levantamiento-olimpico.html">Levantamiento Olímpico</a></li>
-        <li><a href="gymnastics.html">Gymnastics</a></li>
-        <li><a href="adulto-mayor.html">Adulto Mayor</a></li>
-        <li><a href="strongman.html">StrongMan</a></li>
-        <li><a href="full-body.html">Full Body</a></li>
-        <li><a href="competidor.html">Competidor</a></li>
+        <li><a href="/crossfit">CrossFit</a></li>
+        <li><a href="/hybrid">Hybrid / Hyrox</a></li>
+        <li><a href="/levantamiento-olimpico">Levantamiento Olímpico</a></li>
+        <li><a href="/gymnastics">Gymnastics</a></li>
+        <li><a href="/adulto-mayor">Adulto Mayor</a></li>
+        <li><a href="/strongman">StrongMan</a></li>
+        <li><a href="/full-body">Full Body</a></li>
+        <li><a href="/competidor">Competidor</a></li>
       </ul>
     </details>
     <details open>
       <summary>Ayuda y Contacto</summary>
       <ul>
-        <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+        <li><a href="/preguntas-frecuentes">Preguntas frecuentes</a></li>
         <li><a href="https://wa.me/56967374096" target="_blank" rel="noopener">WhatsApp</a></li>
-        <li><a href="como-llegar.html">Ubicación</a></li>
+        <li><a href="/como-llegar">Ubicación</a></li>
       </ul>
     </details>
     <a class="drawer-item-plain" href="https://app.boxmagic.cl/" target="_blank" rel="noopener">Soy Alumno</a>
@@ -500,25 +100,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </aside>
 
-<main>
+<main id="contenido">
 
 <div class="help-title">
   <nav class="breadcrumb" aria-label="Migas de pan">
     <ol>
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="preguntas-frecuentes.html">Centro de ayuda</a></li>
+      <li><a href="/">Inicio</a></li>
       <li><span aria-current="page">Términos y Condiciones</span></li>
     </ol>
   </nav>
-  <h1>Centro de ayuda</h1>
+  <p class="help-eyebrow">Centro de ayuda</p>
+  <h1>Términos y Condiciones</h1>
   <p class="help-updated">Última actualización: 1 de agosto de 2026</p>
 </div>
 
 <div class="help-tabs">
-  <a class="help-tab" href="preguntas-frecuentes.html">Preguntas frecuentes</a>
-  <a class="help-tab" href="politica-privacidad.html">Políticas de Privacidad</a>
-  <a class="help-tab" href="politica-cookies.html">Política de Cookies</a>
-  <a class="help-tab active" href="terminos-y-condiciones.html">Términos y Condiciones</a>
+  <a class="help-tab" href="/preguntas-frecuentes">Preguntas frecuentes</a>
+  <a class="help-tab" href="/politica-privacidad">Política de Privacidad</a>
+  <a class="help-tab" href="/politica-cookies">Política de Cookies</a>
+  <a class="help-tab active" href="/terminos-y-condiciones">Términos y Condiciones</a>
 </div>
 
 <section id="terminos">
@@ -623,7 +223,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </details>
     <details class="legal-item">
       <summary>24. Protección de datos</summary>
-      <p>El tratamiento de tus datos personales se rige por nuestra <a href="politica-privacidad.html" style="color:var(--teal);">Política de Privacidad</a>, la cual forma parte integrante de estos Términos y Condiciones.</p>
+      <p>El tratamiento de tus datos personales se rige por nuestra <a href="/politica-privacidad" style="color:var(--teal);">Política de Privacidad</a>, la cual forma parte integrante de estos Términos y Condiciones.</p>
     </details>
     <details class="legal-item">
       <summary>25. Modificaciones de estos términos</summary>
@@ -656,30 +256,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <details>
       <summary>Explora</summary>
       <ul>
-        <li><a href="disciplinas.html">Todas las disciplinas</a></li>
-        <li><a href="planes.html">Planes</a></li>
-        <li><a href="testimonios.html">Testimonios</a></li>
+        <li><a href="/disciplinas">Todas las disciplinas</a></li>
+        <li><a href="/horarios">Horarios</a></li>
+        <li><a href="/planes">Planes</a></li>
+        <li><a href="/coaches">Coaches</a></li>
+        <li><a href="/testimonios">Testimonios</a></li>
       </ul>
     </details>
     <details>
       <summary>Disciplinas</summary>
       <ul>
-        <li><a href="crossfit.html">CrossFit</a></li>
-        <li><a href="hybrid.html">Hybrid / Hyrox</a></li>
-        <li><a href="levantamiento-olimpico.html">Levantamiento Olímpico</a></li>
-        <li><a href="gymnastics.html">Gymnastics</a></li>
-        <li><a href="adulto-mayor.html">Adulto Mayor</a></li>
-        <li><a href="strongman.html">StrongMan</a></li>
-        <li><a href="full-body.html">Full Body</a></li>
-        <li><a href="competidor.html">Competidor</a></li>
+        <li><a href="/crossfit">CrossFit</a></li>
+        <li><a href="/hybrid">Hybrid / Hyrox</a></li>
+        <li><a href="/levantamiento-olimpico">Levantamiento Olímpico</a></li>
+        <li><a href="/gymnastics">Gymnastics</a></li>
+        <li><a href="/adulto-mayor">Adulto Mayor</a></li>
+        <li><a href="/strongman">StrongMan</a></li>
+        <li><a href="/full-body">Full Body</a></li>
+        <li><a href="/competidor">Competidor</a></li>
       </ul>
     </details>
     <details open>
       <summary>Ayuda y Contacto</summary>
       <ul>
-        <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+        <li><a href="/preguntas-frecuentes">Preguntas frecuentes</a></li>
         <li><a href="https://wa.me/56967374096" target="_blank" rel="noopener">WhatsApp</a></li>
-        <li><a href="como-llegar.html">Ubicación</a></li>
+        <li><a href="/como-llegar">Ubicación</a></li>
       </ul>
     </details>
     <a class="plain" href="https://app.boxmagic.cl/" target="_blank" rel="noopener">Soy Alumno</a>
@@ -693,20 +295,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="contact-box">
     <h4>¿Tienes más dudas?</h4>
     <p>Revisa todas nuestras preguntas o escríbenos directo a WhatsApp</p>
-    <a class="whatsapp-btn" href="https://wa.me/56967374096" target="_blank" rel="noopener"><img loading="lazy" src="assets/icons/whatsapp.svg" alt="" style="width:18px;height:18px;"> WhatsApp Bisonte</a>
+    <a class="whatsapp-btn" href="https://wa.me/56967374096" target="_blank" rel="noopener"><img loading="lazy" src="assets/icons/whatsapp.svg" alt="" style="width:18px;height:18px;" width="18" height="18"> WhatsApp Bisonte</a>
   </div>
 
   <div class="socials">
-    <a href="https://www.instagram.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="@Bisontecrossfit en Instagram"><img loading="lazy" src="assets/icons/instagram.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</a>
-    <a href="https://www.facebook.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="@Bisontecrossfit en Facebook"><img loading="lazy" src="assets/icons/facebook.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;"> @Bisontecrossfit</a>
+    <a href="https://www.instagram.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="@Bisontecrossfit en Instagram"><img loading="lazy" src="assets/icons/instagram.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;" width="16" height="16"> @Bisontecrossfit</a>
+    <a href="https://www.facebook.com/bisontecrossfit" target="_blank" rel="noopener" aria-label="@Bisontecrossfit en Facebook"><img loading="lazy" src="assets/icons/facebook.svg" alt="" style="width:16px;height:16px;vertical-align:-3px;" width="16" height="16"> @Bisontecrossfit</a>
   </div>
 
   <div class="legal-links">
-    <a href="politica-privacidad.html">Privacidad</a>
+    <a href="/politica-privacidad">Privacidad</a>
     <span>·</span>
-    <a href="politica-cookies.html">Cookies</a>
+    <a href="/politica-cookies">Cookies</a>
     <span>·</span>
-    <a href="terminos-y-condiciones.html">Términos y Condiciones</a>
+    <a href="/terminos-y-condiciones">Términos y Condiciones</a>
   </div>
 
   <p class="copyright">© 2026 Bisonte CrossFit</p>
@@ -714,10 +316,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="quick-actions">
   <div class="quick-actions-inner">
-    <a class="pill pill-teal" href="disciplinas.html">Ver clases</a>
-    <a class="pill pill-dark" href="clase-gratis.html"><img src="assets/icons/cursor-click.svg" alt="">Clase gratis</a>
+    <a class="pill pill-teal" href="/disciplinas">Ver clases</a>
+    <a class="pill pill-dark" href="/clase-gratis"><img src="assets/icons/cursor-click.svg" alt="" width="16" height="16">Clase gratis</a>
   </div>
 </div>
+
+<a class="wa-float" href="https://wa.me/56967374096?text=Hola%2C%20vengo%20de%20la%20web%20y%20quiero%20saber%20m%C3%A1s%20sobre%20Bisonte" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.17c-.24.68-1.4 1.3-1.94 1.34-.5.04-.98.22-3.3-.69-2.78-1.1-4.55-3.94-4.69-4.12-.14-.18-1.13-1.5-1.13-2.86s.71-2.03.97-2.31c.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.57.8 1.97.87 2.11.07.14.12.31.02.49-.1.18-.15.29-.29.45-.14.16-.3.36-.43.48-.14.14-.29.29-.13.57.17.28.74 1.22 1.59 1.98 1.09.97 2.01 1.27 2.29 1.41.28.14.45.12.61-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.63-.14.26.09 1.65.78 1.93.92.28.14.47.21.54.33.07.11.07.65-.17 1.33Z"/></svg></a>
 
 </div>
 <script defer src="assets/js/app.js"></script>
