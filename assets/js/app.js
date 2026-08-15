@@ -5,8 +5,8 @@
       hace nada, por eso el mismo archivo sirve para las 14 paginas.
    3) Chips de filtro de planes: solo actua si la pagina tiene
       .filter-chips (hoy solo planes.html).
-   4) Pestañas de transporte: solo actua si la pagina tiene
-      .transport-tabs (hoy solo como-llegar.html).
+   4) Pestañas: solo actua si la pagina tiene .transport-tabs
+      (como-llegar.html) o .dias-tabs (horarios.html).
    5) Eventos de GA4 sobre los CTA.
    6) Formulario de clase gratis: solo actua si la pagina tiene
       #freeClassForm (hoy solo clase-gratis.html).
@@ -136,40 +136,60 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
   tabs.scrollLeft = Math.max(0, activa.offsetLeft - (tabs.clientWidth - activa.offsetWidth) / 2);
 })();
 
-/* Pestañas de "¿Cómo llegar?" (como-llegar.html). Metro / Micro / Bici / Auto
-   cambian el panel visible sin recargar la pagina. Cada boton apunta a su
-   panel con aria-controls, asi que para agregar un modo de transporte basta
-   con sumar el <button role="tab"> y su <div role="tabpanel"> en el HTML.
-   En las paginas sin .transport-tabs la lista queda vacia y no hace nada. */
+/* Pestañas: un panel visible a la vez, sin recargar la pagina. Hoy las usan
+   como-llegar.html (Metro / Micro / Bici / Auto) y horarios.html (los dias de
+   la semana). Cada boton apunta a su panel con aria-controls, asi que para
+   agregar una pestaña basta con sumar el <button role="tab"> y su
+   <div role="tabpanel"> (con hidden) en el HTML.
+
+   Recorre cada contenedor por separado en vez de juntar todos los [role=tab]
+   de la pagina en una lista: si una pagina llegara a tener dos grupos, con
+   una lista plana las flechas del teclado saltarian de un grupo al otro.
+   En las paginas sin ninguno de los dos contenedores no hace nada. */
 (function(){
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.transport-tabs [role="tab"]'));
-  if(!tabs.length) return;
-  var paneles = tabs.map(function(t){ return document.getElementById(t.getAttribute('aria-controls')); });
+  var grupos = Array.prototype.slice.call(document.querySelectorAll('.transport-tabs, .dias-tabs'));
+  if(!grupos.length) return;
 
-  function activar(i, foco){
-    tabs.forEach(function(tab, j){
-      var sel = j === i;
-      tab.classList.toggle('active', sel);
-      tab.setAttribute('aria-selected', sel ? 'true' : 'false');
-      tab.tabIndex = sel ? 0 : -1;          // roving tabindex: solo la activa es tabulable
-      if(paneles[j]) paneles[j].hidden = !sel;
-    });
-    if(foco) tabs[i].focus();
-  }
+  grupos.forEach(function(grupo){
+    var tabs = Array.prototype.slice.call(grupo.querySelectorAll('[role="tab"]'));
+    if(!tabs.length) return;
+    var paneles = tabs.map(function(t){ return document.getElementById(t.getAttribute('aria-controls')); });
 
-  tabs.forEach(function(tab, i){
-    tab.addEventListener('click', function(){ activar(i, false); });
-    tab.addEventListener('keydown', function(e){
-      var salto = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
-      if(!salto) return;
-      e.preventDefault();
-      activar((i + salto + tabs.length) % tabs.length, true);
+    function activar(i, foco){
+      tabs.forEach(function(tab, j){
+        var sel = j === i;
+        tab.classList.toggle('active', sel);
+        tab.setAttribute('aria-selected', sel ? 'true' : 'false');
+        tab.tabIndex = sel ? 0 : -1;          // roving tabindex: solo la activa es tabulable
+        if(paneles[j]) paneles[j].hidden = !sel;
+      });
+      if(foco) tabs[i].focus();
+    }
+
+    tabs.forEach(function(tab, i){
+      tab.addEventListener('click', function(){ activar(i, false); });
+      tab.addEventListener('keydown', function(e){
+        var salto = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if(!salto) return;
+        e.preventDefault();
+        activar((i + salto + tabs.length) % tabs.length, true);
+      });
     });
+
+    /* Con data-hoy el grupo abre en el dia actual: cada boton declara su dia
+       con data-dia (1=lunes ... 6=sabado, igual que Date.getDay()). El domingo
+       no tiene pestaña, asi que no hay match y cae en la marcada en el HTML. */
+    var inicial = -1;
+    if(grupo.hasAttribute('data-hoy')){
+      var hoy = String(new Date().getDay());
+      inicial = tabs.findIndex ? tabs.findIndex(function(t){ return t.getAttribute('data-dia') === hoy; }) : -1;
+    }
+    // Deja el estado coherente aunque el HTML venga con otra pestaña marcada.
+    if(inicial < 0){
+      inicial = tabs.findIndex ? tabs.findIndex(function(t){ return t.classList.contains('active'); }) : 0;
+    }
+    activar(inicial > -1 ? inicial : 0, false);
   });
-
-  // Deja el estado coherente aunque el HTML venga con otra pestaña marcada.
-  var inicial = tabs.findIndex ? tabs.findIndex(function(t){ return t.classList.contains('active'); }) : 0;
-  activar(inicial > -1 ? inicial : 0, false);
 })();
 
 /* Eventos hacia GTM (dataLayer).
@@ -185,7 +205,7 @@ document.querySelectorAll('.dots[data-for]').forEach(function(dotsEl){
      antigua con extension (crossfit.html), que puede seguir llegando desde
      un enlace externo o un marcador viejo. Sin el segundo caso, esos clics
      dejarian de medirse sin que nadie se entere. */
-  var SLUGS = 'crossfit|levantamiento-olimpico|hybrid|gymnastics|strongman|full-body|competidor|adulto-mayor';
+  var SLUGS = 'crossfit|levantamiento-olimpico|hybrid|gymnastics|strongman|full-body|competidor|adulto-mayor|gap';
   var DISCIPLINAS = new RegExp('^/?(' + SLUGS + ')(?:\\.html)?(?:[?#]|$)');
 
   // Igual que arriba, para la pagina del formulario.

@@ -38,71 +38,80 @@
   .page-intro h1{font-size:24px;font-weight:800;margin-bottom:10px;text-wrap:balance;}
   .page-intro p{font-size:14px;color:#f8f8f8;line-height:1.55;}
 
-  /* La tabla no cabe en movil, asi que hace scroll dentro de su caja en vez
-     de ensanchar la pagina entera. */
-  .tabla-horarios{
-    overflow-x:auto;
-    margin-top:20px;
-    border-radius:16px;
-    background:var(--card);
-    padding:6px;
-    -webkit-overflow-scrolling:touch;
+  /* Parrilla pensada para el telefono: un dia a la vez, con las mismas
+     pestañas que ya usa como-llegar.html (mismo role=tab/tabpanel, mismo
+     bloque de app.js, mismos colores que los .chip de planes.html).
+     Asi el dia completo cabe en una pantalla y no hay que arrastrar nada.
+     Antes fue una tabla de 6 columnas (scroll horizontal) y despues un
+     acordeon de 6 tarjetas apiladas, que en 390px eran metros de scroll con
+     la palabra "CrossFit" repetida treinta veces. */
+  .dias-tabs{
+    display:flex;
+    gap:6px;
+    margin:18px 0 14px;
   }
-  .tabla-horarios table{
-    border-collapse:collapse;
-    width:100%;
-    min-width:520px;
+  .dia-tab{
+    flex:1;
+    min-width:0;
+    background:rgba(51,219,219,.5);
+    color:#fff;
+    border:none;
+    border-radius:80px;
+    padding:11px 4px;
+    font-family:inherit;
+    font-weight:600;
     font-size:12px;
+    line-height:1.2;
+    text-align:center;
+    cursor:pointer;
+    box-shadow:0 2px 6px rgba(0,0,0,.35);
+    transition:background .2s, color .2s;
   }
-  .tabla-horarios caption{
-    text-align:left;
-    padding:10px 10px 12px;
-    font-size:11px;
+  .dia-tab:hover{background:rgba(51,219,219,.7);}
+  .dia-tab:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
+  .dia-tab.active{background:var(--teal);color:#0d0d0d;}
+
+  /* Filas planas: hora fija a la izquierda, clases a la derecha. Sin chips ni
+     cajas dentro de cajas — a 390px cada borde redondeado anidado se come
+     ancho y no agrega informacion. */
+  .dia-panel{margin-top:0;}
+  .franja{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    padding:11px 0;
+    border-bottom:1px solid #2a2a2a;
+  }
+  .franja:last-of-type{border-bottom:none;padding-bottom:0;}
+  .franja .hora{
+    flex:0 0 52px;
+    font-size:14px;
     font-weight:700;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--text-muted);
-  }
-  .tabla-horarios th, .tabla-horarios td{padding:4px;text-align:center;}
-  .tabla-horarios thead th{
-    font-size:11px;font-weight:700;color:var(--text-muted);
-    letter-spacing:.06em;text-transform:uppercase;padding-bottom:8px;
-  }
-  .tabla-horarios thead th abbr{text-decoration:none;}
-  .tabla-horarios tbody th{
-    font-size:12px;font-weight:700;color:#f8f8f8;
-    white-space:nowrap;text-align:right;padding-right:10px;
+    color:var(--teal);
     font-variant-numeric:tabular-nums;
   }
-  /* Una celda puede tener dos clases a la misma hora (por ejemplo
-     CrossFit y Gymnastics a las 19:15 del lunes), por eso van
-     apiladas con un hueco entre ellas. */
-  .slot{
-    display:block;
-    margin-bottom:3px;
-    border-radius:10px;
-    padding:9px 6px;
-    font-size:11px;
+  .franja .clases{display:flex;flex-direction:column;gap:7px;min-width:0;}
+  /* Gana por especificidad a la regla .info-card a de mas abajo, que si no
+     deja los nombres de clase en teal y subrayados. */
+  .franja .clases a{
+    font-size:15px;
     font-weight:600;
-    line-height:1.25;
     color:#f8f8f8;
+    text-decoration:none;
   }
-  /* Un color por disciplina, tomados de los mismos valores que ya usan las
-     tarjetas de planes e index. */
-  .slot-crossfit{background:rgba(193,9,180,.22);}
-  .slot-hybrid{background:rgba(51,219,219,.18);}
-  .slot-gymnastics{background:rgba(9,193,49,.18);}
-  .slot-levantamiento-olimpico{background:rgba(193,126,9,.2);}
-  .slot-strongman{background:rgba(193,58,9,.2);}
-  .slot-full-body{background:rgba(0,61,246,.22);}
-  .slot-adulto-mayor{background:rgba(138,56,245,.2);}
-  .slot:hover{outline:1px solid rgba(255,255,255,.35);}
-  .slot:last-child{margin-bottom:0;}
-  .slot-vacio{display:block;padding:9px 6px;color:#3f3f3f;}
+  .franja .clases a:hover{color:var(--teal);}
+  .cerrado{font-size:13px;color:var(--text-muted);margin-top:14px;text-align:center;}
 
   .info-card ul{list-style:disc;padding-left:20px;font-size:14px;color:#f8f8f8;}
   .info-card ul li{margin-bottom:6px;}
   .info-card a{color:var(--teal);text-decoration:underline;}
+
+  @media (min-width:900px){
+    /* El .container se abre a 1100px, pero una lista de doce filas cortas
+       estirada a ese ancho queda vacia: la parrilla se queda en una columna
+       centrada. Las pestañas siguen funcionando igual. */
+    .horarios-semana{max-width:620px;margin:0 auto;}
+  }
 </style>
 <link rel="stylesheet" href="assets/css/site.css">
 <script type="application/ld+json">
@@ -166,7 +175,7 @@
         <li><a href="/adulto-mayor">Adulto Mayor</a></li>
         <li><a href="/strongman">StrongMan</a></li>
         <li><a href="/full-body">Full Body</a></li>
-        <li><a href="/competidor">Competidor</a></li>
+        <li><a href="/competidor">CrossFit Extendido</a></li>
       </ul>
     </details>
     <details>
@@ -198,33 +207,83 @@
 
     <div class="page-intro">
       <h1>Horarios de clases</h1>
-      <p>Toda la parrilla de la semana en un solo lugar. Toca cualquier clase para ver de qué va. Las reservas se hacen desde BoxMagic y los cupos son limitados, así que conviene tomarlas con tiempo.</p>
+      <p>Elige el día y mira todas las clases de esa jornada. Toca cualquier clase para ver de qué va. Las reservas se hacen desde BoxMagic y los cupos son limitados, así que conviene tomarlas con tiempo.</p>
     </div>
 
-    <div class="tabla-horarios">
-      <table>
-        <caption>Parrilla de lunes a viernes</caption>
-        <thead>
-          <tr><th scope="col">Hora</th><th scope="col">Lunes</th><th scope="col">Martes</th><th scope="col">Miércoles</th><th scope="col">Jueves</th><th scope="col">Viernes</th></tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row">06:00</th><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a><a class="slot slot-full-body" href="/full-body">Full Body</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a><a class="slot slot-full-body" href="/full-body">Full Body</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a></td></tr>
-          <tr><th scope="row">07:00</th><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a><a class="slot slot-full-body" href="/full-body">Full Body</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a><a class="slot slot-full-body" href="/full-body">Full Body</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a></td></tr>
-          <tr><th scope="row">08:00</th><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a></td></tr>
-          <tr><th scope="row">17:00</th><td><span class="slot-vacio" aria-label="Sin clase">—</span></td><td><a class="slot slot-adulto-mayor" href="/adulto-mayor">Adulto Mayor</a></td><td><span class="slot-vacio" aria-label="Sin clase">—</span></td><td><a class="slot slot-adulto-mayor" href="/adulto-mayor">Adulto Mayor</a></td><td><span class="slot-vacio" aria-label="Sin clase">—</span></td></tr>
-          <tr><th scope="row">17:15</th><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a></td></tr>
-          <tr><th scope="row">18:15</th><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a><a class="slot slot-hybrid" href="/hybrid">Hybrid / Hyrox</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a><a class="slot slot-hybrid" href="/hybrid">Hybrid / Hyrox</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a><a class="slot slot-gymnastics" href="/gymnastics">Gymnastics</a></td></tr>
-          <tr><th scope="row">19:15</th><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a><a class="slot slot-gymnastics" href="/gymnastics">Gymnastics</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a><a class="slot slot-hybrid" href="/hybrid">Hybrid / Hyrox</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a><a class="slot slot-gymnastics" href="/gymnastics">Gymnastics</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a><a class="slot slot-hybrid" href="/hybrid">Hybrid / Hyrox</a></td><td><a class="slot slot-crossfit" href="/crossfit">CrossFit</a><a class="slot slot-levantamiento-olimpico" href="/levantamiento-olimpico">Levantamiento Olímpico</a></td></tr>
-          <tr><th scope="row">20:15</th><td><a class="slot slot-levantamiento-olimpico" href="/levantamiento-olimpico">Levantamiento Olímpico</a></td><td><a class="slot slot-strongman" href="/strongman">StrongMan</a></td><td><a class="slot slot-levantamiento-olimpico" href="/levantamiento-olimpico">Levantamiento Olímpico</a></td><td><a class="slot slot-strongman" href="/strongman">StrongMan</a></td><td><span class="slot-vacio" aria-label="Sin clase">—</span></td></tr>
-        </tbody>
-      </table>
+    <div class="section-title"><h2>Horarios de la semana</h2></div>
+
+    <div class="horarios-semana">
+
+      <!-- El data-hoy hace que app.js abra la pestaña del dia actual; el
+           data-dia de cada boton es el indice de Date.getDay(). El domingo
+           no tiene pestaña, asi que ese dia cae en la marcada aca. -->
+      <div class="dias-tabs" role="tablist" aria-label="Día de la semana" data-hoy>
+        <button class="dia-tab active" role="tab" id="tab-lun" aria-controls="dia-lun" aria-selected="true" tabindex="0" data-dia="1" aria-label="Lunes">Lun</button>
+        <button class="dia-tab" role="tab" id="tab-mar" aria-controls="dia-mar" aria-selected="false" tabindex="-1" data-dia="2" aria-label="Martes">Mar</button>
+        <button class="dia-tab" role="tab" id="tab-mie" aria-controls="dia-mie" aria-selected="false" tabindex="-1" data-dia="3" aria-label="Miércoles">Mié</button>
+        <button class="dia-tab" role="tab" id="tab-jue" aria-controls="dia-jue" aria-selected="false" tabindex="-1" data-dia="4" aria-label="Jueves">Jue</button>
+        <button class="dia-tab" role="tab" id="tab-vie" aria-controls="dia-vie" aria-selected="false" tabindex="-1" data-dia="5" aria-label="Viernes">Vie</button>
+        <button class="dia-tab" role="tab" id="tab-sab" aria-controls="dia-sab" aria-selected="false" tabindex="-1" data-dia="6" aria-label="Sábado">Sáb</button>
+      </div>
+
+      <div class="info-card dia-panel" role="tabpanel" id="dia-lun" aria-labelledby="tab-lun">
+        <div class="franja"><span class="hora">06:00</span><span class="clases"><a href="/crossfit">CrossFit</a></span></div>
+        <div class="franja"><span class="hora">07:00</span><span class="clases"><a href="/crossfit">CrossFit</a></span></div>
+        <div class="franja"><span class="hora">08:00</span><span class="clases"><a href="/crossfit">CrossFit</a></span></div>
+        <div class="franja"><span class="hora">17:15</span><span class="clases"><a href="/crossfit">CrossFit</a></span></div>
+        <div class="franja"><span class="hora">18:15</span><span class="clases"><a href="/crossfit">CrossFit</a></span></div>
+        <div class="franja"><span class="hora">19:15</span><span class="clases"><a href="/crossfit">CrossFit</a><a href="/gymnastics">Gymnastics</a></span></div>
+        <div class="franja"><span class="hora">20:15</span><span class="clases"><a href="/levantamiento-olimpico">Levantamiento Olímpico</a></span></div>
+      </div>
+
+      <div class="info-card dia-panel" role="tabpanel" id="dia-mar" aria-labelledby="tab-mar" hidden>
+        <div class="franja"><span class="hora">06:00</span><span class="clases"><a href="/full-body">Full Body</a></span></div>
+        <div class="franja"><span class="hora">07:00</span><span class="clases"><a href="/full-body">Full Body</a></span></div>
+        <div class="franja"><span class="hora">08:00</span><span class="clases"><a href="/crossfit">CrossFit</a></span></div>
+        <div class="franja"><span class="hora">17:00</span><span class="clases"><a href="/adulto-mayor">Adulto Mayor</a></span></div>
+        <div class="franja"><span class="hora">17:15</span><span class="clases"><a href="/crossfit">CrossFit</a></span></div>
+        <div class="franja"><span class="hora">18:15</span><span class="clases"><a href="/crossfit">CrossFit</a><a href="/hybrid">Hybrid / Hyrox</a></span></div>
+        <div class="franja"><span class="hora">19:15</span><span class="clases"><a href="/crossfit">CrossFit</a><a href="/hybrid">Hybrid / Hyrox</a></span></div>
+        <div class="franja"><span class="hora">20:15</span><span class="clases"><a href="/strongman">StrongMan</a></span></div>
+      </div>
+
+      <div class="info-card dia-panel" role="tabpanel" id="dia-mie" aria-labelledby="tab-mie" hidden>
+        <div class="franja"><span class="hora">06:00</span><span class="clases"><a href="/crossfit">CrossFit</a></span></div>
+        <div class="franja"><span class="hora">07:00</span><span class="clases"><a href="/crossfit">CrossFit</a></span></div>
+        <div class="franja"><span class="hora">08:00</span><span class="clases"><a href="/crossfit">CrossFit</a></span></div>
+        <div class="franja"><span class="hora">17:15</span><span class="clases"><a href="/crossfit">CrossFit</a></span></div>
+        <div class="franja"><span class="hora">18:15</span><span class="clases"><a href="/crossfit">CrossFit</a></span></div>
+        <div class="franja"><span class="hora">19:15</span><span class="clases"><a href="/crossfit">CrossFit</a><a href="/gymnastics">Gymnastics</a></span></div>
+        <div class="franja"><span class="hora">20:15</span><span class="clases"><a href="/levantamiento-olimpico">Levantamiento Olímpico</a></span></div>
+      </div>
+
+      <div class="info-card dia-panel" role="tabpanel" id="dia-jue" aria-labelledby="tab-jue" hidden>
+        <div class="franja"><span class="hora">06:00</span><span class="clases"><a href="/full-body">Full Body</a></span></div>
+        <div class="franja"><span class="hora">07:00</span><span class="clases"><a href="/full-body">Full Body</a></span></div>
+        <div class="franja"><span class="hora">08:00</span><span class="clases"><a href="/crossfit">CrossFit</a></span></div>
+        <div class="franja"><span class="hora">17:00</span><span class="clases"><a href="/adulto-mayor">Adulto Mayor</a></span></div>
+        <div class="franja"><span class="hora">17:15</span><span class="clases"><a href="/crossfit">CrossFit</a></span></div>
+        <div class="franja"><span class="hora">18:15</span><span class="clases"><a href="/crossfit">CrossFit</a><a href="/hybrid">Hybrid / Hyrox</a></span></div>
+        <div class="franja"><span class="hora">19:15</span><span class="clases"><a href="/crossfit">CrossFit</a><a href="/hybrid">Hybrid / Hyrox</a></span></div>
+        <div class="franja"><span class="hora">20:15</span><span class="clases"><a href="/strongman">StrongMan</a></span></div>
+      </div>
+
+      <div class="info-card dia-panel" role="tabpanel" id="dia-vie" aria-labelledby="tab-vie" hidden>
+        <div class="franja"><span class="hora">06:00</span><span class="clases"><a href="/crossfit">CrossFit</a></span></div>
+        <div class="franja"><span class="hora">07:00</span><span class="clases"><a href="/crossfit">CrossFit</a></span></div>
+        <div class="franja"><span class="hora">08:00</span><span class="clases"><a href="/crossfit">CrossFit</a></span></div>
+        <div class="franja"><span class="hora">17:15</span><span class="clases"><a href="/crossfit">CrossFit</a></span></div>
+        <div class="franja"><span class="hora">18:15</span><span class="clases"><a href="/crossfit">CrossFit</a><a href="/gymnastics">Gymnastics</a></span></div>
+        <div class="franja"><span class="hora">19:15</span><span class="clases"><a href="/crossfit">CrossFit</a><a href="/levantamiento-olimpico">Levantamiento Olímpico</a></span></div>
+      </div>
+
+      <div class="info-card dia-panel" role="tabpanel" id="dia-sab" aria-labelledby="tab-sab" hidden>
+        <div class="franja"><span class="hora">10:00</span><span class="clases"><a href="/competidor">CrossFit Extendido</a></span></div>
+      </div>
+
     </div>
 
-    <div class="info-card">
-      <h2>Sábados</h2>
-      <p><b>10:30 — <a href="/competidor">Competidor</a>.</b> Sesión de alto rendimiento para quienes compiten o entrenan con ese objetivo.</p>
-      <p>Domingos cerrado.</p>
-    </div>
+    <p class="cerrado">Domingos cerrado.</p>
 
     <div class="info-card">
       <h2>Antes de venir</h2>
@@ -234,15 +293,6 @@
         <li>Si la clase está llena, anótate en la lista de espera y se te avisa si se libera un lugar.</li>
         <li>Puede haber cambios puntuales por mantención o disponibilidad de coaches; en ese caso avisamos por BoxMagic o WhatsApp.</li>
       </ul>
-    </div>
-
-    <div class="cta-pills">
-      <h2>¿Te calza algún horario?</h2>
-      <p>Elige el que más te acomode y prueba tu primera clase gratis.</p>
-      <div class="cta-actions">
-        <a class="cta-go" href="/clase-gratis">Reservar mi clase gratis</a>
-        <a class="cta-alt" href="/disciplinas">Ver las disciplinas</a>
-      </div>
     </div>
   </div>
 </section>
@@ -280,7 +330,7 @@
         <li><a href="/adulto-mayor">Adulto Mayor</a></li>
         <li><a href="/strongman">StrongMan</a></li>
         <li><a href="/full-body">Full Body</a></li>
-        <li><a href="/competidor">Competidor</a></li>
+        <li><a href="/competidor">CrossFit Extendido</a></li>
       </ul>
     </details>
     <details>
