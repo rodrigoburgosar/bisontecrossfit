@@ -49,6 +49,19 @@
 /assets/js/*
   Cache-Control: public, max-age=604800, stale-while-revalidate=86400
 
+# Fuentes: un ano, como las imagenes. Son las que menos cambian de todo el
+# sitio (son los .woff2 de Poppins tal cual los servia Google) y sin esta regla
+# caerian en el "max-age=0, must-revalidate" de /*, o sea una peticion de
+# revalidacion por peso de fuente en cada visita, que es justo lo que se quiso
+# evitar al dejar de pedirselas a Google.
+#
+# Sin "immutable" a proposito, por lo mismo que las imagenes: el nombre no
+# lleva hash, asi que dejarlo obligaria a renombrar el fichero para publicar un
+# cambio. Si algun dia se actualiza la version de Poppins, hay que renombrar o
+# purgar; en la practica no pasa.
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, stale-while-revalidate=86400
+
 # Archivos que los rastreadores releen a menudo.
 /sitemap.xml
   Cache-Control: public, max-age=3600

@@ -5,11 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Redireccion de la URL antigua.
 
-     Esta pagina se llamaba entrenamientos.html y paso a ser disciplinas.html.
-     El hosting es estatico y no permite un 301 de verdad, asi que se queda este
-     stub: el <meta refresh> a 0 segundos + el canonical son la senal que Google
-     interpreta como redireccion permanente y con la que traspasa el
+     Esta pagina se llamaba entrenamientos.html y paso a ser /disciplinas.
+
+     En produccion este archivo NO se llega a servir: _redirects tiene un 301
+     de /entrenamientos.html y /entrenamientos hacia /disciplinas, y Cloudflare
+     Pages lo resuelve antes de tocar el disco. El stub se queda como respaldo
+     por si el sitio cambia de hosting y se pierde ese 301: el <meta refresh> a
+     0 segundos + el canonical son la senal con la que Google traspasa el
      posicionamiento a la URL nueva.
+
+     Los tres destinos (canonical, meta refresh y location.replace) apuntan a
+     /disciplinas sin extension, que es la forma canonica. Si apuntaran a
+     disciplinas.html, Cloudflare volveria a redirigir 308 hacia /disciplinas y
+     Google veria un canonical que redirige: eso es exactamente lo que provoco
+     los "Error de redireccion" de Search Console del 10/8/2026.
 
      No lleva noindex a proposito: si se le pone, Google deja de seguir la
      senal y se pierde el traspaso. Tampoco lleva GTM ni Clarity, para no
@@ -18,11 +27,11 @@
      Se puede borrar cuando Search Console ya no reporte trafico ni impresiones
      para /entrenamientos.html (normalmente unos meses). -->
 <title>Disciplinas y Horarios | Bisonte CrossFit San Miguel</title>
-<link rel="canonical" href="https://bisontecrossfit.cl/disciplinas.html">
-<meta http-equiv="refresh" content="0; url=disciplinas.html">
+<link rel="canonical" href="https://bisontecrossfit.cl/disciplinas">
+<meta http-equiv="refresh" content="0; url=/disciplinas">
 <meta name="robots" content="follow">
 <link rel="icon" href="favicon.ico" sizes="48x48">
-<script>window.location.replace('disciplinas.html');</script>
+<script>window.location.replace('/disciplinas');</script>
 <style>
   body{
     background:#131313;
@@ -41,7 +50,7 @@
 </style>
 </head>
 <body>
-  <p>Esta página ahora se llama <a href="disciplinas.html">Disciplinas</a>.<br>
+  <p>Esta página ahora se llama <a href="/disciplinas">Disciplinas</a>.<br>
   Si no te redirige en un segundo, toca el enlace.</p>
 </body>
 </html>

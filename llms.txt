@@ -9,7 +9,7 @@ Este sitio es estático y en español (es-CL). Todos los precios están en pesos
 ## Páginas principales
 
 - [Inicio](https://bisontecrossfit.cl/): resumen del box, historia, y vista previa de disciplinas, planes, testimonios y preguntas frecuentes.
-- [Todas las disciplinas](https://bisontecrossfit.cl/disciplinas): listado completo de las nueve disciplinas con sus horarios.
+- [Todas las disciplinas](https://bisontecrossfit.cl/disciplinas): listado de las disciplinas con sus horarios. Muestra ocho: GAP no aparece ahí, solo tiene página propia.
 - [Horarios](https://bisontecrossfit.cl/horarios): parrilla completa de lunes a sábado, con la disciplina de cada franja horaria.
 - [Todos los planes](https://bisontecrossfit.cl/planes): precios vigentes de pases mensuales, especiales y diarios.
 - [Coaches](https://bisontecrossfit.cl/coaches): quiénes imparten las clases y sus credenciales.
@@ -47,7 +47,7 @@ Pases especiales (cada uno exige cumplir su condición):
 
 - Master's — "Adulto Mayor": $25.000 CLP, 8 tokens, programa Tercera Edad, 1 sesión al día.
 - Plan Ahorro invierno — "Madrugadores": $35.000 CLP, 8 clases al mes en horario de madrugada, solo alumnos nuevos, pago por transferencia (sujeto a cambios).
-- Plan Estudiante — "Media o universidad": $43.990 CLP, 16 tokens, acceso a CrossFit, Strongman, Gymnastics y Full Body, requiere certificado de estudios vigente.
+- Plan Estudiante — "Media o universidad": $43.990 CLP, 16 tokens, acceso a CrossFit, Strongman, Gymnastics y Full Body, hasta 2 sesiones al día, requiere certificado de estudios vigente.
 
 Pases diarios:
 
@@ -56,6 +56,7 @@ Pases diarios:
 
 ## Contacto y ubicación
 
+- Horario de puertas: lunes a viernes de 06:00 a 21:15; sábado de 10:00 a 12:00; domingo cerrado.
 - Dirección: Calle Uno 1050, San Miguel, Santiago, Chile (cerca del Metro Departamental, Línea 2).
 - WhatsApp: +56 9 6737 4096 — https://wa.me/56967374096
 - Reservas y pagos: app BoxMagic (https://app.boxmagic.cl).

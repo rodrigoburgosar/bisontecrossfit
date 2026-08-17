@@ -6,8 +6,14 @@
    movimientos de raton y pulsaciones: no es analitica agregada.
 
    Este archivo invierte el orden: no se carga nada de terceros hasta que la
-   persona elige. Va SIN defer y lo primero del <head> para poder decidir
-   antes de que se pinte nada.
+   persona elige.
+
+   Se carga CON defer, arriba del <head>. Antes iba sin defer, "para decidir
+   antes de que se pinte nada", y eso bloqueaba el renderizado 530 ms en movil.
+   La razon no se sostenia: lo unico que corre de forma sincrona es
+   consentModePorDefecto() —declarar el dataLayer—, y el banner, GTM y Clarity
+   cuelgan todos de DOMContentLoaded (ver el arranque, al final del fichero).
+   Como GTM lo carga este mismo script, el orden se respeta igual con defer.
 
    Dos categorias separadas a proposito:
      analitica -> Google Tag Manager / GA4 (estadisticas agregadas)
