@@ -80,8 +80,6 @@
     .app{box-shadow:0 0 60px rgba(0,0,0,.6);min-height:100vh;}
   }
   .container{padding:0 20px;}
-
-  /* Migas de pan */
   .breadcrumb{padding:10px 0 12px;}
   .breadcrumb ol{
     display:flex;
@@ -100,8 +98,6 @@
   .breadcrumb a:hover{color:var(--teal);text-decoration:underline;}
   .breadcrumb [aria-current='page']{color:var(--text);font-weight:600;}
   section{padding:40px 0;}
-
-  /* Header */
   header{
     display:flex;
     align-items:center;
@@ -111,8 +107,6 @@
   .menu-btn{background:none;border:none;padding:4px;cursor:pointer;display:flex;align-items:center;}
   .logo-nav{display:flex;align-items:center;}
   .logo-nav img{height:64px;width:auto;display:block;}
-
-  /* Page title */
   .page-title{padding-top:12px;}
   .page-title h1{
     font-size:22px;
@@ -122,8 +116,6 @@
     background:url('assets/img/line-underline.svg') left bottom no-repeat;
     background-size:70px 4px;
   }
-
-  /* Tarjeta de dirección */
   .info-card{
     background:#1e1e1e;
     border:1px solid #000;
@@ -138,7 +130,6 @@
   .info-card img{width:28px;height:auto;flex-shrink:0;}
   .info-card h3{font-size:16px;margin-bottom:4px;}
   .info-card p{color:var(--text-muted);font-size:13px;}
-
   .intro-bold{
     font-weight:700;
     color:#f8f8f8;
@@ -146,8 +137,6 @@
     text-align:center;
     margin-top:24px;
   }
-
-  /* Mapa */
   .location-map{
     width:100%;
     height:263px;
@@ -155,8 +144,6 @@
     display:block;
     margin-top:24px;
   }
-
-  /* "¿Cómo llegar?" - modos de transporte */
   .subsection-title{text-align:center;margin-top:40px;margin-bottom:20px;}
   .subsection-title h2{
     font-size:20px;
@@ -171,9 +158,6 @@
     gap:8px;
     margin-bottom:16px;
   }
-  /* Mismos colores que los .chip de planes.html: teal translucido en reposo,
-     teal solido con texto oscuro en la activa. Antes eran azul #003df6, que
-     no esta en la paleta del sitio. */
   .transport-tab{
     flex:1;
     min-width:0;
@@ -213,8 +197,6 @@
   .transport-info .transport-line .line-name,
   .transport-info .transport-line .dot{color:var(--teal);}
   .transport-info p{color:#f8f8f8;font-size:14px;}
-
-  /* Galería */
   .gallery-row{
     display:flex;
     gap:10px;
@@ -228,8 +210,6 @@
     box-shadow:0 2px 12px rgba(0,0,0,.5);
   }
   .gallery-row .gallery-item img{width:100%;height:100%;object-fit:cover;display:block;}
-
-  /* Franja de highlights */
   .highlight-strip{margin-top:32px;text-align:center;}
   .highlight-tag{font-size:14px;color:#f8f8f8;margin-bottom:16px;}
   .highlight-pills{display:flex;gap:10px;}
@@ -242,9 +222,7 @@
   }
   .highlight-pill p{color:#f8f8f8;font-size:12px;}
   .highlight-pill p:first-child{font-weight:700;margin-bottom:4px;}
-
   .page-title .socials{margin-top:32px;}
-
   .legal-links{
     display:flex;
     justify-content:center;
@@ -265,12 +243,6 @@
     margin-bottom:20px;
   }
   .socials a:hover{color:var(--teal);}
-
-  /* Barra flotante de CTA (la misma de index.html). Los .pill van scopeados a
-     .quick-actions para que la barra se vea igual en todo el sitio aunque la
-     pagina defina su propio .pill con otro tamaño (pasa en las disciplinas).
-     pointer-events:none en el contenedor + auto en el inner deja pasar el
-     scroll y los clicks al contenido que queda a los costados de la pildora. */
   .quick-actions{
     display:flex;
     justify-content:center;
@@ -310,8 +282,6 @@
   .quick-actions .pill-teal{background:rgba(255,255,255,.1);color:#f8f8f8;font-size:18px;}
   .quick-actions .pill-dark{background:var(--magenta);color:#f8f8f8;font-size:20px;}
   .quick-actions .pill-dark img{width:16px;height:16px;}
-
-  /* Footer */
   footer{
     background:var(--bg-alt);
     padding:40px 20px 120px;
@@ -363,8 +333,6 @@
   .map-block h3{font-size:18px;margin-bottom:8px;}
   .map-block h3 span{display:block;width:172px;height:3px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:8px auto 0;}
   .map-block p{color:#f8f8f8;font-size:14px;font-weight:600;}
-
-  /* Drawer menu */
   .drawer-overlay{
     position:fixed;inset:0;background:rgba(0,0,0,.6);
     opacity:0;pointer-events:none;transition:opacity .25s;z-index:90;
@@ -430,8 +398,6 @@
     gap:8px;
     font-size:14px;
   }
-
-  /* Desktop */
   @media (min-width:900px){
     .app{max-width:none;box-shadow:none;}
     .container{max-width:1100px;margin:0 auto;}
@@ -442,29 +408,9 @@
     footer{padding:60px 40px 130px;}
     .footer-links{max-width:900px;}
   }
-
-  /* Oculto temporalmente: portal de alumnos BoxMagic.
-     Para volver a mostrarlo, borra esta regla. */
   .footer-links a.plain,
   .drawer-item-plain{display:none;}
-
-  /* ==========================================================
-     Poppins autoalojada + componentes compartidos.
-
-     Estas reglas estaban en un assets/css/site.css que ya no
-     existe, enlazado con <link>. Enlazadas bloqueaban el renderizado 180 ms por
-     un fichero de 2 KB, y no se pueden diferir: llevan las
-     @font-face y los estilos del banner de cookies, que sin
-     ellos sale sin maquetar. Por eso viven aca, dentro del
-     bloque de estilos de la pagina, como el resto del CSS.
-
-     OJO: este bloque esta copiado en las 23 paginas. Un cambio
-     aca va en las 23. Los .woff2 estan en assets/fonts/ y son
-     los mismos que servia Google (Poppins, SIL OFL 1.1, ver
-     assets/fonts/OFL.txt). Pesos: 400, 500, 600, 700 y 800.
-     Subconjuntos latin y latin-ext; con unicode-range el
-     navegador baja solo el que necesita.
-     ========================================================== */
+  /* Poppins autoalojada + componentes compartidos */
   @font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/poppins-400-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
   @font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/poppins-400-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
   @font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url('/assets/fonts/poppins-500-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
@@ -475,7 +421,6 @@
   @font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url('/assets/fonts/poppins-700-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
   @font-face{font-family:'Poppins';font-style:normal;font-weight:800;font-display:swap;src:url('/assets/fonts/poppins-800-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
   @font-face{font-family:'Poppins';font-style:normal;font-weight:800;font-display:swap;src:url('/assets/fonts/poppins-800-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
-
   a:focus-visible,
   button:focus-visible,
   summary:focus-visible,
@@ -487,7 +432,6 @@
     outline-offset:3px;
     border-radius:6px;
   }
-
   .skip-link{
     position:absolute;
     left:50%;
@@ -508,7 +452,6 @@
   @media (prefers-reduced-motion:reduce){
     .skip-link{transition:none;}
   }
-
   .consent{
     position:fixed;
     left:0;
@@ -525,7 +468,6 @@
   @media (prefers-reduced-motion:reduce){
     .consent{transition:none;}
   }
-
   .consent-inner{
     max-width:760px;
     margin:0 auto;
@@ -546,7 +488,6 @@
     color:var(--teal, #33DBDB);
     text-decoration:underline;
   }
-
   .consent-acciones{
     display:flex;
     gap:8px;
@@ -564,13 +505,11 @@
     cursor:pointer;
     line-height:1.2;
   }
-
   .consent-rechazar{background:rgba(255,255,255,.12);color:#f0f0f0;}
   .consent-preferencias{background:transparent;border:1px solid rgba(255,255,255,.25);color:#d8d8d8;}
   .consent-aceptar{background:var(--magenta, #C109B4);color:#fff;}
   .consent-btn:hover{filter:brightness(1.12);}
   .consent-btn:focus-visible{outline:2px solid var(--teal, #33DBDB);outline-offset:2px;}
-
   .consent-detalle{
     margin-top:16px;
     padding-top:16px;
@@ -579,7 +518,6 @@
     flex-direction:column;
     gap:13px;
   }
-
   .consent-detalle[hidden]{display:none;}
   .consent-opcion{
     display:flex;
@@ -607,14 +545,11 @@
     align-self:flex-start;
     flex:0 0 auto;
   }
-
   body:has(.consent.visible) .quick-actions{bottom:190px;}
-
   @media (min-width:600px){
     .consent-acciones{justify-content:flex-end;}
     .consent-btn{flex:0 0 auto;min-width:120px;}
   }
-
   .legal-item a,
   .legal-intro a{
     color:var(--teal, #33DBDB);

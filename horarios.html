@@ -49,14 +49,6 @@
   .page-intro{padding:8px 0 4px;}
   .page-intro h1{font-size:24px;font-weight:800;margin-bottom:10px;text-wrap:balance;}
   .page-intro p{font-size:14px;color:#f8f8f8;line-height:1.55;}
-
-  /* Parrilla pensada para el telefono: un dia a la vez, con las mismas
-     pestañas que ya usa como-llegar.html (mismo role=tab/tabpanel, mismo
-     bloque de app.js, mismos colores que los .chip de planes.html).
-     Asi el dia completo cabe en una pantalla y no hay que arrastrar nada.
-     Antes fue una tabla de 6 columnas (scroll horizontal) y despues un
-     acordeon de 6 tarjetas apiladas, que en 390px eran metros de scroll con
-     la palabra "CrossFit" repetida treinta veces. */
   .dias-tabs{
     display:flex;
     gap:6px;
@@ -82,10 +74,6 @@
   .dia-tab:hover{background:rgba(51,219,219,.7);}
   .dia-tab:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
   .dia-tab.active{background:var(--teal);color:#0d0d0d;}
-
-  /* Filas planas: hora fija a la izquierda, clases a la derecha. Sin chips ni
-     cajas dentro de cajas — a 390px cada borde redondeado anidado se come
-     ancho y no agrega informacion. */
   .dia-panel{margin-top:0;}
   .franja{
     display:flex;
@@ -103,8 +91,6 @@
     font-variant-numeric:tabular-nums;
   }
   .franja .clases{display:flex;flex-direction:column;gap:7px;min-width:0;}
-  /* Gana por especificidad a la regla .info-card a de mas abajo, que si no
-     deja los nombres de clase en teal y subrayados. */
   .franja .clases a{
     font-size:15px;
     font-weight:600;
@@ -113,35 +99,13 @@
   }
   .franja .clases a:hover{color:var(--teal);}
   .cerrado{font-size:13px;color:var(--text-muted);margin-top:14px;text-align:center;}
-
   .info-card ul{list-style:disc;padding-left:20px;font-size:14px;color:#f8f8f8;}
   .info-card ul li{margin-bottom:6px;}
   .info-card a{color:var(--teal);text-decoration:underline;}
-
   @media (min-width:900px){
-    /* El .container se abre a 1100px, pero una lista de doce filas cortas
-       estirada a ese ancho queda vacia: la parrilla se queda en una columna
-       centrada. Las pestañas siguen funcionando igual. */
     .horarios-semana{max-width:620px;margin:0 auto;}
   }
-
-  /* ==========================================================
-     Poppins autoalojada + componentes compartidos.
-
-     Estas reglas estaban en un assets/css/site.css que ya no
-     existe, enlazado con <link>. Enlazadas bloqueaban el renderizado 180 ms por
-     un fichero de 2 KB, y no se pueden diferir: llevan las
-     @font-face y los estilos del banner de cookies, que sin
-     ellos sale sin maquetar. Por eso viven aca, dentro del
-     bloque de estilos de la pagina, como el resto del CSS.
-
-     OJO: este bloque esta copiado en las 23 paginas. Un cambio
-     aca va en las 23. Los .woff2 estan en assets/fonts/ y son
-     los mismos que servia Google (Poppins, SIL OFL 1.1, ver
-     assets/fonts/OFL.txt). Pesos: 400, 500, 600, 700 y 800.
-     Subconjuntos latin y latin-ext; con unicode-range el
-     navegador baja solo el que necesita.
-     ========================================================== */
+  /* Poppins autoalojada + componentes compartidos */
   @font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/poppins-400-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
   @font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/poppins-400-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
   @font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url('/assets/fonts/poppins-500-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
@@ -152,7 +116,6 @@
   @font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url('/assets/fonts/poppins-700-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
   @font-face{font-family:'Poppins';font-style:normal;font-weight:800;font-display:swap;src:url('/assets/fonts/poppins-800-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
   @font-face{font-family:'Poppins';font-style:normal;font-weight:800;font-display:swap;src:url('/assets/fonts/poppins-800-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
-
   a:focus-visible,
   button:focus-visible,
   summary:focus-visible,
@@ -164,7 +127,6 @@
     outline-offset:3px;
     border-radius:6px;
   }
-
   .skip-link{
     position:absolute;
     left:50%;
@@ -185,7 +147,6 @@
   @media (prefers-reduced-motion:reduce){
     .skip-link{transition:none;}
   }
-
   .consent{
     position:fixed;
     left:0;
@@ -202,7 +163,6 @@
   @media (prefers-reduced-motion:reduce){
     .consent{transition:none;}
   }
-
   .consent-inner{
     max-width:760px;
     margin:0 auto;
@@ -223,7 +183,6 @@
     color:var(--teal, #33DBDB);
     text-decoration:underline;
   }
-
   .consent-acciones{
     display:flex;
     gap:8px;
@@ -241,13 +200,11 @@
     cursor:pointer;
     line-height:1.2;
   }
-
   .consent-rechazar{background:rgba(255,255,255,.12);color:#f0f0f0;}
   .consent-preferencias{background:transparent;border:1px solid rgba(255,255,255,.25);color:#d8d8d8;}
   .consent-aceptar{background:var(--magenta, #C109B4);color:#fff;}
   .consent-btn:hover{filter:brightness(1.12);}
   .consent-btn:focus-visible{outline:2px solid var(--teal, #33DBDB);outline-offset:2px;}
-
   .consent-detalle{
     margin-top:16px;
     padding-top:16px;
@@ -256,7 +213,6 @@
     flex-direction:column;
     gap:13px;
   }
-
   .consent-detalle[hidden]{display:none;}
   .consent-opcion{
     display:flex;
@@ -284,14 +240,11 @@
     align-self:flex-start;
     flex:0 0 auto;
   }
-
   body:has(.consent.visible) .quick-actions{bottom:190px;}
-
   @media (min-width:600px){
     .consent-acciones{justify-content:flex-end;}
     .consent-btn{flex:0 0 auto;min-width:120px;}
   }
-
   .legal-item a,
   .legal-intro a{
     color:var(--teal, #33DBDB);

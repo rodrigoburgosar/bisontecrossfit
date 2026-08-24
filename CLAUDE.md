@@ -99,6 +99,7 @@ Regla práctica: cambio estructural (página nueva/renombrada/borrada) → toca 
 - **Antes de mover CSS/JS a un archivo nuevo, confirma que el deploy suba carpetas nuevas.** El deploy parece ser manual y ya se comió una carpeta entera sin avisar; verifica la URL del asset en producción después de publicar.
 - **Si tocas un archivo de `assets/js/` o `assets/css/`, sube el `?v=` de sus referencias en los 23 HTML.** `_headers` cachea `/assets/js/*` y `/assets/css/*` una semana (`max-age=604800`) y los nombres no llevan hash, así que sin cambiar la URL ni el edge de Cloudflare ni los navegadores que ya bajaron el archivo se enteran del cambio durante 7 días. Ya pasó: las pestañas de días de `horarios.html` estaban muertas en producción porque el edge servía un `app.js` anterior a que existieran (el origen sí tenía el nuevo — se comprueba pidiendo `app.js?bust=<algo>`, que es otra clave de caché). Purgar Cloudflare arregla el edge pero **no** los dispositivos que ya lo cachearon; lo único que los arregla es una URL nueva. Se hace de una pasada con un `re.sub` sobre `*.html` buscando `(src|href)="assets/(js|css)/…"`; la fecha del día sirve de versión. Ojo: el `?v=` no rompe las reglas de `_headers`, que hacen match por ruta e ignoran la query. Esto aplica hoy **solo a `app.js`**: es el único asset de `js/`/`css/` que sigue enlazado.
 - **El CSS compartido va dentro del `<style>` de cada página. `assets/css/site.css` ya no existe.** Eran las `@font-face` de Poppins y los estilos del banner de cookies; enlazado con `<link>` bloqueaba el renderizado 180 ms (PageSpeed móvil, 2026-08-17) por un fichero de 2 KB, y no se puede diferir — sin esos estilos el banner sale sin maquetar y las fuentes llegan tarde. Hubo un momento en que un script lo inyectaba entre marcas `<!-- INLINE:site.css -->`; **eso se deshizo y los scripts se borraron**, porque el repo se publica tal cual y una copia generada que hay que regenerar a mano es una trampa más. Hoy ese bloque **está copiado en las 23 páginas y un cambio ahí va en las 23** — la misma convención que ya rige para todo el CSS de este repo. Está identificado con un comentario `Poppins autoalojada + componentes compartidos` en cada archivo. En las 14 páginas con `<style>` propio va dentro de él; en las 9 que no lo tienen (5 disciplinas + las 4 de ayuda, que sacan su CSS de `assets/css/`) va como un `<style>` suelto. `entrenamientos.html` queda fuera (es un stub y no lleva estilos).
+- **El CSS de los `<style>` va sin comentarios.** Los bloques `<style>` de las 14 páginas que tienen uno propio llevaban ~24 KB de comentarios `/* */` en castellano explicando cada decisión. Se borraron el 2026-08-17: PageSpeed los contaba enteros en "Reduce el uso de CSS" (en `index.html` eran 5,8 KB de los 32 KB del bloque, o sea **2,6 KiB gzip de los 3 KiB que reportaba el aviso** — el 85 % del ahorro salía solo de ahí, sin tocar el whitespace ni renombrar nada). Como el HTML no se cachea (`max-age=0, must-revalidate` en `_headers`), esos comentarios viajaban en **cada visita a cada página**. La contrapartida es que **el porqué de esas reglas vive ahora en "Decisiones de CSS que no son obvias", más abajo**: si tocas una de ellas, lee esa sección primero, y si tomas una decisión nueva que no se explique sola, documéntala ahí y no en un comentario. Lo único que se conservó dentro del CSS es el marcador de una línea `/* Poppins autoalojada + componentes compartidos */`, porque es lo que permite ubicar el bloque compartido en cada archivo. Los comentarios `<!-- -->` del `<head>` **no se tocaron** (son otros ~42 KB repartidos en los 24 archivos, por si algún día se quiere el mismo ahorro).
 - **`consent.js` va con `defer`, no inline.** Antes iba sin `defer` "para decidir antes de pintar" y bloqueaba 530 ms. Esa razón no se sostenía: lo único que corre de forma síncrona es `consentModePorDefecto()` —declarar el `dataLayer`—, y el banner, GTM y Clarity cuelgan todos de `DOMContentLoaded`. Como **GTM lo carga este mismo script**, el orden se respeta igual (verificado: en el `dataLayer` el `consent default` sigue llegando antes que el `update`). Con `defer` se recupera la caché entre páginas, la CSP no necesita hash para un script inline y se puede depurar como un fichero normal. Se queda arriba del `<head>` para que el preload scanner lo empiece a bajar de inmediato. **La regla no es "meter todo en el HTML": es meter solo lo que bloquea y no se puede diferir** — por eso `app.js` (21 KB) también sigue externo con `defer`.
 - Mobile-first: los estilos base apuntan a un viewport angosto, el contenido va envuelto en un contenedor `.app` (`max-width:480px`, centrado). Se repiten dos breakpoints en todos los archivos:
   - `min-width:481px` — solo cosmético (sombra, `min-height:100vh` en `.app`).
@@ -110,6 +111,60 @@ Regla práctica: cambio estructural (página nueva/renombrada/borrada) → toca 
   - Las `url()` de esos `@font-face` son **absolutas** (`/assets/fonts/…`) a propósito, porque el bloque se copia dentro del HTML y una ruta relativa se resolvería distinto según desde dónde se lea.
   - Los `<link rel="preload" as="font" … crossorigin>` del `<head>` adelantan **400, 600 y 800** (cuerpo, UI y títulos, los que pintan arriba del pliegue). Esos van a mano en el HTML: si cambias los pesos, acuérdate de ellos.
   - `Inter` **ya no se usa**. Solo la pedían `.testimonial p` y `.author` de `index.html`, o sea una familia entera para dos líneas bajo el pliegue — y encima `testimonios.html`, que muestra esas mismas citas, nunca la usó, así que la fila del home y su página dedicada se veían con tipografías distintas. Ahora las dos heredan Poppins.
+
+### Decisiones de CSS que no son obvias
+
+Cada una de estas reglas se ve arbitraria y **ya se rompió una vez** al "simplificarla". Vivían como comentarios dentro del CSS; se movieron acá al quitarlos (ver el bullet correspondiente arriba). Están agrupadas por archivo y por selector.
+
+**`index.html`**
+
+- `.hero .hero-price` — el margen horizontal va en `auto`, **no en `0`**. A partir de 900px, `.hero p` le pone `max-width:520px` con márgenes `auto` para centrarlo, y esa regla es más específica: un `margin:14px 0 0` los anulaba y dejaba el bloque de 520px pegado al borde izquierdo del contenedor de 600px. El texto quedaba 40px a la izquierda del resto del hero — `(600-520)/2` — y solo por encima de ese breakpoint.
+- `.hero-rating` — es un `<div>` y **no un `<p>`** porque `.hero p` (0,1,1) le gana en especificidad a `.hero-rating` (0,1,0) y le devolvería `font-size:16px`. Y va `display:flex`, no `inline-flex`: con `inline-flex` se pegaba al elemento anterior en cuanto había ancho de sobra. Su cuerpo es 10px, el mismo de `.hero-meta`: la píldora cierra ese bloque de credenciales y con 12px se leía como otro nivel de jerarquía. El "5,0" destaca por peso y color, no por tamaño; los iconos van a 11-12px para no quedar más altos que la línea de texto.
+- `.hero-rating-texto` — la atribución va **dentro** de la píldora, no como línea suelta en `.hero-meta`: separadas se leían como dos cosas distintas (una nota sin fuente arriba de un texto sin nota). El separador es un pseudo-elemento para que el "18 opiniones en Google" no herede su color ni se pueda borrar por accidente.
+- `.tags-track` — el `gap` es 6px y no 10px porque los `·` **también son items** del flex: con 10px cada palabra quedaba a 20px de la siguiente y la marquesina se leía hueca.
+- `.tags-track span.sep` — `font-weight:800`, antes 900. Era el único uso del peso 900 en todo el sitio, para un separador de un carácter; a simple vista es indistinguible y ahorra bajar una fuente entera (ver "Pesos" arriba).
+- `#row-planes` — el carrusel de planes **centra** la tarjeta activa; el resto de las filas alinean al borde izquierdo. El `padding-inline` es lo que permite que la primera y la última tarjeta lleguen al centro: `(ancho de la fila - ancho de la tarjeta) / 2`. En `@media (min-width:900px)` la fila pasa a grid y ahí ese padding **se resetea a 0** — sobre 1100px el `calc()` metería ~435px y rompería la grilla.
+- `.plan-card .plan-list` — en móvil la tarjeta mide 230px y la lista llena el ancho; en la grilla de escritorio queda mucho más ancha, así que el bloque se centra (`width:max-content` + `margin:auto`, el texto sigue alineado a la izquierda entre sí) y sube de tamaño para no quedar diminuto al lado del precio de 40px.
+- `.plan-card .badge` — va fuera del flujo para que el título quede a la misma altura en todas las tarjetas; el `padding-top` de `.plan-card` le reserva el espacio. (Misma regla en `planes.html`.)
+- `.testimonial p` / `.author` — **sin `font-family` propia**: heredan Poppins del `body`. Ver la nota de `Inter` arriba.
+- `.testimonial .author` — `margin-top:auto` pega el nombre al fondo: en el carrusel y en la grilla de escritorio las tarjetas se estiran a la altura de la más larga, así que sin esto el autor queda flotando a distinta altura en cada una. (Misma regla en `testimonios.html`.)
+- `.section-title` — hoy solo lleva el `h2`: se quitaron los enlaces "Ver todos", por eso ya no hace falta `justify-content:space-between`.
+- `.faq-item summary::after` — el chevron va **inline**, no como flex item: con `display:flex` y un título de dos líneas quedaba centrado verticalmente y despegado del texto. El `&nbsp;` del `content` lo mantiene pegado a la última palabra sin que salte solo.
+- `@media (min-width:900px)` — las `.cards-row` pasan a grid (sin scroll ni snap, todo visible) y ahí las tarjetas de una misma fila quedan todas de la altura de la más alta. Con el `align-items:center` del móvil los títulos arrancaban a distinta altura según cuántas líneas ocupara la descripción, así que en escritorio se alinea arriba y el horario se ancla abajo. El `margin-top:6px` de `.story` se conserva para no pegar el marquee al primer slide.
+
+**`planes.html`**
+
+- `.plan-card h3` y la bajada llevan **alto fijo de 2 líneas** para que el precio y la lista queden a la misma altura tenga el plan nombre corto ("Plan 8") o largo ("Plan Ahorro invierno"), y bajada de una línea ("Madrugadores") o dos ("Media o universidad").
+- `.plan-list` — misma corrección que en `index.html`: en la grilla la tarjeta es mucho más ancha que los 230px del móvil, así que la lista se centra como bloque y sube de tamaño.
+
+**`horarios.html`**
+
+- La parrilla está pensada para el teléfono: **un día a la vez**, con las mismas pestañas que ya usa `como-llegar.html` (mismo `role=tab`/`tabpanel`, mismo bloque de `app.js`, mismos colores que los `.chip` de `planes.html`). Así el día completo cabe en una pantalla. Antes fue una tabla de 6 columnas con scroll horizontal, y después un acordeón de 6 tarjetas apiladas, que en 390px eran metros de scroll con la palabra "CrossFit" repetida treinta veces.
+- Las filas son **planas**: hora fija a la izquierda, clases a la derecha. Sin chips ni cajas dentro de cajas — a 390px cada borde redondeado anidado se come ancho y no agrega información.
+- En escritorio el `.container` se abre a 1100px, pero una lista de doce filas cortas estirada a ese ancho queda vacía: la parrilla **se queda en una columna centrada**. Las pestañas siguen funcionando igual.
+- La regla de los enlaces de la parrilla gana por especificidad a la `.info-card a` de más abajo, que si no deja los nombres de clase en teal y subrayados.
+
+**`testimonios.html`**
+
+- `.reviews-source` es la atribución + el enlace a la ficha del negocio (el `?cid=` sale del mismo id que usa el iframe del mapa en `como-llegar.html` — ver la sección de datos estructurados).
+- `.testimonial.review` es la variante de tarjeta para una reseña real: alineada a la izquierda y con la ficha del autor arriba. **El avatar es la inicial del nombre, no la foto de Google**: esas URLs caducan y además cargarlas desde `googleusercontent` filtraría la visita a Google.
+- En `index.html` la fila de reseñas usa el mismo patrón que `#row-historia` (una reseña por pantalla, con snap y puntos). Antes eran tarjetas de 260px, pero las reseñas de Google son de largo muy distinto y a ese ancho la más larga obligaba a recortar el texto o a meterle scroll propio.
+
+**`como-llegar.html`**
+
+- `.transport-tabs` — mismos colores que los `.chip` de `planes.html`: teal translúcido en reposo, teal sólido con texto oscuro en la activa. Antes eran azul `#003df6`, que no está en la paleta del sitio.
+
+**Páginas de disciplina**
+
+- `levantamiento-olimpico.html` — Benjamín tiene 9 credenciales de competencia (los otros coaches tienen 3) y no caben en `.coach-info`, que en móvil mide ~175px: con `white-space:nowrap` el texto se salía de la píldora. Por eso ahí la lista es el **tercer hijo de `.coach-row`** (no va dentro de `.coach-info`), ocupa el ancho completo de la tarjeta y las píldoras pueden partirse en dos líneas.
+- `adulto-mayor.html`, `gymnastics.html`, `hybrid.html` — Karen tiene credenciales más largas que las de la base y con `white-space:nowrap` la píldora se salía de la tarjeta en móvil.
+- `coaches.html` — reutiliza `disciplina.css` para el chrome y solo añade lo propio de la página.
+
+**Compartido**
+
+- `.quick-actions` — los `.pill` van scopeados a `.quick-actions` para que la barra se vea igual en todo el sitio aunque la página defina su propio `.pill` con otro tamaño (pasa en las disciplinas). `pointer-events:none` en el contenedor + `auto` en el `-inner` deja pasar el scroll y los clics al contenido que queda a los costados de la píldora. Ver "Barra flotante de CTA" más abajo para el resto de las restricciones.
+- **Portal de alumnos BoxMagic: está oculto a propósito** con una regla CSS en `index.html`, `planes.html`, `disciplinas.html`, `testimonios.html`, `como-llegar.html` y `clase-gratis.html`. Para volver a mostrarlo hay que borrar esa regla en las seis. Antes lo decía un comentario en cada archivo; ahora solo está acá, así que **si no encuentras por qué el enlace a BoxMagic no se ve, es esto**.
+- `clase-gratis.html` — la casilla de consentimiento va envuelta por el `<label>` junto con el texto, así que se puede pulsar en cualquier parte de la frase. El espaciado entre campos sale del `gap` del form; nada de márgenes entre campos.
 
 ## Patrones de interacción recurrentes
 
@@ -138,6 +193,16 @@ Todo el JS de interacción vive en `assets/js/app.js` — un solo archivo para l
 - Las opciones del `<select name="horario">` llevan `data-clase` y el JS las filtra según la clase elegida. **Esos horarios son una copia de los de `disciplinas.html`** — si cambian los horarios reales hay que actualizarlos en ambos sitios (y en la página de la disciplina correspondiente).
 - El RUT se valida en el cliente con módulo 11 y se formatea al salir del campo. Un RUT con dígito verificador incorrecto bloquea el envío.
 - Acepta `?clase=CrossFit` en la URL para preseleccionar la disciplina al enlazar desde una página de disciplina.
+
+### Anotaciones WebMCP
+
+El `<form>` lleva `toolname` + `tooldescription`, y **los 8 campos con `name` llevan `toolparamdescription`**. Es [WebMCP declarativo](https://developer.chrome.com/docs/lighthouse/agentic-browsing/forms-missing-declarative-webmcp): describe el formulario para los agentes de IA en vez de dejar que lo adivinen leyendo el DOM. Son **solo metadatos** — ningún navegador actual cambia de comportamiento por ellos, no hay JS involucrado y el envío a Apps Script es exactamente el mismo. Como no toca `assets/`, tampoco hay que subir ningún `?v=`.
+
+**Si agregas un campo al formulario, ponle su `toolparamdescription`.** Dejar la anotación a medias es lo único que rompe algo: de los tres audits de la categoría *Agentic Browsing* de Lighthouse, los de cobertura e inventario de herramientas son informativos ("Sin puntuación"), pero [el de esquema válido](https://developer.chrome.com/docs/lighthouse/agentic-browsing/webmcp-schema-validity) **sí falla** con `toolname` sin `tooldescription`, con un campo `required` sin `name`, o con un campo sin `toolparamdescription`. Este es el único `<form>` del sitio, así que la cobertura es 1/1.
+
+Dos cosas que las descripciones dicen a propósito, porque un agente no las puede deducir del HTML: que **la clase se elige antes que el horario** (el JS filtra las opciones, y un horario de otra disciplina no existe en la realidad), y que dos `value` no coinciden con su texto visible (`Hyrox / Hybrid`, `Competidor`). Si cambia cualquiera de las dos cosas, la descripción queda mintiendo.
+
+**No se usó la API imperativa** (`registerTool` en JS), y conviene que siga así: está en origin trial desde Chrome 149 y la spec ya movió el objeto de `navigator.modelContext` a `document`, con el primero deprecado en Chrome 150. Sería código que hay que perseguir cada versión de Chrome a cambio de una línea en un reporte informativo. La vía declarativa no tiene ese problema.
 
 ## Eventos de conversión
 

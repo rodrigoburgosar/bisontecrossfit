@@ -80,8 +80,6 @@
     .app{box-shadow:0 0 60px rgba(0,0,0,.6);min-height:100vh;}
   }
   .container{padding:0 20px;}
-
-  /* Migas de pan */
   .breadcrumb{padding:10px 0 12px;}
   .breadcrumb ol{
     display:flex;
@@ -100,8 +98,6 @@
   .breadcrumb a:hover{color:var(--teal);text-decoration:underline;}
   .breadcrumb [aria-current='page']{color:var(--text);font-weight:600;}
   section{padding:40px 0;}
-
-  /* Header */
   header{
     display:flex;
     align-items:center;
@@ -111,8 +107,6 @@
   .menu-btn{background:none;border:none;padding:4px;cursor:pointer;display:flex;align-items:center;}
   .logo-nav{display:flex;align-items:center;}
   .logo-nav img{height:64px;width:auto;display:block;}
-
-  /* Page title */
   .page-title{padding-top:12px;}
   .page-title h1{
     font-size:22px;
@@ -143,8 +137,6 @@
   }
   .meta-row .meta-item img{width:14px;height:14px;}
   .meta-row .dot-sep{color:var(--text-muted);}
-
-  /* Tarjeta informativa */
   .info-card{
     background:#1e1e1e;
     border:1px solid #000;
@@ -159,15 +151,12 @@
   .info-card img{width:32px;height:32px;flex-shrink:0;}
   .info-card h3{font-size:16px;margin-bottom:4px;}
   .info-card p{color:var(--text-muted);font-size:13px;}
-
-  /* Formulario clase gratis */
   .form-card{
     background:var(--card);
     border-radius:16px;
     padding:22px 20px;
     margin-top:24px;
   }
-  /* El espaciado sale del gap del form; nada de margenes entre campos. */
   #freeClassForm{display:flex;flex-direction:column;gap:16px;}
   .form-row{display:grid;gap:16px;}
   .form-field{display:flex;flex-direction:column;}
@@ -223,8 +212,6 @@
     margin-top:6px;
   }
   .form-field.has-error .error-msg{display:block;}
-  /* Casilla de consentimiento: el label envuelve la casilla y el texto,
-     asi que se puede pulsar en cualquier parte de la frase. */
   .form-field-check label{
     flex-direction:row;
     display:flex;
@@ -303,8 +290,6 @@
   .form-success img{width:44px;height:44px;margin-bottom:12px;}
   .form-success h3{font-size:18px;margin-bottom:8px;}
   .form-success p{color:var(--text-muted);font-size:14px;margin-bottom:18px;}
-
-  /* Footer */
   footer{
     background:var(--bg-alt);
     padding:40px 20px;
@@ -356,8 +341,6 @@
   .map-block h3{font-size:18px;margin-bottom:8px;}
   .map-block h3 span{display:block;width:172px;height:3px;background:url('assets/img/line-underline.svg') center/contain no-repeat;margin:8px auto 0;}
   .map-block p{color:#f8f8f8;font-size:14px;font-weight:600;}
-
-  /* Drawer menu */
   .drawer-overlay{
     position:fixed;inset:0;background:rgba(0,0,0,.6);
     opacity:0;pointer-events:none;transition:opacity .25s;z-index:90;
@@ -441,8 +424,6 @@
     font-size:13px;
     color:var(--text-muted);
   }
-
-  /* Desktop */
   @media (min-width:900px){
     .app{max-width:none;box-shadow:none;}
     .container{max-width:1100px;margin:0 auto;}
@@ -452,29 +433,9 @@
     footer{padding:60px 40px;}
     .footer-links{max-width:900px;}
   }
-
-  /* Oculto temporalmente: portal de alumnos BoxMagic.
-     Para volver a mostrarlo, borra esta regla. */
   .footer-links a.plain,
   .drawer-item-plain{display:none;}
-
-  /* ==========================================================
-     Poppins autoalojada + componentes compartidos.
-
-     Estas reglas estaban en un assets/css/site.css que ya no
-     existe, enlazado con <link>. Enlazadas bloqueaban el renderizado 180 ms por
-     un fichero de 2 KB, y no se pueden diferir: llevan las
-     @font-face y los estilos del banner de cookies, que sin
-     ellos sale sin maquetar. Por eso viven aca, dentro del
-     bloque de estilos de la pagina, como el resto del CSS.
-
-     OJO: este bloque esta copiado en las 23 paginas. Un cambio
-     aca va en las 23. Los .woff2 estan en assets/fonts/ y son
-     los mismos que servia Google (Poppins, SIL OFL 1.1, ver
-     assets/fonts/OFL.txt). Pesos: 400, 500, 600, 700 y 800.
-     Subconjuntos latin y latin-ext; con unicode-range el
-     navegador baja solo el que necesita.
-     ========================================================== */
+  /* Poppins autoalojada + componentes compartidos */
   @font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/poppins-400-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
   @font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/poppins-400-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
   @font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url('/assets/fonts/poppins-500-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
@@ -485,7 +446,6 @@
   @font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url('/assets/fonts/poppins-700-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
   @font-face{font-family:'Poppins';font-style:normal;font-weight:800;font-display:swap;src:url('/assets/fonts/poppins-800-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
   @font-face{font-family:'Poppins';font-style:normal;font-weight:800;font-display:swap;src:url('/assets/fonts/poppins-800-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
-
   a:focus-visible,
   button:focus-visible,
   summary:focus-visible,
@@ -497,7 +457,6 @@
     outline-offset:3px;
     border-radius:6px;
   }
-
   .skip-link{
     position:absolute;
     left:50%;
@@ -518,7 +477,6 @@
   @media (prefers-reduced-motion:reduce){
     .skip-link{transition:none;}
   }
-
   .consent{
     position:fixed;
     left:0;
@@ -535,7 +493,6 @@
   @media (prefers-reduced-motion:reduce){
     .consent{transition:none;}
   }
-
   .consent-inner{
     max-width:760px;
     margin:0 auto;
@@ -556,7 +513,6 @@
     color:var(--teal, #33DBDB);
     text-decoration:underline;
   }
-
   .consent-acciones{
     display:flex;
     gap:8px;
@@ -574,13 +530,11 @@
     cursor:pointer;
     line-height:1.2;
   }
-
   .consent-rechazar{background:rgba(255,255,255,.12);color:#f0f0f0;}
   .consent-preferencias{background:transparent;border:1px solid rgba(255,255,255,.25);color:#d8d8d8;}
   .consent-aceptar{background:var(--magenta, #C109B4);color:#fff;}
   .consent-btn:hover{filter:brightness(1.12);}
   .consent-btn:focus-visible{outline:2px solid var(--teal, #33DBDB);outline-offset:2px;}
-
   .consent-detalle{
     margin-top:16px;
     padding-top:16px;
@@ -589,7 +543,6 @@
     flex-direction:column;
     gap:13px;
   }
-
   .consent-detalle[hidden]{display:none;}
   .consent-opcion{
     display:flex;
@@ -617,14 +570,11 @@
     align-self:flex-start;
     flex:0 0 auto;
   }
-
   body:has(.consent.visible) .quick-actions{bottom:190px;}
-
   @media (min-width:600px){
     .consent-acciones{justify-content:flex-end;}
     .consent-btn{flex:0 0 auto;min-width:120px;}
   }
-
   .legal-item a,
   .legal-intro a{
     color:var(--teal, #33DBDB);
@@ -727,19 +677,29 @@
     <div class="form-card">
       <!-- data-endpoint: URL /exec de la Web App de Google Apps Script.
            Es el unico lugar donde hay que pegarla; el envio vive en assets/js/app.js. -->
+      <!-- toolname / tooldescription / toolparamdescription: WebMCP declarativo.
+           Le describen el formulario a los agentes de IA (y son lo que audita la
+           categoria Agentic Browsing de Lighthouse). Son solo metadatos: ningun
+           navegador actual cambia de comportamiento por ellos y el envio sigue
+           igual. Si agregas un campo, ponle su toolparamdescription: dejar la
+           anotacion a medias es lo unico que hace fallar el audit de esquema. -->
       <form id="freeClassForm" novalidate
+            toolname="agendar_clase_gratis"
+            tooldescription="Agenda la primera clase de prueba gratuita en Bisonte CrossFit (Calle Uno 1050, San Miguel, Chile). Envia la solicitud al box, que despues confirma el cupo por WhatsApp. No cobra ni compromete a nada."
             data-endpoint="https://script.google.com/macros/s/AKfycbxzGdrGAUl-ahtgej8mLO2WFDG0jUmaQBqa95brXxpP5_ZS8JwLu1lMH7OQw4_wvJY6sA/exec"
             data-whatsapp="https://wa.me/56967374096?text=Quiero%20mi%20clase%20gratis">
 
         <div class="form-row">
           <div class="form-field">
             <label for="f-nombre">Nombre completo <span class="req">*</span></label>
-            <input id="f-nombre" name="nombre" type="text" autocomplete="name" placeholder="Ej: Camila Rojas" required>
+            <input id="f-nombre" name="nombre" type="text" autocomplete="name" placeholder="Ej: Camila Rojas" required
+                   toolparamdescription="Nombre y apellido de la persona que viene a la clase. Obligatorio.">
             <span class="error-msg">Escribe tu nombre y apellido.</span>
           </div>
           <div class="form-field">
             <label for="f-rut">RUT <span class="req">*</span></label>
-            <input id="f-rut" name="rut" type="text" inputmode="text" placeholder="12.345.678-9" required>
+            <input id="f-rut" name="rut" type="text" inputmode="text" placeholder="12.345.678-9" required
+                   toolparamdescription="RUT chileno con digito verificador, formato 12.345.678-9 o 12345678-9. Se valida con modulo 11 en el navegador: un digito verificador incorrecto bloquea el envio. Obligatorio.">
             <span class="error-msg">Revisa el RUT, no parece válido.</span>
           </div>
         </div>
@@ -747,12 +707,14 @@
         <div class="form-row">
           <div class="form-field">
             <label for="f-email">Email <span class="req">*</span></label>
-            <input id="f-email" name="email" type="email" autocomplete="email" placeholder="tucorreo@mail.com" required>
+            <input id="f-email" name="email" type="email" autocomplete="email" placeholder="tucorreo@mail.com" required
+                   toolparamdescription="Direccion de email de contacto. Obligatorio.">
             <span class="error-msg">Revisa el email, falta algo.</span>
           </div>
           <div class="form-field">
             <label for="f-telefono">Teléfono</label>
-            <input id="f-telefono" name="telefono" type="tel" autocomplete="tel" placeholder="+56 9 1234 5678">
+            <input id="f-telefono" name="telefono" type="tel" autocomplete="tel" placeholder="+56 9 1234 5678"
+                   toolparamdescription="Telefono movil chileno, formato +56 9 1234 5678. Opcional, pero es por donde el box confirma el cupo (WhatsApp).">
             <span class="error-msg">Revisa el teléfono.</span>
           </div>
         </div>
@@ -761,7 +723,8 @@
           <label for="f-clase">¿Qué clase quieres probar? <span class="req">*</span></label>
           <!-- data-slug: permite enlazar clase-gratis.html?clase=<slug> desde cada
                pagina de disciplina. El slug es el nombre del archivo de esa pagina. -->
-          <select id="f-clase" name="clase" required>
+          <select id="f-clase" name="clase" required
+                  toolparamdescription="Disciplina que la persona quiere probar. Obligatorio, y hay que elegirla antes que el horario porque filtra sus opciones. Ojo con dos valores que no coinciden con el texto visible: Hybrid/Hyrox se envia como 'Hyrox / Hybrid' y CrossFit Extendido como 'Competidor'. Si no hay preferencia, usar 'Aun no lo se'.">
             <option value="" selected disabled>Selecciona una clase</option>
             <option value="CrossFit" data-slug="crossfit">CrossFit</option>
             <!-- Solo cambia el texto visible: el value y los data-clase de los horarios
@@ -783,7 +746,8 @@
           <label for="f-horario">Horario que te acomoda <span class="req">*</span></label>
           <!-- data-clase filtra las opciones segun la clase elegida (ver app.js).
                Los horarios son los mismos de disciplinas.html: si cambian alla, cambian aca. -->
-          <select id="f-horario" name="horario" required>
+          <select id="f-horario" name="horario" required
+                  toolparamdescription="Bloque horario. Obligatorio. Las opciones validas dependen de la clase elegida en el campo anterior: elige primero la clase y usa solo las opciones que queden visibles, porque un horario de otra disciplina no existe en la realidad. 'Por coordinar' sirve siempre.">
             <option value="" selected disabled>Primero elige una clase</option>
 
             <optgroup label="Lunes a Viernes">
@@ -842,7 +806,8 @@
 
         <div class="form-field">
           <label for="f-mensaje">Mensaje (opcional)</label>
-          <textarea id="f-mensaje" name="mensaje" maxlength="500" placeholder="¿Vienes desde cero? ¿Alguna lesión que debamos saber? Cuéntanos."></textarea>
+          <textarea id="f-mensaje" name="mensaje" maxlength="500" placeholder="¿Vienes desde cero? ¿Alguna lesión que debamos saber? Cuéntanos."
+                    toolparamdescription="Comentario libre para el coach: nivel de experiencia, lesiones a considerar, dudas. Opcional, maximo 500 caracteres."></textarea>
         </div>
 
         <!-- Consentimiento explicito. El formulario pide nombre, RUT, email,
@@ -852,7 +817,8 @@
              formulario no lo recogia en ninguna parte. -->
         <div class="form-field form-field-check">
           <label for="f-consentimiento">
-            <input id="f-consentimiento" name="consentimiento" type="checkbox" value="si" required>
+            <input id="f-consentimiento" name="consentimiento" type="checkbox" value="si" required
+                   toolparamdescription="Consentimiento del titular de los datos para la politica de privacidad y el tratamiento de sus datos. Obligatorio: sin marcarlo el formulario no se envia. Lo acepta la persona, no un agente en su nombre.">
             <span>He leído y acepto la <a href="/politica-privacidad" target="_blank" rel="noopener">política de privacidad</a> y el tratamiento de mis datos para coordinar mi clase. <span class="req">*</span></span>
           </label>
           <span class="error-msg">Necesitamos tu permiso para poder contactarte.</span>
