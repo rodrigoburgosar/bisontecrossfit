@@ -19,10 +19,10 @@
      bajar de inmediato, aunque no se ejecute hasta el final. -->
 <script defer src="assets/js/consent.js?v=20260817"></script>
 
-<meta name="description" content="Clases full body en San Miguel: todos los grupos musculares en una sesión de una hora, entre fuerza y acondicionamiento. Martes y jueves, 06:00 y 07:00.">
+<meta name="description" content="Clases full body en San Miguel: todos los grupos musculares en una sesión de una hora, entre fuerza y acondicionamiento. Martes y jueves, 07:00 y 08:00.">
 <meta property="og:site_name" content="Bisonte CrossFit">
 <meta property="og:title" content="Clases Full Body en San Miguel | Bisonte CrossFit">
-<meta property="og:description" content="Clases full body en San Miguel: todos los grupos musculares en una sesión de una hora, entre fuerza y acondicionamiento. Martes y jueves, 06:00 y 07:00.">
+<meta property="og:description" content="Clases full body en San Miguel: todos los grupos musculares en una sesión de una hora, entre fuerza y acondicionamiento. Martes y jueves, 07:00 y 08:00.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CL">
 <link rel="canonical" href="https://bisontecrossfit.cl/full-body">
@@ -46,6 +46,9 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/poppins-600-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/poppins-800-latin.woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/disciplina.css?v=20260814">
+<style>
+  .coach-row + .coach-row{margin-top:10px;}
+</style>
 <!-- Poppins autoalojada + componentes compartidos.
 
      Estas reglas estaban en un assets/css/site.css que ya no existe, enlazado
@@ -54,8 +57,8 @@
      pueden diferir: llevan las @font-face y los estilos del banner de cookies,
      que sin ellos sale sin maquetar. Por eso van aca dentro.
 
-     Esta pagina no tiene estilos propios en linea (su CSS vive en assets/css/),
-     asi que el bloque se queda en un elemento aparte.
+     El CSS de esta pagina vive en assets/css/; lo unico propio es el <style>
+     de aca arriba, asi que el bloque compartido se queda en un elemento aparte.
 
      OJO: este bloque esta copiado en las 23 paginas. Un cambio aca va en las
      23. Los .woff2 estan en assets/fonts/ y son los mismos que servia Google
@@ -241,7 +244,7 @@ body:has(.consent.visible) .quick-actions{bottom:190px;}
   "@id": "https://bisontecrossfit.cl/full-body#servicio",
   "name": "Clases Full Body en San Miguel",
   "serviceType": "Entrenamiento Full Body",
-  "description": "Sesión de cuerpo completo —tren superior, tren inferior y core— entre fuerza y acondicionamiento, en horario de madrugada. Martes y jueves, 06:00 y 07:00.",
+  "description": "Sesión de cuerpo completo —tren superior, tren inferior y core— entre fuerza y acondicionamiento, en horario de mañana. Martes y jueves, 07:00 y 08:00.",
   "url": "https://bisontecrossfit.cl/full-body",
   "image": "https://bisontecrossfit.cl/assets/img/crossfit-hero.webp",
   "provider": {"@id": "https://bisontecrossfit.cl/#gimnasio"},
@@ -338,14 +341,14 @@ body:has(.consent.visible) .quick-actions{bottom:190px;}
     <div class="info-card">
       <h2>Horarios</h2>
       <p>Martes y Jueves</p>
-      <p>06:00 · 07:00</p>
+      <p>07:00 · 08:00</p>
     </div>
 
     <div class="info-card">
       <h2>¿Cómo es una clase Full Body?</h2>
       <p>Cada sesión recorre el cuerpo completo: empuje y tracción para el tren superior, sentadilla y bisagra de cadera para el tren inferior, y un bloque final de core y acondicionamiento. Se usan mancuernas, kettlebells, barras y peso corporal, con series y descansos pautados por el coach.</p>
       <p>Es la puerta de entrada más simple al entrenamiento funcional: tiene menos técnica compleja que el CrossFit, pero mantiene la intensidad y el trabajo en grupo. Sirve tanto para partir desde cero como para sumar una sesión de fuerza general a la semana.</p>
-      <p>Las clases son martes y jueves a las 06:00 y 07:00, pensadas para entrenar antes del trabajo. Estamos en Calle Uno 1050, San Miguel, a pasos del Metro Departamental.</p>
+      <p>Las clases son martes y jueves a las 07:00 y 08:00, pensadas para entrenar antes del trabajo. Estamos en Calle Uno 1050, San Miguel, a pasos del Metro Departamental.</p>
     </div>
 
     <div class="info-card">
@@ -355,6 +358,13 @@ body:has(.consent.visible) .quick-actions{bottom:190px;}
         <li>Quienes entrenan temprano, antes del trabajo</li>
         <li>Intermedios: como sesión de fuerza general</li>
       </ul>
+    </div>
+
+    <div class="info-card">
+      <h2>Cómo se trabaja en la clase</h2>
+      <p>Los grupos son reducidos, de máximo 5 personas, para que el coach alcance a corregir la técnica de cada uno durante la sesión en vez de dirigir desde afuera.</p>
+      <p>El trabajo se adapta a tu objetivo y a tu punto de partida: la carga, el volumen y el rango de movimiento se ajustan persona por persona, así que no hace falta experiencia previa ni una edad determinada para entrar.</p>
+      <p>Si vas detrás de un objetivo concreto de fuerza, hipertrofia o powerbuilding, el coach también puede armarte una planificación online para los días que entrenes por tu cuenta.</p>
     </div>
 
     <div class="section-title"><h2>Beneficios</h2></div>
@@ -391,6 +401,24 @@ body:has(.consent.visible) .quick-actions{bottom:190px;}
           <li>Head Coach</li>
           <li>CrossFit Level 2</li>
           <li>Especialista en Full Body</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="coach-row">
+      <div class="coach-visual">
+        <img loading="lazy" class="photo" src="assets/img/jonathan.webp" alt="Jonathan Azocar" width="288" height="480">
+        <img class="ring" src="assets/icons/coach-ring.svg" alt="">
+        <img loading="lazy" class="photo-front" src="assets/img/jonathan.webp" alt="" aria-hidden="true" width="288" height="480">
+      </div>
+      <div class="coach-info">
+        <h3>Jonathan Azocar</h3>
+        <p>Coach de fuerza e hipertrofia</p>
+        <ul class="coach-tags">
+          <li>Experto en hipertrofia</li>
+          <li>Entrenamiento de fuerza</li>
+          <li>Powerbuilding</li>
+          <li>Grupos reducidos</li>
         </ul>
       </div>
     </div>

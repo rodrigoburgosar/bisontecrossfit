@@ -72,7 +72,7 @@ Todo el schema.org va inline al final del `<head>`, en bloques `<script type="ap
 
 Antes de publicar cambios de schema, pásalos por el [validador de Schema.org](https://validator.schema.org/) o Search Console: un JSON mal formado hace que Google descarte el bloque entero en silencio.
 
-El horario (lun-vie 06:00-21:15, sábado 10:00-12:00 — el sábado pasó por 10:30, luego 09:30 cuando se sumó GAP, y desde 2026-08-14 abre a las 10:00 con una sola clase, CrossFit Extendido) y el `postalCode` están confirmados por el dueño (2026-08-10). Si cambia el horario de puertas hay que actualizarlo en el schema **y** en la ficha de Google Business: que se contradigan es peor que no declarar el horario.
+El horario (lun-vie 07:00-21:15, sábado 10:00-12:00) y el `postalCode` están confirmados por el dueño. El sábado pasó por 10:30, luego 09:30 cuando se sumó GAP, y el 2026-08-14 quedó en 10:00 con una sola clase; desde **2026-09-22** son dos: GAP 10:00 y CrossFit Extendido 10:15. Ese mismo día **se eliminó el bloque de las 06:00 de lunes a viernes**, así que la apertura pasó de 06:00 a 07:00. Si cambia el horario de puertas hay que actualizarlo en el schema **y** en la ficha de Google Business: que se contradigan es peor que no declarar el horario.
 
 **No agregues `aggregateRating` ni `Review` al negocio.** Google no acepta reseñas *self-serving* — valoraciones sobre el propio negocio, publicadas en su propio sitio — para `LocalBusiness` ni `Organization`: no generan estrellas en los resultados y son marcado sancionable. Las estrellas que aparecen en las búsquedas locales salen de la ficha de Google Business, no de acá. Las 3 reseñas de `testimonios.html` van sin marcar, solo como contenido.
 
@@ -156,9 +156,10 @@ Cada una de estas reglas se ve arbitraria y **ya se rompió una vez** al "simpli
 
 **Páginas de disciplina**
 
-- `levantamiento-olimpico.html` — Benjamín tiene 9 credenciales de competencia (los otros coaches tienen 3) y no caben en `.coach-info`, que en móvil mide ~175px: con `white-space:nowrap` el texto se salía de la píldora. Por eso ahí la lista es el **tercer hijo de `.coach-row`** (no va dentro de `.coach-info`), ocupa el ancho completo de la tarjeta y las píldoras pueden partirse en dos líneas.
+- `levantamiento-olimpico.html` — Benjamín tiene 9 credenciales de competencia (los otros coaches tienen 3) y no caben en `.coach-info`, que en móvil mide ~175px: con `white-space:nowrap` el texto se salía de la píldora. Por eso ahí la lista es el **tercer hijo de `.coach-row`** (no va dentro de `.coach-info`) y las píldoras pueden partirse en dos líneas. **El salto de línea está acotado a `max-width:899px`**: ahí `.coach-row` va `flex-wrap:wrap` y la lista ocupa el ancho completo, debajo del nombre. De 900px para arriba no hay wrap y la lista es un tercer item del flex (`flex:1 1 0`), o sea foto + nombre + credenciales **en una sola línea** — sin eso la fila de ancho completo dejaba ~700px muertos a la derecha del nombre y la tarjeta medía 249px de alto en vez de 192px.
+- `full-body.html` — es la única disciplina con **dos coaches** (Sonia y Jonathan), así que lleva un `<style>` propio con `.coach-row + .coach-row{margin-top:10px}`: `.coach-row` no trae margen y sin esa regla las dos tarjetas se tocan y se leen como una sola. Va inline en la página, no en `disciplina.css`, para no tener que subir el `?v=` de la hoja compartida en las 11 páginas que la enlazan.
 - `adulto-mayor.html`, `gymnastics.html`, `hybrid.html` — Karen tiene credenciales más largas que las de la base y con `white-space:nowrap` la píldora se salía de la tarjeta en móvil.
-- `coaches.html` — reutiliza `disciplina.css` para el chrome y solo añade lo propio de la página.
+- `coaches.html` — reutiliza `disciplina.css` para el chrome y solo añade lo propio de la página. Su `.coach-photo` recorta con `object-fit:cover` y `object-position:center 22%`, un valor calibrado para las fotos de Sonia y Karen; **la de Benjamín lleva `object-position:center top` en un `style=` propio** porque su foto tiene la cabeza mucho más arriba y con el 22 % compartido le cortaba la coronilla en los dos breakpoints.
 
 **Compartido**
 

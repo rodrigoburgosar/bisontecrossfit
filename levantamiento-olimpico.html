@@ -47,10 +47,15 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/poppins-800-latin.woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/disciplina.css?v=20260814">
 <style>
-  .coach-tags li{white-space:normal;}
-  .coach-row{flex-wrap:wrap;}
-  .coach-tags{width:100%;margin-top:12px;}
-  .coach-tags li{text-align:left;}
+  .coach-tags li{white-space:normal;text-align:left;}
+  @media (max-width:899px){
+    .coach-row{flex-wrap:wrap;}
+    .coach-tags{width:100%;margin-top:12px;}
+  }
+  @media (min-width:900px){
+    .coach-info{flex:0 1 auto;}
+    .coach-row > .coach-tags{flex:1 1 0;min-width:0;margin-top:0;padding-left:16px;}
+  }
   /* Poppins autoalojada + componentes compartidos */
   @font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/poppins-400-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
   @font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/poppins-400-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
@@ -358,9 +363,9 @@
     <div class="section-title"><h2>Clases impartidas por</h2></div>
     <div class="coach-row">
       <div class="coach-visual">
-        <img loading="lazy" class="photo" src="assets/img/benja.webp" alt="Benjamín Aranis" width="288" height="480">
+        <img loading="lazy" class="photo" src="assets/img/benja.webp?v=20260922" alt="Benjamín Aranis" width="288" height="480">
         <img class="ring" src="assets/icons/coach-ring.svg" alt="">
-        <img loading="lazy" class="photo-front" src="assets/img/benja.webp" alt="" aria-hidden="true" width="288" height="480">
+        <img loading="lazy" class="photo-front" src="assets/img/benja.webp?v=20260922" alt="" aria-hidden="true" width="288" height="480">
       </div>
       <div class="coach-info">
         <h3>Benjamín Aranis</h3>

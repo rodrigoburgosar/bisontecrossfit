@@ -20,15 +20,15 @@ Este sitio es estático y en español (es-CL). Todos los precios están en pesos
 
 ## Disciplinas
 
-- [CrossFit](https://bisontecrossfit.cl/crossfit): entrenamiento funcional de alta intensidad para todos los niveles; cada WOD se escala. Lunes a viernes 08:00, 17:15, 18:15 y 19:15; lunes, miércoles y viernes también 06:00 y 07:00.
+- [CrossFit](https://bisontecrossfit.cl/crossfit): entrenamiento funcional de alta intensidad para todos los niveles; cada WOD se escala. Lunes y miércoles 07:00, 08:00, 17:15, 18:15 y 19:15; viernes 07:00, 08:00, 17:15 y 18:15; martes y jueves 18:15 y 19:15.
 - [Levantamiento Olímpico](https://bisontecrossfit.cl/levantamiento-olimpico): halterofilia; técnica de arranque (snatch) y envión (clean & jerk) para ganar fuerza y potencia. Lunes y miércoles 20:15, viernes 19:15.
 - [Hyrox / Hybrid](https://bisontecrossfit.cl/hybrid): entrenamiento híbrido estilo Hyrox: carrera, remo y ergómetros combinados con trineo, farmer carry y wall balls. Martes y jueves, 18:15 y 19:15.
-- [Gymnastics](https://bisontecrossfit.cl/gymnastics): habilidades gimnásticas con peso corporal: dominadas, kipping, muscle up, anillas y parada de manos, con progresiones escaladas. Lunes y miércoles 19:15, viernes 18:15.
+- [Gymnastics](https://bisontecrossfit.cl/gymnastics): habilidades gimnásticas con peso corporal: dominadas, kipping, muscle up, anillas y parada de manos, con progresiones escaladas. Martes y jueves, 19:15.
 - [StrongMan](https://bisontecrossfit.cl/strongman): entrenamiento con implementos de fuerza: troncos, neumáticos, trineos, sacos y farmer carry. Martes y jueves, 20:15.
-- [Full Body](https://bisontecrossfit.cl/full-body): sesión de cuerpo completo (tren superior, tren inferior y core) entre fuerza y acondicionamiento. Martes y jueves, 06:00 y 07:00.
-- [CrossFit Extendido](https://bisontecrossfit.cl/competidor): sesión larga de alto rendimiento para atletas que compiten: fuerza, gimnasia avanzada y metabólicos en formato de competencia. Sábados, 10:00.
+- [Full Body](https://bisontecrossfit.cl/full-body): sesión de cuerpo completo (tren superior, tren inferior y core) entre fuerza y acondicionamiento. Martes y jueves, 07:00 y 08:00. Grupos de máximo 5 personas, con el trabajo adaptado al objetivo y al nivel de cada persona. La imparten Sonia Madariaga y Jonathan Azocar.
+- [CrossFit Extendido](https://bisontecrossfit.cl/competidor): sesión larga de alto rendimiento para atletas que compiten: fuerza, gimnasia avanzada y metabólicos en formato de competencia. Sábados, 10:15.
 - [Adulto Mayor](https://bisontecrossfit.cl/adulto-mayor): entrenamiento funcional de bajo impacto para adultos mayores: movilidad, equilibrio y fuerza con cargas livianas, sin saltos. Martes y jueves, 17:00.
-- [GAP](https://bisontecrossfit.cl/gap): clase localizada de glúteos, abdomen y piernas: series de repeticiones con bandas, cargas livianas y peso corporal, de bajo impacto y sin técnica compleja. Sábados, 09:30. La imparte Sonia Madariaga.
+- [GAP](https://bisontecrossfit.cl/gap): clase localizada de glúteos, abdomen y piernas: series de repeticiones con bandas, cargas livianas y peso corporal, de bajo impacto y sin técnica compleja. Sábados, 10:00. La imparte Sonia Madariaga.
 
 ## Planes y precios
 
@@ -56,7 +56,7 @@ Pases diarios:
 
 ## Contacto y ubicación
 
-- Horario de puertas: lunes a viernes de 06:00 a 21:15; sábado de 10:00 a 12:00; domingo cerrado.
+- Horario de puertas: lunes a viernes de 07:00 a 21:15; sábado de 10:00 a 12:00; domingo cerrado.
 - Dirección: Calle Uno 1050, San Miguel, Santiago, Chile (cerca del Metro Departamental, Línea 2).
 - WhatsApp: +56 9 6737 4096 — https://wa.me/56967374096
 - Reservas y pagos: app BoxMagic (https://app.boxmagic.cl).
